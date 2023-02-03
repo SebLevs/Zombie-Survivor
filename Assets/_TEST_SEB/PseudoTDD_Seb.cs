@@ -21,8 +21,6 @@ public class PseudoTDD_Seb : MonoBehaviour
         {
 
         });
-
-
     }
 
     private void Test(bool check, Action test)
