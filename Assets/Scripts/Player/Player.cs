@@ -7,7 +7,7 @@ public class Player : Manager<Player>
     private void Start()
     {
         Debug.Log("Player started");
-        Debug.Log("AHHH");
+        Debug.Log("AH");
         Debug.Log("Test 3");
     }
 }
