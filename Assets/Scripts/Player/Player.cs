@@ -8,5 +8,6 @@ public class Player : Manager<Player>
     {
         Debug.Log("Player started");
         Debug.Log("AHHH");
+        Debug.Log("Test 3");
     }
 }
