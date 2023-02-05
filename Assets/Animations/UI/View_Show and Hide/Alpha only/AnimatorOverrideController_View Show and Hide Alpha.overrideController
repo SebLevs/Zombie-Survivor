@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AnimatorOverrideController_View Show and Hide Alpha
+  m_Controller: {fileID: 9100000, guid: 152c0608fd8a5f640a37315fd4c1faea, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e33bade7b66b34f44a3f19f3565d1a4e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e33bade7b66b34f44a3f19f3565d1a4e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 78d864b917bc66e4b824597ad17cfb1a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 78d864b917bc66e4b824597ad17cfb1a, type: 2}
