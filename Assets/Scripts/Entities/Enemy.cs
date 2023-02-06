@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable
 {
-    [field:SerializeField] public Health HP { get; private set; }
+    private Health m_hp;
+    private Rigidbody2D m_rigidbody;
+
+    private void Awake()
+    {
+        m_rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     public void OnGetFromAvailable()
     {
@@ -13,6 +19,6 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public void OnReturnToAvailable()
     {
-        throw new System.NotImplementedException();
+        m_rigidbody.velocity = Vector2.zero;
     }
 }
