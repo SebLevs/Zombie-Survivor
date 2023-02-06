@@ -13,7 +13,8 @@ public class Player_Controller : MonoBehaviour
     private PlayerAction action;
 
     public Vector2 moveDirection { private set; get; }
-    [SerializeField] private Vector2 lookDirection;
+    public Vector2 lookDirection;
+    public Vector3 mousePosition;
     [SerializeField] private int currentLookDirection = 1;
 
     private void Awake()
@@ -33,12 +34,20 @@ public class Player_Controller : MonoBehaviour
     {
         moveDirection = context.ReadValue<Vector2>();
     }
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            action = new PlayerAction(PlayerActionsType.SHOOT);
+            playerRef.DesiredActions.AddAction(action);
+        }
+    }
 
 
     private void Update()
     {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lookDirection = new Vector2(worldPosition.x - playerRef.transform.position.x, worldPosition.y - playerRef.transform.position.y).normalized;
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        lookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
 
         if(lookDirection.x >= -0.7f && lookDirection.x <= 0.7f && lookDirection.y >= 0.7f)
         {

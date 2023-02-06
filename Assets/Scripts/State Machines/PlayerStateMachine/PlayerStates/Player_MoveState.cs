@@ -30,5 +30,9 @@ public class Player_MoveState : State<Entity_Player>
         {
             m_context.stateController.OnTransitionState(m_context.stateContainer.State_Idle);
         }
+        if(m_context.DesiredActions.Contains(PlayerActionsType.SHOOT)) 
+        {
+            m_context.stateController.OnTransitionState(m_context.stateContainer.State_Shoot);
+        }
     }
 }

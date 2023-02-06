@@ -4,14 +4,47 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour, IPoolable
 {
+    public bool playerIsShooting = true;
+    public Rigidbody2D rb;
+    public CapsuleCollider2D col;
+    [SerializeField] private SequentialStopwatch destroyStopWatch;
+    [SerializeField] private float timeToDestroy;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<CapsuleCollider2D>();
+        timeToDestroy = 2.0f;
+        destroyStopWatch = new SequentialStopwatch(timeToDestroy);
+    }
     public void OnGetFromAvailable()
     {
-        throw new System.NotImplementedException();
+        if(playerIsShooting)
+        {
+            Physics2D.IgnoreCollision(col, Entity_Player.Instance.col);
+        }
     }
 
     public void OnReturnToAvailable()
     {
-        throw new System.NotImplementedException();
+        rb.velocity = Vector2.zero;
+    }
+
+
+    private void OnEnable()
+    {
+        destroyStopWatch.Reset(false);
+        destroyStopWatch.StartTimer();
+        
+    }
+
+    private void Update()
+    {
+        destroyStopWatch.OnUpdateTime();
+        if(destroyStopWatch.HasReachedTarget()) 
+        {
+            WeaponManager.Instance.bulletPool.ReturnToAvailable(this);
+        }
     }
 
 }
