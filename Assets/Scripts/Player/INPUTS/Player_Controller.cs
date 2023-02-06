@@ -43,6 +43,15 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    public void OnSpecialAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            action = new PlayerAction(PlayerActionsType.SPECIALSHOOT);
+            playerRef.DesiredActions.AddAction(action);
+        }
+    }
+
 
     private void Update()
     {

@@ -7,5 +7,6 @@ public enum PlayerActionsType
     MOVE,
     ROLL,
     SHOOT,
+    SPECIALSHOOT,
     INTERACT
 }

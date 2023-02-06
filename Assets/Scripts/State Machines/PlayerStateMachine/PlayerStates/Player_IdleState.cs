@@ -33,5 +33,9 @@ public class Player_IdleState : State<Entity_Player>
         {
             m_context.stateController.OnTransitionState(m_context.stateContainer.State_Shoot);
         }
+        if (m_context.DesiredActions.Contains(PlayerActionsType.SPECIALSHOOT))
+        {
+            m_context.stateController.OnTransitionState(m_context.stateContainer.State_SpecialShoot);
+        }
     }
 }
