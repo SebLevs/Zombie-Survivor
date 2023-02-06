@@ -6,15 +6,17 @@ public class Enemy : MonoBehaviour, IPoolable
 {
     private Health m_hp;
     private Rigidbody2D m_rigidbody;
+    private Collider2D m_collider;
+
 
     private void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
+        m_collider = GetComponent<Collider2D>();
     }
 
     public void OnGetFromAvailable()
     {
-        throw new System.NotImplementedException();
     }
 
     public void OnReturnToAvailable()

@@ -4,13 +4,13 @@ using UnityEngine;
 [Serializable]
 public class EnemyFactoryWaveMedium : AbstractEnemyFactory
 {
-    public override Enemy CreateHighQuantityEnemy()
+    public override Enemy CreateHighQuantityEnemy(Vector3 position)
     {
-        return EnemyManager.Instance.Zombies.GetFromAvailable(Vector3.zero, Quaternion.identity);
+        return EnemyManager.Instance.Zombies.GetFromAvailable(position, Quaternion.identity);
     }
 
-    public override Enemy CreateLowQuantityEnemy()
+    public override Enemy CreateLowQuantityEnemy(Vector3 position)
     {
-        return EnemyManager.Instance.Zombies.GetFromAvailable(Vector3.zero, Quaternion.identity);
+        return EnemyManager.Instance.Zombies.GetFromAvailable(position, Quaternion.identity);
     }
 }

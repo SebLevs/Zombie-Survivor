@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5513840793197205976}
   - component: {fileID: 3844805921529194636}
   m_Layer: 0
-  m_Name: WaveManager
+  m_Name: Wave Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
