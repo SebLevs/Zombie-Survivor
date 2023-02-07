@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable
 {
+    [SerializeField] private ImageFiller m_healthBar;
     private Health m_hp;
+
     private Rigidbody2D m_rigidbody;
     private Collider2D m_collider;
-
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public void OnGetFromAvailable()
     {
+        m_healthBar.SetFilling(m_hp.Normalized);
     }
 
     public void OnReturnToAvailable()

@@ -13,10 +13,14 @@ public class EnemyFactoryManager : Manager<EnemyFactoryManager>
     protected override void OnAwake()
     {
         base.OnAwake();
-        EasyEnemyWave = new EnemyFactoryWaveEasy();
-        EasyEnemyWave = new EnemyFactoryWaveMedium();
-        EasyEnemyWave = new EnemyFactoryWaveHard();
-
+        InitFactories();
         CurrentFactory = EasyEnemyWave;
+    }
+
+    private void InitFactories()
+    {
+        EasyEnemyWave = new EnemyFactoryWaveEasy();
+        MediumEnemyWave = new EnemyFactoryWaveMedium();
+        HardEnemyWave = new EnemyFactoryWaveHard();
     }
 }

@@ -44,7 +44,7 @@ public class WaveManager : Manager<WaveManager>
         });
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         _spawnerStopWatch.OnUpdateTime();
 

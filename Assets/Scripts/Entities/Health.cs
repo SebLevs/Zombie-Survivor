@@ -15,6 +15,8 @@ public class Health : MonoBehaviour
     [field:SerializeField] public UnityEvent OnHitEvent { get; private set; }
     [field:SerializeField] public UnityEvent OnDeathEvent { get; private set; }
 
+    public float Normalized => m_currentHP / m_maxHP;
+
      public int MaxHP
      {
         get { return m_maxHP; }
