@@ -38,4 +38,9 @@ public class Enemy : MonoBehaviour, IPoolable
         m_healthBar.Filler.SetFilling(m_hp.Normalized);
         m_healthBar.Counter.Element.text = m_hp.CurrentHP.ToString();
     }
+
+    public void Kill()
+    {
+        m_hp.OnInstantDeath();
+    }
 }

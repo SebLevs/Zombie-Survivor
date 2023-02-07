@@ -11,21 +11,17 @@ public class WaveManager : Manager<WaveManager>
     [SerializeField] private float _waveTimerHard = 20;
     [SerializeField] private float _waveTimerBoss = 30;
 
-    [Header("Enemy spawning timer")]
-    [Range(1, 10)] [SerializeField] private float _maxWaitBetweenSpawns;
-    [SerializeField] private float _spawnTimer = 5f;
+    [Header("Enemy spawning")]
+    [Range(1, 10)] [SerializeField] private float _tickRange;
     [SerializeField] private SequentialStopwatch _spawnerStopWatch;
 
-    [Header("Enemy spawning points")]
-    [SerializeField] private float _maxSpawnPointLinearRange;
-    [SerializeField] private Vector2 _spawnLeft;
-    [SerializeField] private Vector2 _spawnRight;
-    [SerializeField] private Vector2 _spawnTop;
-    [SerializeField] private Vector2 _spawnBottom;
+    // TODO: Make generic observer pattern to call a random position from this list
+    [SerializeField] private List<SpawnPoint2D> _enemySpawnPoints;
 
     protected override void OnAwake()
     {
         _spawnerStopWatch = new SequentialStopwatch(GetRandomTimeInRange());
+        //_enemySpawnPoints = new List<SpawnPoint2D>();
     }
 
     protected override void OnStart()
@@ -41,6 +37,13 @@ public class WaveManager : Manager<WaveManager>
         TimerManager.Instance.AddSequentialStopwatch(_waveTimerHard, () =>
         {
             _factory.CurrentFactory = _factory.HardEnemyWave;
+        });
+
+        TimerManager.Instance.AddSequentialStopwatch(_waveTimerBoss, () =>
+        {
+            EnemyManager.Instance.CurrentlyActiveEnemies.ForEach(enemy => enemy.Kill());
+            // TODO: Set enemy placement here
+            EnemyManager.Instance.Boss.GetFromAvailable(Vector3.zero,Quaternion.identity);
         });
     }
 
@@ -59,20 +62,20 @@ public class WaveManager : Manager<WaveManager>
 
     private float GetRandomTimeInRange()
     {
-        return Random.Range(0, _maxWaitBetweenSpawns);
+        return Random.Range(0, _tickRange);
     }
 
     private void CreateEnemyWave()
     {
         // TODO: Set enemy placement here
-        _factory.CurrentFactory.CreateLowQuantityEnemy(Vector3.zero);
-        _factory.CurrentFactory.CreateHighQuantityEnemy(Vector3.zero);
+        _factory.CurrentFactory.CreateLowQuantityEnemy(GetRandomSpawnPoint());
+        _factory.CurrentFactory.CreateHighQuantityEnemy(GetRandomSpawnPoint());
     }
 
     private Vector2 GetRandomSpawnPoint()
     {
-        // TODO: Create class for spawn points: transform + isVertical + isHorizontal
-        // TODO: Create array of spawn points + Get random from array + get spawn location from spawn point
-        return Vector2.zero;
+        int index = Random.Range(0, _enemySpawnPoints.Count);
+
+        return _enemySpawnPoints[index].GetRandomSpawnPoint();
     }
 }

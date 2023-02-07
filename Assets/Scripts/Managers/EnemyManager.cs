@@ -13,7 +13,7 @@ public class EnemyManager : Manager<EnemyManager>
     [field: SerializeField] public PoolPattern<Enemy> Skeletons { get; private set; }
 
     [field: Header("Boss")]
-    [field: SerializeField] public PoolPattern<Enemy> BigZombie { get; private set; }
+    [field: SerializeField] public PoolPattern<Enemy> Boss { get; private set; }
 
     protected override void OnAwake()
     {
@@ -31,6 +31,6 @@ public class EnemyManager : Manager<EnemyManager>
         Skeletons.InitDefaultQuantity();
 
         // Boss
-        BigZombie.InitDefaultQuantity();
+        Boss.InitDefaultQuantity();
     }
 }
