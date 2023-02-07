@@ -46,5 +46,14 @@ public class BulletBehavior : MonoBehaviour, IPoolable
             WeaponManager.Instance.bulletPool.ReturnToAvailable(this);
         }
     }
+    
+    public void ShootBullet(Vector2 direction, float speed)
+    {
+        transform.up = direction;
+        rb.velocity = direction * speed;
+    }
+
+
+    
 
 }

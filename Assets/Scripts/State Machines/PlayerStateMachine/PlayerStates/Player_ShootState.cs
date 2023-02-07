@@ -23,8 +23,7 @@ public class Player_ShootState : State<Entity_Player>
         {
             Transform shootFrom = Entity_Player.Instance.muzzle;
             BulletBehavior bullet = WeaponManager.Instance.bulletPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
-            bullet.transform.up = Player_Controller.Instance.lookDirection;
-            bullet.rb.velocity = Player_Controller.Instance.lookDirection * m_context.bulletSpeed;
+            bullet.ShootBullet(Player_Controller.Instance.lookDirection, m_context.bulletSpeed);
             m_context.canAttack = false;
             m_context.attackDelay.Reset();
             m_context.attackDelay.StartTimer();

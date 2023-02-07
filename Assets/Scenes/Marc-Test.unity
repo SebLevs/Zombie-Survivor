@@ -158,8 +158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookDirection: {x: 0, y: 0}
+  currentPlayerLookDirection: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0, z: 0}
-  currentLookDirection: 1
+  currentLookAngle: 0
 --- !u!114 &109396438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +223,38 @@ MonoBehaviour:
     m_ActionId: 8e04529d-2646-4b27-b628-cf414de65ce4
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 109396437}
+        m_TargetAssemblyTypeName: Player_Controller, Assembly-CSharp
+        m_MethodName: OnSpecialAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c7d41d6c-eedd-41e7-aa35-818b009d44da
+    m_ActionName: Player/SpecialAttack[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 109396437}
+        m_TargetAssemblyTypeName: Player_Controller, Assembly-CSharp
+        m_MethodName: OnDodge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fe910fba-f3b1-4ee0-a958-ccda5c2b2092
+    m_ActionName: Player/Dodge[/Keyboard/space]
+  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: bcc5a1be-63bb-4ef7-b70a-5261e456bbee
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
@@ -261,22 +294,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 78bc49fc-54e0-446d-a35e-e947eaf9ab63
     m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 109396437}
-        m_TargetAssemblyTypeName: Player_Controller, Assembly-CSharp
-        m_MethodName: OnSpecialAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: c7d41d6c-eedd-41e7-aa35-818b009d44da
-    m_ActionName: Player/SpecialAttack[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -341,7 +358,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109396436}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -362,9 +379,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13e45323d8cfa94eb86a96855983892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test: 
   canAttack: 1
   canSpecialAttack: 1
-  boomDistance: 15
+  boomDistance: 5
+  canDodge: 1
+  dodgeDistance: 3
+  dodgeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   muzzle: {fileID: 1437776525}
   col: {fileID: 0}
 --- !u!50 &109396442
@@ -513,7 +557,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202880856}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -642,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fd38e70a9cd374d8a2fef4a3747c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIsShooting: 1
+  playerIsShooting: 0
   rb: {fileID: 0}
   col: {fileID: 0}
   timeToDestroy: 5
@@ -887,18 +931,27 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: 0.9020719
+      value: 0.9968058
+      inSlope: 0.02973413
+      outSlope: 0.02973413
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.39803705
+    - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -918,17 +971,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.14045244
-      value: 0.988862
-      inSlope: 0.015518838
-      outSlope: 0.015518838
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.12934843
-    - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.15340602
+      value: 1.0014141
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -938,7 +982,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  moveDuration: 2
+  moveDuration: 1
   isShot: 0
 --- !u!212 &1974906998
 SpriteRenderer:

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Entity_Player : Manager<Entity_Player>
 {
+    [SerializeField] private string test;
     [field:Header("Variables")]
     public float movSpeed { get; set; }
     public float bulletSpeed { get; set; }
@@ -21,6 +22,13 @@ public class Entity_Player : Manager<Entity_Player>
     [HideInInspector]
     public SequentialTimer specialAttackDelay;
 
+    [field: Header("DodgeControl")]
+    public float dodgeInterval { get; set; }
+    public bool canDodge = true;
+    public float dodgeDistance;
+    [HideInInspector]
+    public SequentialTimer dodgeDelay;
+    public AnimationCurve dodgeCurve;
 
     [field: Header("InputBuff")]
     [SerializeField] private PlayerAction m_action;
@@ -48,8 +56,10 @@ public class Entity_Player : Manager<Entity_Player>
         DesiredActions = new PlayerActionsContainer();
         attackSpeed = 1.0f;
         specialAttackSpeed = 3.0f;
+        dodgeInterval = 5.0f;
         attackDelay = new SequentialTimer(attackSpeed); 
         specialAttackDelay = new SequentialTimer(specialAttackSpeed);
+        dodgeDelay = new SequentialTimer(dodgeInterval);
     }
     protected override void OnStart()
     {
@@ -58,14 +68,17 @@ public class Entity_Player : Manager<Entity_Player>
         bulletSpeed = 7.0f;
         attackDelay.JumpToTime(0f);
         specialAttackDelay.JumpToTime(0f);
+        dodgeDelay.JumpToTime(0f);
     }
 
     private void Update()
     {
+        
         stateController.OnUpdate();
         DesiredActions.OnUpdateActions();
         attackDelay.OnUpdateTime();
         specialAttackDelay.OnUpdateTime();
+        dodgeDelay.OnUpdateTime();
         if(attackDelay.HasReachedTarget())
         {
             canAttack = true;
@@ -74,7 +87,10 @@ public class Entity_Player : Manager<Entity_Player>
         {
             canSpecialAttack = true;
         }
-
-
+        if(dodgeDelay.HasReachedTarget())
+        {
+            canDodge = true;
+        }
+        test = stateController.CurrentState.ToString();
     }
 }

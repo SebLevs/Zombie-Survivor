@@ -14,7 +14,7 @@ public class BoomrangBehavior : MonoBehaviour, IPoolable
     public bool isShot = false;
     public void OnGetFromAvailable()
     {
-        targetLocation = Player_Controller.Instance.mousePosition.normalized * Entity_Player.Instance.boomDistance;
+        targetLocation = new Vector2(Player_Controller.Instance.mousePosition.x, Player_Controller.Instance.mousePosition.y).normalized * Entity_Player.Instance.boomDistance;
         startLocation = Entity_Player.Instance.transform.position;
     }
 

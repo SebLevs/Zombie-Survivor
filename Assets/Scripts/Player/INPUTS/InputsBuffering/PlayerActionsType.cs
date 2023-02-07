@@ -5,8 +5,8 @@ using UnityEngine;
 public enum PlayerActionsType
 {
     MOVE,
-    ROLL,
     SHOOT,
     SPECIALSHOOT,
+    DODGE,
     INTERACT
 }

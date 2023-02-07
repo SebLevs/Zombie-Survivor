@@ -14,8 +14,9 @@ public class Player_Controller : MonoBehaviour
 
     public Vector2 moveDirection { private set; get; }
     public Vector2 lookDirection;
+    public Vector2 currentPlayerLookDirection;
     public Vector3 mousePosition;
-    [SerializeField] private int currentLookDirection = 1;
+    public int currentLookAngle = 0;
 
     private void Awake()
     {
@@ -52,54 +53,45 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            action = new PlayerAction(PlayerActionsType.DODGE);
+            playerRef.DesiredActions.AddAction(action);
+        }
+    }
+
 
     private void Update()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         lookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
 
-        if(lookDirection.x >= -0.7f && lookDirection.x <= 0.7f && lookDirection.y >= 0.7f)
+        if (lookDirection.x >= -0.7f && lookDirection.x <= 0.7f && lookDirection.y >= 0.7f)
         {
-            currentLookDirection = 1;
+            currentLookAngle = 0;
+            currentPlayerLookDirection.x = 0;
+            currentPlayerLookDirection.y = 1;
         }
-        else if(lookDirection.x <= -0.7f && lookDirection.y <= 0.7f && lookDirection.y >= -0.7f)
+        else if (lookDirection.x <= -0.7f && lookDirection.y <= 0.7f && lookDirection.y >= -0.7f)
         {
-            currentLookDirection = 2;
+            currentLookAngle = 90;
+            currentPlayerLookDirection.x = -1;
+            currentPlayerLookDirection.y = 0;
         }
-        else if(lookDirection.x >= -0.7f && lookDirection.x <= 0.7f && lookDirection.y <= -0.7f)
+        else if (lookDirection.x >= -0.7f && lookDirection.x <= 0.7f && lookDirection.y <= -0.7f)
         {
-            currentLookDirection = 3;
+            currentLookAngle = 180;
+            currentPlayerLookDirection.x = 0;
+            currentPlayerLookDirection.y = -1;
         }
-        else if(lookDirection.x >= 0.7f && lookDirection.y <= 0.7f && lookDirection.y >= -0.7f)
+        else if (lookDirection.x >= 0.7f && lookDirection.y <= 0.7f && lookDirection.y >= -0.7f)
         {
-            currentLookDirection = 4;
+            currentLookAngle = 270;
+            currentPlayerLookDirection.x = 1;
+            currentPlayerLookDirection.y = 0;
         }
-
-
-        switch(currentLookDirection)
-        {
-            case 1:
-                {
-                    playerRef.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                    break;
-                }
-            case 2:
-                {
-                    playerRef.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
-                    break;
-                }
-            case 3:
-                {
-                    playerRef.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
-                    break;
-                }
-            case 4:
-                {
-                    playerRef.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
-                    break;
-                }
-                default: { break; }
-        }
-
+        playerRef.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
     }
 }
