@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class ImageFiller: MonoBehaviour
 {
-    [Header("Filling bar")]
-    [SerializeField] protected Image m_fillingBar;
+    protected Image m_fillingBar;
 
     private void Awake()
     {
