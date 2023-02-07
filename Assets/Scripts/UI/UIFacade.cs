@@ -26,6 +26,6 @@ public class UIFacade : MonoBehaviour
 
     public void UnloadCurrentScene()
     {
-        SceneLoadManager.Instance.UnloadCurrentSceneAsync();
+        SceneLoadManager.Instance.UnloadCurrentScene();
     }
 }

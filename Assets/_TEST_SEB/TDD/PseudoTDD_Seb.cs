@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PseudoTDD_Seb : MonoBehaviour
@@ -9,25 +7,52 @@ public class PseudoTDD_Seb : MonoBehaviour
     public bool isEnemyHit;
     public bool isPlayerHit;
 
+
+    [Header("UI")]
+    public bool isOptionPopup;
+
     private void Update()
     {
+        // UI
+        Test(ref isOptionPopup, () =>
+        {
+            TestOptionsPopup();
+            isOptionPopup = true;
+        });
+
         // Entity
-        Test(isPlayerHit, () =>
+        Test(ref isPlayerHit, () =>
         {
             //Player.Instance.Health.OnHit();
         });
 
-        Test(isEnemyHit, () =>
+        Test(ref isEnemyHit, () =>
         {
 
         });
     }
 
-    private void Test(bool check, Action test)
+    private void Test(ref bool check, Action test)
     {
         if (check)
         {
+            check = false;
             test();
+        }
+    }
+
+    private void TestOptionsPopup()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (!UIManager.Instance.ViewOptionMenu.gameObject.activeSelf)
+            {
+                UIManager.Instance.OnSwitchViewSequential(UIManager.Instance.ViewOptionMenu);
+            }
+            else
+            {
+                UIManager.Instance.OnSwitchViewSequential(UIManager.Instance.ViewEmpty);
+            }
         }
     }
 }
