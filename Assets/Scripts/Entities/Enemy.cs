@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable
 {
-    [SerializeField] private ImageFiller m_healthBar;
+    [SerializeField] private ViewHealthBarWithCounter m_healthBar;
     private Health m_hp;
 
     private Rigidbody2D m_rigidbody;
@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public void OnGetFromAvailable()
     {
-        m_healthBar.SetFilling(m_hp.Normalized);
+        m_healthBar.Filler.SetFilling(m_hp.Normalized);
     }
 
     public void OnReturnToAvailable()
