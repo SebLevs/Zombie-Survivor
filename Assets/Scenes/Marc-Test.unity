@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cefea5d9088bf458ea594a41e9a53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookDirection: {x: 0, y: 0}
+  normalizedLookDirection: {x: 0, y: 0}
   currentPlayerLookDirection: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0, z: 0}
   currentLookAngle: 0
@@ -766,12 +766,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fbdefbe1137fe4442bc7c2638eb27e2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.24, y: 0.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -786,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 1123998091}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 172309413}
@@ -1099,7 +1099,7 @@ Transform:
   m_GameObject: {fileID: 1974906995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1988185339}
@@ -1158,15 +1158,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.15340602
-      value: 1.0014141
+      time: 1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1176,7 +1176,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  moveDuration: 1
+  moveDurationGo: 2
+  moveDurationBack: 1
   isShot: 0
 --- !u!212 &1974906998
 SpriteRenderer:
@@ -1219,7 +1220,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b7b4328356d74b439616634965026a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

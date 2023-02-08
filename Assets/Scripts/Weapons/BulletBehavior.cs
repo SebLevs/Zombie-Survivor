@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BulletBehavior : MonoBehaviour, IPoolable
+public class BulletBehavior : BaseProjectile, IPoolable
 {
     public bool playerIsShooting = true;
     public Rigidbody2D rb;
@@ -11,12 +11,26 @@ public class BulletBehavior : MonoBehaviour, IPoolable
     [SerializeField] private SequentialStopwatch destroyStopWatch;
     [SerializeField] private float timeToDestroy;
 
-    private void Awake()
+    protected override void OnStart()
+    {
+        
+    }
+
+    protected override void OnAwake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         timeToDestroy = 2.0f;
         destroyStopWatch = new SequentialStopwatch(timeToDestroy);
+    }
+
+    protected override void OnUpdate()
+    {
+        destroyStopWatch.OnUpdateTime();
+        if (destroyStopWatch.HasReachedTarget())
+        {
+            WeaponManager.Instance.bulletPool.ReturnToAvailable(this);
+        }
     }
     public void OnGetFromAvailable()
     {
@@ -38,23 +52,10 @@ public class BulletBehavior : MonoBehaviour, IPoolable
         destroyStopWatch.StartTimer();
         
     }
-
-    private void Update()
-    {
-        destroyStopWatch.OnUpdateTime();
-        if(destroyStopWatch.HasReachedTarget()) 
-        {
-            WeaponManager.Instance.bulletPool.ReturnToAvailable(this);
-        }
-    }
     
     public void ShootBullet(Vector2 direction, float speed)
     {
         transform.up = direction;
         rb.velocity = direction * speed;
     }
-
-
-    
-
 }

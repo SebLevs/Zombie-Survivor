@@ -65,7 +65,7 @@ public class Entity_Player : Manager<Entity_Player>
     {
         base.OnStart();
         movSpeed = 5.0f;
-        bulletSpeed = 7.0f;
+        bulletSpeed = 12.0f;
         attackDelay.JumpToTime(0f);
         specialAttackDelay.JumpToTime(0f);
         dodgeDelay.JumpToTime(0f);

@@ -26,8 +26,9 @@ public class Player_DodgeState : State<Entity_Player>
         m_context.DesiredActions.ConsumeAllActions(PlayerActionsType.DODGE);
         if(m_context.canDodge)
         {
+            Vector2 dodgeDirection = Player_Controller.Instance.currentPlayerLookDirection;
             startLocation = m_context.transform.position;
-            targetLocation = new Vector2(m_context.transform.position.x + (Player_Controller.Instance.currentPlayerLookDirection.x * m_context.dodgeDistance), m_context.transform.position.y + (Player_Controller.Instance.currentPlayerLookDirection.y * m_context.dodgeDistance));
+            targetLocation = new Vector2(startLocation.x + (dodgeDirection.x * m_context.dodgeDistance), startLocation.y + (dodgeDirection.y * m_context.dodgeDistance));
             isRolling = true;
             moveStopWatch = 0;
             m_context.rb.velocity = Vector2.zero;

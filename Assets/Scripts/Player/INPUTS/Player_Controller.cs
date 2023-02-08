@@ -13,7 +13,7 @@ public class Player_Controller : MonoBehaviour
     private PlayerAction action;
 
     public Vector2 moveDirection { private set; get; }
-    public Vector2 lookDirection;
+    public Vector2 normalizedLookDirection;
     public Vector2 currentPlayerLookDirection;
     public Vector3 mousePosition;
     public int currentLookAngle = 0;
@@ -66,27 +66,28 @@ public class Player_Controller : MonoBehaviour
     private void Update()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
+        normalizedLookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
 
-        if (lookDirection.x >= -0.7f && lookDirection.x <= 0.7f && lookDirection.y >= 0.7f)
+
+        if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y >= 0.7f)
         {
             currentLookAngle = 0;
             currentPlayerLookDirection.x = 0;
             currentPlayerLookDirection.y = 1;
         }
-        else if (lookDirection.x <= -0.7f && lookDirection.y <= 0.7f && lookDirection.y >= -0.7f)
+        else if (normalizedLookDirection.x <= -0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 90;
             currentPlayerLookDirection.x = -1;
             currentPlayerLookDirection.y = 0;
         }
-        else if (lookDirection.x >= -0.7f && lookDirection.x <= 0.7f && lookDirection.y <= -0.7f)
+        else if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y <= -0.7f)
         {
             currentLookAngle = 180;
             currentPlayerLookDirection.x = 0;
             currentPlayerLookDirection.y = -1;
         }
-        else if (lookDirection.x >= 0.7f && lookDirection.y <= 0.7f && lookDirection.y >= -0.7f)
+        else if (normalizedLookDirection.x >= 0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 270;
             currentPlayerLookDirection.x = 1;
