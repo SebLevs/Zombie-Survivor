@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class EnemyFactoryManager : Manager<EnemyFactoryManager>
 {
-    public AbstractEnemyFactory CurrentFactory { get; set; }
-
-    [field: SerializeField] public AbstractEnemyFactory EasyEnemyWave { get; private set; }
-    [field: SerializeField] public AbstractEnemyFactory MediumEnemyWave { get; private set; }
-    [field: SerializeField] public AbstractEnemyFactory HardEnemyWave { get; private set; }
+    [field: SerializeField] public AbstractEnemyFactory EasyEnemyFactory { get; private set; }
+    [field: SerializeField] public AbstractEnemyFactory MediumEnemyFactory { get; private set; }
+    [field: SerializeField] public AbstractEnemyFactory HardEnemyFactory { get; private set; }
 
     protected override void OnAwake()
     {
         base.OnAwake();
-        InitFactories();
-        CurrentFactory = EasyEnemyWave;
+        //InitFactories();
     }
 
-    private void InitFactories()
+    /*private void InitFactories()
     {
-        EasyEnemyWave = new EnemyFactoryWaveEasy();
-        MediumEnemyWave = new EnemyFactoryWaveMedium();
-        HardEnemyWave = new EnemyFactoryWaveHard();
-    }
+        EasyEnemyFactory = new EnemyFactoryWaveEasy();
+        MediumEnemyFactory = new EnemyFactoryWaveMedium();
+        HardEnemyFactory = new EnemyFactoryWaveHard();
+    }*/
 }

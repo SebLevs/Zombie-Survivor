@@ -6,73 +6,49 @@ public class WaveManager : Manager<WaveManager>
 {
     private EnemyFactoryManager _factory;
 
-    [Header("Difficulty timers")]
-    [SerializeField] private float _waveTimerMedium = 10;
-    [SerializeField] private float _waveTimerHard = 20;
-    [SerializeField] private float _waveTimerBoss = 30;
-
-    [Header("Enemy spawning")]
-    [Range(1, 10)] [SerializeField] private float _tickRange;
-    [SerializeField] private SequentialStopwatch _spawnerStopWatch;
+    private int _currentWaveIndex = 0;
+    [SerializeField] private WaveController[] m_waves;
 
     // TODO: Make generic observer pattern to call a random position from this list
     [SerializeField] private List<SpawnPoint2D> _enemySpawnPoints;
 
     protected override void OnAwake()
     {
-        _spawnerStopWatch = new SequentialStopwatch(GetRandomTimeInRange());
-        //_enemySpawnPoints = new List<SpawnPoint2D>();
+        for (int i = 0; i < m_waves.Length; i++)
+        {
+            if (i == m_waves.Length - 1)
+            {
+                m_waves[i].Init(callback: () =>
+                {
+                    // TODO: Set boss placement here
+                    EnemyManager.Instance.Boss.GetFromAvailable(Vector3.zero, Quaternion.identity);
+                    _currentWaveIndex++;
+                });
+                return;
+            }
+
+            m_waves[i].Init(callback: () =>
+            {
+                _currentWaveIndex++;
+            });
+        }
     }
 
     protected override void OnStart()
     {
         base.OnStart();
         _factory = EnemyFactoryManager.Instance;
-
-        TimerManager.Instance.AddSequentialStopwatch(_waveTimerMedium, () =>
-        {
-            _factory.CurrentFactory = _factory.MediumEnemyWave;
-        });
-
-        TimerManager.Instance.AddSequentialStopwatch(_waveTimerHard, () =>
-        {
-            _factory.CurrentFactory = _factory.HardEnemyWave;
-        });
-
-        TimerManager.Instance.AddSequentialStopwatch(_waveTimerBoss, () =>
-        {
-            EnemyManager.Instance.CurrentlyActiveEnemies.ForEach(enemy => enemy.Kill());
-            // TODO: Set enemy placement here
-            EnemyManager.Instance.Boss.GetFromAvailable(Vector3.zero,Quaternion.identity);
-        });
     }
 
     private void Update()
     {
-        _spawnerStopWatch.OnUpdateTime();
-
-        if (_spawnerStopWatch.HasReachedTarget())
+        if (_currentWaveIndex < m_waves.Length) 
         {
-            _spawnerStopWatch.Reset(true);
-            _spawnerStopWatch.SetNewTarget(GetRandomTimeInRange());
-            CreateEnemyWave();
-            _spawnerStopWatch.StartTimer();
+            m_waves[_currentWaveIndex].Tick();
         }
     }
 
-    private float GetRandomTimeInRange()
-    {
-        return Random.Range(0, _tickRange);
-    }
-
-    private void CreateEnemyWave()
-    {
-        // TODO: Set enemy placement here
-        _factory.CurrentFactory.CreateLowQuantityEnemy(GetRandomSpawnPoint());
-        _factory.CurrentFactory.CreateHighQuantityEnemy(GetRandomSpawnPoint());
-    }
-
-    private Vector2 GetRandomSpawnPoint()
+    public Vector2 GetRandomSpawnPoint()
     {
         int index = Random.Range(0, _enemySpawnPoints.Count);
 

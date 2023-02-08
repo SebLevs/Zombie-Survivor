@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 
-[Serializable]
+
+[CreateAssetMenu(menuName = "Scriptables/Factories/Enemy Factory/Easy", fileName = "Easy enemy factory")]
 public class EnemyFactoryWaveEasy : AbstractEnemyFactory
 {
     public override Enemy CreateHighQuantityEnemy(Vector3 position)
