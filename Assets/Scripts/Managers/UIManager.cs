@@ -9,7 +9,9 @@ public class UIManager : Manager<UIManager>
 
     [field: Header("Views")]
     [field: SerializeField] public ViewElement CurrentView { get; private set; }
+    [field: SerializeField] public ViewElement ViewBackgroundBlackScreen { get; private set; }
     [field: SerializeField] public ViewElement ViewEmpty { get; private set; }
+    [field:Space(10)]
     [field: SerializeField] public ViewElement ViewTitleScreen { get; private set; }
     [field: SerializeField] public ViewElement ViewOptionMenu { get; private set; }
     [field: SerializeField] public ViewElement ViewBlackScreen { get; private set; }

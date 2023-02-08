@@ -62,20 +62,18 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
     public void InitScene()
     {
-
+        
     }
 
-    public void ReturnToTitleScreen()
+    public void GoToTitleScreen()
     {
         UIManager uiManager = UIManager.Instance;
-        
 
-        // TODO: HIDE HUD HERE
         uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, 
-        
         showCallback: () =>
         {
             UnloadCurrentScene();
+            uiManager.ViewBackgroundBlackScreen.OnShow();
             uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewTitleScreen);
         });
     }

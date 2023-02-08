@@ -16,8 +16,9 @@ public class GameManager : Manager<GameManager>
             InitiatePlayTest();
             return; 
         }
-        
-        UIManager.Instance.OnSwitchViewSequential(UIManager.Instance.ViewTitleScreen);
+
+        UIManager.Instance.ViewBackgroundBlackScreen.OnShow();
+        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewTitleScreen);
     }
 
     private void InitiatePlayTest()
@@ -27,13 +28,14 @@ public class GameManager : Manager<GameManager>
 
     public void StartGame()
     {
-        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, showCallback: () =>
+        UIManager.Instance.ViewBackgroundBlackScreen.OnHide();
+        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, 
+        showCallback: () =>
         {
             TimerManager.Instance.AddSequentialTimer(1f, callback: () =>
             {
-                UIManager.Instance.ViewBlackScreen.OnHide();
                 SceneLoadManager.Instance.OnLoadScene(1);
-                UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty);
+                UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
             });
         });
     }

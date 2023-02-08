@@ -492,6 +492,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4094296639041113773, guid: 16472191f28eb0e4b9bdf9d8a222ee07, type: 3}
   m_PrefabInstance: {fileID: 918601551}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &949762582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3086492659386165397, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+  m_PrefabInstance: {fileID: 7287275907250066815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1186804825
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5156154129043907300, guid: ea6452010d4e94347ab4834b8aa5900b, type: 3}
       propertyPath: _minimalWaitTime
-      value: 4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8934745443618576971, guid: ea6452010d4e94347ab4834b8aa5900b, type: 3}
       propertyPath: m_Name
@@ -1325,6 +1330,26 @@ PrefabInstance:
     - target: {fileID: 688697375, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 272935365392646886, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 272935365392646886, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 272935365392646886, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 949762582}
+    - target: {fileID: 272935365392646886, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 272935365392646886, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: VolumeSlider, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2179418993602025845, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_AnchorMax.y

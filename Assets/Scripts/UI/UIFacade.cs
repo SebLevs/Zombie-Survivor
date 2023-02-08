@@ -14,9 +14,9 @@ public class UIFacade : MonoBehaviour
         GameManager.Instance.QuitGame();
     }
 
-    public void ReturnToTitleScreen()
+    public void GoToTitleScreen()
     {
-        SceneLoadManager.Instance.ReturnToTitleScreen();
+        SceneLoadManager.Instance.GoToTitleScreen();
     }
 
     public void OpenOptionMenu()
