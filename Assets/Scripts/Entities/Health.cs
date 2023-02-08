@@ -59,9 +59,10 @@ public class Health : MonoBehaviour
             CurrentHP -= damage;
 
             OnHitEvent?.Invoke();
+            
+            m_animator.SetTrigger(_onHitAnimHash);
+            // TODO: play sound here? Play in animation as an even instead? If so, make an audio class that can be called from animation event
             // m_audioControllerHit.PlayOneShot();
-            // TODO: play animation here
-            // TODO: play sound here
 
             OnDeath();
         }
@@ -78,8 +79,9 @@ public class Health : MonoBehaviour
         if (IsDead)
         {
             OnDeathEvent?.Invoke();
-            // TODO: play animation here
-            // TODO: play sound here
+            m_animator.SetTrigger(_onDeathAnimHash);
+            // TODO: play sound here? Play in animation as an even instead? If so, make an audio class that can be called from animation event
+            // m_audioControllerHit.PlayOneShot();
         }
     }
 
