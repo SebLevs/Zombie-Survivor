@@ -19,7 +19,7 @@ public class Entity_Player : Manager<Entity_Player>
     public SequentialTimer attackDelay;
 
     [field: Header("SpecialShootControl")]
-    public float specialAttackSpeed { get; set; }
+    public float specialAttackSpeed;
     public bool canSpecialAttack = true;
     public float boomDistance = 15.0f;
     [HideInInspector]
@@ -59,7 +59,7 @@ public class Entity_Player : Manager<Entity_Player>
         stateController = new StateController<Entity_Player>(stateContainer.State_Idle);
         DesiredActions = new PlayerActionsContainer();
         attackSpeed = 1.0f;
-        specialAttackSpeed = 3.0f;
+        specialAttackSpeed = 1.0f;
         dodgeInterval = 5.0f;
         specialAttackDelay = new SequentialTimer(specialAttackSpeed);
         attackDelay = new SequentialTimer(attackSpeed);

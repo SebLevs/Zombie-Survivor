@@ -16,7 +16,7 @@ public class BoomrangBehavior : BaseProjectile, IPoolable
     private float moveStopWatch = 0;
     public bool isShot = false;
     private float rotationZ;
-    private float rotationSpeed = 360f;
+    private float rotationSpeed = 720f;
     protected override void OnStart()
     {
         
@@ -63,7 +63,7 @@ public class BoomrangBehavior : BaseProjectile, IPoolable
     public void OnGetFromAvailable()
     {
         rotationZ = 0f;
-        rotationSpeed = 360f;
+        rotationSpeed = 720f;
         startLocation = Entity_Player.Instance.transform.position;
         targetLocation = startLocation + (Player_Controller.Instance.normalizedLookDirection * Entity_Player.Instance.boomDistance);
     }
