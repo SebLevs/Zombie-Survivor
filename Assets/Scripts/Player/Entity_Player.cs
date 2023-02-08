@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Entity_Player : Manager<Entity_Player>
 {
+    public CommandInvoker commandInvoker;
+
     [SerializeField] private string test;
     [field:Header("Variables")]
     public float movSpeed { get; set; }
     public float bulletSpeed { get; set; }
+    public bool isinvincible = false;
 
     [field: Header("ShootControl")]
-    public float attackSpeed { get; set; }
+    public float attackSpeed;
     public bool canAttack = true;
     [HideInInspector]
     public SequentialTimer attackDelay;
@@ -48,6 +51,7 @@ public class Entity_Player : Manager<Entity_Player>
     protected override void OnAwake()
     {
         base.OnAwake();
+        commandInvoker = new CommandInvoker(new PlayerCommand_Invincibility(this), new PlayerCommand_AttackSpeedUp(this));
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CircleCollider2D>();
         controller = GetComponent<Player_Controller>();
@@ -57,8 +61,8 @@ public class Entity_Player : Manager<Entity_Player>
         attackSpeed = 1.0f;
         specialAttackSpeed = 3.0f;
         dodgeInterval = 5.0f;
-        attackDelay = new SequentialTimer(attackSpeed); 
         specialAttackDelay = new SequentialTimer(specialAttackSpeed);
+        attackDelay = new SequentialTimer(attackSpeed);
         dodgeDelay = new SequentialTimer(dodgeInterval);
     }
     protected override void OnStart()
@@ -69,6 +73,9 @@ public class Entity_Player : Manager<Entity_Player>
         attackDelay.JumpToTime(0f);
         specialAttackDelay.JumpToTime(0f);
         dodgeDelay.JumpToTime(0f);
+        commandInvoker.DoCommand(commandInvoker.command1);
+        //commandInvoker.Oncommand2();
+        
     }
 
     private void Update()
@@ -91,6 +98,15 @@ public class Entity_Player : Manager<Entity_Player>
         {
             canDodge = true;
         }
+        RefreshWeaponStats();
         test = stateController.CurrentState.ToString();
     }
+    public void RefreshWeaponStats()
+    {
+        if(attackDelay.TargetTime != attackSpeed)
+        {
+            attackDelay = new SequentialTimer(attackSpeed);
+        }
+    }
+
 }

@@ -380,6 +380,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: 
+  isinvincible: 0
+  attackSpeed: 0.2
   canAttack: 1
   canSpecialAttack: 1
   boomDistance: 5
