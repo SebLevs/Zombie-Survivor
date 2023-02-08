@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Manager<GameManager>
 {
     public bool IsPaused;
-    public bool IsPlayTest;
+
+    [Header("Play test setup")]
+    [SerializeField] private bool _isPlayTest;
+    [Min(1)][SerializeField] private int _playTestScene = 1; // TODO: Refactor into a scene scriptable object for easier testing
 
     protected override void OnStart()
     {
         base.OnStart();
 
-        if (IsPlayTest)
+        if (_isPlayTest)
         {
             InitiatePlayTest();
             return; 
@@ -23,7 +24,9 @@ public class GameManager : Manager<GameManager>
 
     private void InitiatePlayTest()
     {
-        // TODO: Activate any required assets for general playtest here
+        Debug.Log($"Play test started on scene: {_playTestScene}");
+        SceneLoadManager.Instance.OnLoadScene(_playTestScene);
+        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
     }
 
     public void StartGame()

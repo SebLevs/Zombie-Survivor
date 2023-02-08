@@ -1,64 +1,54 @@
-using System;
-using System.Runtime.CompilerServices;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class WaveController
+public class WaveController : MonoBehaviour
 {
-    [Header("Timers")]
-    [SerializeField] private float _endOfWaveTime;
-    [Range(1, 10)][SerializeField] private float _tickRange;
-    private SequentialStopwatch _spawnerStopWatch;
-    private SequentialStopwatch _nextWaveStopWatch;
+    private int _currentWaveIndex = 0;
+    [SerializeField] private EnemyWave[] m_waves;
 
-    [Header("Factory")]
-    [SerializeField] private AbstractEnemyFactory _enemyFactory;
-    [Min(1)][SerializeField] private int _lowQuantitySpawns;
-    [Min(1)][SerializeField] private int _highQuantitySpawns;
+    // TODO: Make generic observer pattern to call a random position from this list
+    [SerializeField] private List<SpawnPoint2D> _enemySpawnPoints;
 
-    public void Init(Action callback = null)
+    private void Awake()
     {
-        _spawnerStopWatch = new SequentialStopwatch(GetRandomTimeInRange());
-        _nextWaveStopWatch = new SequentialStopwatch(_endOfWaveTime, callback);
+        SetEnemyWaves();
     }
 
-    /// <summary>
-    /// </summary>
-    /// <returns>Has reached next wave time</returns>
-    public bool Tick()
+    private void Update()
     {
-        _spawnerStopWatch.OnUpdateTime();
-        _nextWaveStopWatch.OnUpdateTime();
-
-        if (_spawnerStopWatch.HasReachedTarget())
+        if (_currentWaveIndex < m_waves.Length) 
         {
-            _spawnerStopWatch.Reset(true);
-            _spawnerStopWatch.SetNewTarget(GetRandomTimeInRange());
-            CreateEnemyWave();
-            _spawnerStopWatch.StartTimer();
+            m_waves[_currentWaveIndex].Tick();
         }
-
-        if (_nextWaveStopWatch.HasReachedTarget())
-        {
-            return true;
-        }
-        return false;
     }
 
-    private float GetRandomTimeInRange()
+    public Vector2 GetRandomSpawnPoint()
     {
-        return UnityEngine.Random.Range(0, _tickRange);
+        int index = Random.Range(0, _enemySpawnPoints.Count);
+
+        return _enemySpawnPoints[index].GetRandomSpawnPoint();
     }
 
-    private void CreateEnemyWave()
+    private void SetEnemyWaves()
     {
-        for (int i = 0; i < _lowQuantitySpawns; i++)
+        for (int i = 0; i < m_waves.Length; i++)
         {
-            _enemyFactory.CreateLowQuantityEnemy(WaveManager.Instance.GetRandomSpawnPoint());
-        }
-        for (int i = 0; i < _lowQuantitySpawns; i++)
-        {
-            _enemyFactory.CreateHighQuantityEnemy(WaveManager.Instance.GetRandomSpawnPoint());
+            if (i == m_waves.Length - 1)
+            {
+                m_waves[i].Init(this, callback: () =>
+                {
+                    // TODO: Set boss placement here
+                    EnemyManager.Instance.Boss.GetFromAvailable(Vector3.zero, Quaternion.identity);
+                    _currentWaveIndex++;
+                });
+                return;
+            }
+
+            m_waves[i].Init(this, callback: () =>
+            {
+                _currentWaveIndex++;
+            });
         }
     }
 }
