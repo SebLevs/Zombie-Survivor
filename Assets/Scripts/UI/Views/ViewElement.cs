@@ -1,13 +1,16 @@
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class ViewElement : MonoBehaviour
 {
     private int _onShowHash;
     public Action m_onShowAction;
+    [SerializeField] private UnityEvent m_defaultShowEvent;
 
     private int _onHideHash;
     private Action m_onHideAction;
+    [SerializeField] private UnityEvent m_defaultHideEvent;
 
     protected Animator m_animator;
 
@@ -55,11 +58,13 @@ public class ViewElement : MonoBehaviour
     public void AnimationEvent_HideCallback()
     {
         TryCallback(m_onHideAction);
+        m_defaultShowEvent?.Invoke();
     }
 
     public void AnimationEvent_ShowCallback()
     {
         TryCallback(m_onShowAction);
+        m_defaultHideEvent?.Invoke();
     }
 
     protected void TryCallback(Action _callback = null)
