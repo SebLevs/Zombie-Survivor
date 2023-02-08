@@ -62,12 +62,16 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
     public void InitScene()
     {
-        
+        // TODO: Delete if SceneController.cs is implemented in the scope of the project
+        AudioManager.Instance.PlayLoopingClip(AudioManager.Instance.AmbianceClip);
     }
 
     public void GoToTitleScreen()
     {
         UIManager uiManager = UIManager.Instance;
+
+        // TODO: Delete if SceneController.cs is implemented in the scope of the project
+        AudioManager.Instance.StopPlayingLoopingClip();
 
         uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, 
         showCallback: () =>
