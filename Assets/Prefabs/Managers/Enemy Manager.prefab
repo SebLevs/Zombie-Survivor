@@ -79,7 +79,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3844805921529194636, guid: 73a4133d279a9174dae20b9482ee9378, type: 3}
       propertyPath: m_waves.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3844805921529194636, guid: 73a4133d279a9174dae20b9482ee9378, type: 3}
       propertyPath: _enemySpawnPoints.Array.size

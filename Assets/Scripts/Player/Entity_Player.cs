@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity_Player : Manager<Entity_Player>
+public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
 {
     public CommandInvoker commandInvoker;
 
@@ -75,32 +75,8 @@ public class Entity_Player : Manager<Entity_Player>
         dodgeDelay.JumpToTime(0f);
         commandInvoker.DoCommand(commandInvoker.command1);
         //commandInvoker.Oncommand2();
-        
     }
 
-    private void Update()
-    {
-        
-        stateController.OnUpdate();
-        DesiredActions.OnUpdateActions();
-        attackDelay.OnUpdateTime();
-        specialAttackDelay.OnUpdateTime();
-        dodgeDelay.OnUpdateTime();
-        if(attackDelay.HasReachedTarget())
-        {
-            canAttack = true;
-        }
-        if (specialAttackDelay.HasReachedTarget())
-        {
-            canSpecialAttack = true;
-        }
-        if(dodgeDelay.HasReachedTarget())
-        {
-            canDodge = true;
-        }
-        RefreshWeaponStats();
-        test = stateController.CurrentState.ToString();
-    }
     public void RefreshWeaponStats()
     {
         if(attackDelay.TargetTime != attackSpeed)
@@ -109,4 +85,39 @@ public class Entity_Player : Manager<Entity_Player>
         }
     }
 
+    public void OnUpdate()
+    {
+        stateController.OnUpdate();
+        DesiredActions.OnUpdateActions();
+        attackDelay.OnUpdateTime();
+        specialAttackDelay.OnUpdateTime();
+        dodgeDelay.OnUpdateTime();
+        if (attackDelay.HasReachedTarget())
+        {
+            canAttack = true;
+        }
+        if (specialAttackDelay.HasReachedTarget())
+        {
+            canSpecialAttack = true;
+        }
+        if (dodgeDelay.HasReachedTarget())
+        {
+            canDodge = true;
+        }
+        RefreshWeaponStats();
+        test = stateController.CurrentState.ToString();
+    }
+
+    public void OnDisable()
+    {
+        if (UpdateManager.Instance)
+        {
+            UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        }
+    }
+
+    public void OnEnable()
+    {
+        UpdateManager.Instance.SubscribeToUpdate(this);
+    }
 }

@@ -33,21 +33,7 @@ public class WaveController : MonoBehaviour
     {
         for (int i = 0; i < m_waves.Length; i++)
         {
-            if (i == m_waves.Length - 1)
-            {
-                m_waves[i].Init(this, callback: () =>
-                {
-                    // TODO: Set boss placement here
-                    EnemyManager.Instance.Boss.GetFromAvailable(Vector3.zero, Quaternion.identity);
-                    _currentWaveIndex++;
-                });
-                return;
-            }
-
-            m_waves[i].Init(this, callback: () =>
-            {
-                _currentWaveIndex++;
-            });
+            m_waves[i].Init(this, waveEndsCallback: () => _currentWaveIndex++);
         }
     }
 }

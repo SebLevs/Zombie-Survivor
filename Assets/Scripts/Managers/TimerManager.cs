@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class TimerManager : Manager<TimerManager>
+public class TimerManager : Manager<TimerManager>, IFrameUpdateListener
 {
     private List<SequentialStopwatch> m_stopwatches; // ->
     private List<SequentialTimer> m_timers; // <-
@@ -14,33 +14,6 @@ public class TimerManager : Manager<TimerManager>
         base.OnAwake();
         m_stopwatches = new List<SequentialStopwatch>();
         m_timers = new List<SequentialTimer>();
-    }
-
-    private void Update()
-    {
-        // if (GameManager.Instance.IsGamePaused) { return; }
-        if (m_stopwatches.Any())
-        {
-            for (int i = 0; i < m_stopwatches.Count; i++)
-            {
-                if (m_stopwatches[i].OnUpdateTime())
-                {
-                    m_stopwatches.RemoveAt(i);
-                }
-            }
-        }
-
-
-        if (m_timers.Any())
-        {
-            for (int i = 0; i < m_timers.Count; i++)
-            {
-                if (m_timers[i].OnUpdateTime())
-                {
-                    m_timers.RemoveAt(i);
-                }
-            }
-        }
     }
 
     public SequentialStopwatch AddSequentialStopwatch(float desiredTime, Action callback)
@@ -79,5 +52,41 @@ public class TimerManager : Manager<TimerManager>
     public void RemoveSequentialTimer(SequentialTimer callbackTimer)
     {
         m_timers.Remove(callbackTimer);
+    }
+
+    public void OnUpdate()
+    {
+        if (m_stopwatches.Any())
+        {
+            for (int i = 0; i < m_stopwatches.Count; i++)
+            {
+                if (m_stopwatches[i].OnUpdateTime())
+                {
+                    m_stopwatches.RemoveAt(i);
+                }
+            }
+        }
+
+
+        if (m_timers.Any())
+        {
+            for (int i = 0; i < m_timers.Count; i++)
+            {
+                if (m_timers[i].OnUpdateTime())
+                {
+                    m_timers.RemoveAt(i);
+                }
+            }
+        }
+    }
+
+    public void OnDisable()
+    {
+        UpdateManager.Instance.UnSubscribeFromUpdate(this);
+    }
+
+    public void OnEnable()
+    {
+        UpdateManager.Instance.SubscribeToUpdate(this);
     }
 }

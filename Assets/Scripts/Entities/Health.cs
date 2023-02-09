@@ -17,15 +17,15 @@ public class Health : MonoBehaviour
 
     public float Normalized => (m_maxHP > 0) ? m_currentHP / m_maxHP : 0;
 
-     public int MaxHP
-     {
+    public int MaxHP
+    {
         get { return m_maxHP; }
         private set
         {
             if (value < 0) { m_maxHP = 0; }
             else { m_maxHP = value; }
         }
-     }
+    }
 
     private int m_currentHP;
     public int CurrentHP
@@ -52,6 +52,7 @@ public class Health : MonoBehaviour
     private void Init()
     {
         FullHeal();
+        m_animator = GetComponent<Animator>();
     }
 
     public virtual void Hit(int damage)

@@ -1,0 +1,79 @@
+using System.Collections.Generic;
+
+/// <summary>
+/// Centralisation of Updates and Fixed Updates<br/>
+/// Reduces greatly the interop calls (a call from the C/C++ side to the managed C# side of Unity)<br/><br/>
+/// https://resources.unity.com/games/performance-optimization-e-book-console-pc Page 20-21
+/// </summary>
+public class UpdateManager : Manager<UpdateManager>
+{
+    private HashSet<IFrameUpdateListener> m_frameUpdateListeners;
+    private HashSet<IFixedUpdateListener> m_fixedUpdateListeners;
+    private HashSet<ILateUpdateListener> m_lateUpdateListeners;
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        m_frameUpdateListeners = new HashSet<IFrameUpdateListener>();
+        m_fixedUpdateListeners = new HashSet<IFixedUpdateListener>();
+        m_lateUpdateListeners = new HashSet<ILateUpdateListener>();
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.IsPaused) { return; }
+        foreach (IFrameUpdateListener frameUpdateListener in m_frameUpdateListeners)
+        {
+            frameUpdateListener.OnUpdate();
+        }
+    }
+
+    public void SubscribeToUpdate(IFrameUpdateListener frameUpdateListener)
+    {
+        m_frameUpdateListeners.Add(frameUpdateListener);
+    }
+
+    public void UnSubscribeFromUpdate(IFrameUpdateListener frameUpdateListener)
+    {
+        m_frameUpdateListeners.Remove(frameUpdateListener);
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (GameManager.Instance.IsPaused) { return; }
+        foreach (IFixedUpdateListener fixedUpdateListener in m_fixedUpdateListeners)
+        {
+            fixedUpdateListener.OnFixedUpdate();
+        }
+    }
+
+    public void SubscribeToFixedUpdate(IFixedUpdateListener fixedUpdateListener)
+    {
+        m_fixedUpdateListeners.Add(fixedUpdateListener);
+    }
+
+    public void UnSubscribeFromFixedUpdate(IFixedUpdateListener fixedUpdateListener)
+    {
+        m_fixedUpdateListeners.Remove(fixedUpdateListener);
+    }
+
+    private void LateUpdate()
+    {
+        if (GameManager.Instance.IsPaused) { return; }
+        foreach (ILateUpdateListener lateUpdateListener in m_lateUpdateListeners)
+        {
+            lateUpdateListener.OnLateUpdate();
+        }
+    }
+
+    public void SubscribeToLateUpdate(ILateUpdateListener lateUpdateListener)
+    {
+        m_lateUpdateListeners.Add(lateUpdateListener);
+    }
+
+    public void UnSubscribeFromLateUpdate(ILateUpdateListener lateUpdateListener)
+    {
+        m_lateUpdateListeners.Remove(lateUpdateListener);
+    }
+}
