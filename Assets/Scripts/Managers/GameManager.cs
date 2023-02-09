@@ -26,6 +26,7 @@ public class GameManager : Manager<GameManager>
     {
         Debug.Log($"Play test started on scene: {_playTestScene}");
         SceneLoadManager.Instance.OnLoadScene(_playTestScene);
+        UIManager.Instance.ViewBackgroundBlackScreen.OnHide();
         UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
     }
 

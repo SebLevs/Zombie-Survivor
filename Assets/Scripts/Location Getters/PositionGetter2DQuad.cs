@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoint2D : MonoBehaviour
+public class PositionGetter2DQuad : PositionGetter2D
 {
     [Header("Random position modifiers")]
     [Min(0)][SerializeField] private float _verticalRadius;
     [Min(0)][SerializeField] private float _horizontalRadius;
-    
-    public Vector2 GetRandomSpawnPoint()
+
+    override public Vector2 GetRandomPosition()
     {
         Vector2 position = transform.position;
         float horizontalPoint = Random.Range(position.x - _horizontalRadius, position.x + _horizontalRadius);

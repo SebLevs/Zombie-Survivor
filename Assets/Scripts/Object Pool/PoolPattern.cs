@@ -23,7 +23,7 @@ public class PoolPattern<T> where T : Component, IPoolable
     private Dictionary<T, T> m_availablePool = new Dictionary<T, T>();
     private Dictionary<T, T> m_currentlyUsedPool = new Dictionary<T, T>();
 
-    public void InitDefaultQuantity()
+    public Dictionary<T, T> InitDefaultQuantity()
     {
         for (int i = 0; i < _defaultQuantity; i++)
         {
@@ -31,6 +31,8 @@ public class PoolPattern<T> where T : Component, IPoolable
             m_availablePool.Add(element, element);
             //element.gameObject.hideFlags = HideFlags.HideInHierarchy;
         }
+
+        return m_availablePool;
     }
 
     private void SetParent(T element, Transform newParent)

@@ -1,6 +1,6 @@
 using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class EnemyWave
@@ -13,16 +13,19 @@ public class EnemyWave
 
     [Header("Factory")]
     [SerializeField] private AbstractEnemyFactory _enemyFactory;
-    [Min(1)][SerializeField] private int _lowQuantitySpawns;
-    [Min(1)][SerializeField] private int _highQuantitySpawns;
+    [Min(0)][SerializeField] private int _lowQuantitySpawns;
+    [Min(0)][SerializeField] private int _highQuantitySpawns;
+
+    [field:Header("Wave end event")]
+    [field: SerializeField] public UnityEvent _waveEndEvent { get; private set; }
 
     private WaveController m_waveManager;
 
-    public void Init(WaveController waveManager, Action callback = null)
+    public void Init(WaveController waveManager, Action waveEndsCallback = null)
     {
         m_waveManager = waveManager;
         _spawnerStopWatch = new SequentialStopwatch(GetRandomTimeInRange());
-        _nextWaveStopWatch = new SequentialStopwatch(_endOfWaveTime, callback);
+        _nextWaveStopWatch = new SequentialStopwatch(_endOfWaveTime, waveEndsCallback);
     }
 
     /// <summary>
@@ -43,6 +46,7 @@ public class EnemyWave
 
         if (_nextWaveStopWatch.HasReachedTarget())
         {
+            _waveEndEvent?.Invoke();
             return true;
         }
         return false;
@@ -59,6 +63,7 @@ public class EnemyWave
         {
             _enemyFactory.CreateLowQuantityEnemy(m_waveManager.GetRandomSpawnPoint());
         }
+
         for (int i = 0; i < _lowQuantitySpawns; i++)
         {
             _enemyFactory.CreateHighQuantityEnemy(m_waveManager.GetRandomSpawnPoint());

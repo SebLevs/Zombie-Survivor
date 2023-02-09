@@ -7,10 +7,10 @@ public class PseudoTDD_Seb : MonoBehaviour
     public bool isEnemyHit;
     public bool isPlayerHit;
 
-
     [Header("UI")]
     public bool isOptionPopup;
 
+#if UNITY_EDITOR
     private void Update()
     {
         // UI
@@ -31,6 +31,7 @@ public class PseudoTDD_Seb : MonoBehaviour
 
         });
     }
+#endif
 
     private void Test(ref bool check, Action test)
     {
