@@ -777,6 +777,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btn quit
       objectReference: {fileID: 0}
+    - target: {fileID: 2883959678100397358, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

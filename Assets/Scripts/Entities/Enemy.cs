@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable
@@ -24,11 +22,13 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public void OnGetFromAvailable()
     {
+        EnemyManager.Instance.CurrentlyActiveEnemies.Add(this, this);
     }
 
     public void OnReturnToAvailable()
     {
         Init();
+        EnemyManager.Instance.CurrentlyActiveEnemies.Remove(this);
     }
 
     private void Init()

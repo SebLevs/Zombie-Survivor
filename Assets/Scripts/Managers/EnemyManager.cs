@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyManager : Manager<EnemyManager>
 {
-    public List<Enemy> CurrentlyActiveEnemies = new List<Enemy>();
+    [field:SerializeField] public Dictionary<Enemy, Enemy> CurrentlyActiveEnemies { get; private set; }
 
     [field:Header("Melee")]
     [field:SerializeField] public PoolPattern<Enemy> Zombies { get; private set; }
@@ -19,6 +19,7 @@ public class EnemyManager : Manager<EnemyManager>
     {
         base.OnAwake();
         InitPools();
+        CurrentlyActiveEnemies = new Dictionary<Enemy, Enemy>();
     }
 
     private void InitPools()
