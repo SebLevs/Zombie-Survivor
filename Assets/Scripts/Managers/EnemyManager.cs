@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyManager : Manager<EnemyManager>
@@ -55,9 +56,9 @@ public class EnemyManager : Manager<EnemyManager>
     [ContextMenu("Kill all currently active enemies")]
     public void KillAllCurrentlyActiveEnemies()
     {
-        foreach (Enemy enemy in CurrentlyActiveEnemies)
+        for (int i = 0; i < CurrentlyActiveEnemies.Count; i++)
         {
-            enemy.Kill();
+            CurrentlyActiveEnemies.ElementAt(i).Kill();
         }
     }
 }

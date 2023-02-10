@@ -1,13 +1,13 @@
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
 {
+    EnemyType m_type;
+
     [Header("Health bar")]
     [SerializeField] private ViewHealthBarWithCounter m_healthBar;
     private Health m_hp;
-
-    [field:Header("State Machine")]
-    [field: SerializeField] public StateController<Enemy> StateController { get; private set; }
 
     public PathfinderUtility PathfinderUtility { get; private set; }
 
@@ -18,14 +18,14 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
 
     private void Awake()
     {
+        m_type = GetComponent<EnemyType>();
+
         m_hp = GetComponent<Health>();
+        
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
 
         PathfinderUtility = GetComponent<PathfinderUtility>();
-
-        // TODO Make type object pattern which contains a state controller
-        //StateController = new StateController<Enemy>();
     }
 
     private void Start()
@@ -42,9 +42,9 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
     {
         Init();
         EnemyManager.Instance.CurrentlyActiveEnemies.Remove(this);
-        ReturnToPool();
     }
-    private void ReturnToPool() => PoolRef?.ReturnToAvailable(this);
+
+    public void ReturnToPool() => m_type.ReturnToPool(this);
 
     private void Init()
     {
