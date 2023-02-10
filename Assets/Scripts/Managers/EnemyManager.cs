@@ -26,28 +26,28 @@ public class EnemyManager : Manager<EnemyManager>
     private void InitPools()
     {
         // Melee
-        Dictionary<Enemy, Enemy> larvaeDictionary = Larvae.InitDefaultQuantity();
-        foreach (var item in larvaeDictionary.Values)
+        HashSet<Enemy> larvaeDictionary = Larvae.InitDefaultQuantity();
+        foreach (var item in larvaeDictionary)
         {
             item.PoolRef = Larvae;
         }
 
-        Dictionary<Enemy, Enemy> zombiesDictionary = Zombies.InitDefaultQuantity();
-        foreach (var item in zombiesDictionary.Values)
+        HashSet<Enemy> zombiesDictionary = Zombies.InitDefaultQuantity();
+        foreach (var item in zombiesDictionary)
         {
             item.PoolRef = Zombies;
         }
 
         // Ranged
-        Dictionary<Enemy, Enemy> skeletonsDictionary = Skeletons.InitDefaultQuantity();
-        foreach (var item in skeletonsDictionary.Values)
+        HashSet<Enemy> skeletonsDictionary = Skeletons.InitDefaultQuantity();
+        foreach (var item in skeletonsDictionary)
         {
             item.PoolRef = Skeletons;
         }
 
         // Boss
-        Dictionary<Enemy, Enemy> bossDictionary = Boss.InitDefaultQuantity();
-        foreach (var item in bossDictionary.Values)
+        HashSet<Enemy> bossDictionary = Boss.InitDefaultQuantity();
+        foreach (var item in bossDictionary)
         {
             item.PoolRef = Boss;
         }

@@ -8,14 +8,14 @@ using System.Linq;
 /// </summary>
 public class UpdateManager : Manager<UpdateManager>
 {
-    private Dictionary<IFrameUpdateListener, IFrameUpdateListener> m_frameUpdateListeners;
+    private HashSet<IFrameUpdateListener> m_frameUpdateListeners;
     private HashSet<IFixedUpdateListener> m_fixedUpdateListeners;
     private HashSet<ILateUpdateListener> m_lateUpdateListeners;
 
     protected override void OnAwake()
     {
         base.OnAwake();
-        m_frameUpdateListeners = new Dictionary<IFrameUpdateListener, IFrameUpdateListener>();
+        m_frameUpdateListeners = new HashSet<IFrameUpdateListener>();
         m_fixedUpdateListeners = new HashSet<IFixedUpdateListener>();
         m_lateUpdateListeners = new HashSet<ILateUpdateListener>();
     }
@@ -25,13 +25,13 @@ public class UpdateManager : Manager<UpdateManager>
         if (GameManager.Instance.IsPaused) { return; }
         for (int i = 0; i < m_frameUpdateListeners.Count; i++)
         {
-            m_frameUpdateListeners.ElementAt(i).Value.OnUpdate();
+            m_frameUpdateListeners.ElementAt(i).OnUpdate();
         }
     }
 
     public void SubscribeToUpdate(IFrameUpdateListener frameUpdateListener)
     {
-        m_frameUpdateListeners.Add(frameUpdateListener, frameUpdateListener);
+        m_frameUpdateListeners.Add(frameUpdateListener);
     }
 
     public void UnSubscribeFromUpdate(IFrameUpdateListener frameUpdateListener)

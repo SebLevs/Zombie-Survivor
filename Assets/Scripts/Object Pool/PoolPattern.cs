@@ -20,15 +20,15 @@ public class PoolPattern<T> where T : Component, IPoolable
     [SerializeField] private Transform _availableParent;
     [SerializeField] private Transform _currentlyUsedParent;
 
-    private Dictionary<T, T> m_availablePool = new Dictionary<T, T>();
-    private Dictionary<T, T> m_currentlyUsedPool = new Dictionary<T, T>();
+    private HashSet<T> m_availablePool = new HashSet<T>();
+    private HashSet<T> m_currentlyUsedPool = new HashSet<T>();
 
-    public Dictionary<T, T> InitDefaultQuantity()
+    public HashSet<T> InitDefaultQuantity()
     {
         for (int i = 0; i < _defaultQuantity; i++)
         {
             T element = GameObject.Instantiate(_elementPrefab, _availableParent).GetComponent<T>();
-            m_availablePool.Add(element, element);
+            m_availablePool.Add(element);
             //element.gameObject.hideFlags = HideFlags.HideInHierarchy;
         }
 
@@ -51,11 +51,11 @@ public class PoolPattern<T> where T : Component, IPoolable
         }
         else
         {
-            element = m_availablePool.ElementAt(0).Value;
+            element = m_availablePool.ElementAt(0);
             m_availablePool.Remove(element);
         }
 
-        m_currentlyUsedPool.Add(element, element);
+        m_currentlyUsedPool.Add(element);
 
         SetParent(element, _currentlyUsedParent);
         element.transform.SetPositionAndRotation(startPosition, startRotation);
@@ -67,9 +67,10 @@ public class PoolPattern<T> where T : Component, IPoolable
 
     public T ReturnToAvailable(T key)
     {
-        T element = m_currentlyUsedPool[key];
+        T element;
+        m_currentlyUsedPool.TryGetValue(key, out element);
         m_currentlyUsedPool.Remove(key);
-        m_availablePool.Add(element, element);
+        m_availablePool.Add(element);
 
         element.gameObject.SetActive(false);
 
@@ -83,6 +84,8 @@ public class PoolPattern<T> where T : Component, IPoolable
     /// </summary>
     public T FindFromCurrentlyUsed(T key)
     {
-        return m_currentlyUsedPool[key];
+        T element;
+        m_currentlyUsedPool.TryGetValue(key, out element);
+        return element;
     }
 }
