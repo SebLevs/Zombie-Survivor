@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// Centralisation of Updates and Fixed Updates<br/>
@@ -7,14 +8,14 @@ using System.Collections.Generic;
 /// </summary>
 public class UpdateManager : Manager<UpdateManager>
 {
-    private HashSet<IFrameUpdateListener> m_frameUpdateListeners;
+    private Dictionary<IFrameUpdateListener, IFrameUpdateListener> m_frameUpdateListeners;
     private HashSet<IFixedUpdateListener> m_fixedUpdateListeners;
     private HashSet<ILateUpdateListener> m_lateUpdateListeners;
 
     protected override void OnAwake()
     {
         base.OnAwake();
-        m_frameUpdateListeners = new HashSet<IFrameUpdateListener>();
+        m_frameUpdateListeners = new Dictionary<IFrameUpdateListener, IFrameUpdateListener>();
         m_fixedUpdateListeners = new HashSet<IFixedUpdateListener>();
         m_lateUpdateListeners = new HashSet<ILateUpdateListener>();
     }
@@ -22,15 +23,15 @@ public class UpdateManager : Manager<UpdateManager>
     private void Update()
     {
         if (GameManager.Instance.IsPaused) { return; }
-        foreach (IFrameUpdateListener frameUpdateListener in m_frameUpdateListeners)
+        for (int i = 0; i < m_frameUpdateListeners.Count; i++)
         {
-            frameUpdateListener.OnUpdate();
+            m_frameUpdateListeners.ElementAt(i).Value.OnUpdate();
         }
     }
 
     public void SubscribeToUpdate(IFrameUpdateListener frameUpdateListener)
     {
-        m_frameUpdateListeners.Add(frameUpdateListener);
+        m_frameUpdateListeners.Add(frameUpdateListener, frameUpdateListener);
     }
 
     public void UnSubscribeFromUpdate(IFrameUpdateListener frameUpdateListener)

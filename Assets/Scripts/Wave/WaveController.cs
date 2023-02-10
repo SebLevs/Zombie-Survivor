@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveController : MonoBehaviour
+public class WaveController : MonoBehaviour, IFrameUpdateListener
 {
     private int _currentWaveIndex = 0;
     [SerializeField] private EnemyWave[] m_waves;
@@ -14,12 +14,25 @@ public class WaveController : MonoBehaviour
         SetEnemyWaves();
     }
 
-    private void Update()
+    public void OnUpdate()
     {
-        if (_currentWaveIndex < m_waves.Length) 
+        if (_currentWaveIndex < m_waves.Length)
         {
             m_waves[_currentWaveIndex].Tick();
         }
+    }
+
+    public void OnDisable()
+    {
+        if (UpdateManager.Instance)
+        {
+            UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        }
+    }
+
+    public void OnEnable()
+    {
+        UpdateManager.Instance.SubscribeToUpdate(this);
     }
 
     public Vector2 GetRandomSpawnPoint()
@@ -36,4 +49,5 @@ public class WaveController : MonoBehaviour
             m_waves[i].Init(this, waveEndsCallback: () => _currentWaveIndex++);
         }
     }
+
 }
