@@ -1,23 +1,23 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Object = System.Object;
 
 [Serializable]
 public class PlayerCommand_Invincibility : ICommand
 {
-    Entity_Player player;
-    public PlayerCommand_Invincibility(Entity_Player player)
+
+    public PlayerCommand_Invincibility()
     {
-        this.player = player;
+        
     }
+    
     public void Execute()
     {
-        player.isinvincible = true;
+        Entity_Player.Instance.isinvincible = true;
     }
 
     public void UnExecute()
     {
-        player.isinvincible = false;
+        Entity_Player.Instance.isinvincible = false;
     }
 }

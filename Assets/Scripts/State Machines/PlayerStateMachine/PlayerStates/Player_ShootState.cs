@@ -23,7 +23,7 @@ public class Player_ShootState : State<Entity_Player>
         {
             Transform shootFrom = Entity_Player.Instance.muzzle;
             BulletBehavior bullet = WeaponManager.Instance.bulletPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
-            bullet.ShootBullet(Player_Controller.Instance.normalizedLookDirection, m_context.bulletSpeed);
+            bullet.ShootBullet(Player_Controller.Instance.normalizedLookDirection, m_context.BulletSpeed);
             //bullet.strategy.Execute(bullet);
             //bullet.ShootBullet(Player_Controller.Instance.lookDirection, m_context.bulletSpeed);
             m_context.canAttack = false;
@@ -39,6 +39,6 @@ public class Player_ShootState : State<Entity_Player>
 
     public override void OnUpdate()
     {
-        m_context.stateController.OnTransitionState(m_context.stateContainer.State_Move);
+        m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
     }
 }

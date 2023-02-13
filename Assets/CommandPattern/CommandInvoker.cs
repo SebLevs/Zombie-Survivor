@@ -1,19 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TNRD;
 using UnityEngine;
+using Object = System.Object;
 
-public class CommandInvoker
+[CreateAssetMenu]
+public class CommandInvoker : ScriptableObject
 {
-    [SerializeField] public ICommand command1;
-    [SerializeField] public ICommand command2;
-
-    public CommandInvoker(ICommand command1, ICommand command2)
-    {
-        this.command1 = command1;
-        this.command2 = command2;
-    }
+    [SerializeField] public SerializableInterface<ICommand> command1;
+    [SerializeField] public SerializableInterface<ICommand> command2;
 
     public void DoCommand(ICommand command)
     {

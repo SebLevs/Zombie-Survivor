@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class BoomrangStrategy : IProjectileStrategy
+public class BoomerangStrategy : IProjectileStrategy
 {
     public Vector2 startLocation;
     public Vector2 targetLocation;
-    private bool comingBack = false;
+    private bool _comingBack = false;
     public AnimationCurve moveCurveGo;
     public AnimationCurve moveCurveBack;
     public float moveDuration = 2f;
@@ -22,21 +22,21 @@ public class BoomrangStrategy : IProjectileStrategy
             yield return new WaitForFixedUpdate();
             moveStopWatch += Time.deltaTime;
 
-            if (moveStopWatch >= moveDuration && !comingBack)
+            if (moveStopWatch >= moveDuration && !_comingBack)
             {
-                comingBack = true;
+                _comingBack = true;
                 moveStopWatch = 0;
                 projectile.transform.position = targetLocation;
             }
-            if (moveStopWatch >= moveDuration && comingBack)
+            if (moveStopWatch >= moveDuration && _comingBack)
             {
-                comingBack = false;
+                _comingBack = false;
                 moveStopWatch = 0;
                 isShot = false;
                 //WeaponManager.Instance.boomPool.ReturnToAvailable(projectile);
 
             }
-            if (!comingBack)
+            if (!_comingBack)
             {
                 projectile.transform.position = Vector2.Lerp(startLocation, targetLocation, moveCurveGo.Evaluate(moveStopWatch / moveDuration));
             }
