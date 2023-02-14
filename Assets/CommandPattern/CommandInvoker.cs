@@ -1,6 +1,5 @@
 using TNRD;
 using UnityEngine;
-using Object = System.Object;
 
 [CreateAssetMenu]
 public class CommandInvoker : ScriptableObject

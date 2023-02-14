@@ -28,7 +28,6 @@ public class CommandPromptManager : Manager<CommandPromptManager>
     private string _isValidCommand;
     private string _inputCommand;
 
-
     protected override void OnStart()
     {
         base.OnStart();
