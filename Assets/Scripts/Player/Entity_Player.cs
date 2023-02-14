@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
