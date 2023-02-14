@@ -13,11 +13,17 @@ public class PlayerCommand_Invincibility : ICommand
     
     public void Execute()
     {
-        Entity_Player.Instance.isinvincible = true;
+        if (!Entity_Player.Instance.isPermaInvincible)
+        {
+            Entity_Player.Instance.isPermaInvincible = true;
+        }
     }
 
     public void UnExecute()
     {
-        Entity_Player.Instance.isinvincible = false;
+        if (Entity_Player.Instance.isPermaInvincible)
+        {
+            Entity_Player.Instance.isPermaInvincible = false;
+        }
     }
 }

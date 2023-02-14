@@ -22,14 +22,31 @@ MonoBehaviour:
     unityReference: {fileID: 0}
     rawReference:
       rid: 5378726465406763010
+  command3:
+    mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: 5378726555586396163
+  command4:
+    mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: 5378726555586396164
+  command5:
+    mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: 5378726555586396165
   references:
     version: 2
     RefIds:
     - rid: 5378726465406763009
       type: {class: PlayerCommand_Invincibility, ns: , asm: Assembly-CSharp}
-      data:
-        player: {fileID: 0}
     - rid: 5378726465406763010
       type: {class: PlayerCommand_AttackSpeedUp, ns: , asm: Assembly-CSharp}
-      data:
-        player: {fileID: 0}
+    - rid: 5378726555586396163
+      type: {class: PlayerCommand_SpecialAttackSpeedUp, ns: , asm: Assembly-CSharp}
+    - rid: 5378726555586396164
+      type: {class: PlayerCommand_BoomDistanceUp, ns: , asm: Assembly-CSharp}
+    - rid: 5378726555586396165
+      type: {class: PlayerCommand_MoveSpeedUp, ns: , asm: Assembly-CSharp}

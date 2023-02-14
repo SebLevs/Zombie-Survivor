@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
 {
-    public CommandInvoker commandInvoker;
 
     [SerializeField] private string test;
 
@@ -10,6 +9,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
     public float MovSpeed { get; set; }
     public float BulletSpeed { get; set; }
     public bool isinvincible = false;
+    public bool isPermaInvincible = false;
 
     [field: Header("ShootControl")]
     public float attackSpeed;
@@ -70,9 +70,6 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
         attackDelay.JumpToTime(0f);
         specialAttackDelay.JumpToTime(0f);
         dodgeDelay.JumpToTime(0f);
-        commandInvoker.DoCommand(commandInvoker.command1);
-        //commandInvoker.Oncommand2();
-        
     }
 
     public void RefreshWeaponStats()
@@ -85,7 +82,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
 
     public void OnUpdate()
     {
-        stateController.OnUpdate();
+        StateController.OnUpdate();
         DesiredActions.OnUpdateActions();
         attackDelay.OnUpdateTime();
         specialAttackDelay.OnUpdateTime();
