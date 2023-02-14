@@ -504,9 +504,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1211176962}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
+      propertyPath: <Larvae>k__BackingField._defaultQuantity
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Zombies>k__BackingField._availableParent
       value: 
       objectReference: {fileID: 1211176962}
+    - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
+      propertyPath: <Zombies>k__BackingField._defaultQuantity
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Boss>k__BackingField._currentlyUsedParent
       value: 
@@ -515,6 +523,10 @@ PrefabInstance:
       propertyPath: <Skeletons>k__BackingField._availableParent
       value: 
       objectReference: {fileID: 1211176962}
+    - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
+      propertyPath: <Skeletons>k__BackingField._defaultQuantity
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Larvae>k__BackingField._currentlyUsedParent
       value: 

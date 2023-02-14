@@ -5,6 +5,7 @@ public class VolumeSlider : MonoBehaviour
 {
     [SerializeField] private AudioMixerParameter _volumeParameter;
     private Slider m_slider;
+    private const float _log10Modifier = 20f;
 
     private float _lastRegisteredVolume = 1f;
 
@@ -21,13 +22,18 @@ public class VolumeSlider : MonoBehaviour
 
     public void SetVolumeAsLastRegisteredVolume()
     {
-        float volume = GetLog(_lastRegisteredVolume);
-        _volumeParameter.SetParameter(volume);
+        float lastVolume = PlayerPrefs.GetFloat(_volumeParameter.name);
+        float volumePlayerPrefs = GetLog(lastVolume);
+        _volumeParameter.SetParameter(volumePlayerPrefs);
     }
 
     public void SaveLastRegisteredVolumeLocally()
     {
-        _lastRegisteredVolume = m_slider.value;
+        if (_lastRegisteredVolume != m_slider.value)
+        {
+            _lastRegisteredVolume = m_slider.value;
+            PlayerPrefs.SetFloat(_volumeParameter.name, m_slider.value);
+        }
     }
 
     /// <summary>
@@ -36,6 +42,6 @@ public class VolumeSlider : MonoBehaviour
     /// </summary>
     private float GetLog(float sliderValue)
     {
-        return Mathf.Log10(sliderValue) * 20;
+        return Mathf.Log10(sliderValue) * _log10Modifier;
     }
 }

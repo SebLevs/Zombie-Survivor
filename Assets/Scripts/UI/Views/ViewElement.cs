@@ -58,13 +58,13 @@ public class ViewElement : MonoBehaviour
     public void AnimationEvent_HideCallback()
     {
         TryCallback(m_onHideAction);
-        m_defaultShowEvent?.Invoke();
+        m_defaultHideEvent?.Invoke();
     }
 
     public void AnimationEvent_ShowCallback()
     {
         TryCallback(m_onShowAction);
-        m_defaultHideEvent?.Invoke();
+        m_defaultShowEvent?.Invoke();
     }
 
     protected void TryCallback(Action _callback = null)

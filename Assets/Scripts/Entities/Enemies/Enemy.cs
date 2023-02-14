@@ -1,29 +1,32 @@
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
 {
-    EnemyType m_type;
+    public EnemyType Type { get; private set; }
 
     [Header("Health bar")]
     [SerializeField] private ViewHealthBarWithCounter m_healthBar;
-    private Health m_hp;
+    public Health Health { get; private set; }
 
+    protected Rigidbody2D m_rigidbody;
+    protected Collider2D m_collider;
+
+    protected EnemyStateController m_stateController;
     public PathfinderUtility PathfinderUtility { get; private set; }
 
-    public PoolPattern<Enemy> PoolRef { get; set; } // TODO: Refactory into a type object pattern with direct pool return by call instead of reference
-
-    private Rigidbody2D m_rigidbody;
-    private Collider2D m_collider;
+    [field: SerializeField] public int collisionDamage { get; private set; }
+    [field: SerializeField] public int TempDamage { get; private set; }
 
     private void Awake()
     {
-        m_type = GetComponent<EnemyType>();
+        Type = GetComponent<EnemyType>();
 
-        m_hp = GetComponent<Health>();
-        
+        Health = GetComponent<Health>();
+
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
+
+        m_stateController = GetComponent<EnemyStateController>();
 
         PathfinderUtility = GetComponent<PathfinderUtility>();
     }
@@ -44,24 +47,25 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
         EnemyManager.Instance.CurrentlyActiveEnemies.Remove(this);
     }
 
-    public void ReturnToPool() => m_type.ReturnToPool(this);
+    public void ReturnToPool() => Type.ReturnToPool(this);
 
     private void Init()
     {
         m_rigidbody.velocity = Vector2.zero;
-        m_hp.FullHeal();
-        m_healthBar.Filler.SetFilling(m_hp.Normalized);
-        m_healthBar.Counter.Element.text = m_hp.CurrentHP.ToString();
+        Health.FullHeal();
+        m_healthBar.Filler.SetFilling(Health.Normalized);
+        m_healthBar.Counter.Element.text = Health.CurrentHP.ToString();
     }
 
     public void Kill()
     {
-        m_hp.OnInstantDeath();
+        Health.OnInstantDeath();
     }
 
     public void OnUpdate()
     {
-        //StateController.OnUpdate();
+        // TODO: Call state controller here
+        m_stateController.OnUpdate();
     }
 
     public void OnDisable()
@@ -76,4 +80,5 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
     {
         UpdateManager.Instance.SubscribeToUpdate(this);
     }
+
 }

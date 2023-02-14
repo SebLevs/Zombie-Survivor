@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieStateContainer : StateContainer
+public class Zombie : Enemy
 {
-
 }

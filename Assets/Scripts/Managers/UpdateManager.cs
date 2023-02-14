@@ -39,7 +39,6 @@ public class UpdateManager : Manager<UpdateManager>
         m_frameUpdateListeners.Remove(frameUpdateListener);
     }
 
-
     private void FixedUpdate()
     {
         if (GameManager.Instance.IsPaused) { return; }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyManager : Manager<EnemyManager>
 {
-    [field:SerializeField] public HashSet<Enemy> CurrentlyActiveEnemies { get; private set; }
+    [field: SerializeField] public HashSet<Enemy> CurrentlyActiveEnemies { get; private set; }
 
-    [field:Header("Melee")]
-    [field:SerializeField] public PoolPattern<Enemy> Zombies { get; private set; }
+    [field: Header("Melee")]
+    [field: SerializeField] public PoolPattern<Enemy> Zombies { get; private set; }
     [field: SerializeField] public PoolPattern<Enemy> Larvae { get; private set; }
 
     [field: Header("Ranged")]
@@ -26,31 +26,15 @@ public class EnemyManager : Manager<EnemyManager>
     private void InitPools()
     {
         // Melee
-        HashSet<Enemy> larvaeDictionary = Larvae.InitDefaultQuantity();
-        foreach (var item in larvaeDictionary)
-        {
-            item.PoolRef = Larvae;
-        }
+        Larvae.InitDefaultQuantity();
 
-        HashSet<Enemy> zombiesDictionary = Zombies.InitDefaultQuantity();
-        foreach (var item in zombiesDictionary)
-        {
-            item.PoolRef = Zombies;
-        }
+        Zombies.InitDefaultQuantity();
 
         // Ranged
-        HashSet<Enemy> skeletonsDictionary = Skeletons.InitDefaultQuantity();
-        foreach (var item in skeletonsDictionary)
-        {
-            item.PoolRef = Skeletons;
-        }
+        Skeletons.InitDefaultQuantity();
 
         // Boss
-        HashSet<Enemy> bossDictionary = Boss.InitDefaultQuantity();
-        foreach (var item in bossDictionary)
-        {
-            item.PoolRef = Boss;
-        }
+        Boss.InitDefaultQuantity();
     }
 
     [ContextMenu("Kill all currently active enemies")]
@@ -59,6 +43,22 @@ public class EnemyManager : Manager<EnemyManager>
         for (int i = 0; i < CurrentlyActiveEnemies.Count; i++)
         {
             CurrentlyActiveEnemies.ElementAt(i).Kill();
+        }
+    }
+
+    public void PauseCurrentlyActiveEnemies()
+    {
+        foreach (Enemy enemy in CurrentlyActiveEnemies)
+        {
+            // Disable FSM here
+        }
+    }
+
+    public void UnPauseCurrentlyActiveEnemies()
+    {
+        foreach (Enemy enemy in CurrentlyActiveEnemies)
+        {
+            // Enable FSM here
         }
     }
 }
