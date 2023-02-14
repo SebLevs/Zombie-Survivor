@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 01.unity
     guid: 64f5b4e35130f0c48a000e0e84577ec2
+  - enabled: 1
+    path: Assets/Scenes/Marc_Test.unity
+    guid: c44424fb4c30a8c4f96f5735bec7dab5
   m_configObjects: {}
