@@ -20,9 +20,9 @@ public class Player_SpecialShootState : State<Entity_Player>
         if(m_context.canSpecialAttack)
         {
             Transform shootFrom = Entity_Player.Instance.muzzle;
-            BoomrangBehavior boomrang = WeaponManager.Instance.boomPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
-            boomrang.ShootBoom();
-            //boomrang.strategy.Execute(boomrang);
+            BoomerangBehavior boomerang = WeaponManager.Instance.boomPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
+            boomerang.ShootBoom();
+            //boomerang.strategy.Execute(boomerang);
             m_context.canSpecialAttack = false;
             m_context.specialAttackDelay.Reset();
             m_context.specialAttackDelay.StartTimer();
@@ -36,6 +36,6 @@ public class Player_SpecialShootState : State<Entity_Player>
 
     public override void OnUpdate()
     {
-        m_context.stateController.OnTransitionState(m_context.stateContainer.State_Move);
+        m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
     }
 }

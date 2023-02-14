@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAction
 {
     public PlayerActionsType actionType;
-    private float m_currentLifeTime = 0.00f;
+    private float _mCurrentLifeTime = 0.00f;
     private const float MAX_LIFETIME = 0.08f;
 
     public PlayerAction(PlayerActionsType _actionType)
@@ -14,11 +14,11 @@ public class PlayerAction
     }
     public void GetOlder()
     {
-        this.m_currentLifeTime += Time.deltaTime;
+        this._mCurrentLifeTime += Time.deltaTime;
     }
     public bool IsTooOld()
     {
-        return this.m_currentLifeTime >= MAX_LIFETIME;
+        return this._mCurrentLifeTime >= MAX_LIFETIME;
     }
 }
 

@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int m_maxHP;
 
     [field:Header("Events")]
-    [field:SerializeField] public UnityEvent OnHitEvent { get; private set; }
+    [field:SerializeField] public UnityEvent  OnHitEvent{ get; private set; }
     [field:SerializeField] public UnityEvent OnDeathEvent { get; private set; }
 
     public float Normalized => (m_maxHP > 0) ? m_currentHP / m_maxHP : 0;

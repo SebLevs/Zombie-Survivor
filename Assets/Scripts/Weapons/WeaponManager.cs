@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponManager : Manager<WeaponManager>
 {
     public PoolPattern<BulletBehavior> bulletPool;
-    public PoolPattern<BoomrangBehavior> boomPool;
+    public PoolPattern<BoomerangBehavior> boomPool;
 
     protected override void OnAwake()
     {

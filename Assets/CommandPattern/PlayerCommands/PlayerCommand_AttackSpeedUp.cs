@@ -1,29 +1,30 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Object = System.Object;
 
 [Serializable]
 public class PlayerCommand_AttackSpeedUp : ICommand
 {
-    Entity_Player player;
-    public PlayerCommand_AttackSpeedUp(Entity_Player player)
+    //[SerializeField] private Entity_Player player;
+
+    public PlayerCommand_AttackSpeedUp()
     {
-        this.player = player;
+        
     }
     public void Execute()
     {
-        if(player.attackSpeed >= 0.2)
+        if(Entity_Player.Instance.attackSpeed >= 0.05)
         {
-            player.attackSpeed -= 0.1f;
+            Entity_Player.Instance.attackSpeed -= 0.1f;
         }
+
     }
 
     public void UnExecute()
     {
-        if (player.attackSpeed >= 2f)
+        if (Entity_Player.Instance.attackSpeed >= 2f)
         {
-            player.attackSpeed += 0.1f;
+            Entity_Player.Instance.attackSpeed += 0.1f;
         }
     }
 }

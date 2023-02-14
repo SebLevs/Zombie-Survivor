@@ -31,14 +31,14 @@ public class Player_DodgeState : State<Entity_Player>
             targetLocation = new Vector2(startLocation.x + (dodgeDirection.x * m_context.dodgeDistance), startLocation.y + (dodgeDirection.y * m_context.dodgeDistance));
             isRolling = true;
             moveStopWatch = 0;
-            m_context.rb.velocity = Vector2.zero;
+            m_context.Rb.velocity = Vector2.zero;
             m_context.canDodge = false;
             m_context.dodgeDelay.Reset();
             m_context.dodgeDelay.StartTimer();
         }
         else
         {
-            m_context.stateController.OnTransitionState(m_context.stateContainer.State_Move);
+            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
         }
     }
 
@@ -57,7 +57,7 @@ public class Player_DodgeState : State<Entity_Player>
         if(m_context.transform.position.x == targetLocation.x && m_context.transform.position.y == targetLocation.y)
         {
             isRolling= false;
-            m_context.stateController.OnTransitionState(m_context.stateContainer.State_Move);
+            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
         }
     }
 }
