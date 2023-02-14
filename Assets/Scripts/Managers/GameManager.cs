@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : Manager<GameManager>
 {
-    public bool IsPaused;
+    public bool IsPaused { get; private set; }
 
     [Header("Play test setup")]
     [SerializeField] private bool _isPlayTest;
@@ -12,6 +12,8 @@ public class GameManager : Manager<GameManager>
     {
         base.OnStart();
 
+        SetCursorLockState(CursorLockMode.Confined);
+
         if (_isPlayTest)
         {
             InitiatePlayTest();
@@ -20,6 +22,11 @@ public class GameManager : Manager<GameManager>
 
         UIManager.Instance.ViewBackgroundBlackScreen.OnShow();
         UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewTitleScreen);
+    }
+
+    public void SetCursorLockState(CursorLockMode lockMode)
+    {
+        Cursor.lockState = lockMode;
     }
 
     private void InitiatePlayTest()
@@ -51,5 +58,17 @@ public class GameManager : Manager<GameManager>
 #else
         Application.Quit();
 #endif
+    }
+
+    public void PauseGame()
+    {
+        IsPaused = true;
+        EnemyManager.Instance.PauseCurrentlyActiveEnemies();
+    }
+
+    public void UnPauseGame()
+    {
+        IsPaused = false;
+        EnemyManager.Instance.UnPauseCurrentlyActiveEnemies();
     }
 }

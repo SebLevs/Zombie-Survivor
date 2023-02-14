@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// Centralisation of Updates and Fixed Updates<br/>
@@ -22,9 +23,9 @@ public class UpdateManager : Manager<UpdateManager>
     private void Update()
     {
         if (GameManager.Instance.IsPaused) { return; }
-        foreach (IFrameUpdateListener frameUpdateListener in m_frameUpdateListeners)
+        for (int i = 0; i < m_frameUpdateListeners.Count; i++)
         {
-            frameUpdateListener.OnUpdate();
+            m_frameUpdateListeners.ElementAt(i).OnUpdate();
         }
     }
 
@@ -37,7 +38,6 @@ public class UpdateManager : Manager<UpdateManager>
     {
         m_frameUpdateListeners.Remove(frameUpdateListener);
     }
-
 
     private void FixedUpdate()
     {
