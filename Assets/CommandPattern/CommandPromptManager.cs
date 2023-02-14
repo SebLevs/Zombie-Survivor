@@ -1,29 +1,13 @@
 using System;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public enum PossibleCommands
-{
-    GODMODE_ON,
-    GODMODE_OFF,
-    ATTACK_SPEED_UP,
-    ATTACK_SPEED_DOWN,
-    MOVE_SPEED_UP,
-    MOVE_SPEED_DOWN,
-    SPECIAL_ATTACK_SPEED_UP,
-    SPECIAL_ATTACK_SPEED_DOWN,
-    BOOM_DISTANCE_UP,
-    BOOM_DISTANCE_DOWN,
-}
 
 public class CommandPromptManager : Manager<CommandPromptManager>
 {
     [SerializeField] private CommandInvoker playerCommandInvoker;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text doneCommands;
-    private PossibleCommands _possibleCommands;
     private bool _isActive = false;
     private string _isValidCommand;
     private string _inputCommand;
@@ -61,56 +45,55 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         _isValidCommand = "";
         _inputCommand = inputField.text.ToUpper();
         _inputCommand = _inputCommand.Replace(" ", "_");
-        Enum.TryParse(_inputCommand, out _possibleCommands);
 
-        switch (_possibleCommands)
+        switch (_inputCommand)
         {
-            case PossibleCommands.GODMODE_ON:
+            case "GODMODE_ON":
             {
                 playerCommandInvoker.DoCommand(playerCommandInvoker.command1.Value);
                 break;
             }
-            case PossibleCommands.GODMODE_OFF:
+            case "GODMODE_OFF":
             {
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command1.Value);
                 break;
             }
-            case PossibleCommands.ATTACK_SPEED_UP:
+            case "ATTACK_SPEED_UP":
             {
                 playerCommandInvoker.DoCommand(playerCommandInvoker.command2.Value);
                 break;
             }
-            case PossibleCommands.ATTACK_SPEED_DOWN:
+            case "ATTACK_SPEED_DOWN":
             {
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command2.Value);
                 break;
             }
-            case PossibleCommands.MOVE_SPEED_UP:
+            case "MOVE_SPEED_UP":
             {
                 playerCommandInvoker.DoCommand(playerCommandInvoker.command3.Value);
                 break;
             }
-            case PossibleCommands.MOVE_SPEED_DOWN:
+            case "MOVE_SPEED_DOWN":
             {
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command3.Value);
                 break;
             }
-            case PossibleCommands.SPECIAL_ATTACK_SPEED_UP:
+            case "SPECIAL_ATTACK_SPEED_UP":
             {
                 playerCommandInvoker.DoCommand(playerCommandInvoker.command4.Value);
                 break;
             }
-            case PossibleCommands.SPECIAL_ATTACK_SPEED_DOWN:
+            case "SPECIAL_ATTACK_SPEED_DOWN":
             {
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command4.Value);
                 break;
             }
-            case PossibleCommands.BOOM_DISTANCE_UP:
+            case "BOOM_DISTANCE_UP":
             {
                 playerCommandInvoker.DoCommand(playerCommandInvoker.command5.Value);
                 break;
             }
-            case PossibleCommands.BOOM_DISTANCE_DOWN:
+            case "BOOM_DISTANCE_DOWN":
             {
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command5.Value);
                 break;
