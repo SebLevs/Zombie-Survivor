@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
     {
         // TODO: Call state controller here
         m_stateController.OnUpdate();
+        Debug.Log($"Angle to player: {TrigonometryUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform)}");
     }
 
     public void OnDisable()

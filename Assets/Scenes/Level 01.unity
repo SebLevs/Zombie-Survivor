@@ -341,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4198038873873354616, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: m_waves.Array.data[0]._tickRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4198038873873354616, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: m_waves.Array.data[1]._tickRange
@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 39436a06906af3d4caf31575426bc33e, type: 2}
     - target: {fileID: 4198038873873354616, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: m_waves.Array.data[0]._endOfWaveTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4198038873873354616, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: m_waves.Array.data[1]._endOfWaveTime
@@ -389,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4198038873873354616, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: m_waves.Array.data[0]._lowQuantitySpawns
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4198038873873354616, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: m_waves.Array.data[1]._lowQuantitySpawns
@@ -405,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4198038873873354616, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: m_waves.Array.data[0]._highQuantitySpawns
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4198038873873354616, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: m_waves.Array.data[1]._highQuantitySpawns
@@ -505,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 1211176962}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Larvae>k__BackingField._defaultQuantity
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Zombies>k__BackingField._availableParent
@@ -513,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 1211176962}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Zombies>k__BackingField._defaultQuantity
-      value: 200
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Boss>k__BackingField._currentlyUsedParent
@@ -525,7 +525,7 @@ PrefabInstance:
       objectReference: {fileID: 1211176962}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Skeletons>k__BackingField._defaultQuantity
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8178483401429337830, guid: 3baeeb4e23a56b74d958c5dca2a17523, type: 3}
       propertyPath: <Larvae>k__BackingField._currentlyUsedParent
