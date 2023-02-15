@@ -31,7 +31,7 @@ public abstract class SequentialTimeCalculator
     /// <summary>
     /// Will not update if IsPaused
     /// </summary>
-    /// <returns>HasReachedTarget</returns>
+    /// <returns>HasReachedEndOfPath</returns>
     public abstract bool OnUpdateTime();
 
     public void StartTimer()

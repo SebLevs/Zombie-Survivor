@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieDeadState : EnemyState
 {
-    public ZombieDeadState(EnemyStateController context) : base(context)
+    public ZombieDeadState(StateControllerZombie controller) : base(controller)
     {
     }
 
@@ -14,6 +12,8 @@ public class ZombieDeadState : EnemyState
 
     public override void OnEnter()
     {
+        Debug.Log($"{m_controller.Context.name} DEAD ENTER");
+        m_controller.Context.PathfinderUtility.DisablePathfinding();
     }
 
     public override void OnExit()

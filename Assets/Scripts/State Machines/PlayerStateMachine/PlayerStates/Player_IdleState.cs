@@ -27,19 +27,19 @@ public class Player_IdleState : State<Entity_Player>
     {
         if(Player_Controller.Instance.moveDirection != Vector2.zero) 
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
         }
-        if (m_context.DesiredActions.Contains(PlayerActionsType.SHOOT))
+        if (m_controller.DesiredActions.Contains(PlayerActionsType.SHOOT))
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Shoot);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Shoot);
         }
-        if (m_context.DesiredActions.Contains(PlayerActionsType.SPECIALSHOOT))
+        if (m_controller.DesiredActions.Contains(PlayerActionsType.SPECIALSHOOT))
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_SpecialShoot);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_SpecialShoot);
         }
-        if (m_context.DesiredActions.Contains(PlayerActionsType.DODGE))
+        if (m_controller.DesiredActions.Contains(PlayerActionsType.DODGE))
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Dodge);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Dodge);
         }
     }
 }

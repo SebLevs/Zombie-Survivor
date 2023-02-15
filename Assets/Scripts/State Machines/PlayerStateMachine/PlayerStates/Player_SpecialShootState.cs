@@ -16,16 +16,16 @@ public class Player_SpecialShootState : State<Entity_Player>
     public override void OnEnter()
     {
         Debug.Log("Enter SpecialShootState");
-        m_context.DesiredActions.ConsumeAllActions(PlayerActionsType.SPECIALSHOOT);
-        if(m_context.canSpecialAttack)
+        m_controller.DesiredActions.ConsumeAllActions(PlayerActionsType.SPECIALSHOOT);
+        if(m_controller.canSpecialAttack)
         {
             Transform shootFrom = Entity_Player.Instance.muzzle;
             BoomerangBehavior boomerang = WeaponManager.Instance.boomPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
             boomerang.ShootBoom();
             //boomerang.strategy.Execute(boomerang);
-            m_context.canSpecialAttack = false;
-            m_context.specialAttackDelay.Reset();
-            m_context.specialAttackDelay.StartTimer();
+            m_controller.canSpecialAttack = false;
+            m_controller.specialAttackDelay.Reset();
+            m_controller.specialAttackDelay.StartTimer();
         }
     }
 
@@ -36,6 +36,6 @@ public class Player_SpecialShootState : State<Entity_Player>
 
     public override void OnUpdate()
     {
-        m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
+        m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
     }
 }

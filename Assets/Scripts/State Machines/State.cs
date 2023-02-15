@@ -1,15 +1,13 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public abstract class State<T>
 {
-    protected T m_context;
+    protected T m_controller;
 
     public State(T context)
     {
-        m_context = context;
+        m_controller = context;
     }
 
     public abstract void OnEnter();

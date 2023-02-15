@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class StateControllerZombie : EnemyStateController
 {
-    public ZombieIdleState IdleState { get; private set; }
+    public ZombieChaseState ChaseState { get; private set; }
+    public ZombieCombatState CombatState { get; private set; }
+    public ZombieDeadState DeadState { get; private set; }
 
     protected override EnemyState GetDefaultState()
     {
-        return IdleState;
+        return ChaseState;
     }
 
     protected override void InitStates()
     {
-        IdleState = new ZombieIdleState(this);
+        ChaseState = new ZombieChaseState(this);
+        CombatState = new ZombieCombatState(this);
+        DeadState = new ZombieDeadState(this);
     }
 }

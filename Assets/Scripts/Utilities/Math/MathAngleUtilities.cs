@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TrigonometryUtilities
+public class MathAngleUtilities
 {
     static public float GetSignedAngle3D(Transform targetTransform, Transform myTransform)
     {
@@ -49,7 +47,7 @@ public class TrigonometryUtilities
     /// Get angle as an index from 0 to 7 from transform.right and in a counter clockwise manner<br/>
     /// where transform.right = 0 and transform.up = 2
     /// </summary>
-    static public int GetAngleAsIndex2D(float angle, int lastIndex = 0)
+    static public int GetAngleAsIndex2D(float angle, int lastIndex = 0) // TODO: To be finished
     {
         // Top angles
 /*        if (angle <= -157.5f || angle >= 157.5f) // North
@@ -88,13 +86,16 @@ public class TrigonometryUtilities
         if ((angle >= 0f   && angle <= -45f) || (angle <= 45f   && angle >= 0f))    { return 0; } // right
         if ((angle >= 135f && angle <= 180f) || (angle <= -135f && angle >= -180f)) { return 2; } // left
 
-        if (angle > 45f && angle < 135f) { return 1; } // top
+        if (angle > 45f   && angle < 135f) { return 1; } // top
         if (angle > -135f && angle < -45f) { return 3; } // bottom
 
         return lastIndex;
     }
 
-    static public void FlipSpriteHorizontally3D(Transform spriteTransform, float angle)
+    /// <summary>
+    /// Considering the angle comes from a transform.forward
+    /// </summary>
+    static public void FlipSprited3D(Transform spriteTransform, float angle)
     {
         Vector3 tempLocalScale = Vector3.one;
         if (angle > 0)
@@ -105,7 +106,10 @@ public class TrigonometryUtilities
         spriteTransform.localScale = tempLocalScale;
     }
 
-    static public void FlipSpriteHorizontally2D(Transform spriteTransform, float angle)
+    /// <summary>
+    /// Considering an angle of 0 at transform.right
+    /// </summary>
+    static public void FlipSprite2D(Transform spriteTransform, float angle)
     {
         float absAngle = Mathf.Abs(angle);
         Vector3 tempLocalScale = Vector3.one;

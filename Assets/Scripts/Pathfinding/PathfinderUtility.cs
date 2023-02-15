@@ -14,6 +14,8 @@ public class PathfinderUtility : MonoBehaviour
     public readonly int bitmaskConstraintTag = 0;
     private NNConstraint constraint;
 
+    public bool HasReachedEndOfPath => m_AIPath.reachedEndOfPath;
+
     private void Awake()
     {
         m_AIPath = GetComponent<AIPath>();
@@ -28,6 +30,18 @@ public class PathfinderUtility : MonoBehaviour
         {
             SetTargetAs(Entity_Player.Instance.transform);
         }
+    }
+
+    public void EnablePathfinding()
+    {
+        m_AIPath.enabled = true;
+        m_AIDestinationSetter.enabled = true;
+    }
+
+    public void DisablePathfinding()
+    {
+        m_AIPath.enabled = false;
+        m_AIDestinationSetter.enabled = false;
     }
 
     public void SetDefaultNNConstraint()

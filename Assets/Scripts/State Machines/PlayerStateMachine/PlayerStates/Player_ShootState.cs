@@ -15,15 +15,15 @@ public class Player_ShootState : State<Entity_Player>
     {
         Debug.Log("Enter ShootState");
 
-        m_context.DesiredActions.ConsumeAllActions(PlayerActionsType.SHOOT);
-        if(m_context.canAttack)
+        m_controller.DesiredActions.ConsumeAllActions(PlayerActionsType.SHOOT);
+        if(m_controller.canAttack)
         {
             Transform shootFrom = Entity_Player.Instance.muzzle;
             BulletBehavior bullet = WeaponManager.Instance.bulletPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
-            bullet.ShootBullet(Player_Controller.Instance.normalizedLookDirection, m_context.BulletSpeed);
-            m_context.canAttack = false;
-            m_context.attackDelay.Reset();
-            m_context.attackDelay.StartTimer();
+            bullet.ShootBullet(Player_Controller.Instance.normalizedLookDirection, m_controller.BulletSpeed);
+            m_controller.canAttack = false;
+            m_controller.attackDelay.Reset();
+            m_controller.attackDelay.StartTimer();
         }
     }
 
@@ -34,6 +34,6 @@ public class Player_ShootState : State<Entity_Player>
 
     public override void OnUpdate()
     {
-        m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
+        m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
     }
 }

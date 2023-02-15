@@ -25,22 +25,22 @@ public class Player_MoveState : State<Entity_Player>
 
     public override void OnUpdate()
     {
-        m_context.Rb.velocity = new Vector2(m_context.Controller.moveDirection.x * m_context.MovSpeed, m_context.Controller.moveDirection.y * m_context.MovSpeed);
-        if(m_context.Rb.velocity == Vector2.zero)
+        m_controller.Rb.velocity = new Vector2(m_controller.Controller.moveDirection.x * m_controller.MovSpeed, m_controller.Controller.moveDirection.y * m_controller.MovSpeed);
+        if(m_controller.Rb.velocity == Vector2.zero)
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Idle);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Idle);
         }
-        if(m_context.DesiredActions.Contains(PlayerActionsType.SHOOT)) 
+        if(m_controller.DesiredActions.Contains(PlayerActionsType.SHOOT)) 
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Shoot);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Shoot);
         }
-        if(m_context.DesiredActions.Contains(PlayerActionsType.SPECIALSHOOT))
+        if(m_controller.DesiredActions.Contains(PlayerActionsType.SPECIALSHOOT))
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_SpecialShoot);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_SpecialShoot);
         }
-        if (m_context.DesiredActions.Contains(PlayerActionsType.DODGE))
+        if (m_controller.DesiredActions.Contains(PlayerActionsType.DODGE))
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Dodge);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Dodge);
         }
     }
 }
