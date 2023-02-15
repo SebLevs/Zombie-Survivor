@@ -66,15 +66,11 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
     }
 
     /// <param name="rangeModifier">
-    /// Used to get a random range from ReactionTime - rangeModifier and ReactionTime + rangeModifier
+    /// Used to get a random range between ReactionTime - rangeModifier and ReactionTime + rangeModifier
     /// </param>
-    /// <param name="reactionModifier">
-    /// Modify the base ReactionTime by reactionModifier
-    /// </param>
-    public float GetReactionTimeInRange(float rangeModifier, float  reactionModifier = 1)
+    public float GetReactionTimeInRange(float rangeModifier)
     {
-        float modifiedReactionTime = ReactionTime * reactionModifier;
-        float rangedReactionTime = Random.Range(modifiedReactionTime * ( 1 - rangeModifier), modifiedReactionTime * (1 + rangeModifier));
+        float rangedReactionTime = Random.Range(ReactionTime * ( 1 - rangeModifier), ReactionTime * (1 + rangeModifier));
         return rangedReactionTime;
     }
 }

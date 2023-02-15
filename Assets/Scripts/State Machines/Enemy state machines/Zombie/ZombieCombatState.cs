@@ -4,7 +4,7 @@ using UnityEngine;
 public class ZombieCombatState : EnemyState
 {
     private readonly int _attackAnimHash;
-    private readonly float _attackReactionTime = Time.deltaTime * 2;
+
     public ZombieCombatState(StateControllerZombie controller) : base(controller)
     {
         _attackAnimHash = Animator.StringToHash("attack");
@@ -30,7 +30,7 @@ public class ZombieCombatState : EnemyState
 
     private IEnumerator DelayedAttack()
     {
-        yield return new WaitForSeconds(m_controller.GetReactionTimeInRange(0.5f, 2f));
+        yield return new WaitForSeconds(m_controller.GetReactionTimeInRange(0.5f));
         m_controller.Context.PathfinderUtility.DisablePathfinding();
         m_controller.Context.Animator.SetTrigger(_attackAnimHash);
     }

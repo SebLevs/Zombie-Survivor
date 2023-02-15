@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
+public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPauseListener
 {
-
     [SerializeField] private string test;
 
     [field:Header("Variables")]
@@ -109,10 +108,28 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
         {
             UpdateManager.Instance.UnSubscribeFromUpdate(this);
         }
+
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.UnSubscribeFromPauseGame(this);
+        }
     }
 
     public void OnEnable()
     {
         UpdateManager.Instance.SubscribeToUpdate(this);
+        GameManager.Instance.SubscribeToPauseGame(this);
+    }
+
+    public void OnPauseGame()
+    {
+        Rb.velocity = Vector2.zero;
+        col.enabled = false;
+    }
+
+    public void OnResumeGame()
+    {
+        Rb.velocity = Vector2.zero;
+        col.enabled = true;
     }
 }

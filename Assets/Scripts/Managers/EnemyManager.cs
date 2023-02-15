@@ -45,20 +45,4 @@ public class EnemyManager : Manager<EnemyManager>
             CurrentlyActiveEnemies.ElementAt(i).Kill();
         }
     }
-
-    public void PauseCurrentlyActiveEnemies()
-    {
-        foreach (Enemy enemy in CurrentlyActiveEnemies)
-        {
-            // Disable FSM here
-        }
-    }
-
-    public void UnPauseCurrentlyActiveEnemies()
-    {
-        foreach (Enemy enemy in CurrentlyActiveEnemies)
-        {
-            // Enable FSM here
-        }
-    }
 }

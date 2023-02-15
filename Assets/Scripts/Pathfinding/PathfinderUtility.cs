@@ -1,4 +1,5 @@
 using Pathfinding;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PathfinderUtility : MonoBehaviour
@@ -9,6 +10,7 @@ public class PathfinderUtility : MonoBehaviour
     private float m_defaultSpeed = 2.0f;               // Reference in case of immobilisation
     private AIPath m_AIPath;                           // Movement, rotation, End Reached Distance, etc.
     private AIDestinationSetter m_AIDestinationSetter; // Target
+    private Seeker m_Seeker;                           // Dependency of AIPath
 
 
     public readonly int bitmaskConstraintTag = 0;
@@ -20,6 +22,7 @@ public class PathfinderUtility : MonoBehaviour
     {
         m_AIPath = GetComponent<AIPath>();
         m_AIDestinationSetter = GetComponent<AIDestinationSetter>();
+        m_Seeker = GetComponent<Seeker>();
         m_defaultSpeed = m_AIPath.maxSpeed != 0 ? m_AIPath.maxSpeed : m_defaultSpeed;
         SetDefaultNNConstraint();
     }
@@ -36,12 +39,14 @@ public class PathfinderUtility : MonoBehaviour
     {
         m_AIPath.enabled = true;
         m_AIDestinationSetter.enabled = true;
+        m_Seeker.enabled = true;
     }
 
     public void DisablePathfinding()
     {
         m_AIPath.enabled = false;
         m_AIDestinationSetter.enabled = false;
+        m_Seeker.enabled = false;
     }
 
     public void SetDefaultNNConstraint()

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BulletBehavior : BaseProjectile, IPoolable
+public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
 {
     public bool playerIsShooting = true;
     public Rigidbody2D rb;
@@ -13,7 +11,6 @@ public class BulletBehavior : BaseProjectile, IPoolable
 
     protected override void OnStart()
     {
-        
     }
 
     protected override void OnAwake()
@@ -32,6 +29,7 @@ public class BulletBehavior : BaseProjectile, IPoolable
             WeaponManager.Instance.bulletPool.ReturnToAvailable(this);
         }
     }
+
     public void OnGetFromAvailable()
     {
         if(playerIsShooting)
@@ -45,17 +43,38 @@ public class BulletBehavior : BaseProjectile, IPoolable
         rb.velocity = Vector2.zero;
     }
 
-
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         destroyStopWatch.Reset(false);
         destroyStopWatch.StartTimer();
-        
+        GameManager.Instance.SubscribeToPauseGame(this);
     }
-    
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        GameManager.Instance.UnSubscribeFromPauseGame(this);
+
+    }
+
     public void ShootBullet(Vector2 direction, float speed)
     {
         transform.up = direction;
         rb.velocity = direction * speed;
+    }
+
+    Vector2 m_lastVelocity;
+    public void OnPauseGame()
+    {
+        m_lastVelocity = rb.velocity;
+        rb.velocity = Vector2.zero;
+        col.enabled = false;
+    }
+
+    public void OnResumeGame()
+    {
+        rb.velocity = m_lastVelocity;
+        col.enabled = true;
     }
 }

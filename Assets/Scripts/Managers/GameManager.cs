@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Manager<GameManager>
@@ -7,6 +8,13 @@ public class GameManager : Manager<GameManager>
     [Header("Play test setup")]
     [SerializeField] private bool _isPlayTest;
     [Min(1)][SerializeField] private int _playTestScene = 1; // TODO: Refactor into a scene scriptable object for easier testing
+    private HashSet<IPauseListener> _pauseListeners;
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        _pauseListeners = new HashSet<IPauseListener>();
+    }
 
     protected override void OnStart()
     {
@@ -63,22 +71,38 @@ public class GameManager : Manager<GameManager>
     public void PauseGame()
     {
         IsPaused = true;
-        EnemyManager.Instance.PauseCurrentlyActiveEnemies();
+        NotifyPauseListenersOnPause();
     }
 
-    public void UnPauseGame()
+    public void ResumeGame()
     {
         IsPaused = false;
-        EnemyManager.Instance.UnPauseCurrentlyActiveEnemies();
+        NotifyPauseListenersOnResume();
     }
 
-    public void SubscribeToPauseGame()
+    public void SubscribeToPauseGame(IPauseListener pauseListener)
     {
-
+        _pauseListeners.Add(pauseListener);
     }
 
-    public void UnsubscribeFromPauseGame()
+    public void UnSubscribeFromPauseGame(IPauseListener pauseListener)
     {
+        _pauseListeners.Remove(pauseListener);
+    }
 
+    public void NotifyPauseListenersOnPause()
+    {
+        foreach (IPauseListener pauseListener in _pauseListeners)
+        {
+            pauseListener.OnPauseGame();
+        }
+    }
+
+    public void NotifyPauseListenersOnResume()
+    {
+        foreach (IPauseListener pauseListener in _pauseListeners)
+        {
+            pauseListener.OnResumeGame();
+        }
     }
 }

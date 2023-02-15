@@ -15,7 +15,7 @@ public class Player_IdleState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        Debug.Log("Enter Idle");
+        //Debug.Log("Enter Idle");
     }
 
     public override void OnExit()

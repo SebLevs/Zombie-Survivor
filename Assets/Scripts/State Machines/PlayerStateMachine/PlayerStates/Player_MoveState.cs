@@ -15,7 +15,7 @@ public class Player_MoveState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        Debug.Log("Enter MoveState");
+        //Debug.Log("Enter MoveState");
     }
 
     public override void OnExit()

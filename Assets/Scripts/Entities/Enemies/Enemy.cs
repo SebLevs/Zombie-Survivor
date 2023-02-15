@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
+public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListener
 {
     public EnemyType Type { get; private set; }
 
@@ -59,13 +59,18 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
     {
         m_rigidbody.velocity = Vector2.zero;
         Health.FullHeal();
-        m_healthBar.Filler.SetFilling(Health.Normalized);
-        m_healthBar.Counter.Element.text = Health.CurrentHP.ToString();
+
     }
 
     public void Kill()
     {
         Health.OnInstantDeath();
+    }
+
+    public void DelegateSetHealthBarFilling()
+    {
+        m_healthBar.Filler.SetFilling(Health.Normalized);
+        //m_healthBar.Counter.Element.text = Health.CurrentHP.ToString();
     }
 
     public void OnUpdate()
@@ -84,11 +89,42 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
         {
             UpdateManager.Instance.UnSubscribeFromUpdate(this);
         }
+        if(GameManager.Instance)
+        {
+            GameManager.Instance.UnSubscribeFromPauseGame(this);
+        }
     }
 
     public void OnEnable()
     {
         UpdateManager.Instance.SubscribeToUpdate(this);
+        GameManager.Instance.SubscribeToPauseGame(this);
     }
 
+    public void OnPauseGame()
+    {
+        Animator.speed = 0f;
+
+        PathfinderUtility.DisablePathfinding();
+
+        m_rigidbody.velocity = Vector2.zero;
+        m_collider.enabled = false;
+    }
+
+    public void OnResumeGame()
+    {
+        Animator.speed = 1f;
+
+        m_collider.enabled = true;
+
+        PathfinderUtility.EnablePathfinding();
+    }
+
+    public void OnFirstHitPopupHealthBar()
+    {
+        if (!m_healthBar.gameObject.activeSelf)
+        {
+            m_healthBar.OnShowQuick();
+        }
+    }
 }

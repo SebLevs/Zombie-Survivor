@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 30c19aec3693ec14d96a67e76ddb4d6c, type: 2}
+    - target: {fileID: 2004451262384889686, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <ReactionTime>k__BackingField
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -129,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7759053166546584020, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8889025150732925512, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Sprite

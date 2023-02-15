@@ -310,8 +310,24 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 71a3fc9f-0d62-4d04-9e9e-f28d3b6244b4
-    m_ActionName: Player/Open/ClosePrompt[/Keyboard/backquote]
+    m_ActionId: 4d54fed7-539e-4753-8de9-9ee69217d863
+    m_ActionName: Player/CommandPrompt[/Keyboard/backquote]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1997386155763334276}
+        m_TargetAssemblyTypeName: Player_Controller, Assembly-CSharp
+        m_MethodName: OnOptionsMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cae71761-735d-4857-abf4-b7eab4fb1fcb
+    m_ActionName: Player/Pause
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -346,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: 
-  isInvincible: 0
+  isinvincible: 0
   isPermaInvincible: 0
   attackSpeed: 0.2
   canAttack: 1

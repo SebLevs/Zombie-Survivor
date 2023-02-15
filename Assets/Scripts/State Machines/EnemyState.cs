@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyState : State<EnemyStateController>
 {
-    protected EnemyState(EnemyStateController context) : base(context)
+    protected EnemyState(EnemyStateController controller) : base(controller)
     {
     }
 }

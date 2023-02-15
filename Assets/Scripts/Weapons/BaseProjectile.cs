@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class BaseProjectile : MonoBehaviour
+public abstract class BaseProjectile : MonoBehaviour, IFrameUpdateListener, IFixedUpdateListener
 {
 
     protected abstract void OnStart();
@@ -27,29 +27,48 @@ public abstract class BaseProjectile : MonoBehaviour
         OnStart();
     }
 
-    void Update()
-    {
-        OnUpdate();
-    }
-    private void FixedUpdate()
-    {
-        OnFixedUpdate();
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnProjectileCollisionEnter(collision);
     }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         OnProjectileCollisionLeave(collision);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         OnProjectileTriggerEnter(collision);
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         OnProjectileTriggerLeave(collision);
     }
 
+    public virtual void OnEnable()
+    {
+        UpdateManager.Instance.SubscribeToUpdate(this);
+        UpdateManager.Instance.SubscribeToFixedUpdate(this);
+    }
+
+    public virtual void OnDisable()
+    {
+        if (UpdateManager.Instance)
+        {
+            UpdateManager.Instance.UnSubscribeFromUpdate(this);
+            UpdateManager.Instance.UnSubscribeFromFixedUpdate(this);
+        }
+    }
+
+    void IFrameUpdateListener.OnUpdate()
+    {
+        OnUpdate();
+    }
+
+    void IFixedUpdateListener.OnFixedUpdate()
+    {
+        OnFixedUpdate();
+    }
 }

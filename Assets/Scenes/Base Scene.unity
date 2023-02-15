@@ -248,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: -944628639613478452, guid: a1bbe653035ad3040973d6a1962c4834, type: 3}
     - target: {fileID: 1997386155763334279, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334279, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionId
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemyHit: 0
   isPlayerHit: 0
-  isOptionPopup: 1
+  isOptionPopup: 0
 --- !u!4 &1283855952
 Transform:
   m_ObjectHideFlags: 0

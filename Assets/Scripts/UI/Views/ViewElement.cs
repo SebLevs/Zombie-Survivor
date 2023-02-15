@@ -36,6 +36,18 @@ public class ViewElement : MonoBehaviour
         m_animator.SetTrigger(_onShowHash);
     }
 
+    public virtual void OnShowQuick(Action callback = null)
+    {
+        if (gameObject.activeSelf) { return; }
+
+        gameObject.SetActive(true);
+        callback += () => m_animator.speed = 1f;
+        m_onShowAction = callback;
+
+        m_animator.SetTrigger(_onShowHash);
+        m_animator.speed = 10f;
+    }
+
     public virtual void OnHide(Action callback = null)
     {
         if (!gameObject.activeSelf) { return; }

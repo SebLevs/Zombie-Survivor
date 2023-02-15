@@ -24,7 +24,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         {
             if (_isActive)
             {
-                //Do UnPauseGame
+                //Do ResumeGame
                 inputField.gameObject.SetActive(false);
                 doneCommands.gameObject.SetActive(false);
                 _isActive = false;
