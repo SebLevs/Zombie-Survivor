@@ -62,8 +62,8 @@ public class TrigonometryUtilities
             return 3;*/
 
         // Left-Right angles
-        if (angle >= -45f || angle <= 45f) { return 1; } // right
-        if (angle >= 135f || angle <= -135f) { return 5; } // left
+        if ((angle >= -45f && angle <= 0f) || (angle <= 45f && angle >= 0f)) { return 1; } // right
+        if ((angle >= 135f && angle <= 180f) || (angle <= -135f && angle >= -180f)) { return 5; } // left
 
         // Bottom angles
 /*        if (angle > 45f && angle < 135f) // South
@@ -78,10 +78,38 @@ public class TrigonometryUtilities
         return lastIndex;
     }
 
-    static public void FlipSpriteHorizontally(Transform spriteTransform, float angle)
+    /// <summary>
+    /// Get angle as an index from 0 to 3 from transform.right and in a counter clockwise manner<br/>
+    /// where transform.right = 0 and transform.up = 1<br/>
+    /// angles are of 45 degrees
+    /// </summary>
+    static public int GetAngleAsIndex2D_Quad(float angle, int lastIndex = 0)
+    {
+        if ((angle >= 0f   && angle <= -45f) || (angle <= 45f   && angle >= 0f))    { return 0; } // right
+        if ((angle >= 135f && angle <= 180f) || (angle <= -135f && angle >= -180f)) { return 2; } // left
+
+        if (angle > 45f && angle < 135f) { return 1; } // top
+        if (angle > -135f && angle < -45f) { return 3; } // bottom
+
+        return lastIndex;
+    }
+
+    static public void FlipSpriteHorizontally3D(Transform spriteTransform, float angle)
     {
         Vector3 tempLocalScale = Vector3.one;
         if (angle > 0)
+        {
+            tempLocalScale.x *= -1.0f;
+        }
+
+        spriteTransform.localScale = tempLocalScale;
+    }
+
+    static public void FlipSpriteHorizontally2D(Transform spriteTransform, float angle)
+    {
+        float absAngle = Mathf.Abs(angle);
+        Vector3 tempLocalScale = Vector3.one;
+        if (absAngle > 90)
         {
             tempLocalScale.x *= -1.0f;
         }

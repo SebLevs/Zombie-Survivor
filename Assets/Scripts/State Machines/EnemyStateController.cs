@@ -29,7 +29,10 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
 
     public void OnDisable()
     {
-        UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        if (UpdateManager.Instance)
+        {
+            UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        }
     }
 
     public void OnEnable()

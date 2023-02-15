@@ -14,8 +14,10 @@ public class jhgjgjgjh : MonoBehaviour
     void Update()
     {
         float angle = TrigonometryUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform);
-        Debug.Log($"Angle as index: {TrigonometryUtilities.GetAngleAsIndex2D(angle)}");
+        int index = TrigonometryUtilities.GetAngleAsIndex2D_Quad(angle);
+        TrigonometryUtilities.FlipSpriteHorizontally2D(transform, angle);
+        Debug.Log($"Angle as index: {TrigonometryUtilities.GetAngleAsIndex2D_Quad(angle)}");
         
-        Debug.Log($"Angle to player: {TrigonometryUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform)}");
+        //Debug.Log($"Angle to player: {TrigonometryUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform)}");
     }
 }

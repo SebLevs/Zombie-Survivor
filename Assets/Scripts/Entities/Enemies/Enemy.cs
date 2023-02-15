@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
     protected Rigidbody2D m_rigidbody;
     protected Collider2D m_collider;
 
+    protected SpriteRenderer m_spriteRenderer;
+    protected Animator m_animator;
+
     protected EnemyStateController m_stateController;
     public PathfinderUtility PathfinderUtility { get; private set; }
 
@@ -25,6 +28,9 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
 
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
+
+        m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        m_animator = GetComponent<Animator>();
 
         m_stateController = GetComponent<EnemyStateController>();
 
@@ -66,7 +72,11 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
     {
         // TODO: Call state controller here
         m_stateController.OnUpdate();
-        Debug.Log($"Angle to player: {TrigonometryUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform)}");
+        float angle = TrigonometryUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform);
+        int index = TrigonometryUtilities.GetAngleAsIndex2D_Quad(angle);
+        TrigonometryUtilities.FlipSpriteHorizontally2D(transform, angle);
+        m_animator.SetFloat("angle", index);
+        
     }
 
     public void OnDisable()
