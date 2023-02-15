@@ -6,7 +6,7 @@ public class StateControllerZombie : EnemyStateController
     public ZombieCombatState CombatState { get; private set; }
     public ZombieDeadState DeadState { get; private set; }
 
-    protected override EnemyState GetDefaultState()
+    public override EnemyState GetDefaultState()
     {
         return ChaseState;
     }

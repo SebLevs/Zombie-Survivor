@@ -19,7 +19,12 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
     }
 
     protected abstract void InitStates();
-    protected abstract EnemyState GetDefaultState();
+    public abstract EnemyState GetDefaultState();
+
+    public void SetStateAsDefault()
+    {
+        OnTransitionState(GetDefaultState());
+    }
 
     public void OnUpdate()
     {
