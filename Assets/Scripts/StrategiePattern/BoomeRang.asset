@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b63983591d4f6a43b9b5b75eceba832, type: 3}
-  m_Name: BoomRang
+  m_Name: BoomeRang
   m_EditorClassIdentifier: 
   startLocation: {x: 0, y: 0}
   targetLocation: {x: 4.830087, y: 1.2923853}

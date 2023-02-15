@@ -27,6 +27,11 @@ public class ViewElement : MonoBehaviour
 
     protected virtual void OnStart() { }
 
+    public void OnShow() => OnShow(null);
+    public void OnShowQuick() => OnShowQuick(null);
+    public void OnHide() => OnHide(null);
+    public void OnHideQuick() => OnHideQuick(null);
+
     public virtual void OnShow(Action callback = null)
     {
         if (gameObject.activeSelf) { return; }

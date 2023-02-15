@@ -21,6 +21,19 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
         destroyStopWatch = new SequentialStopwatch(timeToDestroy);
     }
 
+    protected override void OnProjectileCollisionEnter(Collision2D collision)
+    {
+        base.OnProjectileCollisionEnter(collision);
+        if (playerIsShooting)
+        {
+            Health health = collision.gameObject.GetComponent<Health>();
+            if (health)
+            {
+                health.Hit(m_damage);
+            }
+        }
+    }
+
     protected override void OnUpdate()
     {
         destroyStopWatch.OnUpdateTime();
@@ -36,11 +49,13 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
         {
             Physics2D.IgnoreCollision(col, Entity_Player.Instance.col);
         }
+        destroyStopWatch.StartTimer();
     }
 
     public void OnReturnToAvailable()
     {
         rb.velocity = Vector2.zero;
+        destroyStopWatch.Reset(true);
     }
 
     public override void OnEnable()
@@ -55,7 +70,6 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
     {
         base.OnDisable();
         GameManager.Instance.UnSubscribeFromPauseGame(this);
-
     }
 
     public void ShootBullet(Vector2 direction, float speed)

@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
     [field:SerializeField] public UnityEvent  OnHitEvent{ get; private set; }
     [field:SerializeField] public UnityEvent OnDeathEvent { get; private set; }
 
-    public float Normalized => (m_maxHP > 0) ? m_currentHP / m_maxHP : 0;
+    public float Normalized => (m_maxHP > 0) ? (float)m_currentHP / (float)m_maxHP : 0;
 
     public int MaxHP
     {

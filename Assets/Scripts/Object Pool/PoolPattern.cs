@@ -71,7 +71,7 @@ public class PoolPattern<T> where T : Component, IPoolable
         m_currentlyUsedPool.TryGetValue(key, out element);
         m_currentlyUsedPool.Remove(key);
         m_availablePool.Add(element);
-
+        Debug.Log("Elementname: " + element.gameObject.name);
         element.gameObject.SetActive(false);
 
         SetParent(element, _availableParent);

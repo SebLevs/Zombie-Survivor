@@ -44,12 +44,12 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
 
     public void OnGetFromAvailable()
     {
+        Init();
         EnemyManager.Instance.CurrentlyActiveEnemies.Add(this);
     }
 
     public void OnReturnToAvailable()
     {
-        Init();
         EnemyManager.Instance.CurrentlyActiveEnemies.Remove(this);
     }
 
@@ -59,7 +59,6 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     {
         m_rigidbody.velocity = Vector2.zero;
         Health.FullHeal();
-
     }
 
     public void Kill()
@@ -122,7 +121,7 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
 
     public void OnFirstHitPopupHealthBar()
     {
-        if (!m_healthBar.gameObject.activeSelf)
+        if (!Health.IsDead && !m_healthBar.gameObject.activeSelf)
         {
             m_healthBar.OnShowQuick();
         }
