@@ -15,7 +15,7 @@ public class jhgjgjgjh : MonoBehaviour
     {
         float angle = MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform);
         int index = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
-        MathAngleUtilities.FlipSprite2D(transform, angle);
+        MathAngleUtilities.FlipLocalScale2D(transform, angle);
         Debug.Log($"Angle as index: {MathAngleUtilities.GetAngleAsIndex2D_Quad(angle)}");
         
         //Debug.Log($"Angle to player: {MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform)}");

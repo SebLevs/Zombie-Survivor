@@ -1628,5 +1628,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981c58201174c7a4397799a51ad01ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayTest: 1
+  _isPlayTest: 0
   _playTestScene: 1

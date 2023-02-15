@@ -71,4 +71,14 @@ public class GameManager : Manager<GameManager>
         IsPaused = false;
         EnemyManager.Instance.UnPauseCurrentlyActiveEnemies();
     }
+
+    public void SubscribeToPauseGame()
+    {
+
+    }
+
+    public void UnsubscribeFromPauseGame()
+    {
+
+    }
 }

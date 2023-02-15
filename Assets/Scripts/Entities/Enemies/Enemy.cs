@@ -74,9 +74,8 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener
         m_stateController.OnUpdate();
         float angle = MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform);
         int index = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
-        MathAngleUtilities.FlipSprite2D(transform, angle);
+        MathAngleUtilities.FlipLocalScale2D(m_spriteRenderer.transform, angle);
         Animator.SetFloat("angle", index);
-        
     }
 
     public void OnDisable()

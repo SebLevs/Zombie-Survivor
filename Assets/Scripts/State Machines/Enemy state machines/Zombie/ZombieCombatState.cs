@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 public class ZombieCombatState : EnemyState
 {
-    private const string _attackAnimName = "attack";
-    private readonly float _attackOffsetMax = Time.deltaTime * 2;
+    private readonly int _attackAnimHash;
+    private readonly float _attackReactionTime = Time.deltaTime * 2;
     public ZombieCombatState(StateControllerZombie controller) : base(controller)
     {
+        _attackAnimHash = Animator.StringToHash("attack");
     }
 
     public override void HandleStateTransition()
@@ -16,13 +16,12 @@ public class ZombieCombatState : EnemyState
 
     public override void OnEnter()
     {
-        Debug.Log($"{m_controller.Context.name} COMBAT ENTER");
-
         m_controller.StartCoroutine(DelayedAttack());
     }
 
     public override void OnExit()
     {
+        m_controller.StopAllCoroutines();
     }
 
     public override void OnUpdate()
@@ -31,9 +30,8 @@ public class ZombieCombatState : EnemyState
 
     private IEnumerator DelayedAttack()
     {
-        float attackOffset = Random.Range(0, _attackOffsetMax);
-        yield return new WaitForSeconds(attackOffset);
+        yield return new WaitForSeconds(m_controller.GetReactionTimeInRange(0.5f, 2f));
         m_controller.Context.PathfinderUtility.DisablePathfinding();
-        m_controller.Context.Animator.SetTrigger(_attackAnimName);
+        m_controller.Context.Animator.SetTrigger(_attackAnimHash);
     }
 }

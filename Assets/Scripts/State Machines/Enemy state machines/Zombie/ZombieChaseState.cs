@@ -16,7 +16,6 @@ public class ZombieChaseState : EnemyState
 
     public override void OnEnter()
     {
-        Debug.Log($"{m_controller.Context.name} CHASE ENTER");
         m_controller.Context.PathfinderUtility.EnablePathfinding();
     }
 

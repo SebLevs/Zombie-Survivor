@@ -95,7 +95,7 @@ public class MathAngleUtilities
     /// <summary>
     /// Considering the angle comes from a transform.forward
     /// </summary>
-    static public void FlipSprited3D(Transform spriteTransform, float angle)
+    static public void FlipLocalScale3D(Transform spriteTransform, float angle)
     {
         Vector3 tempLocalScale = Vector3.one;
         if (angle > 0)
@@ -109,7 +109,7 @@ public class MathAngleUtilities
     /// <summary>
     /// Considering an angle of 0 at transform.right
     /// </summary>
-    static public void FlipSprite2D(Transform spriteTransform, float angle)
+    static public void FlipLocalScale2D(Transform spriteTransform, float angle)
     {
         float absAngle = Mathf.Abs(angle);
         Vector3 tempLocalScale = Vector3.one;
