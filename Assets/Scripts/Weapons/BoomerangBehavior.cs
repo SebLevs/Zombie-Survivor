@@ -60,6 +60,9 @@ public class BoomerangBehavior : BaseProjectile, IPoolable
     protected override void OnProjectileTriggerEnter(Collider2D collision)
     {
         base.OnProjectileTriggerEnter(collision);
+
+        if (!EvaluateLayers(collision.gameObject.layer, TargetMask)) { return; }
+
         Health health = collision.gameObject.GetComponent<Health>();
         if (health)
         {

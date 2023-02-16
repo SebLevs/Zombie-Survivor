@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1997386154977626076}
   - component: {fileID: 1997386154977626079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 1997386155763334283}
   - component: {fileID: 1997386155763334282}
   - component: {fileID: 4389486347920131965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

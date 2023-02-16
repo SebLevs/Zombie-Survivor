@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 9142306495988821083}
   - component: {fileID: 6216560763761985759}
   - component: {fileID: 751069355276222264}
-  m_Layer: 0
-  m_Name: AttackTrigger
+  - component: {fileID: 2425986375866532516}
+  m_Layer: 8
+  m_Name: Melee Hit spawn location
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9142306495988821083
 Transform:
   m_ObjectHideFlags: 0
@@ -29,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 325488269750656877}
   m_Father: {fileID: 5496854209455936502}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40,7 +42,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884238230350648038}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -88,6 +90,51 @@ MonoBehaviour:
         m_CallState: 2
   _isLookAtPlayer: 1
   _target: {fileID: 0}
+--- !u!114 &2425986375866532516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884238230350648038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df7989663c3cd6744aa6d6a1a5ceb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_damage: 10
+  _targetMask: 3
+--- !u!1 &9185567963655350325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325488269750656877}
+  m_Layer: 8
+  m_Name: Spawn Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &325488269750656877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185567963655350325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9142306495988821083}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3968962651950262719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57be4f9e3fdf88a4c9821c0d778fdddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Experience>k__BackingField: 0
 --- !u!114 &6147737196562750533
 MonoBehaviour:
   m_ObjectHideFlags: 0

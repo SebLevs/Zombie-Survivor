@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5592188339845763378}
   - component: {fileID: 5712327433394221848}
   - component: {fileID: 157140098098157664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 434989448525121859}
   - component: {fileID: 2997503910717666961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 2625723577708642913}
   - component: {fileID: 2004451262384889686}
   - component: {fileID: 7341633155239485278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,8 +410,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1673148623759901411}
     m_Modifications:
     - target: {fileID: 4843832522737204090, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843832522737204090, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513034664536923873, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6693007977260332942, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_Pivot.x
@@ -497,9 +505,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6729665173016097931, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8930305238594402825, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_Name
       value: Filling bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930305238594402825, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8930305238594402825, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_IsActive

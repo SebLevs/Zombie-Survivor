@@ -25,7 +25,7 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
     {
         base.OnProjectileCollisionEnter(collision);
 
-        if (playerIsShooting)
+        if (playerIsShooting) // (EvaluateLayers(collision.gameObject.layer, GetTargetMaskValue))
         {
             Health health = collision.gameObject.GetComponent<Health>();
             if (health)
@@ -51,6 +51,10 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
         {
             Physics2D.IgnoreCollision(col, Entity_Player.Instance.col);
         }
+/*        else
+        {
+            Physics2D.IgnoreCollision(col, null);
+        }*/
         destroyStopWatch.StartTimer();
     }
 

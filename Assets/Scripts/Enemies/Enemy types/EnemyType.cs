@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class EnemyType : MonoBehaviour
 {
+    [field:Header("Type specific datas")]
     [field:SerializeField] public int Experience { get; private set; }
 
     protected Enemy m_context;
@@ -10,6 +11,7 @@ public abstract class EnemyType : MonoBehaviour
     {
         OnAwake();
     }
+
     protected virtual void OnAwake() { }
 
     private void Start()
@@ -17,7 +19,7 @@ public abstract class EnemyType : MonoBehaviour
         OnStart();
     }
 
-    protected virtual void OnStart() { }
+    public virtual void OnStart() { }
 
     public abstract void ReturnToPool();
 

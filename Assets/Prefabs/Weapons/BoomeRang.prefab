@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_damage: 20
+  <TargetMask>k__BackingField: 8
   startLocation: {x: 0, y: 0}
   targetLocation: {x: 0, y: 0}
   moveCurveGo:
@@ -161,6 +162,7 @@ MonoBehaviour:
   moveDurationGo: 2
   moveDurationBack: 1
   isShot: 0
+  _rotationSpeed: 720
 --- !u!58 &7547886854854762129
 CircleCollider2D:
   m_ObjectHideFlags: 0

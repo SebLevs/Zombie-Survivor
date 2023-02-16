@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class BaseCollisionHandler : MonoBehaviour
 {
+    [Header("Target layer mask as int")]
+    [SerializeField] [Min(0)] protected int _targetMask;
+
     protected Rigidbody2D m_rigidBody;
     protected Collider2D m_collider;
 
@@ -21,25 +24,30 @@ public class BaseCollisionHandler : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (GameManager.Instance.IsPaused) { return; }
         OnEntityCollisionEnter(collision);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (GameManager.Instance.IsPaused) { return; }
         OnEntityCollisionExit(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.Instance.IsPaused) { return; }
         OnEntityTriggerEnter(collision);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (GameManager.Instance.IsPaused) { return; }
         OnEntityTriggerStay(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (GameManager.Instance.IsPaused) { return; }
         OnEntityTriggerExit(collision);
     }
 
@@ -51,5 +59,10 @@ public class BaseCollisionHandler : MonoBehaviour
     private void Start()
     {
         OnStart();
+    }
+
+    protected bool EvaluateLayers(int otherLayer, int targetLayer)
+    {
+        return otherLayer == targetLayer;
     }
 }

@@ -22,7 +22,7 @@ public class Player_SpecialShootState : State<Entity_Player>
             Transform shootFrom = Entity_Player.Instance.muzzle;
             BoomerangBehavior boomerang = WeaponManager.Instance.boomPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
             boomerang.ShootBoom();
-            //boomerang.strategy.Execute(boomerang);
+            //boomerang.strategy.ExecuteOnEnable(boomerang);
             m_controller.canSpecialAttack = false;
             m_controller.specialAttackDelay.Reset();
             m_controller.specialAttackDelay.StartTimer();

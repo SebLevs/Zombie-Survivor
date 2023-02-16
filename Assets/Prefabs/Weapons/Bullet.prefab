@@ -100,6 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_damage: 10
+  _targetMask:
+    serializedVersion: 2
+    m_Bits: 256
   playerIsShooting: 0
   rb: {fileID: 0}
   col: {fileID: 0}

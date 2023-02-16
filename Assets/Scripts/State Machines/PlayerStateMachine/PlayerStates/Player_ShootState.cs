@@ -21,6 +21,7 @@ public class Player_ShootState : State<Entity_Player>
             Transform shootFrom = Entity_Player.Instance.muzzle;
             BulletBehavior bullet = WeaponManager.Instance.bulletPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
             bullet.playerIsShooting = true;
+            bullet.TargetMask = m_controller.Mask;
             Physics2D.IgnoreCollision(bullet.col, Entity_Player.Instance.col); // TODO: Change for layer check instead?
             bullet.ShootBullet(Player_Controller.Instance.normalizedLookDirection, m_controller.BulletSpeed);
             m_controller.canAttack = false;
