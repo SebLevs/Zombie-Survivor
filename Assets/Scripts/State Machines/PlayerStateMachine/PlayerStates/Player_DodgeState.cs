@@ -23,22 +23,22 @@ public class Player_DodgeState : State<Entity_Player>
     public override void OnEnter()
     {
         Debug.Log("Enter dodgeState");
-        m_context.DesiredActions.ConsumeAllActions(PlayerActionsType.DODGE);
-        if(m_context.canDodge)
+        m_controller.DesiredActions.ConsumeAllActions(PlayerActionsType.DODGE);
+        if(m_controller.canDodge)
         {
             Vector2 dodgeDirection = Player_Controller.Instance.currentPlayerLookDirection;
-            startLocation = m_context.transform.position;
-            targetLocation = new Vector2(startLocation.x + (dodgeDirection.x * m_context.dodgeDistance), startLocation.y + (dodgeDirection.y * m_context.dodgeDistance));
+            startLocation = m_controller.transform.position;
+            targetLocation = new Vector2(startLocation.x + (dodgeDirection.x * m_controller.dodgeDistance), startLocation.y + (dodgeDirection.y * m_controller.dodgeDistance));
             isRolling = true;
             moveStopWatch = 0;
-            m_context.Rb.velocity = Vector2.zero;
-            m_context.canDodge = false;
-            m_context.dodgeDelay.Reset();
-            m_context.dodgeDelay.StartTimer();
+            m_controller.Rb.velocity = Vector2.zero;
+            m_controller.canDodge = false;
+            m_controller.dodgeDelay.Reset();
+            m_controller.dodgeDelay.StartTimer();
         }
         else
         {
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
         }
     }
 
@@ -52,12 +52,12 @@ public class Player_DodgeState : State<Entity_Player>
         if(isRolling)
         {
             moveStopWatch += Time.deltaTime;
-            m_context.transform.position = Vector2.Lerp(startLocation, targetLocation, m_context.dodgeCurve.Evaluate(moveStopWatch / moveDuration));
+            m_controller.transform.position = Vector2.Lerp(startLocation, targetLocation, m_controller.dodgeCurve.Evaluate(moveStopWatch / moveDuration));
         }
-        if(m_context.transform.position.x == targetLocation.x && m_context.transform.position.y == targetLocation.y)
+        if(m_controller.transform.position.x == targetLocation.x && m_controller.transform.position.y == targetLocation.y)
         {
             isRolling= false;
-            m_context.StateController.OnTransitionState(m_context.StateContainer.State_Move);
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
         }
     }
 }

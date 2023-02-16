@@ -313,7 +313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c027b02d671367b4d815b656dadb54ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fillingBar: {fileID: 0}
 --- !u!1 &8930305238594402825
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +324,7 @@ GameObject:
   - component: {fileID: 6693007977260332942}
   - component: {fileID: 8919546489346121541}
   - component: {fileID: 751948003236894133}
+  - component: {fileID: 6737880722339814460}
   m_Layer: 0
   m_Name: Filling bar
   m_TagString: Untagged
@@ -387,5 +387,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ac95e71c03f5547a80c4f90ab9b1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_defaultShowEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_defaultHideEvent:
+    m_PersistentCalls:
+      m_Calls: []
   <Filler>k__BackingField: {fileID: 460041996825803181}
   <Counter>k__BackingField: {fileID: 4825036359261445504}
+--- !u!225 &6737880722339814460
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930305238594402825}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

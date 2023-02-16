@@ -13,8 +13,13 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewElement ViewEmpty { get; private set; }
     [field:Space(10)]
     [field: SerializeField] public ViewElement ViewTitleScreen { get; private set; }
-    [field: SerializeField] public ViewElement ViewOptionMenu { get; private set; }
+    [field: SerializeField] public ViewElementOptions ViewOptionMenu { get; private set; }
     [field: SerializeField] public ViewElement ViewBlackScreen { get; private set; }
+    [field: SerializeField] public ViewElement ViewDeathScreen { get; private set; }
+    [field: Space(10)]
+
+    [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerHealthBar;
+    [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerExperienceBar;
 
     /// <summary>
     /// Syncronous switch view: <br/>
@@ -67,15 +72,20 @@ public class UIManager : Manager<UIManager>
 
     public void ShowHUD()
     {
-        // ViewName.OnShow();
+        ViewPlayerHealthBar.OnShow();
+        ViewPlayerExperienceBar.OnShow();
     }
 
     public void HideHUD()
     {
-        // Example
-        /*if (ViewCrosshair.gameObject.activeSelf && ViewCrosshair != CurrentView)
+        if (ViewPlayerHealthBar.gameObject.activeSelf && ViewPlayerHealthBar != CurrentView)
         {
-            ViewCrosshair.OnHideQuick();
-        }*/
+            ViewPlayerHealthBar.OnHideQuick();
+        }
+
+        if (ViewPlayerExperienceBar.gameObject.activeSelf && ViewPlayerExperienceBar != CurrentView)
+        {
+            ViewPlayerExperienceBar.OnHideQuick();
+        }
     }
 }

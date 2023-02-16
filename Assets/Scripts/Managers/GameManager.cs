@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Manager<GameManager>
@@ -7,6 +8,13 @@ public class GameManager : Manager<GameManager>
     [Header("Play test setup")]
     [SerializeField] private bool _isPlayTest;
     [Min(1)][SerializeField] private int _playTestScene = 1; // TODO: Refactor into a scene scriptable object for easier testing
+    private HashSet<IPauseListener> _pauseListeners;
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        _pauseListeners = new HashSet<IPauseListener>();
+    }
 
     protected override void OnStart()
     {
@@ -20,8 +28,8 @@ public class GameManager : Manager<GameManager>
             return; 
         }
 
-        UIManager.Instance.ViewBackgroundBlackScreen.OnShow();
-        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewTitleScreen);
+        UIManager.Instance.ViewBackgroundBlackScreen.gameObject.SetActive(true);
+        SceneLoadManager.Instance.GoToTitleScreen();
     }
 
     public void SetCursorLockState(CursorLockMode lockMode)
@@ -31,10 +39,13 @@ public class GameManager : Manager<GameManager>
 
     private void InitiatePlayTest()
     {
-        Debug.Log($"Play test started on scene: {_playTestScene}");
+        Debug.LogWarning($"Play test started on scene: {_playTestScene}");
         SceneLoadManager.Instance.OnLoadScene(_playTestScene);
-        UIManager.Instance.ViewBackgroundBlackScreen.OnHide();
-        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
+
+        UIManager uiManager = UIManager.Instance;
+        uiManager.ViewBackgroundBlackScreen.OnHide();
+        uiManager.ShowHUD();
+        uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
     }
 
     public void StartGame()
@@ -43,11 +54,7 @@ public class GameManager : Manager<GameManager>
         UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, 
         showCallback: () =>
         {
-            TimerManager.Instance.AddSequentialTimer(1f, callback: () =>
-            {
-                SceneLoadManager.Instance.OnLoadScene(1);
-                UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
-            });
+            SceneLoadManager.Instance.OnLoadScene(1);
         });
     }
 
@@ -62,13 +69,44 @@ public class GameManager : Manager<GameManager>
 
     public void PauseGame()
     {
+        if (IsPaused) { return; }
+
         IsPaused = true;
-        EnemyManager.Instance.PauseCurrentlyActiveEnemies();
+        NotifyPauseListenersOnPause();
     }
 
-    public void UnPauseGame()
+    public void ResumeGame()
     {
+        if (!IsPaused) { return; }
+
         IsPaused = false;
-        EnemyManager.Instance.UnPauseCurrentlyActiveEnemies();
+        NotifyPauseListenersOnResume();
+        //CommandPromptManager.Instance.DeActivate();
+    }
+
+    public void SubscribeToPauseGame(IPauseListener pauseListener)
+    {
+        _pauseListeners.Add(pauseListener);
+    }
+
+    public void UnSubscribeFromPauseGame(IPauseListener pauseListener)
+    {
+        _pauseListeners.Remove(pauseListener);
+    }
+
+    public void NotifyPauseListenersOnPause()
+    {
+        foreach (IPauseListener pauseListener in _pauseListeners)
+        {
+            pauseListener.OnPauseGame();
+        }
+    }
+
+    public void NotifyPauseListenersOnResume()
+    {
+        foreach (IPauseListener pauseListener in _pauseListeners)
+        {
+            pauseListener.OnResumeGame();
+        }
     }
 }

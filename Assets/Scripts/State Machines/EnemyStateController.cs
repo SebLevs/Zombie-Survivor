@@ -1,7 +1,16 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
 {
+    [field:Header("Reaction time: Used for attack, state transitions, etc.")]
+    [field:Tooltip(
+        "Human reaction time in seconds: \n" +
+        "Visual stimulus: ~0.25\n" + 
+        "Audio stimulus: ~0.17\n"+
+        "Touch stimulus: ~0.15\n")]
+    [field:Min(0)][field:SerializeField] public float ReactionTime { get; private set; }
+
     public Enemy Context { get; private set; }
     public EnemyState CurrentState { get; private set; }
 
@@ -19,7 +28,12 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
     }
 
     protected abstract void InitStates();
-    protected abstract EnemyState GetDefaultState();
+    public abstract EnemyState GetDefaultState();
+
+    public void SetStateAsDefault()
+    {
+        OnTransitionState(GetDefaultState());
+    }
 
     public void OnUpdate()
     {
@@ -29,7 +43,10 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
 
     public void OnDisable()
     {
-        UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        if (UpdateManager.Instance)
+        {
+            UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        }
     }
 
     public void OnEnable()
@@ -46,5 +63,14 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
         CurrentState.OnExit();
         CurrentState = state;
         CurrentState.OnEnter();
+    }
+
+    /// <param name="rangeModifier">
+    /// Used to get a random range between ReactionTime - rangeModifier and ReactionTime + rangeModifier
+    /// </param>
+    public float GetReactionTimeInRange(float rangeModifier)
+    {
+        float rangedReactionTime = Random.Range(ReactionTime * ( 1 - rangeModifier), ReactionTime * (1 + rangeModifier));
+        return rangedReactionTime;
     }
 }

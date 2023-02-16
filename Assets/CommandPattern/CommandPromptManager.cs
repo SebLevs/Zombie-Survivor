@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,36 +7,53 @@ public class CommandPromptManager : Manager<CommandPromptManager>
     [SerializeField] private CommandInvoker playerCommandInvoker;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text doneCommands;
-    private bool _isActive = false;
+    public bool IsActive = false;
     private string _isValidCommand;
     private string _inputCommand;
 
     protected override void OnStart()
     {
         base.OnStart();
-        _isActive = false;
+        IsActive = false;
     }
 
     public void ToggleActivatePrompt(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if (_isActive)
+            if (IsActive)
             {
-                //Do UnPauseGame
-                inputField.gameObject.SetActive(false);
-                doneCommands.gameObject.SetActive(false);
-                _isActive = false;
+                if (!SceneLoadManager.Instance.IsInTitleScreen && UIManager.Instance.CurrentView != UIManager.Instance.ViewOptionMenu)
+                {
+                    GameManager.Instance.ResumeGame();
+                }
+                DeActivate();
             }
             else
             {
-                // Do PauseGame
-                inputField.gameObject.SetActive(true);
-                doneCommands.gameObject.SetActive(true);
-                _isActive = true;
-                inputField.Select();
+                GameManager.Instance.PauseGame();
+                Activate();
             }
         }
+    }
+
+    public void Activate()
+    {
+        Entity_Player.Instance.Controller.enabled = false;
+        Entity_Player.Instance.enabled = false;
+        inputField.gameObject.SetActive(true);
+        doneCommands.gameObject.SetActive(true);
+        IsActive = true;
+        inputField.Select();
+    }
+
+    public void DeActivate()
+    {
+        Entity_Player.Instance.Controller.enabled = true;
+        Entity_Player.Instance.enabled = true;
+        inputField.gameObject.SetActive(false);
+        doneCommands.gameObject.SetActive(false);
+        IsActive = false;
     }
 
     public void CheckCommandPrompt()

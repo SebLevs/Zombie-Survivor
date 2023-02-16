@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
+public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPauseListener
 {
+    public readonly int Mask = 3;
 
     [SerializeField] private string test;
 
@@ -46,6 +47,9 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
     public StateController<Entity_Player> StateController { get; private set; }
     public Player_StateContainer StateContainer { get; private set; }
 
+    [field:Header("Health")]
+    public Health Health { get; private set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -61,6 +65,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
         specialAttackDelay = new SequentialTimer(specialAttackSpeed);
         attackDelay = new SequentialTimer(attackSpeed);
         dodgeDelay = new SequentialTimer(DodgeInterval);
+        Health = GetComponent<Health>();
     }
     protected override void OnStart()
     {
@@ -70,6 +75,26 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
         attackDelay.JumpToTime(0f);
         specialAttackDelay.JumpToTime(0f);
         dodgeDelay.JumpToTime(0f);
+        //Init();
+    }
+
+    public void RefreshHealthBar()
+    {
+        UIManager uIManager = UIManager.Instance;
+        uIManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
+        uIManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
+    }
+
+    public void RefreshExperienceBar()
+    {
+
+    }
+
+    public void Init()
+    {
+        Health.FullHeal();
+        RefreshHealthBar();
+        transform.position = Vector3.zero;
     }
 
     public void RefreshWeaponStats()
@@ -109,10 +134,30 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener
         {
             UpdateManager.Instance.UnSubscribeFromUpdate(this);
         }
+
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.UnSubscribeFromPauseGame(this);
+        }
     }
 
     public void OnEnable()
     {
         UpdateManager.Instance.SubscribeToUpdate(this);
+        GameManager.Instance.SubscribeToPauseGame(this);
+    }
+
+    public void OnPauseGame()
+    {
+        transform.rotation = Quaternion.Euler(Vector3.zero); // TODO: Temporary fix for sprite rotating on pause, might be fixed when player prefab is completed
+        Rb.velocity = Vector2.zero; 
+        col.enabled = false;
+        Controller.currentLookAngle = 0;
+    }
+
+    public void OnResumeGame()
+    {
+        col.enabled = true;
+        DesiredActions.PurgeAllAction();
     }
 }

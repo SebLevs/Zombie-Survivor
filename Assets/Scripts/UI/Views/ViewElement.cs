@@ -27,6 +27,11 @@ public class ViewElement : MonoBehaviour
 
     protected virtual void OnStart() { }
 
+    public void OnShow() { StopAllCoroutines(); OnShow(null); }
+    public void OnShowQuick() { StopAllCoroutines(); OnShowQuick(null); }
+    public void OnHide() { StopAllCoroutines(); OnHide(null); } 
+    public void OnHideQuick() { StopAllCoroutines(); OnHideQuick(null); }
+
     public virtual void OnShow(Action callback = null)
     {
         if (gameObject.activeSelf) { return; }
@@ -34,6 +39,18 @@ public class ViewElement : MonoBehaviour
         gameObject.SetActive(true);
         m_onShowAction = callback;
         m_animator.SetTrigger(_onShowHash);
+    }
+
+    public virtual void OnShowQuick(Action callback = null)
+    {
+        if (gameObject.activeSelf) { return; }
+
+        gameObject.SetActive(true);
+        callback += () => m_animator.speed = 1f;
+        m_onShowAction = callback;
+
+        m_animator.SetTrigger(_onShowHash);
+        m_animator.speed = 10f;
     }
 
     public virtual void OnHide(Action callback = null)
@@ -73,5 +90,10 @@ public class ViewElement : MonoBehaviour
         {
             _callback.Invoke();
         }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }

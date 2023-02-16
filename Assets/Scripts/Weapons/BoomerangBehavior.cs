@@ -12,10 +12,10 @@ public class BoomerangBehavior : BaseProjectile, IPoolable
     private float _moveStopWatch = 0;
     public bool isShot = false;
     private float _rotationZ;
-    private float _rotationSpeed = 720f;
+    [SerializeField] private float _rotationSpeed = 720f;
+
     protected override void OnStart()
     {
-        
     }
 
     protected override void OnAwake()
@@ -57,6 +57,20 @@ public class BoomerangBehavior : BaseProjectile, IPoolable
         }
     }
 
+    protected override void OnProjectileTriggerEnter(Collider2D collision)
+    {
+        base.OnProjectileTriggerEnter(collision);
+
+        if (!EvaluateLayers(collision.gameObject.layer, TargetMask)) { return; }
+
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health)
+        {
+            health.Hit(m_damage);
+        }
+    }
+
+
     public void OnGetFromAvailable()
     {
         _rotationZ = 0f;
@@ -74,6 +88,4 @@ public class BoomerangBehavior : BaseProjectile, IPoolable
     {
         isShot = true;
     }
-
-    
 }

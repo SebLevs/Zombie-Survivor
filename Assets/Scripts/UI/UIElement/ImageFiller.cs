@@ -15,9 +15,14 @@ public class ImageFiller: MonoBehaviour
     /// Set the filling of the bar based on a normalised (0 to 1) value <br/>
     /// Value will be clamped automatically at 1
     /// </summary>
-    public virtual void SetFilling(float _fillingNormalised)
+    public virtual void SetFilling(float fillingNormalised)
     {
-        m_fillingBar.fillAmount = (_fillingNormalised > 1.0f) ? 1.0f : _fillingNormalised;
+        m_fillingBar.fillAmount = (fillingNormalised > 1.0f) ? 1.0f : fillingNormalised;
+    }
+
+    public virtual void SetFilling(Health health)
+    {
+        m_fillingBar.fillAmount = (health.Normalized > 1.0f) ? 1.0f : health.Normalized;
     }
 
     public void ResetFilling()

@@ -15,6 +15,20 @@ public class AudioManager : Manager<AudioManager>
         _audioSource = GetComponent<AudioSource>();
     }
 
+    protected override void OnStart()
+    {
+        base.OnStart();
+        DelegateSetVolumeSlidersAsPlayerPrefs();
+    }
+
+    private void DelegateSetVolumeSlidersAsPlayerPrefs()
+    {
+        UIManager uiManager = UIManager.Instance;
+        uiManager.ViewOptionMenu.gameObject.SetActive(true);
+        uiManager.ViewOptionMenu.SetVolumeSlidersAsPlayerPrefs();
+        uiManager.ViewOptionMenu.gameObject.SetActive(false);
+    }
+
     public void MuteGame()
     {
         _volumeMaster.SetParameter(-80);

@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
-public class Player_Controller : MonoBehaviour
+public class Player_Controller : MonoBehaviour, IFrameUpdateListener
 {
     private static Player_Controller instance;
     public static Player_Controller Instance => instance;
@@ -62,12 +59,44 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    public void OnOptionsMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameManager gameManager = GameManager.Instance;
+            UIManager uiManager = UIManager.Instance;
 
-    private void Update()
+            uiManager.CurrentView.StopAllCoroutines();
+
+            if (uiManager.CurrentView != uiManager.ViewOptionMenu)
+            {
+                gameManager.PauseGame();
+                uiManager.OnSwitchViewSequential(uiManager.ViewOptionMenu);
+            }
+            else
+            {
+                if (SceneLoadManager.Instance.IsInTitleScreen)
+                {
+                    uiManager.OnSwitchViewSequential(uiManager.ViewTitleScreen);
+                }
+                else
+                {
+                    uiManager.OnSwitchViewSequential(uiManager.ViewEmpty, showCallback: () =>
+                    {
+                        if (!CommandPromptManager.Instance.IsActive)
+                        {
+                            gameManager.ResumeGame();
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    public void OnUpdate()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         normalizedLookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
-
 
         if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y >= 0.7f)
         {
@@ -94,5 +123,18 @@ public class Player_Controller : MonoBehaviour
             currentPlayerLookDirection.y = 0;
         }
         playerRef.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
+    }
+
+    public void OnEnable()
+    {
+        UpdateManager.Instance.SubscribeToUpdate(this);
+    }
+
+    public void OnDisable()
+    {
+        if (UpdateManager.Instance)
+        {
+            UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        }
     }
 }
