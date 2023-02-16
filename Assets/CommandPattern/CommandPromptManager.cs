@@ -23,20 +23,34 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         {
             if (_isActive)
             {
-                //Do ResumeGame
-                inputField.gameObject.SetActive(false);
-                doneCommands.gameObject.SetActive(false);
-                _isActive = false;
+                GameManager.Instance.ResumeGame();
+                DeActivate();
             }
             else
             {
-                // Do PauseGame
-                inputField.gameObject.SetActive(true);
-                doneCommands.gameObject.SetActive(true);
-                _isActive = true;
-                inputField.Select();
+                GameManager.Instance.PauseGame();
+                Activate();
             }
         }
+    }
+
+    public void Activate()
+    {
+        Entity_Player.Instance.Controller.enabled = false;
+        Entity_Player.Instance.enabled = false;
+        inputField.gameObject.SetActive(true);
+        doneCommands.gameObject.SetActive(true);
+        _isActive = true;
+        inputField.Select();
+    }
+
+    public void DeActivate()
+    {
+        Entity_Player.Instance.Controller.enabled = true;
+        Entity_Player.Instance.enabled = true;
+        inputField.gameObject.SetActive(false);
+        doneCommands.gameObject.SetActive(false);
+        _isActive = false;
     }
 
     public void CheckCommandPrompt()

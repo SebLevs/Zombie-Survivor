@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : Manager<SceneLoadManager>
 {
+    public bool IsInTitleScreen = true;
+
     // using UnityEditor;
     // [SerializeField] private SceneAsset _levelOne; // Will prevent build because it uses unity editor | use a Scriptable object
     [SerializeField] private float _minimalWaitTime;
@@ -55,6 +57,8 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         //_uiManager.View_loadingBarLevel.FillingBarElement.SetFilling(1.0f);
         //_uiManager.View_loadingBarLevel.OnHide();
 
+        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
+
         //async.allowSceneActivation = true;
         async = null;
         InitScene();
@@ -64,10 +68,14 @@ public class SceneLoadManager : Manager<SceneLoadManager>
     {
         // TODO: Delete if SceneController.cs is implemented in the scope of the project
         AudioManager.Instance.PlayLoopingClip(AudioManager.Instance.AmbianceClip);
+
+        IsInTitleScreen = false;
+        GameManager.Instance.ResumeGame();
     }
 
     public void GoToTitleScreen()
     {
+        GameManager.Instance.PauseGame();
         UIManager uiManager = UIManager.Instance;
 
         // TODO: Delete if SceneController.cs is implemented in the scope of the project
@@ -79,6 +87,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
             UnloadCurrentScene();
             uiManager.ViewBackgroundBlackScreen.OnShow();
             uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewTitleScreen);
+            IsInTitleScreen = true;
         });
     }
 }

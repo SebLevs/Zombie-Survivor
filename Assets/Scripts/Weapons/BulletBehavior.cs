@@ -24,6 +24,7 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
     protected override void OnProjectileCollisionEnter(Collision2D collision)
     {
         base.OnProjectileCollisionEnter(collision);
+
         if (playerIsShooting)
         {
             Health health = collision.gameObject.GetComponent<Health>();
@@ -32,6 +33,7 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
                 health.Hit(m_damage);
             }
         }
+        WeaponManager.Instance.bulletPool.ReturnToAvailable(this);
     }
 
     protected override void OnUpdate()
@@ -56,13 +58,12 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
     {
         rb.velocity = Vector2.zero;
         destroyStopWatch.Reset(true);
+        playerIsShooting = false;
     }
 
     public override void OnEnable()
     {
         base.OnEnable();
-        destroyStopWatch.Reset(false);
-        destroyStopWatch.StartTimer();
         GameManager.Instance.SubscribeToPauseGame(this);
     }
 

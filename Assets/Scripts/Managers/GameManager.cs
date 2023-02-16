@@ -28,8 +28,8 @@ public class GameManager : Manager<GameManager>
             return; 
         }
 
-        UIManager.Instance.ViewBackgroundBlackScreen.OnShow();
-        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewTitleScreen);
+        UIManager.Instance.ViewBackgroundBlackScreen.gameObject.SetActive(true);
+        SceneLoadManager.Instance.GoToTitleScreen();
     }
 
     public void SetCursorLockState(CursorLockMode lockMode)
@@ -39,7 +39,7 @@ public class GameManager : Manager<GameManager>
 
     private void InitiatePlayTest()
     {
-        Debug.Log($"Play test started on scene: {_playTestScene}");
+        Debug.LogWarning($"Play test started on scene: {_playTestScene}");
         SceneLoadManager.Instance.OnLoadScene(_playTestScene);
         UIManager.Instance.ViewBackgroundBlackScreen.OnHide();
         UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
@@ -51,11 +51,7 @@ public class GameManager : Manager<GameManager>
         UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, 
         showCallback: () =>
         {
-            TimerManager.Instance.AddSequentialTimer(1f, callback: () =>
-            {
-                SceneLoadManager.Instance.OnLoadScene(1);
-                UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
-            });
+            SceneLoadManager.Instance.OnLoadScene(1);
         });
     }
 
@@ -70,14 +66,19 @@ public class GameManager : Manager<GameManager>
 
     public void PauseGame()
     {
+        if (IsPaused) { return; }
+
         IsPaused = true;
         NotifyPauseListenersOnPause();
     }
 
     public void ResumeGame()
     {
+        if (!IsPaused) { return; }
+
         IsPaused = false;
         NotifyPauseListenersOnResume();
+        CommandPromptManager.Instance.DeActivate();
     }
 
     public void SubscribeToPauseGame(IPauseListener pauseListener)
