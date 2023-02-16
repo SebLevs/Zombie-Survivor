@@ -11,6 +11,10 @@ public class Health : MonoBehaviour
     [Header("Health")]
     [SerializeField] private int m_maxHP;
 
+    [Header("Audio")]
+    [SerializeField] private AudioElement m_hitSound;
+    [SerializeField] private AudioElement m_deathSound;
+
     [field:Header("Events")]
     [field:SerializeField] public UnityEvent  OnHitEvent{ get; set; }
     [field:SerializeField] public UnityEvent OnDeathEvent { get; set; }
@@ -64,8 +68,8 @@ public class Health : MonoBehaviour
         OnHitEvent?.Invoke();
             
         m_animator.SetTrigger(_onHitAnimHash);
-        // TODO: play sound here? Play in animation as an even instead? If so, make an audio class that can be called from animation event
-        // m_audioControllerHit.PlayOneShot();
+
+        PlayOneShotHit();
 
         OnDeath();
     }
@@ -84,8 +88,7 @@ public class Health : MonoBehaviour
     
         OnDeathEvent?.Invoke();
         m_animator.SetTrigger(_onDeathAnimHash);
-        // TODO: play sound here? Play in animation as an even instead? If so, make an audio class that can be called from animation event
-        // m_audioControllerHit.PlayOneShot();
+        PlayOneShotDeath();
     }
 
     public void SetCurrentHP(int value)
@@ -106,4 +109,7 @@ public class Health : MonoBehaviour
     {
         CurrentHP = MaxHP;
     }
+
+    private void PlayOneShotHit() => m_hitSound.PlayOneShot(m_hitSound.GetRandomClip());
+    private void PlayOneShotDeath() => m_deathSound.PlayOneShot(m_deathSound.GetRandomClip());
 }

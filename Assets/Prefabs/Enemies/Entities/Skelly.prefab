@@ -23,6 +23,22 @@ PrefabInstance:
       propertyPath: m_maxHP
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_hitSound.m_clips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_hitSound.m_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 16621948283a15943bdfe2f7deb15b67, type: 3}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_hitSound.m_clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a63e5ca9aeb20a34dab98b44ad4cf187, type: 3}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_hitSound.m_clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d9c8d11c0b11254cadaaad1f6ffbea2, type: 3}
     - target: {fileID: 8889025150732925512, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -140,7 +156,7 @@ MonoBehaviour:
   radius: 1
   height: 2
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 4
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -178,3 +194,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a89495740f0e5449b319b9639c5dec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Experience>k__BackingField: 0
