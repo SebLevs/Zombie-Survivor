@@ -16,6 +16,7 @@ public abstract class EnemyType : MonoBehaviour
     {
         OnStart();
     }
+
     protected virtual void OnStart() { }
 
     public abstract void ReturnToPool();

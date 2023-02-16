@@ -260,8 +260,9 @@ MonoBehaviour:
   <ViewBackgroundBlackScreen>k__BackingField: {fileID: 2897191270143735356}
   <ViewEmpty>k__BackingField: {fileID: 260204171243620009}
   <ViewTitleScreen>k__BackingField: {fileID: 3515386409203621027}
-  <ViewOptionMenu>k__BackingField: {fileID: 272935365392646886}
+  <ViewOptionMenu>k__BackingField: {fileID: 4524483441356469838}
   <ViewBlackScreen>k__BackingField: {fileID: 6749843646527874095}
+  <ViewDeathScreen>k__BackingField: {fileID: 0}
   ViewPlayerHealthBar: {fileID: 3989194991523661568}
   ViewPlayerExperienceBar: {fileID: 8743448560893003634}
 --- !u!1001 &1794514147408753059
@@ -744,22 +745,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8be51c014235bb84a862737e3a89dfd5, type: 3}
---- !u!114 &272935365392646886 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4478272932035748123, guid: 8be51c014235bb84a862737e3a89dfd5, type: 3}
-  m_PrefabInstance: {fileID: 4462975721981223933}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49d1481b7016c5448973de68c478b707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1180815583293264410 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3282197522421051879, guid: 8be51c014235bb84a862737e3a89dfd5, type: 3}
   m_PrefabInstance: {fileID: 4462975721981223933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4524483441356469838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 226760470006224307, guid: 8be51c014235bb84a862737e3a89dfd5, type: 3}
+  m_PrefabInstance: {fileID: 4462975721981223933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd66ef88cd3c716438ae32fdb1fef456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4514113478336472489
 PrefabInstance:
   m_ObjectHideFlags: 0

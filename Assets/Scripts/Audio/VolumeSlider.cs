@@ -22,7 +22,11 @@ public class VolumeSlider : MonoBehaviour
 
     public void SetVolumeAsLastRegisteredVolume()
     {
-        float lastVolume = PlayerPrefs.GetFloat(_volumeParameter.name);
+        float lastVolume = PlayerPrefs.GetFloat(_volumeParameter.name); // slider value
+
+        if (lastVolume == m_slider.value) { return; }
+
+        m_slider.value = lastVolume;
         float volumePlayerPrefs = GetLog(lastVolume);
         _volumeParameter.SetParameter(volumePlayerPrefs);
     }
