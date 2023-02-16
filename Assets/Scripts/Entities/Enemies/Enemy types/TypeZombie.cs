@@ -1,7 +1,7 @@
 public class TypeZombie: EnemyType
 {
-    public override void ReturnToPool(Enemy key)
+    public override void ReturnToPool()
     {
-        EnemyManager.Instance.Zombies.ReturnToAvailable(key);
+        EnemyManager.Instance.Zombies.ReturnToAvailable(GetComponent<Enemy>());
     }
 }

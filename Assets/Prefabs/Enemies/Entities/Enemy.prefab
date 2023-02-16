@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 4594350461714733977}
   - component: {fileID: 2625723577708642913}
   - component: {fileID: 2004451262384889686}
+  - component: {fileID: 7341633155239485278}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -351,10 +352,10 @@ MonoBehaviour:
   <OnDeathEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4931895870938298055}
-        m_TargetAssemblyTypeName: ViewElement, Assembly-CSharp
-        m_MethodName: OnHideQuick
-        m_Mode: 1
+      - m_Target: {fileID: 3886669009860123003}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -389,6 +390,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ReactionTime>k__BackingField: 0
+--- !u!114 &7341633155239485278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889025150732925527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c917c14c116814096f33482a4924c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5629193404077433714
 PrefabInstance:
   m_ObjectHideFlags: 0

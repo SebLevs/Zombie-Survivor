@@ -70,8 +70,12 @@ public class PoolPattern<T> where T : Component, IPoolable
         T element;
         m_currentlyUsedPool.TryGetValue(key, out element);
         m_currentlyUsedPool.Remove(key);
+
+        // TODO: This is a debug for TypeZombie.cs' ReturnToPool that returns an Enemy to available ?twice? | Should find exactly why it happens
+        if (element == null) { return null; } 
+
         m_availablePool.Add(element);
-        Debug.Log("Elementname: " + element.gameObject.name);
+
         element.gameObject.SetActive(false);
 
         SetParent(element, _availableParent);

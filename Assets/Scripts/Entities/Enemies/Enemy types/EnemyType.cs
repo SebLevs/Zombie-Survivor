@@ -7,10 +7,7 @@ using UnityEngine;
 
 public abstract class EnemyType : MonoBehaviour
 {
-    public StateController<Enemy> StateController { get; private set; }
-    //public StateContainer // DOESNT WORK, CANT ACCESS SPECIFIC STATE
-    // Issue: Specific states are innacessible due to hierarchy
-    // Possible fix: Make the state controller a monobehaviour which would getcomponent the enemy class for context
+    protected Enemy m_context;
 
     private void Awake()
     {
@@ -24,5 +21,10 @@ public abstract class EnemyType : MonoBehaviour
     }
     protected virtual void OnStart() { }
 
-    public abstract void ReturnToPool(Enemy key);
+    public abstract void ReturnToPool();
+
+    public void Init(Enemy context)
+    {
+        m_context = context;
+    }
 }

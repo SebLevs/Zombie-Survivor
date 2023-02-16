@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyCollisionHandler : BaseCollisionHandler
 {
-    protected override void OnEntityCollisionEnter(Collision2D collision)
+    protected override void OnEntityCollisionExit(Collision2D collision)
     {
-        base.OnEntityCollisionEnter(collision);
+        base.OnEntityCollisionExit(collision);
         m_rigidBody.velocity = Vector3.zero;
     }
 }

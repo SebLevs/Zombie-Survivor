@@ -42,6 +42,7 @@ public class EnemyManager : Manager<EnemyManager>
     {
         for (int i = 0; i < CurrentlyActiveEnemies.Count; i++)
         {
+            CurrentlyActiveEnemies.ElementAt(i).OnStopAllCoroutines();
             CurrentlyActiveEnemies.ElementAt(i).Kill();
         }
     }

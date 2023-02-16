@@ -1,7 +1,7 @@
 public class TypeLarvae : EnemyType
 {
-    public override void ReturnToPool(Enemy key)
+    public override void ReturnToPool()
     {
-        EnemyManager.Instance.Larvae.ReturnToAvailable(key);
+        EnemyManager.Instance.Larvae.ReturnToAvailable(m_context);
     }
 }

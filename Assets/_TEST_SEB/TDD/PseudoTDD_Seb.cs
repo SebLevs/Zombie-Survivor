@@ -23,7 +23,7 @@ public class PseudoTDD_Seb : MonoBehaviour
         // Entity
         Test(ref isPlayerHit, () =>
         {
-            //Player.Instance.Health.OnHit();
+            Entity_Player.Instance.Health.Hit(10);
         });
 
         Test(ref isEnemyHit, () =>

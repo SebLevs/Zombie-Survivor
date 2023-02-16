@@ -71,12 +71,16 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
         IsInTitleScreen = false;
         GameManager.Instance.ResumeGame();
+        UIManager.Instance.ShowHUD();
+        Entity_Player.Instance.Init();
     }
 
     public void GoToTitleScreen()
     {
         GameManager.Instance.PauseGame();
         UIManager uiManager = UIManager.Instance;
+
+        UIManager.Instance.HideHUD();
 
         // TODO: Delete if SceneController.cs is implemented in the scope of the project
         AudioManager.Instance.StopPlayingLoopingClip();

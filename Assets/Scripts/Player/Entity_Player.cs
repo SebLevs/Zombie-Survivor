@@ -45,6 +45,9 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public StateController<Entity_Player> StateController { get; private set; }
     public Player_StateContainer StateContainer { get; private set; }
 
+    [field:Header("Health")]
+    public Health Health { get; private set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -60,6 +63,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         specialAttackDelay = new SequentialTimer(specialAttackSpeed);
         attackDelay = new SequentialTimer(attackSpeed);
         dodgeDelay = new SequentialTimer(DodgeInterval);
+        Health = GetComponent<Health>();
     }
     protected override void OnStart()
     {
@@ -69,6 +73,21 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         attackDelay.JumpToTime(0f);
         specialAttackDelay.JumpToTime(0f);
         dodgeDelay.JumpToTime(0f);
+        //Init();
+    }
+
+    public void SetHealthBar()
+    {
+        UIManager uIManager = UIManager.Instance;
+        uIManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
+        uIManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
+    }
+
+    public void Init()
+    {
+        Health.FullHeal();
+        SetHealthBar();
+        transform.position = Vector3.zero;
     }
 
     public void RefreshWeaponStats()
@@ -123,13 +142,14 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
 
     public void OnPauseGame()
     {
-        Rb.velocity = Vector2.zero;
+        transform.rotation = Quaternion.Euler(Vector3.zero); // TODO: Temporary fix for sprite rotating on pause, might be fixed when player prefab is completed
+        Rb.velocity = Vector2.zero; 
         col.enabled = false;
     }
 
     public void OnResumeGame()
     {
-        Rb.velocity = Vector2.zero;
         col.enabled = true;
+        DesiredActions.PurgeAllAction();
     }
 }

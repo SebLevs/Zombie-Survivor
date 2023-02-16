@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     public EnemyType Type { get; private set; }
 
     [Header("Health bar")]
-    [SerializeField] private ViewHealthBarWithCounter m_healthBar;
+    [SerializeField] private ViewFillingBarWithCounter m_healthBar;
     public Health Health { get; private set; }
 
     protected Rigidbody2D m_rigidbody;
@@ -20,9 +20,12 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     [field: SerializeField] public int collisionDamage { get; private set; }
     [field: SerializeField] public int TempDamage { get; private set; }
 
-    private void Awake()
+    private void Awake() { OnAwake(); }
+
+    protected void OnAwake()
     {
         Type = GetComponent<EnemyType>();
+        Type.Init(this);
 
         Health = GetComponent<Health>();
 
@@ -37,42 +40,32 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         PathfinderUtility = GetComponent<PathfinderUtility>();
     }
 
-    private void Start()
-    {
-        Init();
-    }
-
-    public void OnGetFromAvailable()
-    {
-        Init();
-        EnemyManager.Instance.CurrentlyActiveEnemies.Add(this);
-    }
-
-    public void OnReturnToAvailable()
-    {
-        EnemyManager.Instance.CurrentlyActiveEnemies.Remove(this);
-    }
-
-    public void ReturnToPool() => Type.ReturnToPool(this);
-
-    private void Init()
+    private void Start() { OnStart(); }
+    protected virtual void OnStart()
     {
         m_rigidbody.velocity = Vector2.zero;
         Health.FullHeal();
     }
 
-    public void Kill()
+    public virtual void OnGetFromAvailable()
+    {
+        OnStart();
+        EnemyManager.Instance.CurrentlyActiveEnemies.Add(this);
+    }
+
+    public virtual void OnReturnToAvailable()
+    {
+        EnemyManager.Instance.CurrentlyActiveEnemies.Remove(this);
+    }
+
+    public void ReturnToPool() { Type.ReturnToPool(); } // Currently used as an animation event on death
+
+    public void Kill() 
     {
         Health.OnInstantDeath();
     }
 
-    public void DelegateSetHealthBarFilling()
-    {
-        m_healthBar.Filler.SetFilling(Health.Normalized);
-        //m_healthBar.Counter.Element.text = Health.CurrentHP.ToString();
-    }
-
-    public void OnUpdate()
+    public virtual void OnUpdate()
     {
         // TODO: Call state controller here
         m_stateController.OnUpdate();
@@ -82,7 +75,7 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         Animator.SetFloat("angle", index);
     }
 
-    public void OnDisable()
+    public virtual void OnDisable()
     {
         if (UpdateManager.Instance)
         {
@@ -94,13 +87,13 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         }
     }
 
-    public void OnEnable()
+    public virtual void OnEnable()
     {
         UpdateManager.Instance.SubscribeToUpdate(this);
         GameManager.Instance.SubscribeToPauseGame(this);
     }
 
-    public void OnPauseGame()
+    public virtual void OnPauseGame()
     {
         Animator.speed = 0f;
 
@@ -110,7 +103,7 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         m_collider.enabled = false;
     }
 
-    public void OnResumeGame()
+    public virtual void OnResumeGame()
     {
         Animator.speed = 1f;
 
@@ -123,7 +116,15 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     {
         if (!Health.IsDead && !m_healthBar.gameObject.activeSelf)
         {
+            m_healthBar.StopAllCoroutines();
             m_healthBar.OnShowQuick();
         }
+    }
+
+    public void OnStopAllCoroutines()
+    {
+        StopAllCoroutines();
+        Health.StopAllCoroutines();
+        m_healthBar.StopAllCoroutines();
     }
 }

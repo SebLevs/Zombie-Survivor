@@ -12,8 +12,8 @@ public class Health : MonoBehaviour
     [SerializeField] private int m_maxHP;
 
     [field:Header("Events")]
-    [field:SerializeField] public UnityEvent  OnHitEvent{ get; private set; }
-    [field:SerializeField] public UnityEvent OnDeathEvent { get; private set; }
+    [field:SerializeField] public UnityEvent  OnHitEvent{ get; set; }
+    [field:SerializeField] public UnityEvent OnDeathEvent { get; set; }
 
     public float Normalized => (m_maxHP > 0) ? (float)m_currentHP / (float)m_maxHP : 0;
 
@@ -57,35 +57,35 @@ public class Health : MonoBehaviour
 
     public virtual void Hit(int damage)
     {
-        if (!IsDead)
-        {
-            CurrentHP -= damage;
+        if (IsDead) { return; }
 
-            OnHitEvent?.Invoke();
+        CurrentHP -= damage;
+
+        OnHitEvent?.Invoke();
             
-            m_animator.SetTrigger(_onHitAnimHash);
-            // TODO: play sound here? Play in animation as an even instead? If so, make an audio class that can be called from animation event
-            // m_audioControllerHit.PlayOneShot();
+        m_animator.SetTrigger(_onHitAnimHash);
+        // TODO: play sound here? Play in animation as an even instead? If so, make an audio class that can be called from animation event
+        // m_audioControllerHit.PlayOneShot();
 
-            OnDeath();
-        }
+        OnDeath();
     }
 
     public virtual void OnInstantDeath()
     {
+        if (IsDead) { return; }
+
         CurrentHP -= CurrentHP;
         OnDeath();
     }
 
     public virtual void OnDeath()
     {
-        if (IsDead)
-        {
-            OnDeathEvent?.Invoke();
-            m_animator.SetTrigger(_onDeathAnimHash);
-            // TODO: play sound here? Play in animation as an even instead? If so, make an audio class that can be called from animation event
-            // m_audioControllerHit.PlayOneShot();
-        }
+        if (!IsDead) { return; }
+    
+        OnDeathEvent?.Invoke();
+        m_animator.SetTrigger(_onDeathAnimHash);
+        // TODO: play sound here? Play in animation as an even instead? If so, make an audio class that can be called from animation event
+        // m_audioControllerHit.PlayOneShot();
     }
 
     public void SetCurrentHP(int value)

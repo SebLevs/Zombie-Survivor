@@ -14,10 +14,10 @@ public class BaseCollisionHandler : MonoBehaviour
     protected virtual void OnStart() { }
 
     protected virtual void OnEntityCollisionEnter(Collision2D collision) { }
-    protected virtual void OnEntityCollisionLeave(Collision2D collision) { }
+    protected virtual void OnEntityCollisionExit(Collision2D collision) { }
     protected virtual void OnEntityTriggerEnter(Collider2D collision) { }
     protected virtual void OnEntityTriggerStay(Collider2D collision) { }
-    protected virtual void OnEntityTriggerLeave(Collider2D collision) { }
+    protected virtual void OnEntityTriggerExit(Collider2D collision) { }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,7 +26,7 @@ public class BaseCollisionHandler : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        OnEntityCollisionLeave(collision);
+        OnEntityCollisionExit(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,7 +40,7 @@ public class BaseCollisionHandler : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        OnEntityTriggerLeave(collision);
+        OnEntityTriggerExit(collision);
     }
 
     private void Awake()

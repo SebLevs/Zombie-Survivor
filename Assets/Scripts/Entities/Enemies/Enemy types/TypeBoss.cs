@@ -1,7 +1,7 @@
 public class TypeBoss : EnemyType
 {
-    public override void ReturnToPool(Enemy key)
+    public override void ReturnToPool()
     {
-        EnemyManager.Instance.Boss.ReturnToAvailable(key);
+        EnemyManager.Instance.Boss.ReturnToAvailable(m_context);
     }
 }
