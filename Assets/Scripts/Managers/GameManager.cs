@@ -78,7 +78,7 @@ public class GameManager : Manager<GameManager>
 
         IsPaused = false;
         NotifyPauseListenersOnResume();
-        CommandPromptManager.Instance.DeActivate();
+        //CommandPromptManager.Instance.DeActivate();
     }
 
     public void SubscribeToPauseGame(IPauseListener pauseListener)

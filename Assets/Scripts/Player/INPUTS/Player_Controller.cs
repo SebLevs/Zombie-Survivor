@@ -66,23 +66,28 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
             GameManager gameManager = GameManager.Instance;
             UIManager uiManager = UIManager.Instance;
 
-            if (!gameManager.IsPaused)
+            uiManager.CurrentView.StopAllCoroutines();
+
+            if (uiManager.CurrentView != uiManager.ViewOptionMenu)
             {
                 gameManager.PauseGame();
-
                 uiManager.OnSwitchViewSequential(uiManager.ViewOptionMenu);
             }
             else
             {
-                gameManager.ResumeGame();
-
                 if (SceneLoadManager.Instance.IsInTitleScreen)
                 {
                     uiManager.OnSwitchViewSequential(uiManager.ViewTitleScreen);
                 }
                 else
                 {
-                    uiManager.OnSwitchViewSequential(uiManager.ViewEmpty); // TODO: Set to HUD when implemented}
+                    uiManager.OnSwitchViewSequential(uiManager.ViewEmpty, showCallback: () =>
+                    {
+                        if (!CommandPromptManager.Instance.IsActive)
+                        {
+                            gameManager.ResumeGame();
+                        }
+                    });
                 }
             }
         }

@@ -7,23 +7,26 @@ public class CommandPromptManager : Manager<CommandPromptManager>
     [SerializeField] private CommandInvoker playerCommandInvoker;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text doneCommands;
-    private bool _isActive = false;
+    public bool IsActive = false;
     private string _isValidCommand;
     private string _inputCommand;
 
     protected override void OnStart()
     {
         base.OnStart();
-        _isActive = false;
+        IsActive = false;
     }
 
     public void ToggleActivatePrompt(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if (_isActive)
+            if (IsActive)
             {
-                GameManager.Instance.ResumeGame();
+                if (!SceneLoadManager.Instance.IsInTitleScreen && UIManager.Instance.CurrentView != UIManager.Instance.ViewOptionMenu)
+                {
+                    GameManager.Instance.ResumeGame();
+                }
                 DeActivate();
             }
             else
@@ -40,7 +43,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         Entity_Player.Instance.enabled = false;
         inputField.gameObject.SetActive(true);
         doneCommands.gameObject.SetActive(true);
-        _isActive = true;
+        IsActive = true;
         inputField.Select();
     }
 
@@ -50,7 +53,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         Entity_Player.Instance.enabled = true;
         inputField.gameObject.SetActive(false);
         doneCommands.gameObject.SetActive(false);
-        _isActive = false;
+        IsActive = false;
     }
 
     public void CheckCommandPrompt()

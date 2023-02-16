@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-// TODO: 
-// Try to set state controller here
 
 public abstract class EnemyType : MonoBehaviour
 {
+    [field:SerializeField] public int Experience { get; private set; }
+
     protected Enemy m_context;
 
     private void Awake()

@@ -417,7 +417,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1997386155763334280}
         m_TargetAssemblyTypeName: Entity_Player, Assembly-CSharp
-        m_MethodName: SetHealthBar
+        m_MethodName: RefreshHealthBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

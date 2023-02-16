@@ -15,6 +15,7 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewElement ViewTitleScreen { get; private set; }
     [field: SerializeField] public ViewElement ViewOptionMenu { get; private set; }
     [field: SerializeField] public ViewElement ViewBlackScreen { get; private set; }
+    [field: SerializeField] public ViewElement ViewDeathScreen { get; private set; }
     [field: Space(10)]
 
     [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerHealthBar;

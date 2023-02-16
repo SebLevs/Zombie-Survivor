@@ -76,17 +76,22 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         //Init();
     }
 
-    public void SetHealthBar()
+    public void RefreshHealthBar()
     {
         UIManager uIManager = UIManager.Instance;
         uIManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
         uIManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
     }
 
+    public void RefreshExperienceBar()
+    {
+
+    }
+
     public void Init()
     {
         Health.FullHeal();
-        SetHealthBar();
+        RefreshHealthBar();
         transform.position = Vector3.zero;
     }
 
@@ -145,6 +150,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         transform.rotation = Quaternion.Euler(Vector3.zero); // TODO: Temporary fix for sprite rotating on pause, might be fixed when player prefab is completed
         Rb.velocity = Vector2.zero; 
         col.enabled = false;
+        Controller.currentLookAngle = 0;
     }
 
     public void OnResumeGame()
