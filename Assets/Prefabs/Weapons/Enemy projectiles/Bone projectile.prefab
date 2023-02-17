@@ -138,4 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetMask: 3
   m_damage: 10
-  m_baseSpeed: 2
+  m_baseSpeed: 5

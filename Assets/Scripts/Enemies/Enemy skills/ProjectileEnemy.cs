@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseListener
+public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseListener, IFrameUpdateListener
 {
     [Header("Damage")]
     [SerializeField] protected int m_damage;
@@ -8,6 +8,15 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
     [Header("Movement")]
     [SerializeField] protected float m_baseSpeed;
     protected Vector2 m_oldVelocity;
+
+    private float _time = 10f;
+    private SequentialStopwatch _stopwatch;
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        _stopwatch = new SequentialStopwatch(_time, () => ReturnToPool());
+    }
 
     public Transform Target { get; set; }
 
@@ -48,23 +57,27 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
 
     public void SaveVelocity() => m_oldVelocity = m_rigidBody.velocity;
 
-    public virtual void OnGetFromAvailable()
+    public virtual void OnGetFromAvailable() 
     {
+        _stopwatch.StartTimer();
     }
 
-    public virtual void OnReturnToAvailable()
-    {
+    public virtual void OnReturnToAvailable() 
+    { 
         StopMovement();
+        _stopwatch.Reset(true);
     }
 
     public void OnEnable()
     {
         GameManager.Instance.SubscribeToPauseGame(this);
+        UpdateManager.Instance.SubscribeToUpdate(this);
     }
 
     public void OnDisable()
     {
         GameManager.Instance.UnSubscribeFromPauseGame(this);
+        UpdateManager.Instance.UnSubscribeFromUpdate(this);
     }
 
     public void OnPauseGame()
@@ -73,8 +86,10 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
         StopMovement();
     }
 
-    public void OnResumeGame()
+    public void OnResumeGame() { ResumeMovement(); }
+
+    public void OnUpdate()
     {
-        ResumeMovement();
+        _stopwatch.OnUpdateTime();
     }
 }
