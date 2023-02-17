@@ -41,6 +41,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public Rigidbody2D Rb { get; private set; }
     public Player_Controller Controller { get; private set; }
     public Transform muzzle;
+    public Transform shootFrom;
     public CircleCollider2D col;
 
     [field: Header("States")]
@@ -81,8 +82,11 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public void RefreshHealthBar()
     {
         UIManager uIManager = UIManager.Instance;
-        uIManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
-        uIManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
+        if (uIManager != null)
+        {
+            uIManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
+            uIManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
+        }
     }
 
     public void RefreshExperienceBar()
@@ -93,7 +97,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public void Init()
     {
         Health.FullHeal();
-        RefreshHealthBar();
+        if (UIManager.Instance.ViewPlayerHealthBar.gameObject.activeSelf) { RefreshHealthBar(); }
         transform.position = Vector3.zero;
     }
 
@@ -107,6 +111,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
 
     public void OnUpdate()
     {
+        Debug.Log(shootFrom.position.ToString());
         StateController.OnUpdate();
         DesiredActions.OnUpdateActions();
         attackDelay.OnUpdateTime();

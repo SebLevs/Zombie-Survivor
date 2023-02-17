@@ -18,7 +18,7 @@ public class Player_ShootState : State<Entity_Player>
         m_controller.DesiredActions.ConsumeAllActions(PlayerActionsType.SHOOT);
         if(m_controller.canAttack)
         {
-            Transform shootFrom = Entity_Player.Instance.muzzle;
+            Transform shootFrom = Entity_Player.Instance.shootFrom;
             BulletBehavior bullet = WeaponManager.Instance.bulletPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
             bullet.playerIsShooting = true;
             bullet.TargetMask = m_controller.Mask;

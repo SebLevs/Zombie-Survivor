@@ -135,12 +135,84 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1282047109729523136, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561531791645174873, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386154977626076, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386154977626076, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386154977626079, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386154977626079, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386154977626079, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6fbd5a181bc51e42a61a73fe8d727c8, type: 3}
+    - target: {fileID: 1997386154977626079, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386154977626079, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386154977626079, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: spriteDirection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: spriteDirection.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0ecc19137e64f8a46a21fdc6362db6e3, type: 3}
+    - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: spriteDirection.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9473bcf258660394684385f758a542c3, type: 3}
+    - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: spriteDirection.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: d942fd63ce985044c91dc5a4583e403d, type: 3}
+    - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: spriteDirection.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 224cc0f7aa60a7149a9f60169755f4a5, type: 3}
     - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334278, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334278, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334278, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334279, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
@@ -411,9 +483,21 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334280, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: shootFrom
+      value: 
+      objectReference: {fileID: 681564733}
     - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -455,11 +539,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334283, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
 --- !u!4 &603172312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+  m_PrefabInstance: {fileID: 603172311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &681564733 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1997386154977626076, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
   m_PrefabInstance: {fileID: 603172311}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &730027503

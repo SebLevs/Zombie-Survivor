@@ -1,6 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum LookDirectionEnum
+{
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+}
 public class Player_Controller : MonoBehaviour, IFrameUpdateListener
 {
     private static Player_Controller instance;
@@ -15,6 +22,10 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
     public Vector3 mousePosition;
     public int currentLookAngle = 0;
 
+    private SpriteRenderer sp;
+    public Sprite[] spriteDirection;
+    public Sprite currentSprite;
+
     private void Awake()
     {
         if (instance == null)
@@ -26,6 +37,8 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
             Destroy(this);
         }
         playerRef = GetComponent<Entity_Player>();
+        currentSprite = spriteDirection[0];
+        sp = playerRef.GetComponent<SpriteRenderer>();
     }
     
     public void OnMove(InputAction.CallbackContext context)
@@ -93,36 +106,77 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
         }
     }
 
+    private LookDirectionEnum GetDirection(Vector2 normalizedDirection)
+    {
+        float angle = Mathf.Atan2(normalizedDirection.x, normalizedDirection.y) * Mathf.Rad2Deg;
+        switch (angle)
+        {
+            case >= -45 and <= 45:
+                return LookDirectionEnum.UP;
+            case >= 45 and <= 135:
+                return LookDirectionEnum.RIGHT;
+            case >= 135 and <= 180:
+            case <= -135 and >= -180:
+                return LookDirectionEnum.DOWN;
+            default:
+                return LookDirectionEnum.LEFT;
+        }
+    }
+
     public void OnUpdate()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         normalizedLookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
 
+        // switch (GetDirection(normalizedLookDirection))
+        // {
+        //     case LookDirectionEnum.UP:
+        //     {
+        //         currentSprite = spriteDirection[0];
+        //         break;
+        //     }
+        //     case LookDirectionEnum.RIGHT:
+        //     {
+        //         currentSprite = spriteDirection[1];
+        //         break;
+        //     }
+        //     case LookDirectionEnum.DOWN:
+        //     {
+        //         currentSprite = spriteDirection[2];
+        //         break;
+        //     }
+        //     case LookDirectionEnum.LEFT:
+        //     {
+        //         currentSprite = spriteDirection[1];
+        //         //playerRef.transform.localScale = new Vector3(1, 0, 0);
+        //         break;
+        //     }
+        // }
+        
         if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y >= 0.7f)
         {
             currentLookAngle = 0;
-            currentPlayerLookDirection.x = 0;
-            currentPlayerLookDirection.y = 1;
+            currentSprite = spriteDirection[0];
         }
         else if (normalizedLookDirection.x <= -0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 90;
-            currentPlayerLookDirection.x = -1;
-            currentPlayerLookDirection.y = 0;
+            currentSprite = spriteDirection[1];
+            playerRef.transform.localScale = new Vector3(-2, 2, 1);
         }
         else if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y <= -0.7f)
         {
             currentLookAngle = 180;
-            currentPlayerLookDirection.x = 0;
-            currentPlayerLookDirection.y = -1;
+            currentSprite = spriteDirection[2];
         }
         else if (normalizedLookDirection.x >= 0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 270;
-            currentPlayerLookDirection.x = 1;
-            currentPlayerLookDirection.y = 0;
+            currentSprite = spriteDirection[1];
+            playerRef.transform.localScale = new Vector3(2, 2, 1);
         }
-        playerRef.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
+        playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
+        sp.sprite = currentSprite;
     }
 
     public void OnEnable()
