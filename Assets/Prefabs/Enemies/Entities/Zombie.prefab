@@ -155,6 +155,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 2aa85625f9805304182e63e1080a1f1f, type: 3}
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}

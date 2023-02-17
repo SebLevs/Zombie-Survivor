@@ -196,13 +196,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d942fd63ce985044c91dc5a4583e403d, type: 3}
   m_Color: {r: 1, g: 0.9167996, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -431,6 +431,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   muzzle: {fileID: 1282047109729523136}
+  shootFrom: {fileID: 0}
   col: {fileID: 0}
 --- !u!114 &1167502202767387791
 MonoBehaviour:
@@ -446,6 +447,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_animator: {fileID: 0}
   m_maxHP: 1000
+  m_hitSound:
+    <AudioSource>k__BackingField: {fileID: 0}
+    _minPitch: 1
+    _maxPitch: 1
+    m_clips: []
+  m_deathSound:
+    <AudioSource>k__BackingField: {fileID: 0}
+    _minPitch: 1
+    _maxPitch: 1
+    m_clips: []
   <OnHitEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls:
