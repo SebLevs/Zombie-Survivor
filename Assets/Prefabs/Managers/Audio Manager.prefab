@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _volumeMaster: {fileID: 11400000, guid: 269720ab895cf0c499ea82f2ecce2ed7, type: 2}
-  _audioSource: {fileID: 0}
   <AmbianceClip>k__BackingField: {fileID: 8300000, guid: 6b3c8bf42f787d943ad7ff78ed149a90, type: 3}
 --- !u!82 &175399949699796767
 AudioSource:

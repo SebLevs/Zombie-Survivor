@@ -8,7 +8,7 @@ public class SkillMeleeTrigger : BaseCollisionHandler
     {
         base.OnEntityTriggerEnter(collision);
 
-        if (!EvaluateLayers(collision.gameObject.layer, _targetMask)) { return; }
+        if (!IsOtherLayerAlsoTargetLayer(collision.gameObject.layer, _targetMask)) { return; }
 
         Health health = collision.GetComponent<Health>();
         if (health)
