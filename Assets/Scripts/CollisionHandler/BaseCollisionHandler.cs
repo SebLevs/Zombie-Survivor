@@ -61,7 +61,7 @@ public class BaseCollisionHandler : MonoBehaviour
         OnStart();
     }
 
-    protected bool EvaluateLayers(int otherLayer, int targetLayer)
+    protected bool IsOtherLayerAlsoTargetLayer(int otherLayer, int targetLayer)
     {
         return otherLayer == targetLayer;
     }

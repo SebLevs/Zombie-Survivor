@@ -25,7 +25,7 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
     {
         base.OnProjectileCollisionEnter(collision);
 
-        if (playerIsShooting) // (EvaluateLayers(collision.gameObject.layer, GetTargetMaskValue))
+        if (playerIsShooting) // (IsOtherLayerAlsoTargetLayer(collision.gameObject.layer, GetTargetMaskValue))
         {
             Health health = collision.gameObject.GetComponent<Health>();
             if (health)
