@@ -4,12 +4,17 @@ using UnityEngine.InputSystem;
 
 public class CommandPromptManager : Manager<CommandPromptManager>
 {
-    [SerializeField] private CommandInvoker playerCommandInvoker;
+    public CommandInvoker playerCommandInvoker;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text doneCommands;
     public bool IsActive = false;
     private string _isValidCommand;
     private string _inputCommand;
+
+    protected override void OnAwake()
+    {
+        playerCommandInvoker.Init();
+    }
 
     protected override void OnStart()
     {
