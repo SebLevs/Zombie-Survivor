@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_DodgeState : State<Entity_Player>
@@ -26,7 +23,7 @@ public class Player_DodgeState : State<Entity_Player>
         m_controller.DesiredActions.ConsumeAllActions(PlayerActionsType.DODGE);
         if(m_controller.canDodge)
         {
-            Vector2 dodgeDirection = Player_Controller.Instance.currentPlayerLookDirection;
+            Vector2 dodgeDirection = Player_Controller.Instance.normalizedLookDirection;
             startLocation = m_controller.transform.position;
             targetLocation = new Vector2(startLocation.x + (dodgeDirection.x * m_controller.dodgeDistance), startLocation.y + (dodgeDirection.y * m_controller.dodgeDistance));
             isRolling = true;
@@ -35,6 +32,7 @@ public class Player_DodgeState : State<Entity_Player>
             m_controller.canDodge = false;
             m_controller.dodgeDelay.Reset();
             m_controller.dodgeDelay.StartTimer();
+            m_controller.col.enabled = false;
         }
         else
         {
@@ -57,6 +55,7 @@ public class Player_DodgeState : State<Entity_Player>
         if(m_controller.transform.position.x == targetLocation.x && m_controller.transform.position.y == targetLocation.y)
         {
             isRolling= false;
+            m_controller.col.enabled = true;
             m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
         }
     }

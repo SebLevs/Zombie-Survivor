@@ -137,7 +137,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1282047109729523136, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1561531791645174873, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Icon
@@ -182,19 +182,19 @@ PrefabInstance:
     - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: spriteDirection.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 0ecc19137e64f8a46a21fdc6362db6e3, type: 3}
+      objectReference: {fileID: 21300000, guid: 21b1348a95a749d479ef0200285f3111, type: 3}
     - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: spriteDirection.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 9473bcf258660394684385f758a542c3, type: 3}
+      objectReference: {fileID: 21300000, guid: 6988ed859a138ba4491832617174374b, type: 3}
     - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: spriteDirection.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: d942fd63ce985044c91dc5a4583e403d, type: 3}
+      objectReference: {fileID: 21300000, guid: 8a1d3b8f66fe4b1438f851a3e44b36a0, type: 3}
     - target: {fileID: 1997386155763334276, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: spriteDirection.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 224cc0f7aa60a7149a9f60169755f4a5, type: 3}
+      objectReference: {fileID: 21300000, guid: 1cf89998ea70b8c45ad99c653cdb04c9, type: 3}
     - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -203,6 +203,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334278, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a1d3b8f66fe4b1438f851a3e44b36a0, type: 3}
     - target: {fileID: 1997386155763334278, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -491,9 +499,29 @@ PrefabInstance:
       propertyPath: shootFrom
       value: 
       objectReference: {fileID: 681564733}
+    - target: {fileID: 1997386155763334280, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: attackSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334280, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: dodgeDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334280, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: specialAttackSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1200,6 +1228,10 @@ PrefabInstance:
       propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
       value: VolumeSlider, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 637081024587163854, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2179418993602025845, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1207,6 +1239,10 @@ PrefabInstance:
     - target: {fileID: 3333375316374224868, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459130211976505789, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3551527057310104543, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_Alpha

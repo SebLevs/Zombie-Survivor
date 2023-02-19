@@ -18,7 +18,6 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
 
     public Vector2 moveDirection { private set; get; }
     public Vector2 normalizedLookDirection;
-    public Vector2 currentPlayerLookDirection;
     public Vector3 mousePosition;
     public int currentLookAngle = 0;
 
@@ -172,8 +171,7 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
         else if (normalizedLookDirection.x >= 0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 270;
-            currentSprite = spriteDirection[1];
-            playerRef.transform.localScale = new Vector3(2, 2, 1);
+            currentSprite = spriteDirection[3]; 
         }
         playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
         sp.sprite = currentSprite;

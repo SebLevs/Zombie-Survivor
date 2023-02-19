@@ -151,6 +151,14 @@ PrefabInstance:
       propertyPath: m_hitSound.m_clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 3d9c8d11c0b11254cadaaad1f6ffbea2, type: 3}
+    - target: {fileID: 6657099178885778164, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: manGoldValue
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657099178885778164, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: minGoldValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8889025150732925512, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Sprite
       value: 

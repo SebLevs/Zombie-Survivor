@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private int m_maxHP;
+    public bool isPermaInvincible = false;
 
     [Header("Audio")]
     [SerializeField] private AudioElement m_hitSound;
@@ -63,8 +64,10 @@ public class Health : MonoBehaviour
     {
         if (IsDead) { return; }
 
-        CurrentHP -= damage;
-
+        if (!isPermaInvincible)
+        {
+            CurrentHP -= damage;
+        }
         OnHitEvent?.Invoke();
             
         m_animator.SetTrigger(_onHitAnimHash);
@@ -72,6 +75,7 @@ public class Health : MonoBehaviour
         PlayOneShotHit();
 
         OnDeath();
+        
     }
 
     public virtual void OnInstantDeath()
@@ -85,7 +89,6 @@ public class Health : MonoBehaviour
     public virtual void OnDeath()
     {
         if (!IsDead) { return; }
-    
         OnDeathEvent?.Invoke();
         m_animator.SetTrigger(_onDeathAnimHash);
         PlayOneShotDeath();

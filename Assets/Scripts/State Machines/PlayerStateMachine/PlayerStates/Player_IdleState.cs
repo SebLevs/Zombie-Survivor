@@ -29,6 +29,10 @@ public class Player_IdleState : State<Entity_Player>
         {
             m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
         }
+        if (Entity_Player.Instance.Health.IsDead)
+        {
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Dead);
+        }
         if (m_controller.DesiredActions.Contains(PlayerActionsType.SHOOT))
         {
             m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Shoot);

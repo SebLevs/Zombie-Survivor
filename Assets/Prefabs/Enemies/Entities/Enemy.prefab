@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 2004451262384889686}
   - component: {fileID: 7341633155239485278}
   - component: {fileID: 3689369586628646502}
+  - component: {fileID: 6657099178885778164}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -323,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_animator: {fileID: 0}
   m_maxHP: 0
+  isPermaInvincible: 0
   m_hitSound:
     <AudioSource>k__BackingField: {fileID: 3689369586628646502}
     _minPitch: 1
@@ -367,6 +369,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6657099178885778164}
+        m_TargetAssemblyTypeName: Gold, Assembly-CSharp
+        m_MethodName: GiveGoldToPLayerOnDeath
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -510,6 +524,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6657099178885778164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889025150732925527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efa6695572d4274db27d049f7fe7633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGoldValue: 0
+  manGoldValue: 0
+  goldOnDeath: 0
 --- !u!1001 &5629193404077433714
 PrefabInstance:
   m_ObjectHideFlags: 0

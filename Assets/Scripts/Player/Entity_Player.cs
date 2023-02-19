@@ -9,8 +9,6 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     [field:Header("Variables")]
     public float MovSpeed { get; set; }
     public float BulletSpeed { get; set; }
-    public bool isinvincible = false;
-    public bool isPermaInvincible = false;
 
     [field: Header("ShootControl")]
     public float attackSpeed;
@@ -51,6 +49,11 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     [field:Header("Health")]
     public Health Health { get; private set; }
 
+    [field: Header("Gold")]
+    private UIManager uiManager;
+    public int currentGold;
+    public int MaxGold = 300;
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -60,13 +63,11 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         StateContainer = new Player_StateContainer(this);
         StateController = new StateController<Entity_Player>(StateContainer.State_Idle);
         DesiredActions = new PlayerActionsContainer();
-        attackSpeed = 1.0f;
-        specialAttackSpeed = 1.0f;
-        DodgeInterval = 5.0f;
         specialAttackDelay = new SequentialTimer(specialAttackSpeed);
         attackDelay = new SequentialTimer(attackSpeed);
         dodgeDelay = new SequentialTimer(DodgeInterval);
         Health = GetComponent<Health>();
+        uiManager = UIManager.Instance;
     }
     protected override void OnStart()
     {
@@ -81,17 +82,21 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
 
     public void RefreshHealthBar()
     {
-        UIManager uIManager = UIManager.Instance;
-        if (uIManager != null)
+        if (uiManager != null)
         {
-            uIManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
-            uIManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
+            uiManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
+            uiManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
         }
     }
 
     public void RefreshExperienceBar()
     {
-
+        if (uiManager != null)
+        {
+            float filling = currentGold / MaxGold;
+            uiManager.ViewPlayerExperienceBar.Filler.SetFilling(filling);
+            uiManager.ViewPlayerExperienceBar.Counter.Element.text = currentGold + " / " + MaxGold;
+        }
     }
 
     public void Init()
@@ -101,17 +106,15 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         transform.position = Vector3.zero;
     }
 
-    public void RefreshWeaponStats()
+    public void RefreshPlayerTimerStats()
     {
-        if(attackDelay.TargetTime != attackSpeed)
-        {
-            attackDelay = new SequentialTimer(attackSpeed);
-        }
+        specialAttackDelay = new SequentialTimer(specialAttackSpeed);
+        attackDelay = new SequentialTimer(attackSpeed);
+        dodgeDelay = new SequentialTimer(DodgeInterval);
     }
 
     public void OnUpdate()
     {
-        Debug.Log(shootFrom.position.ToString());
         StateController.OnUpdate();
         DesiredActions.OnUpdateActions();
         attackDelay.OnUpdateTime();
@@ -129,7 +132,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         {
             canDodge = true;
         }
-        RefreshWeaponStats();
+        RefreshPlayerTimerStats();
         test = StateController.CurrentState.ToString();
     }
 
@@ -155,14 +158,15 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public void OnPauseGame()
     {
         transform.rotation = Quaternion.Euler(Vector3.zero); // TODO: Temporary fix for sprite rotating on pause, might be fixed when player prefab is completed
-        Rb.velocity = Vector2.zero;
-        col.enabled = false;
+        Rb.velocity = Vector2.zero; 
+        //col.enabled = false;
         Controller.currentLookAngle = 0;
+        
     }
 
     public void OnResumeGame()
     {
-        col.enabled = true;
+        //col.enabled = true;
         DesiredActions.PurgeAllAction();
     }
 }
