@@ -1447,7 +1447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1260587454250549472, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1440
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 1260587454250549472, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1483,7 +1483,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1260587454250549472, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -454
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260587454250549472, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1003
       objectReference: {fileID: 0}
     - target: {fileID: 1260587454250549472, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1499,10 +1503,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3923206590708354407, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
       propertyPath: m_Name
-      value: XP Bar
+      value: Gold Bar
       objectReference: {fileID: 0}
     - target: {fileID: 3923206590708354407, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791335187155675048, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1839,6 +1847,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3923206590708354407, guid: 961c0c4944eefde4e9272dfe7e01d4b2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219795193343609206, guid: 961c0c4944eefde4e9272dfe7e01d4b2, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

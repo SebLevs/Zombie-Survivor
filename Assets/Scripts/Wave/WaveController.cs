@@ -11,6 +11,7 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
 
     private void Awake()
     {
+        TrySetSpawnPointAsPlayer();
         SetEnemyWaves();
     }
 
@@ -35,6 +36,15 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
         UpdateManager.Instance.SubscribeToUpdate(this);
     }
 
+    public bool TrySetSpawnPointAsPlayer()
+    {
+        PositionGetter2D playerPositionGetter2D = Entity_Player.Instance?.GetComponent<PositionGetter2D>();
+        if (!playerPositionGetter2D) { return false; }
+
+        _enemySpawnPoints.Add(playerPositionGetter2D);
+        return true;
+    }
+
     public Vector2 GetRandomSpawnPoint()
     {
         int index = Random.Range(0, _enemySpawnPoints.Count);
@@ -49,5 +59,4 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
             m_waves[i].Init(this, waveEndsCallback: () => _currentWaveIndex++);
         }
     }
-
 }

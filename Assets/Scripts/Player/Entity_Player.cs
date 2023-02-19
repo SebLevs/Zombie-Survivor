@@ -155,7 +155,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public void OnPauseGame()
     {
         transform.rotation = Quaternion.Euler(Vector3.zero); // TODO: Temporary fix for sprite rotating on pause, might be fixed when player prefab is completed
-        Rb.velocity = Vector2.zero; 
+        Rb.velocity = Vector2.zero;
         col.enabled = false;
         Controller.currentLookAngle = 0;
     }
