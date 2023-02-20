@@ -718,10 +718,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3219454427825767208, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
-      propertyPath: orthographic size
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3219454427825767209, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
       propertyPath: m_RootOrder
       value: 1
