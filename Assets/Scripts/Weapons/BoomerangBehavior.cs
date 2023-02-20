@@ -13,6 +13,9 @@ public class BoomerangBehavior : BaseProjectile, IPoolable
     public bool isShot = false;
     private float _rotationZ;
     [SerializeField] private float _rotationSpeed = 720f;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioElement boomSound;
 
     protected override void OnStart()
     {
@@ -87,5 +90,9 @@ public class BoomerangBehavior : BaseProjectile, IPoolable
     public void ShootBoom()
     {
         isShot = true;
+        
     }
+
+    private void PlayOneShotHit() => boomSound.PlayOneShot(boomSound.GetRandomClip());
+
 }

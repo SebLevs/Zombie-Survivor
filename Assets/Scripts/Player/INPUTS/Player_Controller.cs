@@ -24,6 +24,8 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
     private SpriteRenderer sp;
     public Sprite[] spriteDirection;
     public Sprite currentSprite;
+    private Animator anim;
+    private static readonly int Velocity = Animator.StringToHash("Velocity");
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
         playerRef = GetComponent<Entity_Player>();
         currentSprite = spriteDirection[0];
         sp = playerRef.GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
     
     public void OnMove(InputAction.CallbackContext context)
@@ -155,26 +158,28 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
         if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y >= 0.7f)
         {
             currentLookAngle = 0;
-            currentSprite = spriteDirection[0];
+            //currentSprite = spriteDirection[0];
         }
         else if (normalizedLookDirection.x <= -0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 90;
-            currentSprite = spriteDirection[1];
+            //currentSprite = spriteDirection[1];
             playerRef.transform.localScale = new Vector3(-2, 2, 1);
         }
         else if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y <= -0.7f)
         {
             currentLookAngle = 180;
-            currentSprite = spriteDirection[2];
+            //currentSprite = spriteDirection[2];
         }
         else if (normalizedLookDirection.x >= 0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 270;
-            currentSprite = spriteDirection[3]; 
+            //currentSprite = spriteDirection[3]; 
         }
+        anim.SetInteger("LookDirection", currentLookAngle);
+        anim.SetFloat(Velocity, Entity_Player.Instance.Rb.velocity.magnitude);
         playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
-        sp.sprite = currentSprite;
+        //sp.sprite = currentSprite;
     }
 
     public void OnEnable()
