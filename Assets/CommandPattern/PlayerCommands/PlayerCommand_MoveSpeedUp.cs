@@ -6,7 +6,7 @@ public class PlayerCommand_MoveSpeedUp : ICommand
 
     public void Execute()
     {
-        if (Entity_Player.Instance.MovSpeed < 5f)
+        if (Entity_Player.Instance.MovSpeed < 15f)
         {
             Entity_Player.Instance.MovSpeed += 1.0f;
         }
@@ -14,7 +14,7 @@ public class PlayerCommand_MoveSpeedUp : ICommand
 
     public void UnExecute()
     {
-        if (Entity_Player.Instance.MovSpeed > 15f)
+        if (Entity_Player.Instance.MovSpeed > 5f)
         {
             Entity_Player.Instance.MovSpeed -= 1.0f;
         }

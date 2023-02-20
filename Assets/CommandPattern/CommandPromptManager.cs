@@ -89,32 +89,32 @@ public class CommandPromptManager : Manager<CommandPromptManager>
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command2.Value);
                 break;
             }
-            case "MOVE_SPEED_UP":
+            case "SPECIAL_ATTACK_SPEED_UP":
             {
                 playerCommandInvoker.DoCommand(playerCommandInvoker.command3.Value);
                 break;
             }
-            case "MOVE_SPEED_DOWN":
+            case "SPECIAL_ATTACK_SPEED_DOWN":
             {
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command3.Value);
                 break;
             }
-            case "SPECIAL_ATTACK_SPEED_UP":
+            case "BOOM_DISTANCE_UP":
             {
                 playerCommandInvoker.DoCommand(playerCommandInvoker.command4.Value);
                 break;
             }
-            case "SPECIAL_ATTACK_SPEED_DOWN":
+            case "BOOM_DISTANCE_DOWN":
             {
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command4.Value);
                 break;
             }
-            case "BOOM_DISTANCE_UP":
+            case "MOVE_SPEED_UP":
             {
                 playerCommandInvoker.DoCommand(playerCommandInvoker.command5.Value);
                 break;
             }
-            case "BOOM_DISTANCE_DOWN":
+            case "MOVE_SPEED_DOWN":
             {
                 playerCommandInvoker.UnDoCommand(playerCommandInvoker.command5.Value);
                 break;

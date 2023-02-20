@@ -14,7 +14,7 @@ public class PlayerCommand_BoomDistanceUp : ICommand
 
     public void UnExecute()
     {
-        if (Entity_Player.Instance.boomDistance > 15f)
+        if (Entity_Player.Instance.boomDistance > 5f)
         {
             Entity_Player.Instance.boomDistance -= 1.0f;
         }

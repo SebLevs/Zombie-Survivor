@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : Manager<UIManager>
 {
@@ -20,6 +22,21 @@ public class UIManager : Manager<UIManager>
 
     [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerHealthBar;
     [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerExperienceBar;
+
+    [field:Space(10)]
+    [field: Header("PlayerStats")]
+    [field: SerializeField] public TMP_Text attackCooldown;
+    [field: SerializeField] public TMP_Text boomCooldown;
+    [field: SerializeField] public TMP_Text dodgeCooldown;
+    [field: SerializeField] public Image attackFill;
+    [field: SerializeField] public Image boomFill;
+    [field: SerializeField] public Image dodgeFill;
+    [field: SerializeField] public TMP_Text PS_moveSpeed;
+    [field: SerializeField] public TMP_Text PS_attackCooldown;
+    [field: SerializeField] public TMP_Text PS_boomCooldown;
+    [field: SerializeField] public TMP_Text PS_boomDistance;
+    [field: SerializeField] public TMP_Text PS_isInvincible;
+    
 
     /// <summary>
     /// Syncronous switch view: <br/>

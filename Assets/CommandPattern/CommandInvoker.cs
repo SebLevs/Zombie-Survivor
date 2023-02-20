@@ -30,9 +30,11 @@ public class CommandInvoker : ScriptableObject
     public void DoCommand(ICommand command)
     {
         command.Execute();
+        Entity_Player.Instance.RefreshPlayerStats();
     }
     public void UnDoCommand(ICommand command)
     {
         command.UnExecute();
+        Entity_Player.Instance.RefreshPlayerStats();
     }
 }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using TNRD;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using TMP_Text = TMPro.TMP_Text;
 
 public class ChestBehavior : MonoBehaviour
 {
@@ -12,19 +14,28 @@ public class ChestBehavior : MonoBehaviour
     private int nextPowerUpID;
     public int chestValue;
     private Entity_Player player = Entity_Player.Instance;
+    private Collider2D col;
 
     private CommandInvoker commandInvoker;
+
+    private TMP_Text uiValue;
+
+    private Animator anim;
 
 
 
     private void Awake()
     {
         chestValue = Random.Range(minValue, maxValue + 1);
+        uiValue = GetComponentInChildren<TMP_Text>();
+        anim = GetComponent<Animator>();
+        col = GetComponent<Collider2D>();
     }
 
     private void Start()
     {
         commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
+        uiValue.text = "$ " + chestValue;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -39,9 +50,10 @@ public class ChestBehavior : MonoBehaviour
     {
         if (player.currentGold >= chestValue)
         {
+            anim.Play("OpenChest");
             player.currentGold -= chestValue;
             //player.RefreshExperienceBar();
-            nextPowerUpID = Random.Range(2, commandInvoker.allCommands.Count + 1);
+            nextPowerUpID = Random.Range(2, commandInvoker.allCommands.Count);
             switch (nextPowerUpID)
             {
                 case 2 :
@@ -60,9 +72,10 @@ public class ChestBehavior : MonoBehaviour
                     commandInvoker.DoCommand(commandInvoker.command2.Value);
                     break;
             }
-            Debug.Log(commandInvoker.commandName[nextPowerUpID - 1]);
-            player.RefreshPlayerTimerStats();
-            gameObject.SetActive(false);
+            Debug.Log(commandInvoker.commandName[nextPowerUpID]);
+            player.RefreshPlayerStats();
+            col.enabled = false;
+            uiValue.enabled = false;
         }
     }
 }

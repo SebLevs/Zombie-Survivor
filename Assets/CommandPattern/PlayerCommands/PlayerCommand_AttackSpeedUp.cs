@@ -1,6 +1,5 @@
 using System;
-using UnityEngine;
-using Object = System.Object;
+
 
 [Serializable]
 public class PlayerCommand_AttackSpeedUp : ICommand
@@ -13,7 +12,7 @@ public class PlayerCommand_AttackSpeedUp : ICommand
     }
     public void Execute()
     {
-        if(Entity_Player.Instance.attackSpeed >= 0.05)
+        if(Entity_Player.Instance.attackSpeed -0.1f > 0.1f)
         {
             Entity_Player.Instance.attackSpeed -= 0.1f;
         }
@@ -22,7 +21,7 @@ public class PlayerCommand_AttackSpeedUp : ICommand
 
     public void UnExecute()
     {
-        if (Entity_Player.Instance.attackSpeed >= 2f)
+        if (Entity_Player.Instance.attackSpeed + 0.1f < 3f)
         {
             Entity_Player.Instance.attackSpeed += 0.1f;
         }

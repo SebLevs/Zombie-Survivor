@@ -32,7 +32,7 @@ public class Player_DodgeState : State<Entity_Player>
             m_controller.canDodge = false;
             m_controller.dodgeDelay.Reset();
             m_controller.dodgeDelay.StartTimer();
-            m_controller.col.enabled = false;
+            m_controller.gameObject.layer = 10;
         }
         else
         {
@@ -55,7 +55,7 @@ public class Player_DodgeState : State<Entity_Player>
         if(m_controller.transform.position.x == targetLocation.x && m_controller.transform.position.y == targetLocation.y)
         {
             isRolling= false;
-            m_controller.col.enabled = true;
+            m_controller.gameObject.layer = 3;
             m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
         }
     }
