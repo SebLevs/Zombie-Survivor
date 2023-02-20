@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class CinemachineConfinerSetter : MonoBehaviour
 {
-    [SerializeField] private Collider2D m_boudingShape;
+    private Collider2D m_boudingShape;
+
+    private void Awake()
+    {
+        m_boudingShape = GetComponent<Collider2D>();
+    }
+
     private void OnEnable()
     {
         SetCinemachineConfinerBoundingShape(m_boudingShape);
@@ -16,7 +22,11 @@ public class CinemachineConfinerSetter : MonoBehaviour
 
     private void SetCinemachineConfinerBoundingShape(Collider2D boundingShape)
     {
-        CinemachineConfiner2D cinemachineConfiner = Camera.main.gameObject?.GetComponentInChildren<CinemachineConfiner2D>();
+        Camera cam = Camera.main;
+
+        if (!cam) { return; }
+
+        CinemachineConfiner2D cinemachineConfiner = cam.gameObject.GetComponentInChildren<CinemachineConfiner2D>();
         cinemachineConfiner.m_BoundingShape2D = boundingShape;
     }
 }
