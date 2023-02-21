@@ -26,13 +26,24 @@ public class Player_DodgeState : State<Entity_Player>
             Vector2 dodgeDirection = Player_Controller.Instance.normalizedLookDirection;
             startLocation = m_controller.transform.position;
             targetLocation = new Vector2(startLocation.x + (dodgeDirection.x * m_controller.dodgeDistance), startLocation.y + (dodgeDirection.y * m_controller.dodgeDistance));
-            isRolling = true;
-            moveStopWatch = 0;
-            m_controller.Rb.velocity = Vector2.zero;
-            m_controller.canDodge = false;
-            m_controller.dodgeDelay.Reset();
-            m_controller.dodgeDelay.StartTimer();
-            m_controller.gameObject.layer = 10;
+
+            float rollDistance = Vector2.Distance(startLocation, targetLocation);
+            int mask = 1 << 9;
+            RaycastHit2D hit = Physics2D.Raycast(startLocation, (targetLocation - startLocation).normalized, rollDistance, mask);
+            if (!hit)
+            {
+                isRolling = true;
+                moveStopWatch = 0;
+                m_controller.Rb.velocity = Vector2.zero;
+                m_controller.canDodge = false;
+                m_controller.dodgeDelay.Reset();
+                m_controller.dodgeDelay.StartTimer();
+                m_controller.col.enabled = false;
+            }
+            else
+            {
+                m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
+            }
         }
         else
         {
@@ -52,10 +63,10 @@ public class Player_DodgeState : State<Entity_Player>
             moveStopWatch += Time.deltaTime;
             m_controller.transform.position = Vector2.Lerp(startLocation, targetLocation, m_controller.dodgeCurve.Evaluate(moveStopWatch / moveDuration));
         }
-        if(m_controller.transform.position.x == targetLocation.x && m_controller.transform.position.y == targetLocation.y)
+        if (m_controller.transform.position.x == targetLocation.x && m_controller.transform.position.y == targetLocation.y)
         {
-            isRolling= false;
-            m_controller.gameObject.layer = 3;
+            isRolling = false;
+            m_controller.col.enabled = true;
             m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Move);
         }
     }
