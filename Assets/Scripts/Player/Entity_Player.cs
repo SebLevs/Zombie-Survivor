@@ -54,6 +54,9 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public int currentGold;
     public int MaxGold = 300;
 
+    [field: Header("Audio")]
+    public PlayerAudioContainer audios;
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -68,6 +71,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         dodgeDelay = new SequentialTimer(DodgeInterval);
         Health = GetComponent<Health>();
         uiManager = UIManager.Instance;
+        audios = GetComponent<PlayerAudioContainer>();
     }
     protected override void OnStart()
     {

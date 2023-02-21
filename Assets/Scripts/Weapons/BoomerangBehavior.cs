@@ -84,15 +84,16 @@ public class BoomerangBehavior : BaseProjectile, IPoolable
 
     public void OnReturnToAvailable()
     {
-        
+        boomSound.StopSound();
     }
 
     public void ShootBoom()
     {
         isShot = true;
+        boomSound.PlaySound(boomSound.GetRandomClip());
         
     }
-
-    private void PlayOneShotHit() => boomSound.PlayOneShot(boomSound.GetRandomClip());
+    
+    //private void PlayOneShotHit() => boomSound.PlayOneShot(boomSound.GetRandomClip());
 
 }

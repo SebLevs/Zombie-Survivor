@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 761391803507186232, guid: 333494b25497f27408f4779741bad858, type: 3}
       propertyPath: m_Name
-      value: Main skill Cooldown
+      value: Player skill UI
       objectReference: {fileID: 0}
     - target: {fileID: 3286932597317244863, guid: 333494b25497f27408f4779741bad858, type: 3}
       propertyPath: m_Pivot.x
@@ -56,6 +56,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3286932597317244863, guid: 333494b25497f27408f4779741bad858, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286932597317244863, guid: 333494b25497f27408f4779741bad858, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
@@ -89,34 +93,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3286932597317244863, guid: 333494b25497f27408f4779741bad858, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3464535917902743333, guid: 333494b25497f27408f4779741bad858, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3464535917902743333, guid: 333494b25497f27408f4779741bad858, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3464535917902743333, guid: 333494b25497f27408f4779741bad858, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3464535917902743333, guid: 333494b25497f27408f4779741bad858, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3464535917902743333, guid: 333494b25497f27408f4779741bad858, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3464535917902743333, guid: 333494b25497f27408f4779741bad858, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3464535917902743333, guid: 333494b25497f27408f4779741bad858, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

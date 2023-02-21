@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 751948003236894133, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: <Filler>k__BackingField
+      value: 
+      objectReference: {fileID: 8583215756393191836}
+    - target: {fileID: 751948003236894133, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: <Counter>k__BackingField
+      value: 
+      objectReference: {fileID: 3713826482029952433}
     - target: {fileID: 1082427737425198279, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -109,23 +117,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 24
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 61
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6187
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6187
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6187
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_LocalRotation.x
@@ -253,7 +261,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8930305238594402825, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_Name
-      value: Filling bar Player Skill
+      value: Player skill UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+--- !u!114 &3713826482029952433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4825036359261445504, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+  m_PrefabInstance: {fileID: 8178484709736194097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f89b7e4512a1e40a22ae88f97bec0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8583215756393191836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 460041996825803181, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+  m_PrefabInstance: {fileID: 8178484709736194097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c027b02d671367b4d815b656dadb54ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

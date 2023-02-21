@@ -148,7 +148,7 @@ public class UIManager : Manager<UIManager>
         view.Filler.ResetFilling();
     }
 
-    public void RefreshCooldownVisuals(ViewFillingBarWithCounter view, string remainingTime, float fillingNormalized)
+    public void  RefreshCooldownVisuals(ViewFillingBarWithCounter view, string remainingTime, float fillingNormalized)
     {
         view.Counter.Element.text = remainingTime;
         view.Filler.SetFilling(fillingNormalized);

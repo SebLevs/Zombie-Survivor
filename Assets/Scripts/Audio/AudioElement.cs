@@ -67,4 +67,14 @@ public class AudioElement
     {
         AudioSource.pitch = 1f;
     }
+    public void PlaySound(AudioClip clip)
+    {
+        AudioSource.clip = clip;
+        AudioSource.Play();
+    }
+
+    public void StopSound()
+    {
+        AudioSource.Stop();
+    }
 }
