@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_DeadState : State<Entity_Player>
@@ -11,6 +9,8 @@ public class Player_DeadState : State<Entity_Player>
     public override void OnEnter()
     {
         Debug.Log("Enter Dead State");
+
+        UIManager.Instance.DeathTransition();
     }
 
     public override void OnUpdate()

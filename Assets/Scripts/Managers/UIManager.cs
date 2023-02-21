@@ -9,6 +9,9 @@ public class UIManager : Manager<UIManager>
     [field:SerializeField] public float CharacterPrintSpeed { get; private set; }
     [field:SerializeField] public float LinePrintPause { get; private set; }
 
+    [Header("Death timer")]
+    [SerializeField] private float _returnToTitleScreenOnDeathWaitTime = 5f;
+
     [field: Header("Views")]
     [field: SerializeField] public ViewElement CurrentView { get; private set; }
     [field: SerializeField] public ViewElement ViewBackgroundBlackScreen { get; private set; }
@@ -18,6 +21,10 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewElementOptions ViewOptionMenu { get; private set; }
     [field: SerializeField] public ViewElement ViewBlackScreen { get; private set; }
     [field: SerializeField] public ViewElement ViewDeathScreen { get; private set; }
+    [field: Space(10)]
+
+    [field: SerializeField] public ViewPlayerCooldowns ViewPlayerCooldowns;
+    [field: SerializeField] public ViewPlayerStats ViewPlayerStats;
     [field: Space(10)]
 
     [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerHealthBar;
@@ -36,7 +43,6 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public TMP_Text PS_boomCooldown;
     [field: SerializeField] public TMP_Text PS_boomDistance;
     [field: SerializeField] public TMP_Text PS_isInvincible;
-    
 
     /// <summary>
     /// Syncronous switch view: <br/>
@@ -91,10 +97,13 @@ public class UIManager : Manager<UIManager>
     {
         ViewPlayerHealthBar.OnShow();
         ViewPlayerExperienceBar.OnShow();
+/*        ViewPlayerCooldowns.OnShow();
+        ViewPlayerStats.OnShow();*/
     }
 
     public void HideHUD()
     {
+        // Bars
         if (ViewPlayerHealthBar.gameObject.activeSelf && ViewPlayerHealthBar != CurrentView)
         {
             ViewPlayerHealthBar.OnHideQuick();
@@ -104,5 +113,31 @@ public class UIManager : Manager<UIManager>
         {
             ViewPlayerExperienceBar.OnHideQuick();
         }
+
+        // Cooldowns
+/*        if (ViewPlayerCooldowns.gameObject.activeSelf && ViewPlayerCooldowns != CurrentView)
+        {
+            ViewPlayerCooldowns.OnHideQuick();
+        }
+
+        if (ViewPlayerStats.gameObject.activeSelf && ViewPlayerStats != CurrentView)
+        {
+            ViewPlayerStats.OnHideQuick();
+        }*/
+    }
+
+    public void DeathTransition()
+    {
+        HideHUD();
+        OnSwitchViewSynchronous(ViewDeathScreen, showCallback: () =>
+        {
+            TimerManager.Instance.AddSequentialStopwatch(_returnToTitleScreenOnDeathWaitTime, () =>
+            {
+                ViewBlackScreen.OnShow( () =>
+                {
+                    SceneLoadManager.Instance.GoToTitleScreen();
+                });
+            });
+        });
     }
 }
