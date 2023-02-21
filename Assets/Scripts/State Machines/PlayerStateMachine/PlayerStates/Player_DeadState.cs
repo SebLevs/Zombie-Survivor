@@ -9,6 +9,7 @@ public class Player_DeadState : State<Entity_Player>
     public override void OnEnter()
     {
         Debug.Log("Enter Dead State");
+        //GameManager.Instance.PauseGame();
 
         UIManager.Instance.DeathTransition();
     }

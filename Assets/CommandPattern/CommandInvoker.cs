@@ -19,9 +19,9 @@ public class CommandInvoker : ScriptableObject
         allCommands.Add(command1);
         commandName.Add("Invincible");
         allCommands.Add(command2);
-        commandName.Add("AttackSpeed");
+        commandName.Add("AttackCooldown");
         allCommands.Add(command3);
-        commandName.Add("Special AttackSpeed");
+        commandName.Add("Special AttackCooldown");
         allCommands.Add(command4);
         commandName.Add("Boom Distance");
         allCommands.Add(command5);

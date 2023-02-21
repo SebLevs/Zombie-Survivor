@@ -112,11 +112,19 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         attackDelay.JumpToTime(0f);
         specialAttackDelay.JumpToTime(0f);
         dodgeDelay.JumpToTime(0f);
-        uiManager.PS_moveSpeed.text = MovSpeed.ToString("0.00");
-        uiManager.PS_attackCooldown.text = attackSpeed.ToString("0.00");
-        uiManager.PS_boomCooldown.text = specialAttackSpeed.ToString("0.00");
-        uiManager.PS_boomDistance.text = boomDistance.ToString("0.00");
-        uiManager.PS_isInvincible.text = Health.isPermaInvincible.ToString();
+
+        RefreshPlayerStatsUI();
+    }
+
+    public void RefreshPlayerStatsUI()
+    {
+        if (!uiManager.ViewPlayerStats.gameObject.activeSelf) { return; }
+
+        uiManager.ViewPlayerStats.Invincibility.Element.text = Health.isPermaInvincible.ToString();
+        uiManager.ViewPlayerStats.MoveSpeed.Element.text = MovSpeed.ToString("0.00");
+        uiManager.ViewPlayerStats.AttackCooldown.Element.text = attackSpeed.ToString("0.00");
+        uiManager.ViewPlayerStats.BoomerangCooldown.Element.text = specialAttackSpeed.ToString("0.00");
+        uiManager.ViewPlayerStats.BoomerangDistance.Element.text = boomDistance.ToString("0.00");
     }
 
     public void OnUpdate()
@@ -129,35 +137,35 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         if (attackDelay.HasReachedTarget())
         {
             canAttack = true;
-            uiManager.attackCooldown.text = "";
-            uiManager.attackFill.fillAmount = 0;
+            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.m_mainSkill);
         }
         else
         {
-            uiManager.attackCooldown.text = attackDelay.CurrentTime.ToString("0.00");
-            uiManager.attackFill.fillAmount = (attackDelay.CurrentTime / attackDelay.TargetTime);
+            string remainingTime = attackDelay.CurrentTime.ToString("0.00");
+            float fillingNormalized = attackDelay.CurrentTime / attackDelay.TargetTime;
+            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.m_mainSkill, remainingTime, fillingNormalized);
         }
         if (specialAttackDelay.HasReachedTarget())
         {
             canSpecialAttack = true;
-            uiManager.boomCooldown.text = "";
-            uiManager.boomFill.fillAmount = 0;
+            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.m_secondarySkill);
         }
         else
         {
-            uiManager.boomCooldown.text = specialAttackDelay.CurrentTime.ToString("0.00");
-            uiManager.boomFill.fillAmount = (specialAttackDelay.CurrentTime / specialAttackDelay.TargetTime);
+            string remainingTime = specialAttackDelay.CurrentTime.ToString("0.00");
+            float fillingNormalized = specialAttackDelay.CurrentTime / specialAttackDelay.TargetTime;
+            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.m_secondarySkill, remainingTime, fillingNormalized);
         }
         if (dodgeDelay.HasReachedTarget())
         {
             canDodge = true;
-            uiManager.dodgeCooldown.text = "";
-            uiManager.dodgeFill.fillAmount = 0;
+            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.m_TertiarySkill);
         }
         else
         {
-            uiManager.dodgeCooldown.text = dodgeDelay.CurrentTime.ToString("0.00");
-            uiManager.dodgeFill.fillAmount = (dodgeDelay.CurrentTime / dodgeDelay.TargetTime);
+            string remainingTime = dodgeDelay.CurrentTime.ToString("0.00");
+            float fillingNormalized = dodgeDelay.CurrentTime / dodgeDelay.TargetTime;
+            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.m_TertiarySkill, remainingTime, fillingNormalized);
         }
         //RefreshPlayerStats();
         test = StateController.CurrentState.ToString();

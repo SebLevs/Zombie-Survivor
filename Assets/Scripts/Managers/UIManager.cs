@@ -32,21 +32,21 @@ public class UIManager : Manager<UIManager>
 
     [field:Space(10)]
     [field: Header("PlayerStats")]
-    [field: SerializeField] public TMP_Text attackCooldown;
+/*    [field: SerializeField] public TMP_Text attackCooldown;
     [field: SerializeField] public TMP_Text boomCooldown;
     [field: SerializeField] public TMP_Text dodgeCooldown;
     [field: SerializeField] public Image attackFill;
     [field: SerializeField] public Image boomFill;
-    [field: SerializeField] public Image dodgeFill;
-    [field: SerializeField] public TMP_Text PS_moveSpeed;
+    [field: SerializeField] public Image dodgeFill;*/
+/*    [field: SerializeField] public TMP_Text PS_moveSpeed;
     [field: SerializeField] public TMP_Text PS_attackCooldown;
     [field: SerializeField] public TMP_Text PS_boomCooldown;
     [field: SerializeField] public TMP_Text PS_boomDistance;
-    [field: SerializeField] public TMP_Text PS_isInvincible;
+    [field: SerializeField] public TMP_Text PS_isInvincible;*/
 
     /// <summary>
     /// Syncronous switch view: <br/>
-    /// OnHide AND OnShow at the same time
+    /// OnHide AND OnShow at the same remainingTime
     /// <br/><br/>
     /// OnHide() current view<br/>
     /// OnShow() newly selected view
@@ -97,13 +97,15 @@ public class UIManager : Manager<UIManager>
     {
         ViewPlayerHealthBar.OnShow();
         ViewPlayerExperienceBar.OnShow();
-/*        ViewPlayerCooldowns.OnShow();
-        ViewPlayerStats.OnShow();*/
+        ViewPlayerCooldowns.OnShow();
+        ViewPlayerStats.OnShow( () =>
+        {
+            Entity_Player.Instance.RefreshPlayerStats();
+        });
     }
 
     public void HideHUD()
     {
-        // Bars
         if (ViewPlayerHealthBar.gameObject.activeSelf && ViewPlayerHealthBar != CurrentView)
         {
             ViewPlayerHealthBar.OnHideQuick();
@@ -114,8 +116,7 @@ public class UIManager : Manager<UIManager>
             ViewPlayerExperienceBar.OnHideQuick();
         }
 
-        // Cooldowns
-/*        if (ViewPlayerCooldowns.gameObject.activeSelf && ViewPlayerCooldowns != CurrentView)
+        if (ViewPlayerCooldowns.gameObject.activeSelf && ViewPlayerCooldowns != CurrentView)
         {
             ViewPlayerCooldowns.OnHideQuick();
         }
@@ -123,7 +124,7 @@ public class UIManager : Manager<UIManager>
         if (ViewPlayerStats.gameObject.activeSelf && ViewPlayerStats != CurrentView)
         {
             ViewPlayerStats.OnHideQuick();
-        }*/
+        }
     }
 
     public void DeathTransition()
@@ -139,5 +140,17 @@ public class UIManager : Manager<UIManager>
                 });
             });
         });
+    }
+
+    public void ResetCooldownView(ViewFillingBarWithCounter view)
+    {
+        view.Counter.Element.text = "";
+        view.Filler.ResetFilling();
+    }
+
+    public void RefreshCooldownVisuals(ViewFillingBarWithCounter view, string remainingTime, float fillingNormalized)
+    {
+        view.Counter.Element.text = remainingTime;
+        view.Filler.SetFilling(fillingNormalized);
     }
 }

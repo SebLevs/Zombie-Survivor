@@ -127,6 +127,9 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
 
     public void OnUpdate()
     {
+        // Prevent mouse movement visuals when dead (game is not paused currently on death)
+        if (Entity_Player.Instance.Health.IsDead) { return; } 
+
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         normalizedLookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
 
