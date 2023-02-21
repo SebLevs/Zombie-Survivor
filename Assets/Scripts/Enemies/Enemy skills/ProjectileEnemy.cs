@@ -76,8 +76,15 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
 
     public void OnDisable()
     {
-        GameManager.Instance.UnSubscribeFromPauseGame(this);
-        UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.UnSubscribeFromPauseGame(this);
+        }
+
+        if (UpdateManager.Instance)
+        {
+            UpdateManager.Instance.UnSubscribeFromUpdate(this);
+        }
     }
 
     public void OnPauseGame()

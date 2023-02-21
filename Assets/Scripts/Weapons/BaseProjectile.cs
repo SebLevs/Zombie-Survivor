@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BaseProjectile : MonoBehaviour, IFrameUpdateListener, IFixedUpdateListener
+public abstract class BaseProjectile : MonoBehaviour, IFrameUpdateListener, IFixedUpdateListener, IPauseListener
 {
     [SerializeField] protected int m_damage = 1;
 
@@ -67,6 +67,11 @@ public abstract class BaseProjectile : MonoBehaviour, IFrameUpdateListener, IFix
             UpdateManager.Instance.UnSubscribeFromUpdate(this);
             UpdateManager.Instance.UnSubscribeFromFixedUpdate(this);
         }
+
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.UnSubscribeFromPauseGame(this);
+        }
     }
 
     void IFrameUpdateListener.OnUpdate()
@@ -77,5 +82,13 @@ public abstract class BaseProjectile : MonoBehaviour, IFrameUpdateListener, IFix
     void IFixedUpdateListener.OnFixedUpdate()
     {
         OnFixedUpdate();
+    }
+
+    public virtual void OnPauseGame()
+    {
+    }
+
+    public virtual void OnResumeGame()
+    {
     }
 }
