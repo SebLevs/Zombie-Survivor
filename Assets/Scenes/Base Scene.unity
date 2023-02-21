@@ -489,10 +489,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1167502202767387791, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
-      propertyPath: m_maxHP
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1282047109729523136, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.35
