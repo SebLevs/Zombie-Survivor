@@ -17,9 +17,6 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     protected EnemyStateController m_stateController;
     public PathfinderUtility PathfinderUtility { get; private set; }
 
-    [field: SerializeField] public int collisionDamage { get; private set; }
-    [field: SerializeField] public int TempDamage { get; private set; }
-
     private void Awake() { OnAwake(); }
 
     protected void OnAwake()
