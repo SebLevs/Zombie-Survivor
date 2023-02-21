@@ -1874,6 +1874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: View Player cooldowns
       objectReference: {fileID: 0}
+    - target: {fileID: 7542822381078967905, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
 --- !u!224 &1887645090380914408 stripped

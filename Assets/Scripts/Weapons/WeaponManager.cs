@@ -7,6 +7,7 @@ public class WeaponManager : Manager<WeaponManager>
     public PoolPattern<BoomerangBehavior> boomPool;
 
     [Header("Enemy pools")]
+    // TODO: Place into an EnemyWeaponManager.cs which would contain references to the current level projectiles
     public PoolPattern<ProjectileEnemy> bonePool;
 
     protected override void OnAwake()

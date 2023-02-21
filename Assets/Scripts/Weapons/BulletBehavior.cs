@@ -74,7 +74,10 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
     public override void OnDisable()
     {
         base.OnDisable();
-        GameManager.Instance.UnSubscribeFromPauseGame(this);
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.UnSubscribeFromPauseGame(this);
+        }
     }
 
     public void ShootBullet(Vector2 direction, float speed)

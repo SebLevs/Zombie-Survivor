@@ -100,8 +100,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public void Init()
     {
         Health.FullHeal();
-        RefreshHealthBar(); // if (UIManager.Instance.ViewPlayerHealthBar.gameObject.activeSelf) {}
-        transform.position = Vector3.zero;
+        RefreshHealthBar();
     }
 
     public void RefreshPlayerStats()

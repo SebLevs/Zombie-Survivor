@@ -88,6 +88,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, 
         showCallback: () =>
         {
+            Entity_Player.Instance.transform.position = Vector3.zero;
             UnloadCurrentScene();
             uiManager.ViewBackgroundBlackScreen.OnShow();
             uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewTitleScreen);
