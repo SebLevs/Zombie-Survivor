@@ -72,7 +72,7 @@ public class ChestBehavior : MonoBehaviour
                     commandInvoker.DoCommand(commandInvoker.command2.Value);
                     break;
             }
-            Debug.Log(commandInvoker.commandName[nextPowerUpID]);
+            Debug.Log(commandInvoker.commandName[nextPowerUpID - 1]);
             player.RefreshPlayerStats();
             col.enabled = false;
             uiValue.enabled = false;

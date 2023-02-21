@@ -530,13 +530,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSound:
-    <AudioSource>k__BackingField: {fileID: 6795325728018082779}
+    <AudioSource>k__BackingField: {fileID: 0}
     _minPitch: 1
     _maxPitch: 1
-    m_clips:
-    - {fileID: 8300000, guid: b2c34b57bb76f5e48820a762358d92ef, type: 3}
-    - {fileID: 8300000, guid: 3723a7908ae8b2b4584e26f2d0bceb51, type: 3}
-    - {fileID: 8300000, guid: 5372a6c5e5901e14c8998f7124c58a2d, type: 3}
+    m_clips: []
 --- !u!58 &1997386155763334282
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -597,7 +594,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

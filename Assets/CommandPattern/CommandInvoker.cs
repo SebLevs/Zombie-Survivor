@@ -16,6 +16,8 @@ public class CommandInvoker : ScriptableObject
 
     public void Init()
     {
+        allCommands.Clear();
+        commandName.Clear();
         allCommands.Add(command1);
         commandName.Add("Invincible");
         allCommands.Add(command2);

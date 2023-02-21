@@ -140,6 +140,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 546040157917262173, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: bulletSound.m_clips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 546040157917262173, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: shootSound.m_clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: b2c34b57bb76f5e48820a762358d92ef, type: 3}
@@ -152,7 +156,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 5372a6c5e5901e14c8998f7124c58a2d, type: 3}
     - target: {fileID: 546040157917262173, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: bulletSound.m_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b2c34b57bb76f5e48820a762358d92ef, type: 3}
+    - target: {fileID: 546040157917262173, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: bulletSound.m_clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3723a7908ae8b2b4584e26f2d0bceb51, type: 3}
+    - target: {fileID: 546040157917262173, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: bulletSound.m_clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5372a6c5e5901e14c8998f7124c58a2d, type: 3}
+    - target: {fileID: 546040157917262173, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: shootSound.<AudioSource>k__BackingField
+      value: 
+      objectReference: {fileID: 1730893318}
+    - target: {fileID: 546040157917262173, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: bulletSound.<AudioSource>k__BackingField
       value: 
       objectReference: {fileID: 1730893318}
     - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
