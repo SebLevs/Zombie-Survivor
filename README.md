@@ -4,7 +4,7 @@
 <b><br/>
 
 <h2>Who did what</h2><br/>
-Sébastien Lévesque (Ludwell)<br/>
+<a href="https://sebastienlevesques.wixsite.com/portfolio">Sébastien Lévesque (Ludwell)</a><br/>
 <ul>
 <li>AI</li>
 <li>UI</li>
@@ -12,13 +12,13 @@ Sébastien Lévesque (Ludwell)<br/>
 <li>Audio</li>
 <li>Misc</li>
 </ul>
-Marc-Antoine Giguère (Power Key)<br/>
+<a href="www.google.com">Marc-Antoine Giguère (Power Key)</a><br/>
 <ul>
 <li>Three Cs</li>
 <li>Gameplay</li>
 <li>Misc.</li>
 </ul>
-MARIE Foo bar<br/>
+<a href="https://www.instagram.com/starteapot/?hl=fr">Marie-Maxime Giguère</a><br/>
 <ul>
 <li>All visual assets</li>
 </ul>
