@@ -22,7 +22,7 @@
 <ul>
 <li>All visual assets</li>
 </ul>
-Dude Foo bar<br/>
+Benoit Laroche<br/>
 <ul>
 <li>Music</li>
 </ul>
