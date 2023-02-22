@@ -43,11 +43,11 @@ broumbroum, sf3-sfx-menu-validate.wav, https://freesound.org/people/broumbroum/s
 <li>Every other UI sounds<br/>
 made by Sébastien (Ludwell) using the Chiptone app: https://sfbgames.itch.io/chiptone</li>
 </ul>
-<h3>Ambiance<h3/>
+<h3>Ambiance</h3>
 <ul>
 <li>Micha, Puka A., Andrew Dodds, Krotos Starter Library</li>
 </ul>
-<h3>Others<h3/>
+<h3>Others</h3>
 <ul>
 <li>Krotos Starter Library sound pack</li>
 </ul>
