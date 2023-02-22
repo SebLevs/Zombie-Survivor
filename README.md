@@ -3,7 +3,7 @@
 
 <b><br/>
 
-<h2>Who did what<h2><br/>
+<h2>Who did what</h2><br/>
 Sébastien Lévesque (Ludwell)<br/>
 <ul>
 <li>AI</li>
