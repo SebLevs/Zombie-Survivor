@@ -15,8 +15,8 @@ Sébastien Lévesque (Ludwell)<br/>
 Marc-Antoine Giguère (Power Key)<br/>
 <ul>
 <li>Three Cs</li>
-<li>Three Cs</li>
-<li>Three Cs</li>
+<li>Gameplay</li>
+<li>Misc.</li>
 </ul>
 MARIE Foo bar<br/>
 <ul>
