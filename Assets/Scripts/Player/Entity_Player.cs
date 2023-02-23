@@ -6,24 +6,28 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
 
     [SerializeField] private string test;
 
-    [field:Header("Variables")]
+    [field: Header("Variables")]
+    [SerializeField] private float baseMovSpeed;
     public float MovSpeed { get; set; }
     public float BulletSpeed { get; set; }
 
     [field: Header("ShootControl")]
+    [SerializeField] private float baseAttackSpeed;
     public float attackSpeed;
     public bool canAttack = true;
     [HideInInspector]
     public SequentialTimer attackDelay;
 
     [field: Header("SpecialShootControl")]
+    [SerializeField] private float baseSpecialAttackSpeed;
     public float specialAttackSpeed;
     public bool canSpecialAttack = true;
     public float boomDistance = 15.0f;
     [HideInInspector]
     public SequentialTimer specialAttackDelay;
 
-    [field: Header("DodgeControl")] 
+    [field: Header("DodgeControl")]
+    [SerializeField] private float baseDodgeInterval;
     public float DodgeInterval;
     public bool canDodge = true;
     public float dodgeDistance;
@@ -74,6 +78,8 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         Health = GetComponent<Health>();
         uiManager = UIManager.Instance;
         audios = GetComponent<PlayerAudioContainer>();
+
+        ResetSkillsValues();
     }
     protected override void OnStart()
     {
@@ -84,10 +90,23 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         //Init();
     }
 
+    public void ResetGold() => currentGold = 0;
+
     public void Reinitialize()
     {
         Health.FullHeal();
         transform.position = Vector3.zero;
+
+        ResetGold();
+        ResetSkillsValues();
+    }
+
+    private void ResetSkillsValues()
+    {
+        MovSpeed = baseMovSpeed;
+        attackSpeed = baseAttackSpeed;
+        specialAttackSpeed = baseSpecialAttackSpeed;
+        DodgeInterval = baseDodgeInterval;
     }
 
     public void RefreshHealthBar()
