@@ -12,6 +12,7 @@ public class AudioElement
     [Range(-3, 3)][SerializeField] private float _minPitch = 1f;
     [Range(-3, 3)][SerializeField] private float _maxPitch = 1f;
 
+    [Space(10)]
     [SerializeField] private AudioClip[] m_clips;
 
     public void PlayOneShotRandom() => AudioSource.PlayOneShot(GetRandomClip());

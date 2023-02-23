@@ -8,9 +8,8 @@ public class Player_DeadState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        Debug.Log("Enter Dead State");
-        //GameManager.Instance.PauseGame();
-
+        //Debug.Log("Enter Dead State");
+        Entity_Player.Instance.Rb.velocity = Vector2.zero;
         UIManager.Instance.DeathTransition();
     }
 
@@ -26,6 +25,9 @@ public class Player_DeadState : State<Entity_Player>
 
     public override void HandleStateTransition()
     {
-        
+        if (!m_controller.Health.IsDead)
+        {
+            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Idle);
+        }
     }
 }

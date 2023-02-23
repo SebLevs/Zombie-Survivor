@@ -93,7 +93,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         }
     }
 
-    public void RefreshExperienceBar()
+    public void RefreshGoldBar()
     {
         if (uiManager != null)
         {
@@ -107,6 +107,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     {
         Health.FullHeal();
         RefreshHealthBar();
+        RefreshGoldBar();
     }
 
     public void RefreshPlayerStats()

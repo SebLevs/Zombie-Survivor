@@ -23,6 +23,6 @@ public class Gold : MonoBehaviour
             player.currentGold += goldOnDeath;
         }
 
-        //player.RefreshExperienceBar();
+        player.RefreshGoldBar();
     }
 }

@@ -58,6 +58,7 @@ public abstract class BaseProjectile : MonoBehaviour, IFrameUpdateListener, IFix
     {
         UpdateManager.Instance.SubscribeToUpdate(this);
         UpdateManager.Instance.SubscribeToFixedUpdate(this);
+        GameManager.Instance.SubscribeToPauseGame(this);
     }
 
     public virtual void OnDisable()

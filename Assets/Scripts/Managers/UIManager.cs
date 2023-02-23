@@ -134,10 +134,8 @@ public class UIManager : Manager<UIManager>
         {
             TimerManager.Instance.AddSequentialStopwatch(_returnToTitleScreenOnDeathWaitTime, () =>
             {
-                ViewBlackScreen.OnShow( () =>
-                {
-                    SceneLoadManager.Instance.GoToTitleScreen();
-                });
+                SceneLoadManager.Instance.GoToTitleScreen();
+                Entity_Player.Instance.Health.FullHeal();
             });
         });
     }
