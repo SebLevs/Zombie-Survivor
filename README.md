@@ -12,7 +12,7 @@
 <li>Audio</li>
 <li>Misc</li>
 </ul>
-<a href="www.google.com">Marc-Antoine Giguère (Power Key)</a><br/>
+<a href="https://www.marcantoinegiguere.ca/">Marc-Antoine Giguère (Power Key)</a><br/>
 <ul>
 <li>Three Cs</li>
 <li>Gameplay</li>
