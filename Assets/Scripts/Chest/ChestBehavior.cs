@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using TMPro;
-using TNRD;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using TMP_Text = TMPro.TMP_Text;
@@ -11,31 +8,31 @@ public class ChestBehavior : MonoBehaviour
     public int minValue;
     public int maxValue;
 
-    private int nextPowerUpID;
+    private int _nextPowerUpID;
     public int chestValue;
-    private Entity_Player player = Entity_Player.Instance;
-    private Collider2D col;
+    private Entity_Player _player => Entity_Player.Instance;
+    private Collider2D _col;
 
-    private CommandInvoker commandInvoker;
+    private CommandInvoker _commandInvoker;
 
-    private TMP_Text uiValue;
+    private TMP_Text _uiValue;
 
-    private Animator anim;
+    private Animator _anim;
 
 
 
     private void Awake()
     {
         chestValue = Random.Range(minValue, maxValue + 1);
-        uiValue = GetComponentInChildren<TMP_Text>();
-        anim = GetComponent<Animator>();
-        col = GetComponent<Collider2D>();
+        _uiValue = GetComponentInChildren<TMP_Text>();
+        _anim = GetComponent<Animator>();
+        _col = GetComponent<Collider2D>();
     }
 
     private void Start()
     {
-        commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
-        uiValue.text = "$ " + chestValue;
+        _commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
+        _uiValue.text = "$ " + chestValue;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -48,34 +45,19 @@ public class ChestBehavior : MonoBehaviour
 
     private void TryOpenChest()
     {
-        if (player.currentGold >= chestValue)
+        if (_player.currentGold >= chestValue)
         {
-            anim.Play("OpenChest");
-            player.currentGold -= chestValue;
+            _anim.Play("OpenChest");
+            _player.currentGold -= chestValue;
             //player.RefreshExperienceBar();
-            nextPowerUpID = Random.Range(2, commandInvoker.allCommands.Count);
-            switch (nextPowerUpID)
-            {
-                case 2 :
-                    commandInvoker.DoCommand(commandInvoker.command2.Value);
-                    break;
-                case 3 :
-                    commandInvoker.DoCommand(commandInvoker.command3.Value);
-                    break;
-                case 4 :
-                    commandInvoker.DoCommand(commandInvoker.command4.Value);
-                    break;
-                case 5 :
-                    commandInvoker.DoCommand(commandInvoker.command5.Value);
-                    break;
-                default:
-                    commandInvoker.DoCommand(commandInvoker.command2.Value);
-                    break;
-            }
-            Debug.Log(commandInvoker.commandName[nextPowerUpID]);
-            player.RefreshPlayerStats();
-            col.enabled = false;
-            uiValue.enabled = false;
+            _nextPowerUpID = Random.Range(2, _commandInvoker.commandDic.Count);
+
+            (string name, ICommand command) = _commandInvoker.commandDic.ElementAt(_nextPowerUpID);
+            _commandInvoker.DoCommand(command);
+            Debug.Log(name);
+            _player.RefreshPlayerStats();
+            _col.enabled = false;
+            _uiValue.enabled = false;
         }
     }
 }

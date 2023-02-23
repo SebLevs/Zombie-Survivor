@@ -1,31 +1,28 @@
+using System;
 using System.Collections.Generic;
 using TNRD;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu]
 public class CommandInvoker : ScriptableObject
 {
-    [SerializeField] public SerializableInterface<ICommand> command1;
-    [SerializeField] public SerializableInterface<ICommand> command2;
-    [SerializeField] public SerializableInterface<ICommand> command3;
-    [SerializeField] public SerializableInterface<ICommand> command4;
-    [SerializeField] public SerializableInterface<ICommand> command5;
-
-    [HideInInspector] public List<SerializableInterface<ICommand>> allCommands;
-    [HideInInspector] public List<string> commandName; //Dictionary didnt work and i'm mad
-
+    [Serializable]
+    public class CommandWrapper
+    {
+        public string name;
+        public SerializableInterface<ICommand> command;
+    }
+    public List<CommandWrapper> wrappers;
+    public Dictionary<string, ICommand> commandDic = new();
+    
     public void Init()
     {
-        allCommands.Add(command1);
-        commandName.Add("Invincible");
-        allCommands.Add(command2);
-        commandName.Add("AttackCooldown");
-        allCommands.Add(command3);
-        commandName.Add("Special AttackCooldown");
-        allCommands.Add(command4);
-        commandName.Add("Boom Distance");
-        allCommands.Add(command5);
-        commandName.Add("MoveSpeed");
+        commandDic.Clear();
+        foreach (CommandWrapper commandWrapper in wrappers)
+        {
+            commandDic.Add(commandWrapper.name, commandWrapper.command.Value);
+        }
     }
     public void DoCommand(ICommand command)
     {

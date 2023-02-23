@@ -98,7 +98,7 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
                 {
                     uiManager.OnSwitchViewSequential(uiManager.ViewEmpty, showCallback: () =>
                     {
-                        if (!CommandPromptManager.Instance.IsActive)
+                        if (!CommandPromptManager.Instance.isActive)
                         {
                             gameManager.ResumeGame();
                         }
