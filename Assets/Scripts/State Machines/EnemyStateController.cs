@@ -5,9 +5,9 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
 {
     [field:Header("Reaction time: Used for attack, state transitions, etc.")]
     [field:Tooltip(
-        "Human reaction time in seconds: \n" +
+        "Human reaction time in seconds (average): \n" +
         "Visual stimulus: ~0.25\n" + 
-        "Audio stimulus: ~0.17\n"+
+        "Audio stimulus: ~0.17\n" +
         "Touch stimulus: ~0.15\n")]
     [field:Min(0)][field:SerializeField] public float ReactionTime { get; private set; }
 

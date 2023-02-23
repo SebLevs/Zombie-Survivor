@@ -38,7 +38,7 @@ public class ChestBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player") && player.Health.IsDead)
+        if (col.CompareTag("Player") && !player.Health.IsDead)
         {
             TryOpenChest();
         }

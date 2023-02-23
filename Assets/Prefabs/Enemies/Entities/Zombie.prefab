@@ -335,7 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57be4f9e3fdf88a4c9821c0d778fdddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Experience>k__BackingField: 0
 --- !u!114 &6147737196562750533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +377,19 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 1
+--- !u!114 &2668688316651179750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5496854209455936488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1955264ac8d6941aa47516391f9a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ReactionTime>k__BackingField: 0.21
 --- !u!4 &5496854209455936502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8889025150732925513, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
