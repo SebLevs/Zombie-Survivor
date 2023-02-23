@@ -111,21 +111,15 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
 
     public void RefreshHealthBar()
     {
-        if (uiManager != null)
-        {
-            uiManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
-            uiManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
-        }
+        uiManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
+        uiManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
     }
 
     public void RefreshGoldBar()
     {
-        if (uiManager != null)
-        {
-            float filling = currentGold / MaxGold;
-            uiManager.ViewPlayerExperienceBar.Filler.SetFilling(filling);
-            uiManager.ViewPlayerExperienceBar.Counter.Element.text = currentGold + " / " + MaxGold;
-        }
+        float filling = (float)currentGold / (float)MaxGold;
+        uiManager.ViewPlayerExperienceBar.Filler.SetFilling(filling);
+        uiManager.ViewPlayerExperienceBar.Counter.Element.text = currentGold + " / " + MaxGold;
     }
 
     public void Init()

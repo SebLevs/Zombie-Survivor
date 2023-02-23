@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: 
+  baseMovSpeed: 5
   baseAttackSpeed: 0.5
   attackSpeed: 0.5
   canAttack: 1
