@@ -11,16 +11,16 @@ public class Player_DeadState : State<Entity_Player>
         //Debug.Log("Enter Dead State");
         Entity_Player.Instance.Rb.velocity = Vector2.zero;
         UIManager.Instance.DeathTransition();
+        Entity_Player.Instance.GetComponent<Animator>().enabled = false;
     }
 
     public override void OnUpdate()
     {
-        
     }
 
     public override void OnExit()
     {
-        
+        Entity_Player.Instance.GetComponent<Animator>().enabled = true;
     }
 
     public override void HandleStateTransition()

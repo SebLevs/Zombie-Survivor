@@ -260,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CharacterPrintSpeed>k__BackingField: 0.25
   <LinePrintPause>k__BackingField: 0.5
-  _returnToTitleScreenOnDeathWaitTime: 5
+  _returnToTitleScreenOnDeathWaitTime: 3
   <CurrentView>k__BackingField: {fileID: 0}
   <ViewBackgroundBlackScreen>k__BackingField: {fileID: 2897191270143735356}
   <ViewEmpty>k__BackingField: {fileID: 260204171243620009}

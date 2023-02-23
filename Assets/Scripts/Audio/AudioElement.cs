@@ -8,12 +8,12 @@ public class AudioElement
     [field:Header("Audio Source")]
     [field: SerializeField] public AudioSource AudioSource { get; private set; }
 
+    [Header("Clips")]
+    [SerializeField] private AudioClip[] m_clips;
+
     [Header("Pitch")]
     [Range(-3, 3)][SerializeField] private float _minPitch = 1f;
     [Range(-3, 3)][SerializeField] private float _maxPitch = 1f;
-
-    [Space(10)]
-    [SerializeField] private AudioClip[] m_clips;
 
     public void PlayOneShotRandom() => AudioSource.PlayOneShot(GetRandomClip());
     public void PlayOneShot(AudioClip _clip) => AudioSource.PlayOneShot(_clip);
@@ -84,4 +84,6 @@ public class AudioElement
     {
         AudioSource.pitch = 1f;
     }
+
+    public void SetVolume(float volume) => AudioSource.volume = volume;
 }

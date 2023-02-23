@@ -84,6 +84,12 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         //Init();
     }
 
+    public void Reinitialize()
+    {
+        Health.FullHeal();
+        transform.position = Vector3.zero;
+    }
+
     public void RefreshHealthBar()
     {
         if (uiManager != null)
