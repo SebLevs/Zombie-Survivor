@@ -100,14 +100,14 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         PathfinderUtility.DisablePathfinding();
 
         m_rigidbody.velocity = Vector2.zero;
-        m_collider.enabled = false;
+        if (m_collider) { m_collider.enabled = false; }
     }
 
     public virtual void OnResumeGame()
     {
         Animator.speed = 1f;
 
-        m_collider.enabled = true;
+        if (m_collider) { m_collider.enabled = true; }
 
         PathfinderUtility.EnablePathfinding();
     }

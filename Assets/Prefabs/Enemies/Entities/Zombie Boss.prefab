@@ -1030,6 +1030,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2004451262384889686, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+    - {fileID: 5803520454364322826, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+    - {fileID: 7341633155239485278, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
 --- !u!114 &3019830083577269652 stripped
 MonoBehaviour:

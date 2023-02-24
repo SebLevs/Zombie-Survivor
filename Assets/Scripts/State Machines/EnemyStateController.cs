@@ -87,9 +87,8 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
         Context.Animator.SetTrigger(attackAnimHash);
     }
 
-    public bool IsInAnimation(AnimationClip clip)
+    public bool IsInAnimationState(AnimationClip clip)
     {
-        Debug.Log(Context.Animator.GetCurrentAnimatorStateInfo(0).IsName(clip.name));
         return Context.Animator.GetCurrentAnimatorStateInfo(0).IsName(clip.name);
     }
 

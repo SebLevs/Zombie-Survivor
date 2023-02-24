@@ -39,7 +39,7 @@ public class ZombieBossGroundSmashState : EnemyState
     public override void OnUpdate()
     {
         if (m_delayedAttackTimer != null) { return; }
-        if (m_controller.IsInAnimation(m_groundSmashSkill.Animation)) { return; }
+        if (m_controller.IsInAnimationState(m_groundSmashSkill.Animation)) { return; }
 
         if (m_groundSmashSkill.CanExecute(m_controller.Context.PathfinderUtility.GetTarget(), m_controller.Context.transform))
         {
