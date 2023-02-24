@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class ZombieBossDeadState : EnemyState
     public override void HandleStateTransition()
     {
     }
+
+    public override bool IsTransitionValid() { return m_controller.Context.Health.IsDead; }
 
     public override void OnEnter()
     {

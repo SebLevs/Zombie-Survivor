@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListener
 {
+    [SerializeField] private bool _isSpriteFlippable = true;
+
     public EnemyType Type { get; private set; }
 
     [Header("Health bar")]
@@ -47,6 +49,7 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     public virtual void OnGetFromAvailable()
     {
         OnStart();
+        m_stateController.OnTransitionState(m_stateController.GetDefaultState());
         EnemyManager.Instance.CurrentlyActiveEnemies.Add(this);
     }
 
@@ -68,8 +71,8 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         m_stateController.OnUpdate();
         float angle = MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform);
         int index = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
-        MathAngleUtilities.FlipLocalScale2D(m_spriteRenderer.transform, angle);
         Animator.SetFloat("angle", index);
+        if (_isSpriteFlippable) { MathAngleUtilities.FlipLocalScale2D(m_spriteRenderer.transform, angle); }
     }
 
     public virtual void OnDisable()

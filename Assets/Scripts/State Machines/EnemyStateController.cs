@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
@@ -14,6 +15,10 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
     public Enemy Context { get; private set; }
     public EnemyState CurrentState { get; private set; }
 
+    [SerializeField] private float _returnToDefaultAftertime = 5f;
+
+    public SequentialTimer ReturnToDefaultStatetimer { get; private set; }
+
     private void Awake()
     {
         Init(GetComponent<Enemy>());
@@ -21,6 +26,7 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
 
     public virtual void Init(Enemy context)
     {
+        ReturnToDefaultStatetimer = new SequentialTimer(_returnToDefaultAftertime, () => SetStateAsDefault());
         Context = context;
         InitStates();
         CurrentState = GetDefaultState();
@@ -66,11 +72,26 @@ public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
     }
 
     /// <param name="rangeModifier">
-    /// Used to get a random range between ReactionTime - rangeModifier and ReactionTime + rangeModifier
+    /// Used to get a random rangeModifier between ReactionTime - rangeModifier and ReactionTime + rangeModifier
     /// </param>
     public float GetReactionTimeInRange(float rangeModifier)
     {
         float rangedReactionTime = Random.Range(ReactionTime * ( 1 - rangeModifier), ReactionTime * (1 + rangeModifier));
         return rangedReactionTime;
     }
+
+    public IEnumerator DelayedAnimatorTrigger(int attackAnimHash, float rangeModifier)
+    {
+        yield return new WaitForSeconds(GetReactionTimeInRange(rangeModifier));
+        Context.PathfinderUtility.DisablePathfinding();
+        Context.Animator.SetTrigger(attackAnimHash);
+    }
+
+    public bool IsInAnimation(AnimationClip clip)
+    {
+        Debug.Log(Context.Animator.GetCurrentAnimatorStateInfo(0).IsName(clip.name));
+        return Context.Animator.GetCurrentAnimatorStateInfo(0).IsName(clip.name);
+    }
+
+    public abstract void TransitionToDeadState();
 }

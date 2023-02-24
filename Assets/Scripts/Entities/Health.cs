@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     private readonly int _onDeathAnimHash = Animator.StringToHash("death");
 
     [Header("Health")]
-    [SerializeField] private int m_maxHP;
+    [SerializeField] [Min(1)] private int m_maxHP;
     public bool isPermaInvincible = false;
 
     [Header("Audio")]
