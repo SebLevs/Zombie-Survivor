@@ -4029,6 +4029,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 2.8333333
+    functionName: AESetAndSpawnStaticProjectile
+    data: 
+    objectReferenceParameter: {fileID: 2969667308116910614, guid: 4396dcbf84b11e248b77e2241b6c031a, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 5.9166665
     functionName: SetStateAsDefault
     data: 

@@ -9,7 +9,7 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
     [SerializeField] protected float m_baseSpeed;
     protected Vector2 m_oldVelocity;
 
-    private float _time = 10f;
+    private const float _time = 10f;
     private SequentialStopwatch _stopwatch;
 
     protected override void OnAwake()
@@ -44,6 +44,8 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
         transform.up = direction;
         m_rigidBody.velocity = direction * m_baseSpeed;
     }
+
+
 
     public void ShootTowards(Vector2 direction)
     {
@@ -87,13 +89,13 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
         }
     }
 
-    public void OnPauseGame()
+    public virtual void OnPauseGame()
     {
         SaveVelocity();
         StopMovement();
     }
 
-    public void OnResumeGame() { ResumeMovement(); }
+    public virtual void OnResumeGame() { ResumeMovement(); }
 
     public void OnUpdate()
     {

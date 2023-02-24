@@ -18,4 +18,23 @@ public class SkillProjectileInstantiator : MonoBehaviour
     {
         CurrentProjectile?.SetTargetAsPlayer();
     }
+
+    public void AESetAndShootProjectileAtPlayer(ProjectileEnemy projectile) // Animation Event
+    {
+        SetProjectileReference(projectile);
+        AEShootProjectileAtPlayer();
+    }
+
+    public void AEShootProjectileAtPlayer() // Animation Event
+    {
+        ProjectileEnemy projectile = GetProjectileFromPool();
+        projectile.SetTargetAsPlayer();
+        projectile.ShootTowardsTarget();
+    }
+
+    public void AESetAndSpawnStaticProjectile(ProjectileEnemy projectile) // Animation Event
+    {
+        SetProjectileReference(projectile);
+        GetProjectileFromPool();
+    }
 }
