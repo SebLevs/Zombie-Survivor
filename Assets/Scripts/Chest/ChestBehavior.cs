@@ -10,8 +10,8 @@ public class ChestBehavior : MonoBehaviour
 
     private int _nextPowerUpID;
     public int chestValue;
-    private Entity_Player player;
-    private Collider2D col;
+    private Entity_Player _player;
+    private Collider2D _col;
 
     private CommandInvoker _commandInvoker;
 
@@ -31,14 +31,14 @@ public class ChestBehavior : MonoBehaviour
 
     private void Start()
     {
-        player = Entity_Player.Instance;
-        commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
-        uiValue.text = "$ " + chestValue;
+        _player = Entity_Player.Instance;
+        _commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
+        _uiValue.text = "$ " + chestValue;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player") && !player.Health.IsDead)
+        if (col.CompareTag("Player") && !_player.Health.IsDead)
         {
             TryOpenChest();
         }
@@ -59,8 +59,8 @@ public class ChestBehavior : MonoBehaviour
             _player.RefreshPlayerStats();
             _col.enabled = false;
             _uiValue.enabled = false;
-            player.RefreshGoldBar();
-            player.RefreshHealthBar();
+            _player.RefreshGoldBar();
+            _player.RefreshHealthBar();
         }
     }
 }
