@@ -23,7 +23,8 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     [HideInInspector]
     public SequentialTimer specialAttackDelay;
 
-    [field: Header("DodgeControl")] public float DodgeInterval;
+    [field: Header("DodgeControl")] 
+    public float DodgeInterval;
     public bool canDodge = true;
     public float dodgeDistance;
     [HideInInspector]
@@ -41,6 +42,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public Transform muzzle;
     public Transform shootFrom;
     public CircleCollider2D col;
+    public PortalArrowBehavior arrow;
 
     [field: Header("States")]
     public StateController<Entity_Player> StateController { get; private set; }
