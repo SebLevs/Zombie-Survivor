@@ -58,9 +58,9 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
     {
         for (int i = 0; i < m_waves.Length; i++)
         {
-            if (i == m_waves.Length) 
-            { 
-                m_waves[i].Init(this); 
+            if (i == m_waves.Length)
+            {
+                m_waves[i].Init(this);
             }
             else
             {
