@@ -506,7 +506,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 9
-      pivot: {x: 0, y: 0.5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -527,7 +527,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 9
-      pivot: {x: 0, y: 0.5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -548,7 +548,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 9
-      pivot: {x: 0, y: 0.5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -602,6 +602,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: RightSideWall4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 368
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c48a9416d3ba9ee4dad482c938577c22
+      internalID: -815653949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -624,6 +645,7 @@ TextureImporter:
       WallVar03: -1414403298
       RIP01: 894719596
       House: 1245128492
+      RightSideWall4: -815653949
       RightSideWall01: -1573517030
       House02: -382884428
       Obstacle01: 1346776113
