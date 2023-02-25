@@ -246,12 +246,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SideWalls
+      name: BottomLeftWallCorner
       rect:
         serializedVersion: 2
         x: 272
         y: 272
-        width: 16
+        width: 24
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -267,14 +267,14 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SadeWalls01
+      name: SideWalls01
       rect:
         serializedVersion: 2
         x: 272
         y: 320
-        width: 16
-        height: 16
-      alignment: 0
+        width: 24
+        height: 24
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -292,10 +292,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 272
-        y: 336
-        width: 16
-        height: 16
-      alignment: 0
+        y: 344
+        width: 24
+        height: 24
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -313,10 +313,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 272
-        y: 448
-        width: 16
-        height: 16
-      alignment: 0
+        y: 440
+        width: 24
+        height: 24
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -422,7 +422,7 @@ TextureImporter:
         width: 64
         height: 93
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -430,6 +430,174 @@ TextureImporter:
       bones: []
       spriteID: 4cd5464db7a718d4993a4ac1f89f50b2
       internalID: 819619357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopLeftWallCorner
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 464
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 128b44166b4844d469a95091e74e3c4b
+      internalID: -582965045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopRightSideCorner
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 592
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55d82c449fa7ff4581e139c304de853
+      internalID: -1760373631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotRightSideCorner
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 272
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77bc06a8d00e4a4982108e2e987920a
+      internalID: 1831116145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightSideWall01
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 320
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da3cdf0f871a0d74b8ed87964ec62fdd
+      internalID: -1573517030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightSideWall02
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 344
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b08f9c08b043b754ca3bf2a2d1a58d2c
+      internalID: -1785520731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightSideWall03
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 368
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d33f80903a25ff4199ca0032826d0b0
+      internalID: 723947328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 712
+        width: 152
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b398440549643489b97972f91bd45a
+      internalID: 1245128492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House02
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 712
+        width: 152
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 336af8bb96da34841a52b879f27d3a41
+      internalID: -382884428
       vertices: []
       indices: 
       edges: []
@@ -447,15 +615,23 @@ TextureImporter:
     nameFileIdTable:
       WallVar02: -1755713393
       SideWalls03: 28299828
-      SideWalls: 1003127283
       SideWalls02: -1641121451
       WallVar04: 67696847
       RIP02: 367615104
+      BottomLeftWallCorner: 1003127283
+      TopRightSideCorner: -1760373631
       WallVar01: 367784941
       WallVar03: -1414403298
       RIP01: 894719596
-      SadeWalls01: -1815559288
+      House: 1245128492
+      RightSideWall01: -1573517030
+      House02: -382884428
       Obstacle01: 1346776113
+      BotRightSideCorner: 1831116145
+      RightSideWall03: 723947328
+      TopLeftWallCorner: -582965045
+      RightSideWall02: -1785520731
+      SideWalls01: -1815559288
       RIP03: 2019169332
       Tree01: 819619357
       BaseGround: -2017583127
