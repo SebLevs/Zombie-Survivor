@@ -6,6 +6,8 @@ public class ZombieChaseState : EnemyState
     {
     }
 
+    public override bool IsTransitionValid() { return true; }
+
     public override void HandleStateTransition()
     {
         if (m_controller.Context.PathfinderUtility.HasReachedEndOfPath)

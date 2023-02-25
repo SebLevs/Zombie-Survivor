@@ -11,6 +11,6 @@ public class EnemyFactoryWaveMedium : AbstractEnemyFactory
 
     public override Enemy CreateLowQuantityEnemy(Vector3 position)
     {
-        return EnemyManager.Instance.Zombies.GetFromAvailable(position, Quaternion.identity);
+        return EnemyManager.Instance.Skeletons.GetFromAvailable(position, Quaternion.identity);
     }
 }

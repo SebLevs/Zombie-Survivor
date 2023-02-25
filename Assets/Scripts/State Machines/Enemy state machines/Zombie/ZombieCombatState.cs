@@ -10,13 +10,15 @@ public class ZombieCombatState : EnemyState
         _attackAnimHash = Animator.StringToHash("attack");
     }
 
+    public override bool IsTransitionValid() { return true; }
+
     public override void HandleStateTransition()
     {
     }
 
     public override void OnEnter()
     {
-        m_controller.StartCoroutine(DelayedAttack());
+        m_controller.StartCoroutine(m_controller.DelayedAnimatorTrigger(_attackAnimHash, 0.5f));
     }
 
     public override void OnExit()
@@ -26,12 +28,5 @@ public class ZombieCombatState : EnemyState
 
     public override void OnUpdate()
     {
-    }
-
-    private IEnumerator DelayedAttack()
-    {
-        yield return new WaitForSeconds(m_controller.GetReactionTimeInRange(0.5f));
-        m_controller.Context.PathfinderUtility.DisablePathfinding();
-        m_controller.Context.Animator.SetTrigger(_attackAnimHash);
     }
 }

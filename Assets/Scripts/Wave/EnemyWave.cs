@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class EnemyWave
 {
     [Header("Timers")]
+    [SerializeField] private bool _isLoopable = false;
     [SerializeField] private float _endOfWaveTime;
     [Range(1, 10)][SerializeField] private float _tickRange;
     private SequentialStopwatch _spawnerStopWatch;
@@ -47,6 +48,9 @@ public class EnemyWave
         if (_nextWaveStopWatch.HasReachedTarget())
         {
             _waveEndEvent?.Invoke();
+
+            if (_isLoopable) { _nextWaveStopWatch.Reset(); }
+
             return true;
         }
         return false;

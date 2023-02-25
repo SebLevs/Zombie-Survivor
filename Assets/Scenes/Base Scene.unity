@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1167502202767387791, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_maxHP
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -610,6 +614,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4295172443765508258, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295172443765508258, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295172443765508258, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -729,6 +745,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 175399949699796767, guid: edb0b575fbbd3d246b7dc9939b01f96c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c1ecea39f9fc7dd4b9d6d1ec38192c6b, type: 3}
     - target: {fileID: 175399949699796767, guid: edb0b575fbbd3d246b7dc9939b01f96c, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

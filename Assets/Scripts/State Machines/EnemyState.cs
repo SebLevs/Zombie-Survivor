@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+using System;
+[Serializable]
 public abstract class EnemyState : State<EnemyStateController>
 {
     protected EnemyState(EnemyStateController controller) : base(controller)
     {
     }
+
+    public abstract bool IsTransitionValid();
 }

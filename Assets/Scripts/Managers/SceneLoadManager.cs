@@ -80,18 +80,19 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         GameManager.Instance.PauseGame();
         UIManager uiManager = UIManager.Instance;
 
-        UIManager.Instance.HideHUD();
+        uiManager.ViewBossHealthBars.OnHideQuick();
+        uiManager.HideHUD();
 
         // TODO: Delete if SceneController.cs is implemented in the scope of the project
         AudioManager.Instance.StopPlayingLoopingClip();
 
-        uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, 
+        uiManager.OnSwitchViewSynchronous(uiManager.ViewBlackScreen, 
         showCallback: () =>
         {
-            Entity_Player.Instance.transform.position = Vector3.zero;
+            Entity_Player.Instance.Reinitialize();
             UnloadCurrentScene();
             uiManager.ViewBackgroundBlackScreen.OnShow();
-            uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewTitleScreen);
+            uiManager.OnSwitchViewSynchronous(uiManager.ViewTitleScreen);
             IsInTitleScreen = true;
         });
     }

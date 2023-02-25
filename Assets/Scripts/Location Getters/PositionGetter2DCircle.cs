@@ -13,4 +13,9 @@ public class PositionGetter2DCircle : PositionGetter2D
 
         return directionWithModifier;
     }
+
+    public void SetRadius(float radius)
+    {
+        _radiusModifier = radius < 0 ? 0 : radius;
+    }
 }

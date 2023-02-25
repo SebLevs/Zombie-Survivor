@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnLocation: {fileID: 3128513712201051895}
-  _projectileReference: {fileID: 3178950401285462616, guid: 3d3550d923434c34dbcbf7d716d05909, type: 3}
+  _projectileReference: {fileID: 0}
 --- !u!114 &6328353135482212375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +151,34 @@ PrefabInstance:
       propertyPath: m_hitSound.m_clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 3d9c8d11c0b11254cadaaad1f6ffbea2, type: 3}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 7439616912046921758}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: TransitionToDeadState
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: StateControllerZombie, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6657099178885778164, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: manGoldValue
       value: 15
@@ -318,8 +346,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a89495740f0e5449b319b9639c5dec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Experience>k__BackingField: 0
   m_projectileInstantiator: {fileID: 2224199792761582394}
+--- !u!114 &7439616912046921758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3653061685038914529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1955264ac8d6941aa47516391f9a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ReactionTime>k__BackingField: 0.21
 --- !u!4 &3653061685038914559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8889025150732925513, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}

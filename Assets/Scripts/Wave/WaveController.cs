@@ -9,6 +9,8 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
     // TODO: Make generic observer pattern to call a random position from this list
     [SerializeField] private List<PositionGetter2D> _enemySpawnPoints;
 
+    public EnemyWave GetCurrentWave() => m_waves[_currentWaveIndex];
+
     private void Awake()
     {
         TrySetSpawnPointAsPlayer();
@@ -56,7 +58,14 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
     {
         for (int i = 0; i < m_waves.Length; i++)
         {
-            m_waves[i].Init(this, waveEndsCallback: () => _currentWaveIndex++);
+            if (i == m_waves.Length)
+            {
+                m_waves[i].Init(this);
+            }
+            else
+            {
+                m_waves[i].Init(this, waveEndsCallback: () => _currentWaveIndex++);
+            }
         }
     }
 }

@@ -7,11 +7,13 @@ public class PathfinderUtility : MonoBehaviour
     [Header("Target Selection OnStart")]
     [SerializeField] private bool _isTargetPlayerOnStart = true;
 
-    private float m_defaultSpeed = 2.0f;               // Reference in case of immobilisation
+    [Header("Default values")]
+    private float m_defaultSpeed = 2.0f;
+    private float m_defaultEndReachedDistance = 2.0f;
+
     private AIPath m_AIPath;                           // Movement, rotation, End Reached Distance, etc.
     private AIDestinationSetter m_AIDestinationSetter; // Target
     private Seeker m_Seeker;                           // Dependency of AIPath
-
 
     public readonly int bitmaskConstraintTag = 0;
     private NNConstraint constraint;
@@ -24,6 +26,7 @@ public class PathfinderUtility : MonoBehaviour
         m_AIDestinationSetter = GetComponent<AIDestinationSetter>();
         m_Seeker = GetComponent<Seeker>();
         m_defaultSpeed = m_AIPath.maxSpeed != 0 ? m_AIPath.maxSpeed : m_defaultSpeed;
+        m_defaultEndReachedDistance = m_AIPath.endReachedDistance != 0 ? m_AIPath.endReachedDistance : m_defaultEndReachedDistance;
         SetDefaultNNConstraint();
     }
 
@@ -109,8 +112,10 @@ public class PathfinderUtility : MonoBehaviour
     public void SetTargetAs(Transform newTarget) => m_AIDestinationSetter.target = newTarget;
 
     public void SetEndReachedDistance(float newEndReachedDistance) =>  m_AIPath.endReachedDistance = newEndReachedDistance;
+    public void ResetEndReachedDistance() =>  m_AIPath.endReachedDistance = m_defaultEndReachedDistance;
 
     public void SetSpeed(float newSpeed) => m_AIPath.maxSpeed = newSpeed;
-    public void SetSpeedAsDefault() => m_AIPath.maxSpeed = m_defaultSpeed;
+    public void ResetSpeed() => m_AIPath.maxSpeed = m_defaultSpeed;
     public void SetCanMove(bool canMove) => m_AIPath.canMove = canMove;
+    public Transform GetTarget() => m_AIDestinationSetter.target;
 }

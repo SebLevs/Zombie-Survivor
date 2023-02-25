@@ -61,10 +61,20 @@ public static class LinearAlgebraUtilities
     /// <summary>
     /// Returns distance using pythagorean theorem
     /// </summary>
-    public static float GetDistance(Vector3 target, Vector3 from)
+    public static float GetDistance3D(Vector3 target, Vector3 from)
     {
         // Reminder pythagoeran theorem
         // C^2 = sqrt(a^2 + b^2)
         return Vector3.Distance(target, from);
+    }
+
+    /// <summary>
+    /// Returns distance using pythagorean theorem
+    /// </summary>
+    public static float GetDistance2D(Vector2 target, Vector2 from)
+    {
+        // Reminder pythagoeran theorem
+        // C^2 = sqrt(a^2 + b^2)
+        return Vector2.Distance(target, from);
     }
 }

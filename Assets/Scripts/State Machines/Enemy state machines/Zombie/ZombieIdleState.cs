@@ -6,6 +6,8 @@ public class ZombieIdleState : EnemyState
     {
     }
 
+    public override bool IsTransitionValid() { return true; }
+
     public override void OnEnter()
     {
         Debug.Log($"{m_controller.Context.name} IDLE ENTER");

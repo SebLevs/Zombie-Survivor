@@ -13,8 +13,8 @@ public class EnemyManager : Manager<EnemyManager>
     [field: Header("Ranged")]
     [field: SerializeField] public PoolPattern<Enemy> Skeletons { get; private set; }
 
-    [field: Header("Boss")]
-    [field: SerializeField] public PoolPattern<Enemy> Boss { get; private set; }
+    [field: Header("ZombieBoss")]
+    [field: SerializeField] public PoolPattern<Enemy> ZombieBoss { get; private set; }
 
     protected override void OnAwake()
     {
@@ -33,8 +33,8 @@ public class EnemyManager : Manager<EnemyManager>
         // Ranged
         Skeletons.InitDefaultQuantity();
 
-        // Boss
-        Boss.InitDefaultQuantity();
+        // ZombieBoss
+        ZombieBoss.InitDefaultQuantity();
     }
 
     [ContextMenu("Kill all currently active enemies")]

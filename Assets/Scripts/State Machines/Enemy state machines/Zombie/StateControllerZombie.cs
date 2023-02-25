@@ -11,6 +11,11 @@ public class StateControllerZombie : EnemyStateController
         return ChaseState;
     }
 
+    public override void TransitionToDeadState()
+    {
+        OnTransitionState(DeadState);
+    }
+
     protected override void InitStates()
     {
         ChaseState = new ZombieChaseState(this);

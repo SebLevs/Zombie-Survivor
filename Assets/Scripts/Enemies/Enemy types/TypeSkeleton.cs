@@ -16,8 +16,9 @@ public class TypeSkeleton : EnemyType
         projectile.ShootTowardsTarget();
     }
 
-    public void AESetProjectileReference(ProjectileEnemy projectile) // Animation Event
+    public void AESetAndShootProjectile(ProjectileEnemy projectile) // Animation Event
     {
         m_projectileInstantiator.SetProjectileReference(projectile);
+        AEShootProjectile();
     }
 }

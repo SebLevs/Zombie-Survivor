@@ -19,7 +19,7 @@ public class Player_DodgeState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        Debug.Log("Enter dodgeState");
+        //Debug.Log("Enter dodgeState");
         m_controller.DesiredActions.ConsumeAllActions(PlayerActionsType.DODGE);
         if(m_controller.canDodge)
         {

@@ -9,6 +9,7 @@ public class WeaponManager : Manager<WeaponManager>
     [Header("Enemy pools")]
     // TODO: Place into an EnemyWeaponManager.cs which would contain references to the current level projectiles
     public PoolPattern<ProjectileEnemy> bonePool;
+    public PoolPattern<ProjectileEnemy> groundSmashPool;
 
     protected override void OnAwake()
     {
@@ -16,5 +17,6 @@ public class WeaponManager : Manager<WeaponManager>
         boomPool.InitDefaultQuantity();
         bulletPool.InitDefaultQuantity();
         bonePool.InitDefaultQuantity();
+        groundSmashPool.InitDefaultQuantity();
     }
 }

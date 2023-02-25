@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _volumeMaster: {fileID: 11400000, guid: 269720ab895cf0c499ea82f2ecce2ed7, type: 2}
-  <AmbianceClip>k__BackingField: {fileID: 8300000, guid: 6b3c8bf42f787d943ad7ff78ed149a90, type: 3}
+  <AmbianceClip>k__BackingField: {fileID: 8300000, guid: c1ecea39f9fc7dd4b9d6d1ec38192c6b, type: 3}
 --- !u!82 &175399949699796767
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -310085818920617635, guid: b598e5d9ec73b1441a8173a59765d56e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6b3c8bf42f787d943ad7ff78ed149a90, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

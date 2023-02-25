@@ -87,15 +87,17 @@ public class BulletBehavior : BaseProjectile, IPoolable, IPauseListener
     }
 
     Vector2 m_lastVelocity;
-    public void OnPauseGame()
+    public override void OnPauseGame()
     {
+        base.OnPauseGame();
         m_lastVelocity = rb.velocity;
         rb.velocity = Vector2.zero;
         col.enabled = false;
     }
 
-    public void OnResumeGame()
+    public override void OnResumeGame()
     {
+        base.OnResumeGame();
         rb.velocity = m_lastVelocity;
         col.enabled = true;
     }

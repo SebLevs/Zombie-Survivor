@@ -10,9 +10,10 @@ public class ZombieDeadState : EnemyState
     {
     }
 
+    public override bool IsTransitionValid() { return m_controller.Context.Health.IsDead; }
+
     public override void OnEnter()
     {
-        Debug.Log($"{m_controller.Context.name} DEAD ENTER");
         m_controller.Context.PathfinderUtility.DisablePathfinding();
     }
 

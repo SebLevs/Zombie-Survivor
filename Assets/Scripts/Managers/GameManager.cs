@@ -5,7 +5,7 @@ public class GameManager : Manager<GameManager>
 {
     public bool IsPaused { get; private set; }
 
-    [Header("Play test setup")]
+    [Header("PlayRandom test setup")]
     [SerializeField] private bool _isPlayTest;
     [Min(1)][SerializeField] private int _playTestScene = 1; // TODO: Refactor into a scene scriptable object for easier testing
     private HashSet<IPauseListener> _pauseListeners;
@@ -39,7 +39,7 @@ public class GameManager : Manager<GameManager>
 
     private void InitiatePlayTest()
     {
-        Debug.LogWarning($"Play test started on scene: {_playTestScene}");
+        Debug.LogWarning($"PlayRandom test started on scene: {_playTestScene}");
         SceneLoadManager.Instance.OnLoadScene(_playTestScene);
 
         UIManager uiManager = UIManager.Instance;

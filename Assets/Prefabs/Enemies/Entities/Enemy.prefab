@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 1597726480383652924}
   - component: {fileID: 4594350461714733977}
   - component: {fileID: 2625723577708642913}
-  - component: {fileID: 2004451262384889686}
   - component: {fileID: 7341633155239485278}
   - component: {fileID: 3689369586628646502}
   - component: {fileID: 6657099178885778164}
@@ -308,8 +307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_healthBar: {fileID: 4931895870938298055}
-  <collisionDamage>k__BackingField: 0
-  <TempDamage>k__BackingField: 0
 --- !u!114 &4594350461714733977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,14 +324,14 @@ MonoBehaviour:
   isPermaInvincible: 0
   m_hitSound:
     <AudioSource>k__BackingField: {fileID: 3689369586628646502}
+    m_clips: []
     _minPitch: 1
     _maxPitch: 1
-    m_clips: []
   m_deathSound:
     <AudioSource>k__BackingField: {fileID: 3689369586628646502}
+    m_clips: []
     _minPitch: 1
     _maxPitch: 1
-    m_clips: []
   <OnHitEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -402,19 +399,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isTargetPlayerOnStart: 1
---- !u!114 &2004451262384889686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8889025150732925527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed1955264ac8d6941aa47516391f9a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ReactionTime>k__BackingField: 0
 --- !u!114 &7341633155239485278
 MonoBehaviour:
   m_ObjectHideFlags: 0

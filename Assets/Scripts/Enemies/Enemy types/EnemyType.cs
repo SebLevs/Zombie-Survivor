@@ -2,9 +2,7 @@ using UnityEngine;
 
 public abstract class EnemyType : MonoBehaviour
 {
-    [field:Header("Type specific datas")]
-    [field:SerializeField] public int Experience { get; private set; }
-
+    [field: SerializeField] public string TypeName { get; private set; }
     protected Enemy m_context;
 
     private void Awake()
