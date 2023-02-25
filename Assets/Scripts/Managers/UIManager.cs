@@ -21,12 +21,13 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewElement ViewDeathScreen { get; private set; }
     [field: Space(10)]
 
-    [field: SerializeField] public ViewPlayerCooldowns ViewPlayerCooldowns;
-    [field: SerializeField] public ViewPlayerStats ViewPlayerStats;
+    [field: SerializeField] public ViewPlayerCooldowns ViewPlayerCooldowns { get; private set; }
+    [field: SerializeField] public ViewPlayerStats ViewPlayerStats { get; private set; }
     [field: Space(10)]
 
-    [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerHealthBar;
-    [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerExperienceBar;
+    [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerHealthBar { get; private set; }
+    [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerCurrencyBar { get; private set; }
+    [field: SerializeField] public ViewBossHealthBars ViewBossHealthBars { get; private set; }
 
     /// <summary>
     /// Syncronous switch view: <br/>
@@ -80,7 +81,7 @@ public class UIManager : Manager<UIManager>
     public void ShowHUD()
     {
         ViewPlayerHealthBar.OnShow();
-        ViewPlayerExperienceBar.OnShow();
+        ViewPlayerCurrencyBar.OnShow();
         ViewPlayerCooldowns.OnShow();
         ViewPlayerStats.OnShow( () =>
         {
@@ -95,9 +96,9 @@ public class UIManager : Manager<UIManager>
             ViewPlayerHealthBar.OnHideQuick();
         }
 
-        if (ViewPlayerExperienceBar.gameObject.activeSelf && ViewPlayerExperienceBar != CurrentView)
+        if (ViewPlayerCurrencyBar.gameObject.activeSelf && ViewPlayerCurrencyBar != CurrentView)
         {
-            ViewPlayerExperienceBar.OnHideQuick();
+            ViewPlayerCurrencyBar.OnHideQuick();
         }
 
         if (ViewPlayerCooldowns.gameObject.activeSelf && ViewPlayerCooldowns != CurrentView)
@@ -113,6 +114,7 @@ public class UIManager : Manager<UIManager>
 
     public void DeathTransition()
     {
+        ViewBossHealthBars.OnHideQuick();
         HideHUD();
         OnSwitchViewSynchronous(ViewDeathScreen, showCallback: () =>
         {
@@ -126,10 +128,10 @@ public class UIManager : Manager<UIManager>
     public void ResetCooldownView(ViewFillingBarWithCounter view)
     {
         view.Counter.Element.text = "";
-        view.Filler.ResetFilling();
+        view.Filler.UnfillCompletely();
     }
 
-    public void  RefreshCooldownVisuals(ViewFillingBarWithCounter view, string remainingTime, float fillingNormalized)
+    public void RefreshCooldownVisuals(ViewFillingBarWithCounter view, string remainingTime, float fillingNormalized)
     {
         view.Counter.Element.text = remainingTime;
         view.Filler.SetFilling(fillingNormalized);

@@ -25,8 +25,13 @@ public class ImageFiller: MonoBehaviour
         m_fillingBar.fillAmount = (health.Normalized > 1.0f) ? 1.0f : health.Normalized;
     }
 
-    public void ResetFilling()
+    public void UnfillCompletely()
     {
         m_fillingBar.fillAmount = 0;
+    }
+
+    public void FillUpCompletely()
+    {
+        m_fillingBar.fillAmount = 1;
     }
 }

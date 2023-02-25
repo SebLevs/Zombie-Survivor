@@ -64,6 +64,8 @@ public class ViewElement : MonoBehaviour
 
     public virtual void OnHideQuick(Action callback = null)
     {
+        if (!gameObject.activeSelf) { return; }
+
         callback += () => gameObject.SetActive(false);
         callback += () => m_animator.speed = 1f;
         m_onHideAction = callback;

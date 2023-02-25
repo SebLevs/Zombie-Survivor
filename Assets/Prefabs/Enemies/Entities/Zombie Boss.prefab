@@ -956,17 +956,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4121290340453185836}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2696839439127688638}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2696839439127688638}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 3344948002492976151}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetHealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetHealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
@@ -976,8 +1004,32 @@ PrefabInstance:
       value: TransitionToDeadState
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BossHealthBarSubscriber, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BossHealthBarSubscriber, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: StateControllerZombieBoss, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1897576513233457}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1897576513233457}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Health, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Health, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1064,6 +1116,17 @@ PrefabInstance:
     - {fileID: 5803520454364322826, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
     - {fileID: 7341633155239485278, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+--- !u!114 &1897576513233457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+  m_PrefabInstance: {fileID: 4595031384454199720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942979822278870015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c0434e980c6cd468d6205d32f27b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3019830083577269652 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
@@ -1158,6 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac628f1930887f40a84baeab58db37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TypeName>k__BackingField: Gargantua
 --- !u!114 &3344948002492976151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,3 +1281,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!114 &2696839439127688638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942979822278870015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29932368cb1b6234193d2da943f9062b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: {fileID: 2290356175250591478}

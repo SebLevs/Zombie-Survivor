@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class EnemyType : MonoBehaviour
 {
+    [field: SerializeField] public string TypeName { get; private set; }
     protected Enemy m_context;
 
     private void Awake()

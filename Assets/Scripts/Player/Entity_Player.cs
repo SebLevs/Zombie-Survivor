@@ -118,8 +118,8 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     public void RefreshGoldBar()
     {
         float filling = (float)currentGold / (float)MaxGold;
-        uiManager.ViewPlayerExperienceBar.Filler.SetFilling(filling);
-        uiManager.ViewPlayerExperienceBar.Counter.Element.text = currentGold + " / " + MaxGold;
+        uiManager.ViewPlayerCurrencyBar.Filler.SetFilling(filling);
+        uiManager.ViewPlayerCurrencyBar.Counter.Element.text = currentGold + " / " + MaxGold;
     }
 
     public void Init()

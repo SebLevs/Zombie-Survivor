@@ -14,4 +14,14 @@ public class PositionGetter2DQuad : PositionGetter2D
 
         return new Vector2(horizontalPoint, verticalPoint);
     }
+
+    public void SetVerticalRadius(float radius)
+    {
+        _verticalRadius = radius < 0 ? 0 : radius;
+    }
+
+    public void SetHorizontalRadius(float radius)
+    {
+        _horizontalRadius = radius < 0 ? 0 : radius;
+    }
 }
