@@ -142,15 +142,15 @@ PrefabInstance:
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 16621948283a15943bdfe2f7deb15b67, type: 3}
+      objectReference: {fileID: 8300000, guid: 5d3e75904fb2140489d74c9afb4570ae, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: a63e5ca9aeb20a34dab98b44ad4cf187, type: 3}
+      objectReference: {fileID: 8300000, guid: 1d98b440e90e30b4c9f712f6de894f55, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 3d9c8d11c0b11254cadaaad1f6ffbea2, type: 3}
+      objectReference: {fileID: 8300000, guid: 612fd10cefb2de54d8df0aee1865ba56, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a89495740f0e5449b319b9639c5dec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TypeName>k__BackingField: 
   m_projectileInstantiator: {fileID: 2224199792761582394}
 --- !u!114 &7439616912046921758
 MonoBehaviour:
@@ -360,6 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ReactionTime>k__BackingField: 0.21
+  _returnToDefaultAftertime: 5
 --- !u!4 &3653061685038914559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8889025150732925513, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
