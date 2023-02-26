@@ -4,16 +4,27 @@ public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IFrameUpdateLi
 {
     private PortalManager _portalManager;
     private PortalBehavior _portal;
+    private Transform _target;
     private bool _canLook;
 
     public void OnEnable()
     {
-        _portalManager = PortalManager.Instance;
-        _portal = _portalManager.currentActivePortal;
-        _canLook = true;
-
         GameManager.Instance.SubscribeToPauseGame(this);
         UpdateManager.Instance.SubscribeToUpdate(this);
+    }
+
+    public void SetTargetAsPortal()
+    {
+        _portalManager = PortalManager.Instance;
+        _target = _portalManager.currentActivePortal.transform;
+        _canLook = true;
+    }
+
+    public void SetTargetAs(Transform target) => _target = target;
+
+    public void LookAtTarget()
+    {
+        transform.up = _target.position - transform.position;
     }
 
     public void OnDisable()
@@ -27,7 +38,6 @@ public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IFrameUpdateLi
         {
             UpdateManager.Instance.UnSubscribeFromUpdate(this);
         }
-
     }
 
     public void OnPauseGame()
@@ -37,7 +47,6 @@ public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IFrameUpdateLi
 
     public void OnResumeGame()
     {
-
         _canLook = true;
     }
 
@@ -45,7 +54,7 @@ public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IFrameUpdateLi
     {
         if (_canLook)
         {
-            transform.up = _portal.transform.position - transform.position;
+            LookAtTarget();
         }
     }
 }

@@ -36,8 +36,9 @@ public class PortalBehavior : MonoBehaviour
                 _portalManager.ActivateBossLevelBoundaries();
                 EnemyManager enemyManager = EnemyManager.Instance;
                 enemyManager.KillAllCurrentlyActiveEnemies();
-                enemyManager.ZombieBoss.GetFromAvailable(bossSpawnPoint.position, bossSpawnPoint.rotation);
-                //enemyManager.WaveController.SetCurrentWaveAsLastWave();
+                Transform target = enemyManager.ZombieBoss.GetFromAvailable(bossSpawnPoint.position, bossSpawnPoint.rotation).transform;
+                _player.arrow.SetTargetAs(target);
+                enemyManager.WaveController.SetCurrentWaveAsLastWave();
                 DeactivatePortalOnBossSpawn();
             }
         }

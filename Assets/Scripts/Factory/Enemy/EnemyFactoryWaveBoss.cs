@@ -5,7 +5,6 @@ public class EnemyFactoryWaveBoss : AbstractEnemyFactory
 {
     public override Enemy CreateHighQuantityEnemy(Vector3 position)
     {
-        //return EnemyManager.Instance.ZombieBoss.GetFromAvailable(position, Quaternion.identity);
         return EnemyManager.Instance.Zombies.GetFromAvailable(position, Quaternion.identity);
     }
 

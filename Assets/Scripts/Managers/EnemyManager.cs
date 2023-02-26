@@ -25,6 +25,12 @@ public class EnemyManager : Manager<EnemyManager>
         CurrentlyActiveEnemies = new HashSet<Enemy>();
     }
 
+    protected override void OnStart()
+    {
+        base.OnStart();
+        WaveController = GetComponentInChildren<WaveController>();
+    }
+
     private void InitPools()
     {
         // Melee

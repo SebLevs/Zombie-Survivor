@@ -17,6 +17,7 @@ public class ZombieBossDeadState : EnemyState
 
     public override void OnEnter()
     {
+        SceneLoadManager.Instance.GoToTitleScreen();
     }
 
     public override void OnExit()

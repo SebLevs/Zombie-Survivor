@@ -175,6 +175,7 @@ PrefabInstance:
       propertyPath: bulletSound.<AudioSource>k__BackingField
       value: 
       objectReference: {fileID: 1730893318}
+<<<<<<< refs/remotes/origin/main
     - target: {fileID: 1154928844718661076, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -186,6 +187,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> feat: add chest bonus popup
+=======
+>>>>>>> fix: set wave as last wave & return to main menu when boss is killed
     - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -283,7 +286,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 603172311}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb72632a195336442a874ec310c5fdce, type: 3}
   m_Name: 
@@ -614,63 +617,6 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 6795325728018082779, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
   m_PrefabInstance: {fileID: 603172311}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1784568088
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278869985, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4942979822278870015, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
-      propertyPath: m_Name
-      value: Boss
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a5f9607451a29e74b8f9e69868f1295a, type: 3}
 --- !u!4 &1964592270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2866948067521006680, guid: 3ea02bd6f77d52d4bb0ad1d940b2b601, type: 3}
