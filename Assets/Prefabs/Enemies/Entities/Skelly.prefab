@@ -119,6 +119,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 76df1752a9dc4f542b277e3877fee7e2, type: 2}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.m_clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.m_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e440ed436fbee2148bf43c2a3edfe365, type: 3}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.<AudioSource>k__BackingField
+      value: 
+      objectReference: {fileID: 8853275803052816336}
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -136,10 +148,6 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
-      propertyPath: m_hitSound.m_clips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 5d3e75904fb2140489d74c9afb4570ae, type: 3}
@@ -151,6 +159,10 @@ PrefabInstance:
       propertyPath: m_hitSound.m_clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 612fd10cefb2de54d8df0aee1865ba56, type: 3}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_deathSound.m_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: add049518904b674097712b69bd75352, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -365,5 +377,10 @@ MonoBehaviour:
 --- !u!4 &3653061685038914559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8889025150732925513, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+  m_PrefabInstance: {fileID: 5327302577848017334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &8853275803052816336 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
   m_PrefabInstance: {fileID: 5327302577848017334}
   m_PrefabAsset: {fileID: 0}

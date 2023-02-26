@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     protected EnemyStateController m_stateController;
     public PathfinderUtility PathfinderUtility { get; private set; }
 
+    [SerializeField] private AudioElement attackSounds;
+    [SerializeField] private AudioElement spawnSounds;
+
     private void Awake() { OnAwake(); }
 
     protected void OnAwake()
