@@ -179,10 +179,13 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< refs/remotes/origin/main
     - target: {fileID: 1167502202767387791, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_maxHP
       value: 100000
       objectReference: {fileID: 0}
+=======
+>>>>>>> feat: add chest bonus popup
     - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Name
       value: Player
