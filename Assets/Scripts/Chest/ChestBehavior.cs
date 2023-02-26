@@ -52,10 +52,10 @@ public class ChestBehavior : MonoBehaviour
             _player.currentGold -= chestValue;
             //player.RefreshExperienceBar();
             _nextPowerUpID = Random.Range(2, _commandInvoker.commandDic.Count);
+
             (string name, ICommand command) = _commandInvoker.commandDic.ElementAt(_nextPowerUpID);
-            UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("Bonus gained!\n" + name);
             _commandInvoker.DoCommand(command);
-            //Debug.Log(name);
+            Debug.Log(name);
             _player.RefreshPlayerStats();
             _col.enabled = false;
             _uiValue.enabled = false;

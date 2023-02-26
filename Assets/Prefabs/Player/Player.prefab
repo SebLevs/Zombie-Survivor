@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_animator: {fileID: 0}
-  m_maxHP: 100000
+  m_maxHP: 1000
   isPermaInvincible: 0
   m_hitSound:
     <AudioSource>k__BackingField: {fileID: 0}

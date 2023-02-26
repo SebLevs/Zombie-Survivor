@@ -16,8 +16,7 @@ public class PortalManager : Manager<PortalManager>
         currentActivePortal = allPortals[Random.Range(0, allPortals.Count)];
         currentActivePortal.ActivatePortal();
         bossSpawnPoint = currentActivePortal.GetBossSpawnPoint();
-        //Entity_Player.Instance.arrow.enabled = true;
-        Entity_Player.Instance.arrow.SetTargetAsPortal();
+        Entity_Player.Instance.arrow.enabled = true;
     }
 
     public void ActivateBossLevelBoundaries()
