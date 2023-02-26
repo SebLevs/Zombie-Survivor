@@ -10,6 +10,8 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
     [SerializeField] private List<PositionGetter2D> _enemySpawnPoints;
 
     public EnemyWave GetCurrentWave() => m_waves[_currentWaveIndex];
+    public void SetCurrentWave(int wave) => _currentWaveIndex = wave;
+    public void SetCurrentWaveAsLastWave() => SetCurrentWave(m_waves.Length);
 
     private void Awake()
     {

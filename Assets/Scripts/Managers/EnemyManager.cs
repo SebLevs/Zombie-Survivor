@@ -16,6 +16,8 @@ public class EnemyManager : Manager<EnemyManager>
     [field: Header("ZombieBoss")]
     [field: SerializeField] public PoolPattern<Enemy> ZombieBoss { get; private set; }
 
+    public WaveController WaveController { get; private set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
