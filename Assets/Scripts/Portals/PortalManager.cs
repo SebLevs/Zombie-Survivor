@@ -5,6 +5,7 @@ public class PortalManager : Manager<PortalManager>
 {
     [SerializeField] private GameObject bossLevelBoundariesH;
     [SerializeField] private GameObject bossLevelBoundariesV;
+    [SerializeField] private GameObject bossBoundariesVisual;
 
     public List<PortalBehavior> allPortals;
     public PortalBehavior currentActivePortal;
@@ -24,5 +25,6 @@ public class PortalManager : Manager<PortalManager>
     {
         bossLevelBoundariesV.SetActive(true);
         bossLevelBoundariesH.SetActive(true);
+        bossBoundariesVisual.SetActive(true);
     }
 }
