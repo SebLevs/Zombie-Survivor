@@ -97,7 +97,7 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
 
     public virtual void OnResumeGame() { ResumeMovement(); }
 
-    public void OnUpdate()
+    public virtual void OnUpdate()
     {
         _stopwatch.OnUpdateTime();
     }

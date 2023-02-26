@@ -76,7 +76,6 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         attackDelay = new SequentialTimer(attackSpeed);
         dodgeDelay = new SequentialTimer(DodgeInterval);
         Health = GetComponent<Health>();
-        uiManager = UIManager.Instance;
         audios = GetComponent<PlayerAudioContainer>();
 
         ResetSkillsValues();
@@ -86,6 +85,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         base.OnStart();
         MovSpeed = 5.0f;
         BulletSpeed = 12.0f;
+        uiManager = UIManager.Instance;
         RefreshPlayerStats();
         //Init();
     }

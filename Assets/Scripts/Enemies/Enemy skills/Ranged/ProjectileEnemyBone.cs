@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ProjectileEnemyBone : ProjectileEnemy
 {
+    [SerializeField] private float _rotationModifier = 1000f;
+    private float _rotationZ = 0;
+
     public override ProjectileEnemy GetFromPool(Transform spawnLocation)
     {
         return WeaponManager.Instance.bonePool.GetFromAvailable(spawnLocation.position, spawnLocation.rotation);
@@ -24,5 +27,19 @@ public class ProjectileEnemyBone : ProjectileEnemy
                 ReturnToPool();
             }
         }
+    }
+
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        _rotationZ += Time.deltaTime * _rotationModifier;
+        transform.rotation = Quaternion.Euler(0, 0, _rotationZ);
+    }
+
+    public override void OnReturnToAvailable()
+    {
+        base.OnReturnToAvailable();
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }
