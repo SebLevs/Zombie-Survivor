@@ -12,47 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07099e27522727548a1701855bab12fc, type: 3}
   m_Name: PlayerCommandInvoker
   m_EditorClassIdentifier: 
-  wrapperz:
+  wrappers:
   - name: Invincible
     command:
       mode: 1
       unityReference: {fileID: 0}
       rawReference:
-        rid: 5378726742116794368
-  - name: AttackSpeed
+        rid: 6274081118546558983
+  - name: Attack speed
     command:
       mode: 1
       unityReference: {fileID: 0}
       rawReference:
-        rid: 5378726742116794369
-  - name: SpecialAttackSpeed
+        rid: 6274081118546558978
+  - name: Boomerang distance
     command:
       mode: 1
       unityReference: {fileID: 0}
       rawReference:
-        rid: 5378726742116794370
-  - name: Boom Distance
+        rid: 6274081118546558980
+  - name: Boomerang attack speed
     command:
       mode: 1
       unityReference: {fileID: 0}
       rawReference:
-        rid: 5378726742116794371
-  - name: Move Speed
+        rid: 6274081118546558984
+  - name: Move speed
     command:
       mode: 1
       unityReference: {fileID: 0}
       rawReference:
-        rid: 5378726742116794372
+        rid: 6274081118546558982
   references:
     version: 2
     RefIds:
-    - rid: 5378726742116794368
-      type: {class: PlayerCommand_Invincibility, ns: , asm: Assembly-CSharp}
-    - rid: 5378726742116794369
+    - rid: 6274081118546558978
       type: {class: PlayerCommand_AttackSpeedUp, ns: , asm: Assembly-CSharp}
-    - rid: 5378726742116794370
-      type: {class: PlayerCommand_SpecialAttackSpeedUp, ns: , asm: Assembly-CSharp}
-    - rid: 5378726742116794371
+    - rid: 6274081118546558980
       type: {class: PlayerCommand_BoomDistanceUp, ns: , asm: Assembly-CSharp}
-    - rid: 5378726742116794372
+    - rid: 6274081118546558982
       type: {class: PlayerCommand_MoveSpeedUp, ns: , asm: Assembly-CSharp}
+    - rid: 6274081118546558983
+      type: {class: PlayerCommand_Invincibility, ns: , asm: Assembly-CSharp}
+    - rid: 6274081118546558984
+      type: {class: PlayerCommand_SpecialAttackSpeedUp, ns: , asm: Assembly-CSharp}

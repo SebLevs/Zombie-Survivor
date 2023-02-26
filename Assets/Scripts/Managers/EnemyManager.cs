@@ -16,11 +16,19 @@ public class EnemyManager : Manager<EnemyManager>
     [field: Header("ZombieBoss")]
     [field: SerializeField] public PoolPattern<Enemy> ZombieBoss { get; private set; }
 
+    public WaveController WaveController { get; private set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
         InitPools();
         CurrentlyActiveEnemies = new HashSet<Enemy>();
+    }
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+        WaveController = GetComponentInChildren<WaveController>();
     }
 
     private void InitPools()

@@ -16,6 +16,7 @@ public class PortalBehavior : MonoBehaviour
 
     private void Awake()
     {
+        // TODO: Refactor outside of Awake to avoid concurent get set of singleton conflicts
         _player = Entity_Player.Instance;
         _portalManager = PortalManager.Instance;
         _collider = GetComponent<Collider2D>();
@@ -33,6 +34,11 @@ public class PortalBehavior : MonoBehaviour
             if (_player.currentGold >= GoldNeeded)
             {
                 _portalManager.ActivateBossLevelBoundaries();
+                EnemyManager enemyManager = EnemyManager.Instance;
+                enemyManager.KillAllCurrentlyActiveEnemies();
+                Transform target = enemyManager.ZombieBoss.GetFromAvailable(bossSpawnPoint.position, bossSpawnPoint.rotation).transform;
+                _player.arrow.SetTargetAs(target);
+                enemyManager.WaveController.SetCurrentWaveAsLastWave();
                 DeactivatePortalOnBossSpawn();
             }
         }
