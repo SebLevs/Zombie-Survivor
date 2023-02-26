@@ -6,6 +6,7 @@ using UnityEngine;
 public class PotionBehavior : MonoBehaviour
 {
     private Entity_Player _player;
+    [SerializeField] private AudioElement _pickupSound;
 
     private void Start()
     {
@@ -20,7 +21,9 @@ public class PotionBehavior : MonoBehaviour
             {
                 _player.Health.SetCurrentHP(_player.Health.MaxHP);
                 _player.RefreshHealthBar();
+                _pickupSound.PlayRandom();
                 gameObject.SetActive(false);
+
             }
         }
     }
