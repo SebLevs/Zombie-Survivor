@@ -20,6 +20,7 @@ public class PotionBehavior : MonoBehaviour
             {
                 _player.Health.SetCurrentHP(_player.Health.MaxHP);
                 _player.RefreshHealthBar();
+                gameObject.SetActive(false);
             }
         }
     }
