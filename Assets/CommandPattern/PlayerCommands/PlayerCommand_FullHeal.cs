@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerCommand_FullHeal : ICommand
 {
     public PlayerCommand_FullHeal()
@@ -12,11 +8,11 @@ public class PlayerCommand_FullHeal : ICommand
     {
         if (Entity_Player.Instance.Health.CurrentHP <= Entity_Player.Instance.Health.MaxHP)
         {
-            Entity_Player.Instance.Health.SetCurrentHP(Entity_Player.Instance.Health.MaxHP);
+            Entity_Player.Instance.Health.FullHeal();
             Entity_Player.Instance.RefreshHealthBar();
         }
     }
-        
+
 
     public void UnExecute()
     {

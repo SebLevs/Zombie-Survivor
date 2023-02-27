@@ -4,7 +4,7 @@ public class Gold : MonoBehaviour
 {
     public int minGoldValue;
     public int manGoldValue;
-    [HideInInspector]public int goldOnDeath;
+    [HideInInspector] public int goldOnDeath;
     private Entity_Player player;
 
     private void Awake()

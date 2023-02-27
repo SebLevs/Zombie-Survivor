@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PotionBehavior : MonoBehaviour
 {
     private Entity_Player _player;
     private CommandInvoker _commandInvoker;
-    [SerializeField] private AudioElement _pickupSound;
+    [SerializeField] private AudioElement pickupSound;
 
     private void Start()
     {
@@ -23,7 +20,7 @@ public class PotionBehavior : MonoBehaviour
             {
                 _commandInvoker.DoCommand(_commandInvoker.commandDic[CommandType.FULL_HEAL]);
                 _player.RefreshHealthBar();
-                _pickupSound.PlayRandom();
+                pickupSound.PlayRandom();
                 gameObject.SetActive(false);
 
             }
