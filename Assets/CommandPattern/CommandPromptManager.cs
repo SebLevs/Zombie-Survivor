@@ -1,4 +1,3 @@
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -29,10 +28,12 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         {
             if (isActive)
             {
-                if (!SceneLoadManager.Instance.IsInTitleScreen && UIManager.Instance.CurrentView != UIManager.Instance.ViewOptionMenu)
+                if (!SceneLoadManager.Instance.IsInTitleScreen &&
+                    UIManager.Instance.CurrentView != UIManager.Instance.ViewOptionMenu)
                 {
                     GameManager.Instance.ResumeGame();
                 }
+
                 DeActivate();
             }
             else
@@ -61,6 +62,15 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         doneCommands.gameObject.SetActive(false);
         isActive = false;
     }
+    
+    public void DoCommandInput(CommandType type)
+    {
+        playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic[type]);
+    }
+    private void UnDoCommandInput(CommandType type)
+    {
+        playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic[type]);
+    }
 
     public void CheckCommandPrompt()
     {
@@ -72,52 +82,73 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         {
             case "GODMODE_ON":
             {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(0).Value);
+                DoCommandInput(CommandType.INVINCIBLE);
                 break;
             }
             case "GODMODE_OFF":
             {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(0).Value);
+                UnDoCommandInput(CommandType.INVINCIBLE);
+                break;
+            }
+            case "FULL_HEAL":
+            {
+                DoCommandInput(CommandType.FULL_HEAL);
+                break;
+            }
+            case "INSTA_DEATH":
+            {
+                UnDoCommandInput(CommandType.FULL_HEAL);
                 break;
             }
             case "ATTACK_SPEED_UP":
             {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(1).Value);
+                DoCommandInput(CommandType.ATTACK_SPEED);
                 break;
             }
             case "ATTACK_SPEED_DOWN":
             {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(1).Value);
+                UnDoCommandInput(CommandType.ATTACK_SPEED);
                 break;
             }
             case "SPECIAL_ATTACK_SPEED_UP":
             {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(2).Value);
+                DoCommandInput(CommandType.BOMMERANG_ATTACK_SPEED);
                 break;
             }
             case "SPECIAL_ATTACK_SPEED_DOWN":
             {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(2).Value);
+                UnDoCommandInput(CommandType.BOMMERANG_ATTACK_SPEED);
                 break;
             }
             case "BOOM_DISTANCE_UP":
             {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(3).Value);
+                DoCommandInput(CommandType.BOMMERANG_DISTANCE);
+
                 break;
             }
             case "BOOM_DISTANCE_DOWN":
             {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(3).Value);
+                UnDoCommandInput(CommandType.BOMMERANG_DISTANCE);
                 break;
             }
             case "MOVE_SPEED_UP":
             {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(4).Value);
+                DoCommandInput(CommandType.MOVE_SPEED);
                 break;
             }
             case "MOVE_SPEED_DOWN":
             {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(4).Value);
+                UnDoCommandInput(CommandType.MOVE_SPEED);
+                break;
+            }
+            case "HEALTH_UP":
+            {
+                DoCommandInput(CommandType.HEALTH_UP);
+                break;
+            }
+            case "HEALTH_DOWN":
+            {
+                UnDoCommandInput(CommandType.HEALTH_UP);
                 break;
             }
             default:
@@ -126,13 +157,14 @@ public class CommandPromptManager : Manager<CommandPromptManager>
                 break;
             }
         }
+
         if (doneCommands.textInfo.lineCount > 5)
         {
             doneCommands.text = "";
         }
+
         doneCommands.text = "\n" + _inputCommand + _isValidCommand + doneCommands.text;
         inputField.text = "";
         inputField.Select();
     }
-    
 }

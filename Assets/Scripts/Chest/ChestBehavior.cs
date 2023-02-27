@@ -51,13 +51,12 @@ public class ChestBehavior : MonoBehaviour
         {
             _anim.Play("OpenChest");
             _player.currentGold -= chestValue;
-            //player.RefreshExperienceBar();
             _nextPowerUpID = Random.Range(2, _commandInvoker.commandDic.Count);
-            (string name, ICommand command) = _commandInvoker.commandDic.ElementAt(_nextPowerUpID);
+            (CommandType type, ICommand command) = _commandInvoker.commandDic.ElementAt(_nextPowerUpID);
+            string name = type.ToString().Replace("_", " ");
             UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("Bonus gained!\n" + name);
             _commandInvoker.DoCommand(command);
             openChestSound.PlayRandom();
-            //Debug.Log(name);
             _player.RefreshPlayerStats();
             _col.enabled = false;
             _uiValue.enabled = false;
