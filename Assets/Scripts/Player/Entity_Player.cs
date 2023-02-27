@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPauseListener
 {
@@ -43,6 +44,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     [field: Header("References")]
     public Rigidbody2D Rb { get; private set; }
     public Player_Controller Controller { get; private set; }
+    public PlayerInput Input { get; private set; }
     public Transform muzzle;
     public Transform shootFrom;
     public CircleCollider2D col;
@@ -77,6 +79,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         dodgeDelay = new SequentialTimer(DodgeInterval);
         Health = GetComponent<Health>();
         audios = GetComponent<PlayerAudioContainer>();
+        Input = GetComponent<PlayerInput>();
 
         ResetSkillsValues();
     }
