@@ -22,7 +22,7 @@ public class EnemyManager : Manager<EnemyManager>
     {
         base.OnAwake();
         InitPools();
-        CurrentlyActiveEnemies = new HashSet<Enemy>();
+        CurrentlyActiveEnemies = new();
     }
 
     protected override void OnStart()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPauseListener
 {
@@ -43,10 +44,12 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     [field: Header("References")]
     public Rigidbody2D Rb { get; private set; }
     public Player_Controller Controller { get; private set; }
+    public PlayerInput Input { get; private set; }
     public Transform muzzle;
     public Transform shootFrom;
-    public CircleCollider2D col;
+    public Collider2D col;
     public PortalArrowBehavior arrow;
+    private Animator _animator;
 
     [field: Header("States")]
     public StateController<Entity_Player> StateController { get; private set; }
@@ -67,7 +70,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     {
         base.OnAwake();
         Rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<CircleCollider2D>();
+        col = GetComponent<Collider2D>();
         Controller = GetComponent<Player_Controller>();
         StateContainer = new Player_StateContainer(this);
         StateController = new StateController<Entity_Player>(StateContainer.State_Idle);
@@ -77,6 +80,8 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         dodgeDelay = new SequentialTimer(DodgeInterval);
         Health = GetComponent<Health>();
         audios = GetComponent<PlayerAudioContainer>();
+        Input = GetComponent<PlayerInput>();
+        _animator = GetComponent<Animator>();
 
         ResetSkillsValues();
     }
@@ -87,7 +92,6 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         BulletSpeed = 12.0f;
         uiManager = UIManager.Instance;
         RefreshPlayerStats();
-        //Init();
     }
 
     public void ResetGold() => currentGold = 0;
@@ -192,7 +196,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
             float fillingNormalized = dodgeDelay.CurrentTime / dodgeDelay.TargetTime;
             uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.m_TertiarySkill, remainingTime, fillingNormalized);
         }
-        //RefreshPlayerStats();
+
         test = StateController.CurrentState.ToString();
     }
 
@@ -219,14 +223,14 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
     {
         transform.rotation = Quaternion.Euler(Vector3.zero); // TODO: Temporary fix for sprite rotating on pause, might be fixed when player prefab is completed
         Rb.velocity = Vector2.zero; 
-        //col.enabled = false;
         Controller.currentLookAngle = 0;
+        _animator.speed = 0;
         
     }
 
     public void OnResumeGame()
     {
-        //col.enabled = true;
         DesiredActions.PurgeAllAction();
+        _animator.speed = 1;
     }
 }

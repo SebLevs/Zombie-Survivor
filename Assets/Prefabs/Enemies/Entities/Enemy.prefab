@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isSpriteFlippable: 1
   m_healthBar: {fileID: 4931895870938298055}
+  returnAtDistance: 40
 --- !u!114 &4594350461714733977
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -73,6 +73,7 @@ public class GameManager : Manager<GameManager>
 
         IsPaused = true;
         NotifyPauseListenersOnPause();
+        
     }
 
     public void ResumeGame()
@@ -80,6 +81,7 @@ public class GameManager : Manager<GameManager>
         if (!IsPaused) { return; }
 
         IsPaused = false;
+        Entity_Player.Instance.DesiredActions.PurgeAllAction();
         NotifyPauseListenersOnResume();
         //CommandPromptManager.Instance.DeActivate();
     }
