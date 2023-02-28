@@ -6,9 +6,11 @@ public class PlayerCommand_BoomDistanceUp : ICommand
 
     public void Execute()
     {
-        if (Entity_Player.Instance.boomDistance < 25f)
+        Entity_Player.Instance.boomDistance += 1.0f;
+        if (Entity_Player.Instance.boomDistance >= 25f)
         {
-            Entity_Player.Instance.boomDistance += 1.0f;
+            CommandPromptManager.Instance.playerCommandInvoker.ChestPowerUpDic.Remove(CommandType.BOMMERANG_DISTANCE);
+
         }
     }
 

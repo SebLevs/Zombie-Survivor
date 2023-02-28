@@ -9,7 +9,7 @@ public class CommandInvoker : ScriptableObject
     
     public readonly Dictionary<CommandType, ICommand> CommandPromptDic = new();
     public readonly Dictionary<CommandType, ICommand> ChestPowerUpDic = new();
-
+    
     public AudioElement powerUpSound;
     
     

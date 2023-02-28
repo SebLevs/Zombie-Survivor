@@ -6,9 +6,11 @@ public class PlayerCommand_MoveSpeedUp : ICommand
 
     public void Execute()
     {
-        if (Entity_Player.Instance.MovSpeed < 15f)
+        Entity_Player.Instance.MovSpeed += 1.0f;
+        if (Entity_Player.Instance.MovSpeed >= 15f)
         {
-            Entity_Player.Instance.MovSpeed += 1.0f;
+            CommandPromptManager.Instance.playerCommandInvoker.ChestPowerUpDic.Remove(CommandType.MOVE_SPEED);
+
         }
     }
 

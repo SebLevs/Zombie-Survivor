@@ -7,11 +7,13 @@ public class PlayerCommand_HealthUp : ICommand
     public void Execute()
     {
         Entity_Player player = Entity_Player.Instance;
-        if (player.Health.MaxHP <= 1000)
+        player.Health.SetMaxHP(Entity_Player.Instance.Health.MaxHP + 50);
+        player.Health.SetCurrentHP(player.Health.CurrentHP += 50);
+        Entity_Player.Instance.RefreshHealthBar();
+        if (player.Health.MaxHP >= 1000)
         {
-            player.Health.SetMaxHP(Entity_Player.Instance.Health.MaxHP + 50);
-            player.Health.SetCurrentHP(player.Health.CurrentHP += 50);
-            Entity_Player.Instance.RefreshHealthBar();
+            CommandPromptManager.Instance.playerCommandInvoker.ChestPowerUpDic.Remove(CommandType.HEALTH_UP);
+
         }
     }
 
