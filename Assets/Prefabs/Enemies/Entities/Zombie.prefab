@@ -235,13 +235,25 @@ PrefabInstance:
       propertyPath: <OnDeathEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4738277242610597109, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738277242610597109, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738277242610597109, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5803520454364322826, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Size.x
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5803520454364322826, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Size.y
-      value: 0.75
+      value: 2.115282
       objectReference: {fileID: 0}
     - target: {fileID: 5803520454364322826, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Offset.x
@@ -249,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5803520454364322826, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: 0.008427799
       objectReference: {fileID: 0}
     - target: {fileID: 6657099178885778164, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: manGoldValue
@@ -319,7 +331,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5803520454364322826, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
 --- !u!82 &299437249020887001 stripped
 AudioSource:
