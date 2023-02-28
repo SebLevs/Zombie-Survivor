@@ -78,11 +78,11 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
         {
             if (i >= m_waves.Length -1)
             {
-                m_waves[i].Init(this);
+                m_waves[i].Init(this, () => Debug.Log("A"));
             }
             else
             {
-                m_waves[i].Init(this, waveEndsCallback: () => _currentWaveIndex++);
+                m_waves[i].Init(this, waveEndsCallback: () => { Debug.Log("wave: " + i + " ended"); _currentWaveIndex++; });
             }
         }
     }

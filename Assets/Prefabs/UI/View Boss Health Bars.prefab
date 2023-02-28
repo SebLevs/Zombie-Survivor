@@ -83,6 +83,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8167215394718471890}
     m_Modifications:
+    - target: {fileID: 3731883731692401406, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b8653871ba38f44691c10eaa92ad5da, type: 2}
+    - target: {fileID: 3731883731692401406, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2668973508969171857, guid: 0b8653871ba38f44691c10eaa92ad5da, type: 2}
     - target: {fileID: 4620824131939617320, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
       propertyPath: m_Name
       value: Filling bar_Boss
@@ -366,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f6d8d2222f77e4592b589e1cf99955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quickShowHideSpeed: 10
   m_defaultShowEvent:
     m_PersistentCalls:
       m_Calls: []
