@@ -14,14 +14,10 @@ public class CommandPromptManager : Manager<CommandPromptManager>
     private string _inputCommand;
     private readonly Dictionary<string, Action> _possibleCommands = new();
 
-    protected override void OnAwake()
-    {
-        playerCommandInvoker.Init();
-    }
-
     protected override void OnStart()
     {
         base.OnStart();
+        playerCommandInvoker.Init();
         isActive = false;
         Init();
     }
