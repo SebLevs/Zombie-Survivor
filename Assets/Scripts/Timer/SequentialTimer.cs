@@ -27,7 +27,7 @@ public class SequentialTimer : SequentialTimeCalculator
         if (HasReachedTarget())
         {
             PauseTimer();
-            m_callback();
+            if (m_callback != null) { m_callback(); }
             return true;
         }
 
