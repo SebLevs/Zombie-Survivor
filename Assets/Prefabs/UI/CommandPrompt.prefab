@@ -583,9 +583,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753538e10727e3441a2dbb7bc245ddcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCommandInvoker: {fileID: 11400000, guid: 02aa8845ad3fb8142a0f4facb8f6a65e, type: 2}
+  playerCommandInvoker: {fileID: 11400000, guid: 7b5d38ba3508ba64fa90c6aaf900d0b4, type: 2}
   inputField: {fileID: 3675801398583312252}
   doneCommands: {fileID: 3675801400190379537}
+  isActive: 0
 --- !u!1 &3675801400190379539
 GameObject:
   m_ObjectHideFlags: 0
