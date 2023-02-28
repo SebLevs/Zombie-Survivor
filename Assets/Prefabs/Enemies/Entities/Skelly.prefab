@@ -121,12 +121,16 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 76df1752a9dc4f542b277e3877fee7e2, type: 2}
     - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: attackSounds.m_clips.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: attackSounds.m_clips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: e440ed436fbee2148bf43c2a3edfe365, type: 3}
+      objectReference: {fileID: 8300000, guid: 92a35fb6ca4def7468df4b935ee70b7b, type: 3}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.m_clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d977f1210b3bcfe44b71af20ae34baf8, type: 3}
     - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: attackSounds.<AudioSource>k__BackingField
       value: 
@@ -366,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a89495740f0e5449b319b9639c5dec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TypeName>k__BackingField: 
+  <TypeName>k__BackingField: Skelly
   m_projectileInstantiator: {fileID: 2224199792761582394}
 --- !u!114 &7439616912046921758
 MonoBehaviour:
