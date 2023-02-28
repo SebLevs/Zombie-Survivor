@@ -18,7 +18,7 @@ public class PotionBehavior : MonoBehaviour
         {
             if (_player.Health.CurrentHP != _player.Health.MaxHP)
             {
-                _commandInvoker.DoCommand(_commandInvoker.commandDic[CommandType.FULL_HEAL]);
+                _commandInvoker.DoCommand(_commandInvoker.CommandPromptDic[CommandType.FULL_HEAL]);
                 _player.RefreshHealthBar();
                 pickupSound.PlayRandom();
                 gameObject.SetActive(false);
