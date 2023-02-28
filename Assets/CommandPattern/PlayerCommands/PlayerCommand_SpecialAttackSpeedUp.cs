@@ -6,9 +6,11 @@ public class PlayerCommand_SpecialAttackSpeedUp : ICommand
 
     public void Execute()
     {
-        if (Entity_Player.Instance.specialAttackSpeed > 0.5f)
+        Entity_Player.Instance.specialAttackSpeed -= 0.5f;
+        if (Entity_Player.Instance.specialAttackSpeed <= 0.5f)
         {
-            Entity_Player.Instance.specialAttackSpeed -= 0.5f;
+            CommandPromptManager.Instance.playerCommandInvoker.ChestPowerUpDic.Remove(CommandType.BOMMERANG_ATTACK_SPEED);
+
         }
     }
 
