@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb8a1c2a239382449a125f767fc4161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AudioSource>k__BackingField: {fileID: 0}
   <CharacterPrintSpeed>k__BackingField: 0.25
   <LinePrintPause>k__BackingField: 0.5
   _returnToTitleScreenOnDeathWaitTime: 3
@@ -2154,6 +2155,10 @@ PrefabInstance:
     - target: {fileID: 3003595361473137276, guid: 35cc1e397b29ef940b2d762a9bf16af4, type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518297604392847263, guid: 35cc1e397b29ef940b2d762a9bf16af4, type: 3}
+      propertyPath: quickShowHideSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3937802125919931975, guid: 35cc1e397b29ef940b2d762a9bf16af4, type: 3}
       propertyPath: m_Name

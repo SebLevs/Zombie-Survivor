@@ -96,6 +96,9 @@ public class UIManager : Manager<UIManager>
         {
             Entity_Player.Instance.RefreshPlayerStats();
         });
+
+        Entity_Player.Instance.RefreshHealthBar();
+        Entity_Player.Instance.RefreshGoldBar();
     }
 
     public void HideHUD()

@@ -50,11 +50,11 @@ public class GameManager : Manager<GameManager>
 
     public void StartGame()
     {
-        UIManager.Instance.ViewBackgroundBlackScreen.OnHide();
         UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewBlackScreen, 
         showCallback: () =>
         {
             SceneLoadManager.Instance.OnLoadScene(1);
+            UIManager.Instance.ViewBackgroundBlackScreen.OnHideQuick();
         });
     }
 
