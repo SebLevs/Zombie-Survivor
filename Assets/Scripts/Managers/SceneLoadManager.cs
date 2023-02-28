@@ -90,7 +90,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         {
             Entity_Player.Instance.Reinitialize();
             UnloadCurrentScene();
-            uiManager.ViewBackgroundBlackScreen.OnShow();
+            uiManager.ViewBackgroundBlackScreen.OnShowQuick();
             uiManager.OnSwitchViewSynchronous(uiManager.ViewTitleScreen);
             IsInTitleScreen = true;
         });

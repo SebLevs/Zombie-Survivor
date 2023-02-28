@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public class ViewElement : MonoBehaviour
 {
+    [SerializeField] private float quickShowHideSpeed = 10.0f;
+
     private int _onShowHash;
     public Action m_onShowAction;
     [SerializeField] private UnityEvent m_defaultShowEvent;
@@ -50,7 +52,7 @@ public class ViewElement : MonoBehaviour
         m_onShowAction = callback;
 
         m_animator.SetTrigger(_onShowHash);
-        m_animator.speed = 10f;
+        m_animator.speed = quickShowHideSpeed;
     }
 
     public virtual void OnHide(Action callback = null)
@@ -71,7 +73,7 @@ public class ViewElement : MonoBehaviour
         m_onHideAction = callback;
 
         m_animator.SetTrigger(_onHideHash);
-        m_animator.speed = 10f;
+        m_animator.speed = quickShowHideSpeed;
     }
 
     public void AnimationEvent_HideCallback()

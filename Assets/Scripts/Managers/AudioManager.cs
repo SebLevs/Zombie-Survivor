@@ -5,7 +5,7 @@ public class AudioManager : Manager<AudioManager>
 {
     [SerializeField] private AudioMixerParameter _volumeMaster;
 
-    // TODO: if time to refactor - Transfer this scene specific audio logic into SceneController.cs for each specific scene
+    // TODO: if colliderActiveTime to refactor - Transfer this scene specific audio logic into SceneController.cs for each specific scene
     private AudioSource _audioSource;
     [field: SerializeField] public AudioClip AmbianceClip { get; private set; }
 

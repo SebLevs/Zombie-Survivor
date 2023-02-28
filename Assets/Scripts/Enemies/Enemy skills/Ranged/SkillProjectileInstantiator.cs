@@ -32,4 +32,9 @@ public class SkillProjectileInstantiator : MonoBehaviour
         SetProjectileReference(projectile);
         GetProjectileFromPool();
     }
+
+    public void AEReturnProjectileToPool() // Animation Event
+    {
+        CurrentProjectile.ReturnToPool();
+    }
 }

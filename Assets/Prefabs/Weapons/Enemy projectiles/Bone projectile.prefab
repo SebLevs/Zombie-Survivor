@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd7c40ee4b002e409702b3cb4c8c5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMask: 3
+  targetMasks: 03000000
   m_damage: 10
   m_baseSpeed: 5
   _rotationModifier: 700

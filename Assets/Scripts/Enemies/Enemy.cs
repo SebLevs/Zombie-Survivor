@@ -50,15 +50,20 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     private void Start() { OnStart(); }
     protected virtual void OnStart()
     {
+        Init();
+    }
+
+    private void Init()
+    {
         m_rigidbody.velocity = Vector2.zero;
         Health.FullHeal();
-
+        m_healthBar.OnHideQuick();
         player = Entity_Player.Instance;
     }
 
     public virtual void OnGetFromAvailable()
     {
-        OnStart();
+        Init();
         m_stateController.OnTransitionState(m_stateController.GetDefaultState());
         EnemyManager.Instance.CurrentlyActiveEnemies.Add(this);
     }
@@ -132,7 +137,7 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
 
     public void OnFirstHitPopupHealthBar()
     {
-        if (!Health.IsDead && !m_healthBar.gameObject.activeSelf)
+        if (!m_healthBar.gameObject.activeSelf) // !Health.IsDead && 
         {
             m_healthBar.StopAllCoroutines();
             m_healthBar.OnShowQuick();

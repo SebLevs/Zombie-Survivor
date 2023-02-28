@@ -13,7 +13,8 @@ public class Health : MonoBehaviour
 
     public bool isPermaInvincible = false;
 
-    [Header("Audio")] [SerializeField] private AudioElement m_hitSound;
+    [Header("Audio")] 
+    [SerializeField] private AudioElement m_hitSound;
     [SerializeField] private AudioElement m_deathSound;
 
     [field: Header("Events")]
@@ -65,12 +66,6 @@ public class Health : MonoBehaviour
             }
         }
     }
-
-    //[Header("Audio")]
-    //[SerializeField] protected AudioController m_audioControllerHit;
-    //[SerializeField] protected AudioController m_audioControllerDeath;
-
-    //public AudioSource AudioSource { get; protected set; }
 
     public bool IsDead => CurrentHP <= 0;
 

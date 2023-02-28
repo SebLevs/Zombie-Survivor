@@ -42,7 +42,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884238230350648038}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -102,7 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7989663c3cd6744aa6d6a1a5ceb4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMask: 3
+  ignoreTags: []
+  targetMasks: 03000000
   m_damage: 10
 --- !u!1 &9185567963655350325
 GameObject:
@@ -181,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2aa85625f9805304182e63e1080a1f1f, type: 3}
+      objectReference: {fileID: 21300000, guid: 1eb86c2c3e86bc843ad4a55fb3d10441, type: 3}
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_DrawMode
       value: 1
@@ -189,6 +190,10 @@ PrefabInstance:
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_Volume
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_maxHP
@@ -394,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57be4f9e3fdf88a4c9821c0d778fdddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TypeName>k__BackingField: 
+  <TypeName>k__BackingField: Zombie
 --- !u!114 &6147737196562750533
 MonoBehaviour:
   m_ObjectHideFlags: 0
