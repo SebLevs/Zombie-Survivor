@@ -696,8 +696,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3219454427825767208, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219454427825767208, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
       propertyPath: orthographic size
       value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219454427825767208, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219454427825767208, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.52560467
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219454427825767208, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.38020647
       objectReference: {fileID: 0}
     - target: {fileID: 3219454427825767209, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
       propertyPath: m_RootOrder
@@ -1156,6 +1172,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1655063229340308898, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2101289251562531375, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1348,6 +1368,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6708517237427403962, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708517237427403962, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6731581752609586853, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -1355,6 +1383,14 @@ PrefabInstance:
     - target: {fileID: 7458446873866751548, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_MinValue
       value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520121299702878708, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_text
+      value: E
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520121299702878708, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7650254411416155798, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_AnchorMax.x

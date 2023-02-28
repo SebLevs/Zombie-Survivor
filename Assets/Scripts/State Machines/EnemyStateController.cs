@@ -3,9 +3,9 @@ using UnityEngine;
 
 public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
 {
-    [field:Header("Reaction time: Used for attack, state transitions, etc.")]
+    [field:Header("Reaction colliderActiveTime: Used for attack, state transitions, etc.")]
     [field:Tooltip(
-        "Human reaction time in seconds (average): \n" +
+        "Human reaction colliderActiveTime in seconds (average): \n" +
         "Visual stimulus: ~0.25\n" + 
         "Audio stimulus: ~0.17\n" +
         "Touch stimulus: ~0.15\n")]

@@ -18,7 +18,7 @@ public class ProjectileEnemyBone : ProjectileEnemy
     protected override void OnEntityTriggerEnter(Collider2D collision)
     {
         base.OnEntityTriggerEnter(collision);
-        if (IsOtherLayerAlsoTargetLayer(collision.gameObject.layer, _targetMask))
+        if (IsValidForInteract(collision.gameObject.layer, collision.gameObject.tag))
         {
             Health health = collision.GetComponent<Health>();
             if (health)

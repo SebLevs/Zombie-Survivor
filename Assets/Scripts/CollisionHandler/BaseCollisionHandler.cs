@@ -3,12 +3,13 @@ using UnityEngine;
 public class BaseCollisionHandler : MonoBehaviour
 {
     [Header("Target layer mask as int")]
-    [SerializeField] [Min(0)] protected int _targetMask;
+    [SerializeField] protected string[] ignoreTags;
+    [SerializeField] [Min(0)] protected int[] targetMasks;
 
     protected Rigidbody2D m_rigidBody;
     protected Collider2D m_collider;
 
-    protected virtual void OnAwake() 
+    protected virtual void OnAwake()
     {
         m_rigidBody = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
@@ -61,8 +62,27 @@ public class BaseCollisionHandler : MonoBehaviour
         OnStart();
     }
 
-    protected bool IsOtherLayerAlsoTargetLayer(int otherLayer, int targetLayer)
+    protected bool IsValidForInteract(int otherLayer, string otherTag)
     {
-        return otherLayer == targetLayer;
+        return IsOtherLayerAlsoTargetLayer(otherLayer) && !IsOtherTagIgnoreTag(otherTag);
+    }
+
+    private bool IsOtherLayerAlsoTargetLayer(int otherLayer)
+    {
+        foreach (int layer in targetMasks)
+        {
+            if (otherLayer == layer) { return true; }
+        }
+        return false;
+    }
+
+    private bool IsOtherTagIgnoreTag(string otherTag)
+    {
+        string tagLower = otherTag.ToLower();
+        foreach (string tag in ignoreTags)
+        {
+            if (tagLower == tag.ToLower()) { return true; }
+        }
+        return false;
     }
 }

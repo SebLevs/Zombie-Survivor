@@ -21,6 +21,10 @@ public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
 
     private bool _canOpenChest;
 
+    private UIManager uiManager;
+
+    private bool isInteractable => _player.currentGold >= chestValue;
+
 
     private void Awake()
     {
@@ -35,6 +39,18 @@ public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
         _player = Entity_Player.Instance;
         _commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
         _uiValue.text = "$ " + chestValue;
+        uiManager = UIManager.Instance;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (!isInteractable) { return; }
+
+        if (col.CompareTag("Player") && !_player.Health.IsDead)
+        {
+            uiManager.ViewInteract.OnShow();
+            uiManager.ViewInteract.Init(transform, (Vector2)_uiValue.transform.position + Vector2.right);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D col)
@@ -45,17 +61,25 @@ public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
             {
                 _canOpenChest = true;
             }
+
+            if (!isInteractable) { return; }
+            uiManager.ViewInteract.OnShow();
+            uiManager.ViewInteract.Init(transform, (Vector2)_uiValue.transform.position + Vector2.right);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         _canOpenChest = false;
+        if (other.CompareTag("Player") && !_player.Health.IsDead)
+        {
+            uiManager.ViewInteract.Deactivate(transform);
+        }
     }
 
     private void TryOpenChest()
     {
-        if (_player.currentGold >= chestValue)
+        if (isInteractable)
         {
             _anim.Play("OpenChest");
             _player.currentGold -= chestValue;

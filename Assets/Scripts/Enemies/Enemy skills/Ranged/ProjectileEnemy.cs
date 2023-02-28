@@ -9,24 +9,20 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
     [SerializeField] protected float m_baseSpeed;
     protected Vector2 m_oldVelocity;
 
-    private const float _time = 10f;
+    [Header("Timer")]
+    [SerializeField] protected float returnToPoolTime = 10f;
     private SequentialStopwatch _stopwatch;
 
     protected override void OnAwake()
     {
         base.OnAwake();
-        _stopwatch = new SequentialStopwatch(_time, () => ReturnToPool());
+        _stopwatch = new SequentialStopwatch(returnToPoolTime, () => ReturnToPool());
     }
 
     public Transform Target { get; set; }
 
     public abstract ProjectileEnemy GetFromPool(Transform spawnLocation);
     public abstract void ReturnToPool();
-
-    public void SetTargetLayerMask(int layerMask)
-    {
-        _targetMask = layerMask;
-    }
 
     public void SetTargetAsPlayer()
     {
@@ -44,8 +40,6 @@ public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseL
         transform.up = direction;
         m_rigidBody.velocity = direction * m_baseSpeed;
     }
-
-
 
     public void ShootTowards(Vector2 direction)
     {
