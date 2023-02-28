@@ -32,6 +32,8 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerCurrencyBar { get; private set; }
     [field: SerializeField] public ViewBossHealthBars ViewBossHealthBars { get; private set; }
 
+    [field: SerializeField] public ViewInteract ViewInteract { get; private set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -119,6 +121,11 @@ public class UIManager : Manager<UIManager>
         }
 
         if (ViewPlayerStats.gameObject.activeSelf && ViewPlayerStats != CurrentView)
+        {
+            ViewPlayerStats.OnHideQuick();
+        }
+
+        if (ViewInteract.gameObject.activeSelf)
         {
             ViewPlayerStats.OnHideQuick();
         }
