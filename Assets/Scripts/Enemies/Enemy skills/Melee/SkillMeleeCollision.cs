@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillMeleeCollision : BaseCollisionHandler
@@ -9,7 +7,7 @@ public class SkillMeleeCollision : BaseCollisionHandler
     protected override void OnEntityCollisionEnter(Collision2D collision)
     {
         base.OnEntityCollisionEnter(collision);
-        if (!IsOtherLayerAlsoTargetLayer(collision.gameObject.layer, _targetMask)) { return; }
+        if (!IsValidForInteract(collision.gameObject.layer, collision.gameObject.tag)) { return; }
 
         Health health = collision.gameObject.GetComponent<Health>();
         if (health)

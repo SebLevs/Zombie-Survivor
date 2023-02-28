@@ -31,7 +31,7 @@ public class EnemyWave
 
     /// <summary>
     /// </summary>
-    /// <returns>Has reached next wave time</returns>
+    /// <returns>Has reached next wave colliderActiveTime</returns>
     public bool Tick()
     {
         _spawnerStopWatch.OnUpdateTime();

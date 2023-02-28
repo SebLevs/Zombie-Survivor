@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 937053839234430474}
   m_Layer: 8
   m_Name: Lower arm
-  m_TagString: Untagged
+  m_TagString: Ignore physics
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bba85cdc6244143b3e7695ac414778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMask: 3
+  ignoreTags: []
+  targetMasks: 03000000
   m_damage: 50
 --- !u!1 &534609037630633826
 GameObject:
@@ -239,7 +240,7 @@ GameObject:
   - component: {fileID: 224912491787210198}
   m_Layer: 8
   m_Name: Upper arm
-  m_TagString: Untagged
+  m_TagString: Ignore physics
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bba85cdc6244143b3e7695ac414778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMask: 3
+  ignoreTags: []
+  targetMasks: 03000000
   m_damage: 50
 --- !u!1 &1737957201464898187
 GameObject:
@@ -493,7 +495,7 @@ GameObject:
   - component: {fileID: 1998839141677971474}
   m_Layer: 8
   m_Name: Lower arm
-  m_TagString: Untagged
+  m_TagString: Ignore physics
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -574,7 +576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bba85cdc6244143b3e7695ac414778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMask: 3
+  ignoreTags: []
+  targetMasks: 03000000
   m_damage: 50
 --- !u!114 &1998839141677971474
 MonoBehaviour:
@@ -588,7 +591,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bba85cdc6244143b3e7695ac414778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMask: 0
+  ignoreTags: []
+  targetMasks: 
   m_damage: 0
 --- !u!1 &5124565741051969929
 GameObject:
@@ -604,7 +608,7 @@ GameObject:
   - component: {fileID: 137108921103037230}
   m_Layer: 8
   m_Name: Upper arm
-  m_TagString: Untagged
+  m_TagString: Ignore physics
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -685,7 +689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bba85cdc6244143b3e7695ac414778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMask: 3
+  ignoreTags: []
+  targetMasks: 03000000
   m_damage: 50
 --- !u!1 &5728697006826623462
 GameObject:
@@ -950,6 +955,18 @@ PrefabInstance:
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886669009860123003, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_IsActive

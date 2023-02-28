@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7367317637630834012}
   - component: {fileID: 5667690080948867544}
-  - component: {fileID: 3848641378863776494}
   m_Layer: 0
   m_Name: Melee trigger skill
   m_TagString: Untagged
@@ -59,19 +58,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.7}
   m_EdgeRadius: 0
---- !u!114 &3848641378863776494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488289001667464161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b600f1bc742496c4a91dac163cae2b74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  m_damage: 10

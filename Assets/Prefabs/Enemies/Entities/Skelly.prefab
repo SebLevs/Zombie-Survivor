@@ -142,7 +142,7 @@ PrefabInstance:
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a457e29a22aa2164d8b9cacfd5b17e2b, type: 3}
+      objectReference: {fileID: 21300000, guid: 6cf5a4fb3e0ce2147926365392034915, type: 3}
     - target: {fileID: 2997503910717666961, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_DrawMode
       value: 1
@@ -158,15 +158,15 @@ PrefabInstance:
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 5d3e75904fb2140489d74c9afb4570ae, type: 3}
+      objectReference: {fileID: 8300000, guid: 16621948283a15943bdfe2f7deb15b67, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 1d98b440e90e30b4c9f712f6de894f55, type: 3}
+      objectReference: {fileID: 8300000, guid: a63e5ca9aeb20a34dab98b44ad4cf187, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 612fd10cefb2de54d8df0aee1865ba56, type: 3}
+      objectReference: {fileID: 8300000, guid: 3d9c8d11c0b11254cadaaad1f6ffbea2, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_deathSound.m_clips.Array.data[0]
       value: 
