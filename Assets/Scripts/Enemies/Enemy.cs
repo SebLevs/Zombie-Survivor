@@ -143,7 +143,6 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     {
         if (!isReturnToPoolAtDistance) { return; }
         float distance = LinearAlgebraUtilities.GetDistance2D(player.transform.position, transform.position);
-        Debug.Log(distance);
         if (distance >= returnAtDistance)
         {
             ReturnToPool();
