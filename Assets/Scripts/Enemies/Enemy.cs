@@ -32,7 +32,6 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     protected void OnAwake()
     {
         Type = GetComponent<EnemyType>();
-        Type.Init(this);
 
         Health = GetComponent<Health>();
 
@@ -45,6 +44,8 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         m_stateController = GetComponent<EnemyStateController>();
 
         PathfinderUtility = GetComponent<PathfinderUtility>();
+
+        Type.Init(this);
     }
 
     private void Start() { OnStart(); }
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         Health.FullHeal();
         m_healthBar.OnHideQuick();
         player = Entity_Player.Instance;
+        SetColliderEnable(true);
     }
 
     public virtual void OnGetFromAvailable()
@@ -159,5 +161,11 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         StopAllCoroutines();
         Health.StopAllCoroutines();
         m_healthBar.StopAllCoroutines();
+    }
+
+    public void SetColliderEnable(bool setAs)
+    {
+        if (m_collider == null) { return; }
+        m_collider.enabled = setAs;
     }
 }

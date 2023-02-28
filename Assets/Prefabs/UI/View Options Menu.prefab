@@ -251,6 +251,10 @@ PrefabInstance:
       propertyPath: m_text
       value: VFX
       objectReference: {fileID: 0}
+    - target: {fileID: 2374622154846244226, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2667378669856727731, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -446,6 +450,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2374622154846244226, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2667378669856727731, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -632,6 +640,10 @@ PrefabInstance:
     - target: {fileID: 2883959677946705419, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_text
       value: MAIN MENU
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883959677946705419, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397358, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Name
@@ -1029,6 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd66ef88cd3c716438ae32fdb1fef456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quickShowHideSpeed: 10
   m_defaultShowEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1157,6 +1170,10 @@ PrefabInstance:
     - target: {fileID: 2374622154846244226, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_text
       value: Master
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374622154846244226, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2667378669856727731, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Pivot.x

@@ -221,7 +221,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1222802094737523685
@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ac95e71c03f5547a80c4f90ab9b1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quickShowHideSpeed: 10
   m_defaultShowEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -554,7 +555,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8189010010045713972

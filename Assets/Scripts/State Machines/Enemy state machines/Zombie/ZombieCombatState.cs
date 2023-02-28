@@ -1,8 +1,10 @@
 using System.Collections;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class ZombieCombatState : EnemyState
 {
+    private SequentialTimer m_delayedAttackTimer;
     private readonly int _attackAnimHash;
 
     public ZombieCombatState(StateControllerZombie controller) : base(controller)
@@ -18,11 +20,18 @@ public class ZombieCombatState : EnemyState
 
     public override void OnEnter()
     {
-        m_controller.StartCoroutine(m_controller.DelayedAnimatorTrigger(_attackAnimHash, 0.5f));
+        if (m_delayedAttackTimer != null) { return; }
+        //if (m_controller.IsInAnimationState(m_groundSmashSkill.Animation)) { return; }
+
+        m_delayedAttackTimer = TimerManager.Instance.AddSequentialTimer(m_controller.GetReactionTimeInRange(0.5f), () =>
+        {
+            m_controller.Context.Animator.SetTrigger(_attackAnimHash);
+        });
     }
 
     public override void OnExit()
     {
+        m_delayedAttackTimer = null;
         m_controller.StopAllCoroutines();
     }
 

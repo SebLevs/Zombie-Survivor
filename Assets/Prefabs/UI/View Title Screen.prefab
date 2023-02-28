@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d1481b7016c5448973de68c478b707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quickShowHideSpeed: 10
   m_defaultShowEvent:
     m_PersistentCalls:
       m_Calls: []
