@@ -9,9 +9,10 @@ public class PlayerCommand_AttackSpeedUp : ICommand
 
     public void Execute()
     {
-        if (Entity_Player.Instance.attackSpeed - 0.1f > 0.1f)
+        Entity_Player.Instance.attackSpeed -= 0.1f;
+        if (Entity_Player.Instance.attackSpeed <= 0.1f)
         {
-            Entity_Player.Instance.attackSpeed -= 0.1f;
+            CommandPromptManager.Instance.playerCommandInvoker.ChestPowerUpDic.Remove(CommandType.ATTACK_SPEED);
         }
     }
 

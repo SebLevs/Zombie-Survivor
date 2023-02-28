@@ -263,6 +263,14 @@ PrefabInstance:
       propertyPath: colorCurve.m_Curve.Array.data[2].tangentMode
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 1282047109729523136, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997386154977626076, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334277, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1458,6 +1466,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6731581752609586853, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731581752993197026, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: possibletype.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731581752993197026, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: possibletype.Array.data[1]
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7458446873866751548, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
