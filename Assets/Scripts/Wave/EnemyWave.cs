@@ -34,7 +34,6 @@ public class EnemyWave
     /// <returns>Has reached next wave colliderActiveTime</returns>
     public bool Tick()
     {
-        Debug.Log("is loopable wave: " + m_WaveController.GetCurrentWave().isLoopable);
         _spawnerStopWatch.OnUpdateTime();
         _nextWaveStopWatch.OnUpdateTime();
 
