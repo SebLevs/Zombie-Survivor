@@ -3,7 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using TMP_Text = TMPro.TMP_Text;
 
-public class ChestBehavior : MonoBehaviour
+public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
 {
     public int minValue;
     public int maxValue;
@@ -18,6 +18,8 @@ public class ChestBehavior : MonoBehaviour
     private TMP_Text _uiValue;
 
     private Animator _anim;
+
+    private bool _canOpenChest;
 
 
     private void Awake()
@@ -35,12 +37,20 @@ public class ChestBehavior : MonoBehaviour
         _uiValue.text = "$ " + chestValue;
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag("Player") && !_player.Health.IsDead)
         {
-            TryOpenChest();
+            if (_canOpenChest == false)
+            {
+                _canOpenChest = true;
+            }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        _canOpenChest = false;
     }
 
     private void TryOpenChest()
@@ -59,6 +69,29 @@ public class ChestBehavior : MonoBehaviour
             _uiValue.enabled = false;
             _player.RefreshGoldBar();
             _player.RefreshHealthBar();
+        }
+    }
+
+    public void OnUpdate()
+    {
+        if (_player.DesiredActions.Contains(PlayerActionsType.INTERACT) && _canOpenChest)
+        {
+            _player.DesiredActions.ConsumeAllActions(PlayerActionsType.INTERACT);
+            _canOpenChest = false;
+            TryOpenChest();
+        }
+    }
+
+    public void OnEnable()
+    {
+        UpdateManager.Instance.SubscribeToUpdate(this);
+    }
+
+    public void OnDisable()
+    {
+        if (UpdateManager.Instance)
+        {
+            UpdateManager.Instance.UnSubscribeFromUpdate(this);
         }
     }
 }

@@ -74,6 +74,15 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
         }
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            action = new PlayerAction(PlayerActionsType.INTERACT);
+            playerRef.DesiredActions.AddAction(action);
+        }
+    }
+
     public void OnOptionsMenu(InputAction.CallbackContext context)
     {
         if (context.performed && !Entity_Player.Instance.Health.IsDead)
