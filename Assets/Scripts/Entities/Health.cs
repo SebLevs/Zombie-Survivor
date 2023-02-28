@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,6 +19,10 @@ public class Health : MonoBehaviour
     [field: Header("Events")]
     [field: SerializeField]
     public UnityEvent OnHitEvent { get; set; }
+
+    private SpriteRenderer _renderer;
+    private readonly Color _baseColor = new(1, 1, 1, 1);
+    private readonly Color _hitColor = new(1, 0.7f, 0.7f, 1);
 
     [field: SerializeField] public UnityEvent OnDeathEvent { get; set; }
 
@@ -72,6 +77,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         Init();
+        _renderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Init()
@@ -97,8 +103,19 @@ public class Health : MonoBehaviour
         m_animator.SetTrigger(_onHitAnimHash);
 
         PlayOneShotHit();
+        StopCoroutine(GetHitVisual());
+        StartCoroutine(GetHitVisual());
 
         OnDeath();
+    }
+
+    private IEnumerator GetHitVisual()
+    {
+        _renderer.color = _hitColor;
+        yield return new WaitForSeconds(0.2f);
+        _renderer.color = _baseColor;
+        yield return new WaitForSeconds(0.2f);
+        yield return null;
     }
 
     public virtual void OnInstantDeath()
@@ -119,6 +136,7 @@ public class Health : MonoBehaviour
             return;
         }
 
+        _renderer.color = _baseColor;
         OnDeathEvent?.Invoke();
         m_animator.SetTrigger(_onDeathAnimHash);
         PlayOneShotDeath();
