@@ -154,6 +154,7 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         uiManager.ViewPlayerStats.AttackCooldown.Element.text = attackSpeed.ToString("0.00");
         uiManager.ViewPlayerStats.BoomerangCooldown.Element.text = specialAttackSpeed.ToString("0.00");
         uiManager.ViewPlayerStats.BoomerangDistance.Element.text = boomDistance.ToString("0.00");
+        uiManager.ViewPlayerStats.DodgeDelay.Element.text = DodgeInterval.ToString("0.00");
     }
 
     public void OnUpdate()
