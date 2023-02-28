@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioElement
 {
     [field:Header("Audio Source")]
-    [field: SerializeField] public AudioSource AudioSource { get; private set; }
+    [field: SerializeField] public AudioSource AudioSource { get; set; }
 
     [Header("Clips")]
     [SerializeField] private AudioClip[] m_clips;

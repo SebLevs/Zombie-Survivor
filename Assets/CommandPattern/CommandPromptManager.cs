@@ -1,4 +1,5 @@
-using System.Linq;
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
     public bool isActive;
     private string _isValidCommand;
     private string _inputCommand;
+    private readonly Dictionary<string, Action> _possibleCommands = new();
 
     protected override void OnAwake()
     {
@@ -21,6 +23,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
     {
         base.OnStart();
         isActive = false;
+        Init();
     }
 
     public void ToggleActivatePrompt(InputAction.CallbackContext context)
@@ -29,10 +32,12 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         {
             if (isActive)
             {
-                if (!SceneLoadManager.Instance.IsInTitleScreen && UIManager.Instance.CurrentView != UIManager.Instance.ViewOptionMenu)
+                if (!SceneLoadManager.Instance.IsInTitleScreen &&
+                    UIManager.Instance.CurrentView != UIManager.Instance.ViewOptionMenu)
                 {
                     GameManager.Instance.ResumeGame();
                 }
+
                 DeActivate();
             }
             else
@@ -43,7 +48,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         }
     }
 
-    public void Activate()
+    private void Activate()
     {
         Entity_Player.Instance.Controller.enabled = false;
         Entity_Player.Instance.enabled = false;
@@ -53,7 +58,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         inputField.Select();
     }
 
-    public void DeActivate()
+    private void DeActivate()
     {
         Entity_Player.Instance.Controller.enabled = true;
         Entity_Player.Instance.enabled = true;
@@ -62,77 +67,63 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         isActive = false;
     }
 
+    private void DoCommandInput(CommandType type)
+    {
+        playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic[type]);
+    }
+
+    private void UnDoCommandInput(CommandType type)
+    {
+        playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic[type]);
+    }
+
+    private void Init()
+    {
+        _possibleCommands.Add("GODMODE_ON", () => { DoCommandInput(CommandType.INVINCIBLE); });
+        _possibleCommands.Add("GODMODE_OFF", () => { UnDoCommandInput(CommandType.INVINCIBLE); });
+
+        _possibleCommands.Add("FULL_HEAL", () => { DoCommandInput(CommandType.FULL_HEAL); });
+        _possibleCommands.Add("INSTA_DEATH", () => { UnDoCommandInput(CommandType.FULL_HEAL); });
+
+        _possibleCommands.Add("ATTACK_SPEED_UP", () => { DoCommandInput(CommandType.ATTACK_SPEED); });
+        _possibleCommands.Add("ATTACK_SPEED_DOWN", () => { UnDoCommandInput(CommandType.ATTACK_SPEED); });
+
+        _possibleCommands.Add("SPECIAL_ATTACK_SPEED_UP", () => { DoCommandInput(CommandType.BOMMERANG_ATTACK_SPEED); });
+        _possibleCommands.Add("SPECIAL_ATTACK_SPEED_DOWN",
+            () => { UnDoCommandInput(CommandType.BOMMERANG_ATTACK_SPEED); });
+
+        _possibleCommands.Add("BOOM_DISTANCE_UP", () => { DoCommandInput(CommandType.BOMMERANG_DISTANCE); });
+        _possibleCommands.Add("BOOM_DISTANCE_DOWN", () => { UnDoCommandInput(CommandType.BOMMERANG_DISTANCE); });
+
+        _possibleCommands.Add("MOVE_SPEED_UP", () => { DoCommandInput(CommandType.MOVE_SPEED); });
+        _possibleCommands.Add("MOVE_SPEED_DOWN", () => { UnDoCommandInput(CommandType.MOVE_SPEED); });
+
+        _possibleCommands.Add("HEALTH_UP", () => { DoCommandInput(CommandType.HEALTH_UP); });
+        _possibleCommands.Add("HEALTH_DOWN", () => { UnDoCommandInput(CommandType.HEALTH_UP); });
+    }
+
     public void CheckCommandPrompt()
     {
         _isValidCommand = "";
         _inputCommand = inputField.text.ToUpper();
         _inputCommand = _inputCommand.Replace(" ", "_");
 
-        switch (_inputCommand)
+        if (_possibleCommands.TryGetValue(_inputCommand, out Action actionToDo))
         {
-            case "GODMODE_ON":
-            {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(0).Value);
-                break;
-            }
-            case "GODMODE_OFF":
-            {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(0).Value);
-                break;
-            }
-            case "ATTACK_SPEED_UP":
-            {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(1).Value);
-                break;
-            }
-            case "ATTACK_SPEED_DOWN":
-            {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(1).Value);
-                break;
-            }
-            case "SPECIAL_ATTACK_SPEED_UP":
-            {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(2).Value);
-                break;
-            }
-            case "SPECIAL_ATTACK_SPEED_DOWN":
-            {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(2).Value);
-                break;
-            }
-            case "BOOM_DISTANCE_UP":
-            {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(3).Value);
-                break;
-            }
-            case "BOOM_DISTANCE_DOWN":
-            {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(3).Value);
-                break;
-            }
-            case "MOVE_SPEED_UP":
-            {
-                playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic.ElementAt(4).Value);
-                break;
-            }
-            case "MOVE_SPEED_DOWN":
-            {
-                playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic.ElementAt(4).Value);
-                break;
-            }
-            default:
-            {
-                _isValidCommand = " : Command Not Valid";
-                break;
-            }
+            actionToDo.Invoke();
         }
+        else
+        {
+            _isValidCommand = " : Command Not Valid";
+        }
+
         if (doneCommands.textInfo.lineCount > 5)
         {
             doneCommands.text = "";
         }
+
         doneCommands.text = "\n" + _inputCommand + _isValidCommand + doneCommands.text;
         inputField.text = "";
         inputField.Select();
     }
-    
 }

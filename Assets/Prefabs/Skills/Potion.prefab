@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a7dddd874919f41831606d89ee9d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickupSound:
+  pickupSound:
     <AudioSource>k__BackingField: {fileID: 251396892132501046}
     m_clips:
     - {fileID: 8300000, guid: 7630d3dbbfed73b4a84f5b979bc1a23d, type: 3}
