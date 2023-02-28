@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8210577292823185380
 Transform:
   m_ObjectHideFlags: 0
@@ -166,11 +166,11 @@ MonoBehaviour:
   _rotationSpeed: 720
   boomSound:
     <AudioSource>k__BackingField: {fileID: 2858589720163748306}
-    _minPitch: 1
-    _maxPitch: 1
     m_clips:
     - {fileID: 8300000, guid: 1441cf5377cfe1040b0cb8bb19ad3d88, type: 3}
     - {fileID: 8300000, guid: 2689b3e8fb853954f8d0cb9a58e0fd8a, type: 3}
+    _minPitch: 1
+    _maxPitch: 1
 --- !u!58 &7547886854854762129
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -186,7 +186,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 1.25
 --- !u!82 &2858589720163748306
 AudioSource:
   m_ObjectHideFlags: 0

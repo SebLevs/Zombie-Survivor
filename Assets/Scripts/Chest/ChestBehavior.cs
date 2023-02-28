@@ -18,8 +18,6 @@ public class ChestBehavior : MonoBehaviour
     private TMP_Text _uiValue;
 
     private Animator _anim;
-    
-    [SerializeField] private AudioElement openChestSound;
 
 
     private void Awake()
@@ -56,7 +54,6 @@ public class ChestBehavior : MonoBehaviour
             string name = type.ToString().Replace("_", " ");
             UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("Bonus gained!\n" + name);
             _commandInvoker.DoCommand(command);
-            openChestSound.PlayRandom();
             _player.RefreshPlayerStats();
             _col.enabled = false;
             _uiValue.enabled = false;

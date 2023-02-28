@@ -3,6 +3,9 @@ using System;
 
 public class UIManager : Manager<UIManager>
 {
+    [field:Header("UI Audio")]
+    [field: SerializeField] public AudioSource AudioSource { get; private set; }
+    
     [field: Header("Character print")]
     [field:SerializeField] public float CharacterPrintSpeed { get; private set; }
     [field:SerializeField] public float LinePrintPause { get; private set; }
@@ -29,6 +32,12 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerCurrencyBar { get; private set; }
     [field: SerializeField] public ViewBossHealthBars ViewBossHealthBars { get; private set; }
 
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        AudioSource = GetComponent<AudioSource>();
+    }
+    
     /// <summary>
     /// Syncronous switch view: <br/>
     /// OnHide AND OnShow at the same remainingTime

@@ -55,6 +55,12 @@ MonoBehaviour:
       unityReference: {fileID: 0}
       rawReference:
         rid: 5378726848231112705
+  powerUpSound:
+    <AudioSource>k__BackingField: {fileID: 0}
+    m_clips:
+    - {fileID: 8300000, guid: 4f4c2b61e9a658c4dbde78918a9bf5a8, type: 3}
+    _minPitch: 1
+    _maxPitch: 1
   references:
     version: 2
     RefIds:

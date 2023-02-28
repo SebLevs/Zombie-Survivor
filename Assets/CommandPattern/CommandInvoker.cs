@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TNRD;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class CommandInvoker : ScriptableObject
     public List<CommandWrapper> wrappers;
     public Dictionary<CommandType, ICommand> commandDic = new();
 
+    public AudioElement powerUpSound;
+
     public void Init()
     {
         commandDic.Clear();
@@ -23,17 +26,21 @@ public class CommandInvoker : ScriptableObject
         {
             commandDic.Add(commandWrapper.type, commandWrapper.command.Value);
         }
+
+        powerUpSound.AudioSource = UIManager.Instance.AudioSource;
     }
 
     public void DoCommand(ICommand command)
     {
         command.Execute();
+        powerUpSound.PlayRandom();
         Entity_Player.Instance.RefreshPlayerStats();
     }
 
     public void UnDoCommand(ICommand command)
     {
         command.UnExecute();
+        powerUpSound.PlayRandom();
         Entity_Player.Instance.RefreshPlayerStats();
     }
 }
