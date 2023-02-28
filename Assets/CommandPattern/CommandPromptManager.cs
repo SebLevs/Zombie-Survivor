@@ -83,6 +83,9 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         
         _possibleCommands.Add("TELEPORT_TO_BOSS", () => { DoCommandInput(CommandType.TELEPORT_TO_BOSS); });
         _possibleCommands.Add("TELEPORT_TO_SPAWN", () => { UnDoCommandInput(CommandType.TELEPORT_TO_BOSS); });
+        
+        _possibleCommands.Add("MAX_GOLD", () => { DoCommandInput(CommandType.MAX_GOLD); });
+        _possibleCommands.Add("MIN_GOLD", () => { UnDoCommandInput(CommandType.MAX_GOLD); });
 
         _possibleCommands.Add("ATTACK_SPEED_UP", () => { DoCommandInput(CommandType.ATTACK_SPEED); });
         _possibleCommands.Add("ATTACK_SPEED_DOWN", () => { UnDoCommandInput(CommandType.ATTACK_SPEED); });

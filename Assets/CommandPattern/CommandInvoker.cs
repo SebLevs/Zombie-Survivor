@@ -1,18 +1,9 @@
-using System;
 using System.Collections.Generic;
-using TNRD;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class CommandInvoker : ScriptableObject
 {
-    [Serializable]
-    public class CommandWrapper
-    {
-        public CommandType type;
-        public SerializableInterface<ICommand> command;
-    }
-
     public List<CommandWrapper> promptOnly;
     public List<CommandWrapper> promptAndChest;
     
