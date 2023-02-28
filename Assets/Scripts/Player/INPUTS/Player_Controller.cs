@@ -133,56 +133,26 @@ public class Player_Controller : MonoBehaviour, IFrameUpdateListener
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         normalizedLookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
 
-        // switch (GetDirection(normalizedLookDirection))
-        // {
-        //     case LookDirectionEnum.UP:
-        //     {
-        //         currentSprite = spriteDirection[0];
-        //         break;
-        //     }
-        //     case LookDirectionEnum.RIGHT:
-        //     {
-        //         currentSprite = spriteDirection[1];
-        //         break;
-        //     }
-        //     case LookDirectionEnum.DOWN:
-        //     {
-        //         currentSprite = spriteDirection[2];
-        //         break;
-        //     }
-        //     case LookDirectionEnum.LEFT:
-        //     {
-        //         currentSprite = spriteDirection[1];
-        //         //playerRef.transform.localScale = new Vector3(1, 0, 0);
-        //         break;
-        //     }
-        // }
-        
         if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y >= 0.7f)
         {
             currentLookAngle = 0;
-            //currentSprite = spriteDirection[0];
         }
         else if (normalizedLookDirection.x <= -0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 90;
-            //currentSprite = spriteDirection[1];
-            playerRef.transform.localScale = new Vector3(-2, 2, 1);
+            // playerRef.transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y <= -0.7f)
         {
             currentLookAngle = 180;
-            //currentSprite = spriteDirection[2];
         }
         else if (normalizedLookDirection.x >= 0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
         {
             currentLookAngle = 270;
-            //currentSprite = spriteDirection[3]; 
         }
         anim.SetInteger("LookDirection", currentLookAngle);
         anim.SetFloat(Velocity, Entity_Player.Instance.Rb.velocity.magnitude);
         playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
-        //sp.sprite = currentSprite;
     }
 
     public void OnEnable()

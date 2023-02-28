@@ -883,6 +883,10 @@ PrefabInstance:
       propertyPath: _isSpriteFlippable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: isReturnToPoolAtDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1673148623759901411, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_SizeDelta.x
       value: 7

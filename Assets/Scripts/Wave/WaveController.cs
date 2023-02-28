@@ -3,12 +3,17 @@ using UnityEngine;
 
 public class WaveController : MonoBehaviour, IFrameUpdateListener
 {
+    [field:Header("Maximum enemy count allowed")]
+    [field:SerializeField] public int MaximumEnemyCount { get; private set; }
+
     private int _currentWaveIndex = 0;
     [SerializeField] private EnemyWave[] m_waves;
     [SerializeField] private EnemyWave m_bossWave;
 
     // TODO: Make generic observer pattern to call a random position from this list
     [SerializeField] private List<PositionGetter2D> _enemySpawnPoints;
+
+    public EnemyManager EnemyManager { get; private set; }
 
     public EnemyWave GetCurrentWave() => m_waves[_currentWaveIndex];
     public void SetCurrentWave(int wave)
@@ -23,6 +28,11 @@ public class WaveController : MonoBehaviour, IFrameUpdateListener
     {
         TrySetSpawnPointAsPlayer();
         SetEnemyWaves();
+    }
+
+    private void Start()
+    {
+        EnemyManager = EnemyManager.Instance;
     }
 
     public void OnUpdate()

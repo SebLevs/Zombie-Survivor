@@ -306,7 +306,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dac06ebbe6abf44f8b0d95a05710407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSpriteFlippable: 1
   m_healthBar: {fileID: 4931895870938298055}
+  returnAtDistance: 40
 --- !u!114 &4594350461714733977
 MonoBehaviour:
   m_ObjectHideFlags: 0

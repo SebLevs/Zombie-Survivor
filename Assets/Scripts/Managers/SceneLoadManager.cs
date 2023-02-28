@@ -72,7 +72,6 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         IsInTitleScreen = false;
         GameManager.Instance.ResumeGame();
         UIManager.Instance.ShowHUD();
-        Entity_Player.Instance.Init();
     }
 
     public void GoToTitleScreen()

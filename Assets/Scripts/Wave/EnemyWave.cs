@@ -6,27 +6,27 @@ using UnityEngine.Events;
 public class EnemyWave
 {
     [Header("Timers")]
-    [SerializeField] private bool _isLoopable = false;
-    [SerializeField] private float _endOfWaveTime;
+    [SerializeField] private bool isLoopable = false;
+    [SerializeField] private float endOfWaveTime;
     [Range(1, 10)][SerializeField] private float _tickRange;
     private SequentialStopwatch _spawnerStopWatch;
     private SequentialStopwatch _nextWaveStopWatch;
 
     [Header("Factory")]
     [SerializeField] private AbstractEnemyFactory _enemyFactory;
-    [Min(0)][SerializeField] private int _lowQuantitySpawns;
-    [Min(0)][SerializeField] private int _highQuantitySpawns;
+    [Min(0)][SerializeField] private int lowQuantitySpawns;
+    [Min(0)][SerializeField] private int highQuantitySpawns;
 
     [field:Header("Wave end event")]
     [field: SerializeField] public UnityEvent _waveEndEvent { get; private set; }
 
-    private WaveController m_waveManager;
+    private WaveController m_WaveController;
 
-    public void Init(WaveController waveManager, Action waveEndsCallback = null)
+    public void Init(WaveController waveController, Action waveEndsCallback = null)
     {
-        m_waveManager = waveManager;
+        m_WaveController = waveController;
         _spawnerStopWatch = new SequentialStopwatch(GetRandomTimeInRange());
-        _nextWaveStopWatch = new SequentialStopwatch(_endOfWaveTime, waveEndsCallback);
+        _nextWaveStopWatch = new SequentialStopwatch(endOfWaveTime, waveEndsCallback);
     }
 
     /// <summary>
@@ -36,6 +36,10 @@ public class EnemyWave
     {
         _spawnerStopWatch.OnUpdateTime();
         _nextWaveStopWatch.OnUpdateTime();
+
+        int trueEnemyCount = m_WaveController.EnemyManager.CurrentlyActiveEnemies.Count + lowQuantitySpawns + highQuantitySpawns;
+        if (trueEnemyCount > m_WaveController.MaximumEnemyCount)
+        { return false; }
 
         if (_spawnerStopWatch.HasReachedTarget())
         {
@@ -49,7 +53,7 @@ public class EnemyWave
         {
             _waveEndEvent?.Invoke();
 
-            if (_isLoopable) { _nextWaveStopWatch.Reset(); }
+            if (isLoopable) { _nextWaveStopWatch.Reset(); }
 
             return true;
         }
@@ -63,14 +67,14 @@ public class EnemyWave
 
     private void CreateEnemyWave()
     {
-        for (int i = 0; i < _lowQuantitySpawns; i++)
+        for (int i = 0; i < lowQuantitySpawns; i++)
         {
-            _enemyFactory.CreateLowQuantityEnemy(m_waveManager.GetRandomSpawnPoint());
+            _enemyFactory.CreateLowQuantityEnemy(m_WaveController.GetRandomSpawnPoint());
         }
 
-        for (int i = 0; i < _lowQuantitySpawns; i++)
+        for (int i = 0; i < lowQuantitySpawns; i++)
         {
-            _enemyFactory.CreateHighQuantityEnemy(m_waveManager.GetRandomSpawnPoint());
+            _enemyFactory.CreateHighQuantityEnemy(m_WaveController.GetRandomSpawnPoint());
         }
     }
 }

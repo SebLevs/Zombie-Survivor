@@ -132,10 +132,10 @@ GameObject:
   - component: {fileID: 1167502202767387791}
   - component: {fileID: 1997386155763334283}
   - component: {fileID: 546040157917262173}
-  - component: {fileID: 1997386155763334282}
   - component: {fileID: 4389486347920131965}
   - component: {fileID: 8323174906908064796}
   - component: {fileID: 6795325728018082779}
+  - component: {fileID: 8017754782163782533}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -151,8 +151,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997386155763334277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -1.46, y: 1.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1282047109729523136}
@@ -206,7 +206,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 3, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -543,22 +543,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 5372a6c5e5901e14c8998f7124c58a2d, type: 3}
     _minPitch: 1
     _maxPitch: 1
---- !u!58 &1997386155763334282
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997386155763334277}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!95 &4389486347920131965
 Animator:
   serializedVersion: 4
@@ -591,7 +575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddcc25cf918bff46adcba3b02c54aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radiusModifier: 10
+  isInPerimeter: 1
+  _radiusModifier: 25
 --- !u!82 &6795325728018082779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -688,6 +673,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &8017754782163782533
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997386155763334277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.75, y: 2.5}
+  m_Direction: 0
 --- !u!1 &5869052181853555542
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,8 +715,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5869052181853555542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.832, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1997386155763334281}
@@ -766,8 +767,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_DrawMode: 1
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

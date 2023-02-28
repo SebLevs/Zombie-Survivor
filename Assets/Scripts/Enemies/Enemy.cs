@@ -19,6 +19,12 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     protected EnemyStateController m_stateController;
     public PathfinderUtility PathfinderUtility { get; private set; }
 
+    private Entity_Player player;
+
+    [Header("Return to pool")]
+    [SerializeField] private bool isReturnToPoolAtDistance = true;
+    [SerializeField] private float returnAtDistance = 100f;
+
     private void Awake() { OnAwake(); }
 
     protected void OnAwake()
@@ -44,6 +50,8 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     {
         m_rigidbody.velocity = Vector2.zero;
         Health.FullHeal();
+
+        player = Entity_Player.Instance;
     }
 
     public virtual void OnGetFromAvailable()
@@ -73,6 +81,8 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         int index = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
         Animator.SetFloat("angle", index);
         if (_isSpriteFlippable) { MathAngleUtilities.FlipLocalScale2D(m_spriteRenderer.transform, angle); }
+
+        EvaluateReturnToPoolFromDistance();
     }
 
     public virtual void OnDisable()
@@ -118,6 +128,17 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         {
             m_healthBar.StopAllCoroutines();
             m_healthBar.OnShowQuick();
+        }
+    }
+
+    private void EvaluateReturnToPoolFromDistance()
+    {
+        if (!isReturnToPoolAtDistance) { return; }
+        float distance = LinearAlgebraUtilities.GetDistance2D(player.transform.position, transform.position);
+        Debug.Log(distance);
+        if (distance >= returnAtDistance)
+        {
+            ReturnToPool();
         }
     }
 

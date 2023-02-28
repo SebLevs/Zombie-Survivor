@@ -462,7 +462,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: LookDirection
-    m_EventTreshold: 90
+    m_EventTreshold: 270
   - m_ConditionMode: 3
     m_ConditionEvent: Velocity
     m_EventTreshold: 3
@@ -545,7 +545,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: LookDirection
-    m_EventTreshold: 90
+    m_EventTreshold: 270
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7808154249821773884}
   m_Solo: 0
@@ -570,7 +570,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: LookDirection
-    m_EventTreshold: 270
+    m_EventTreshold: 90
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8474393528447512571}
   m_Solo: 0
@@ -1014,7 +1014,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: LookDirection
-    m_EventTreshold: 90
+    m_EventTreshold: 270
   - m_ConditionMode: 4
     m_ConditionEvent: Velocity
     m_EventTreshold: 3
@@ -1201,7 +1201,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: LookDirection
-    m_EventTreshold: 270
+    m_EventTreshold: 90
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7808154249821773884}
   m_Solo: 0
@@ -1363,7 +1363,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: LookDirection
-    m_EventTreshold: 90
+    m_EventTreshold: 270
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8474393528447512571}
   m_Solo: 0
@@ -1388,7 +1388,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: LookDirection
-    m_EventTreshold: 270
+    m_EventTreshold: 90
   - m_ConditionMode: 4
     m_ConditionEvent: Velocity
     m_EventTreshold: 3
@@ -1416,7 +1416,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: LookDirection
-    m_EventTreshold: 270
+    m_EventTreshold: 90
   - m_ConditionMode: 3
     m_ConditionEvent: Velocity
     m_EventTreshold: 3
