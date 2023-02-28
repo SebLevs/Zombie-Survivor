@@ -86,11 +86,11 @@ PrefabInstance:
     - target: {fileID: 3731883731692401406, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 0b8653871ba38f44691c10eaa92ad5da, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3731883731692401406, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -2668973508969171857, guid: 0b8653871ba38f44691c10eaa92ad5da, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4620824131939617320, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
       propertyPath: m_Name
       value: Filling bar_Boss

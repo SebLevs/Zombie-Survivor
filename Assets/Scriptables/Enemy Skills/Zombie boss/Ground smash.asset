@@ -15,7 +15,7 @@ MonoBehaviour:
   <Animation>k__BackingField: {fileID: 7400000, guid: 990aa92edd5395e47aafaf05fb0a8eec, type: 2}
   <ReactionTime>k__BackingField: 0.21
   _executeAtDistanceType: 4
-  <ExecuteAtDistance>k__BackingField: 7
+  <ExecuteAtDistance>k__BackingField: 9
   _canExecuteFromAnyAngle: 1
   _startAngle: 0
   _angleRange: 0

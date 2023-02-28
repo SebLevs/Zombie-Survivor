@@ -15,6 +15,7 @@ public class ZombieDeadState : EnemyState
     public override void OnEnter()
     {
         m_controller.Context.PathfinderUtility.DisablePathfinding();
+        m_controller.Context.SetColliderEnable(false);
     }
 
     public override void OnExit()
