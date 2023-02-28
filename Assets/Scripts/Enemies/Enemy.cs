@@ -26,7 +26,6 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     [SerializeField] private float returnAtDistance = 100f;
 
     [SerializeField] private AudioElement attackSounds;
-    [SerializeField] private AudioElement spawnSounds;
 
     private void Awake() { OnAwake(); }
 
@@ -63,6 +62,12 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         m_stateController.OnTransitionState(m_stateController.GetDefaultState());
         EnemyManager.Instance.CurrentlyActiveEnemies.Add(this);
     }
+
+    public void AECallAttackAudio()
+    {
+        attackSounds.PlayRandom();
+    }
+
 
     public virtual void OnReturnToAvailable()
     {

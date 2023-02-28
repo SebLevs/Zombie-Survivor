@@ -42,8 +42,8 @@ public class CommandPromptManager : Manager<CommandPromptManager>
             }
             else
             {
-                GameManager.Instance.PauseGame();
                 Activate();
+                GameManager.Instance.PauseGame();
             }
         }
     }
