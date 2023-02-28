@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8889025150732925513}
   - component: {fileID: 7759053166546584020}
-  - component: {fileID: 5803520454364322826}
+  - component: {fileID: 4738277242610597109}
   - component: {fileID: 501332258743648388}
   - component: {fileID: 1597726480383652924}
   - component: {fileID: 4594350461714733977}
@@ -248,8 +248,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5803520454364322826
-BoxCollider2D:
+--- !u!70 &4738277242610597109
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -262,18 +262,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!95 &501332258743648388
 Animator:
   serializedVersion: 4
@@ -308,7 +298,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isSpriteFlippable: 1
   m_healthBar: {fileID: 4931895870938298055}
+  isReturnToPoolAtDistance: 1
   returnAtDistance: 40
+  attackSounds:
+    <AudioSource>k__BackingField: {fileID: 0}
+    m_clips: []
+    _minPitch: 1
+    _maxPitch: 1
 --- !u!114 &4594350461714733977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c917c14c116814096f33482a4924c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMask: 0
+  ignoreTags: []
+  targetMasks: 
 --- !u!82 &3689369586628646502
 AudioSource:
   m_ObjectHideFlags: 0

@@ -114,8 +114,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: 8fc257bfbc22d6d429cce75ba077249a, type: 3}
     - time: 0.93333334
       value: {fileID: 21300000, guid: 6ba6211883636474c9dd2ef3cbf3ff5a, type: 3}
-    - time: 1
-      value: {fileID: 21300000, guid: 2aa85625f9805304182e63e1080a1f1f, type: 3}
     attribute: m_Sprite
     path: sprite
     classID: 212
@@ -171,13 +169,12 @@ AnimationClip:
     - {fileID: 21300000, guid: 729abe8d5e1c99f4482aa4cfe0b9586a, type: 3}
     - {fileID: 21300000, guid: 8fc257bfbc22d6d429cce75ba077249a, type: 3}
     - {fileID: 21300000, guid: 6ba6211883636474c9dd2ef3cbf3ff5a, type: 3}
-    - {fileID: 21300000, guid: 2aa85625f9805304182e63e1080a1f1f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0166667
+    m_StopTime: 0.95
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -241,7 +238,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 0.93333334
     functionName: SetStateAsDefault
     data: 
     objectReferenceParameter: {fileID: 0}
