@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using TNRD;
 using UnityEngine;
 
@@ -14,17 +13,27 @@ public class CommandInvoker : ScriptableObject
         public SerializableInterface<ICommand> command;
     }
 
-    public List<CommandWrapper> wrappers;
-    public Dictionary<CommandType, ICommand> commandDic = new();
+    public List<CommandWrapper> promptOnly;
+    public List<CommandWrapper> promptAndChest;
+    
+    public readonly Dictionary<CommandType, ICommand> CommandPromptDic = new();
+    public readonly Dictionary<CommandType, ICommand> ChestPowerUpDic = new();
 
     public AudioElement powerUpSound;
-
+    
+    
     public void Init()
     {
-        commandDic.Clear();
-        foreach (CommandWrapper commandWrapper in wrappers)
+        CommandPromptDic.Clear();
+        ChestPowerUpDic.Clear();
+        foreach (CommandWrapper commandWrapper in promptOnly)
         {
-            commandDic.Add(commandWrapper.type, commandWrapper.command.Value);
+            CommandPromptDic.Add(commandWrapper.type, commandWrapper.command.Value);
+        }
+        foreach (CommandWrapper commandWrapper in promptAndChest)
+        {
+            CommandPromptDic.Add(commandWrapper.type, commandWrapper.command.Value);
+            ChestPowerUpDic.Add(commandWrapper.type, commandWrapper.command.Value);
         }
 
         powerUpSound.AudioSource = UIManager.Instance.AudioSource;

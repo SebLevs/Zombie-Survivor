@@ -83,8 +83,8 @@ public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
         {
             _anim.Play("OpenChest");
             _player.currentGold -= chestValue;
-            _nextPowerUpID = Random.Range(2, _commandInvoker.commandDic.Count);
-            (CommandType type, ICommand command) = _commandInvoker.commandDic.ElementAt(_nextPowerUpID);
+            _nextPowerUpID = Random.Range(0 , _commandInvoker.ChestPowerUpDic.Count);
+            (CommandType type, ICommand command) = _commandInvoker.ChestPowerUpDic.ElementAt(_nextPowerUpID);
             string name = type.ToString().Replace("_", " ");
             UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("Bonus gained!\n" + name);
             _commandInvoker.DoCommand(command);

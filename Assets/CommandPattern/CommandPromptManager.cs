@@ -65,12 +65,12 @@ public class CommandPromptManager : Manager<CommandPromptManager>
 
     private void DoCommandInput(CommandType type)
     {
-        playerCommandInvoker.DoCommand(playerCommandInvoker.commandDic[type]);
+        playerCommandInvoker.DoCommand(playerCommandInvoker.CommandPromptDic[type]);
     }
 
     private void UnDoCommandInput(CommandType type)
     {
-        playerCommandInvoker.UnDoCommand(playerCommandInvoker.commandDic[type]);
+        playerCommandInvoker.UnDoCommand(playerCommandInvoker.CommandPromptDic[type]);
     }
 
     private void Init()
@@ -80,6 +80,9 @@ public class CommandPromptManager : Manager<CommandPromptManager>
 
         _possibleCommands.Add("FULL_HEAL", () => { DoCommandInput(CommandType.FULL_HEAL); });
         _possibleCommands.Add("INSTA_DEATH", () => { UnDoCommandInput(CommandType.FULL_HEAL); });
+        
+        _possibleCommands.Add("TELEPORT_TO_BOSS", () => { DoCommandInput(CommandType.TELEPORT_TO_BOSS); });
+        _possibleCommands.Add("TELEPORT_TO_SPAWN", () => { UnDoCommandInput(CommandType.TELEPORT_TO_BOSS); });
 
         _possibleCommands.Add("ATTACK_SPEED_UP", () => { DoCommandInput(CommandType.ATTACK_SPEED); });
         _possibleCommands.Add("ATTACK_SPEED_DOWN", () => { UnDoCommandInput(CommandType.ATTACK_SPEED); });
@@ -96,6 +99,9 @@ public class CommandPromptManager : Manager<CommandPromptManager>
 
         _possibleCommands.Add("HEALTH_UP", () => { DoCommandInput(CommandType.HEALTH_UP); });
         _possibleCommands.Add("HEALTH_DOWN", () => { UnDoCommandInput(CommandType.HEALTH_UP); });
+        
+        _possibleCommands.Add("DODGE_DELAY_DOWN", () => { DoCommandInput(CommandType.DODGE_DELAY_DOWN);});
+        _possibleCommands.Add("DODGE_DELAY_UP", () => { UnDoCommandInput(CommandType.DODGE_DELAY_DOWN);});
     }
 
     public void CheckCommandPrompt()
