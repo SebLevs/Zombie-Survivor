@@ -146,6 +146,26 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 30c19aec3693ec14d96a67e76ddb4d6c, type: 2}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.m_clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.m_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 92a35fb6ca4def7468df4b935ee70b7b, type: 3}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.m_clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d977f1210b3bcfe44b71af20ae34baf8, type: 3}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: spawnSounds.<AudioSource>k__BackingField
+      value: 
+      objectReference: {fileID: 299437249020887001}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.<AudioSource>k__BackingField
+      value: 
+      objectReference: {fileID: 299437249020887001}
     - target: {fileID: 2004451262384889686, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <ReactionTime>k__BackingField
       value: 0.2
@@ -174,22 +194,6 @@ PrefabInstance:
       propertyPath: m_maxHP
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
-      propertyPath: m_hitSound.m_clips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
-      propertyPath: m_hitSound.m_clips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: d0d19b727fb95474ab2cdcda02bb3227, type: 3}
-    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
-      propertyPath: m_hitSound.m_clips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6c68f2e33ee7a8e43b73b199a6dacb65, type: 3}
-    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
-      propertyPath: m_hitSound.m_clips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: e40a73e010232b04bbaefd69165682e7, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[3]
       value: 
@@ -312,6 +316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+--- !u!82 &299437249020887001 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+  m_PrefabInstance: {fileID: 3968962651950262719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5496854209455936488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8889025150732925527, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}

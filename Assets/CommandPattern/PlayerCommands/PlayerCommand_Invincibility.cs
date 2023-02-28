@@ -1,16 +1,12 @@
 using System;
-using UnityEngine;
-using Object = System.Object;
 
 [Serializable]
 public class PlayerCommand_Invincibility : ICommand
 {
-
     public PlayerCommand_Invincibility()
     {
-        
     }
-    
+
     public void Execute()
     {
         if (!Entity_Player.Instance.Health.isPermaInvincible)

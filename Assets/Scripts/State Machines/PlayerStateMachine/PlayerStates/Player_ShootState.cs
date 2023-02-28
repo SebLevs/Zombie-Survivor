@@ -13,8 +13,6 @@ public class Player_ShootState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        //Debug.Log("Enter ShootState");
-
         m_controller.DesiredActions.ConsumeAllActions(PlayerActionsType.SHOOT);
         if(m_controller.canAttack)
         {

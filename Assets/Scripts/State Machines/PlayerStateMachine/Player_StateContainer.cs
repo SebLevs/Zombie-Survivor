@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Player_StateContainer : StateContainer
 {
     public Player_IdleState State_Idle { get; private set; }

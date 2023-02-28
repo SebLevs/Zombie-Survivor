@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_IdleState : State<Entity_Player>
@@ -15,7 +13,6 @@ public class Player_IdleState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        //Debug.Log("Enter Idle");
     }
 
     public override void OnExit()

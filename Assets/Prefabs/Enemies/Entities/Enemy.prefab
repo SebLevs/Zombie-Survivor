@@ -326,12 +326,16 @@ MonoBehaviour:
   isPermaInvincible: 0
   m_hitSound:
     <AudioSource>k__BackingField: {fileID: 3689369586628646502}
-    m_clips: []
+    m_clips:
+    - {fileID: 8300000, guid: ff568010da9791e42bbc229516aa5f5a, type: 3}
+    - {fileID: 8300000, guid: 8426e37d46a5a0746b5bfa0bd59c3e70, type: 3}
+    - {fileID: 8300000, guid: aef28d499610650428f3e85dac033ae2, type: 3}
     _minPitch: 1
     _maxPitch: 1
   m_deathSound:
     <AudioSource>k__BackingField: {fileID: 3689369586628646502}
-    m_clips: []
+    m_clips:
+    - {fileID: 8300000, guid: aaf84d3ea23029b4eada1a1b3e3ef090, type: 3}
     _minPitch: 1
     _maxPitch: 1
   <OnHitEvent>k__BackingField:

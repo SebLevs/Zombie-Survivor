@@ -25,6 +25,9 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
     [SerializeField] private bool isReturnToPoolAtDistance = true;
     [SerializeField] private float returnAtDistance = 100f;
 
+    [SerializeField] private AudioElement attackSounds;
+    [SerializeField] private AudioElement spawnSounds;
+
     private void Awake() { OnAwake(); }
 
     protected void OnAwake()

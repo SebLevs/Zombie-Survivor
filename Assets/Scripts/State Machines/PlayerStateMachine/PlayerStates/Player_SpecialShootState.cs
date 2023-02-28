@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_SpecialShootState : State<Entity_Player>
@@ -15,14 +13,12 @@ public class Player_SpecialShootState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        //Debug.Log("Enter SpecialShootState");
         m_controller.DesiredActions.ConsumeAllActions(PlayerActionsType.SPECIALSHOOT);
         if(m_controller.canSpecialAttack)
         {
             Transform shootFrom = Entity_Player.Instance.muzzle;
             BoomerangBehavior boomerang = WeaponManager.Instance.boomPool.GetFromAvailable(shootFrom.position, Quaternion.identity);
             boomerang.ShootBoom();
-            //boomerang.strategy.ExecuteOnEnable(boomerang);
             m_controller.canSpecialAttack = false;
             m_controller.specialAttackDelay.Reset();
             m_controller.specialAttackDelay.StartTimer();

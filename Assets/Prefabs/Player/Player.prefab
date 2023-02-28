@@ -472,11 +472,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_animator: {fileID: 0}
-  m_maxHP: 100000
+  m_maxHP: 1000
   isPermaInvincible: 0
   m_hitSound:
-    <AudioSource>k__BackingField: {fileID: 0}
-    m_clips: []
+    <AudioSource>k__BackingField: {fileID: 6795325728018082779}
+    m_clips:
+    - {fileID: 8300000, guid: b9df8e05e6c9bb94ebdc751571f220f4, type: 3}
+    - {fileID: 8300000, guid: faae7a81176880442a83af557c757197, type: 3}
+    - {fileID: 8300000, guid: 57f71437ea02e394693a9b983dcf6f42, type: 3}
     _minPitch: 1
     _maxPitch: 1
   m_deathSound:

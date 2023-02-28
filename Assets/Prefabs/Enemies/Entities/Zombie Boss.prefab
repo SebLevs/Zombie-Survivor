@@ -884,9 +884,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
-      propertyPath: isReturnToPoolAtDistance
-      value: 1
+      propertyPath: spawnSounds.m_clips.Array.size
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: spawnSounds.m_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c5f942ac46d92c84287fa29ad79ad265, type: 3}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: spawnSounds.m_clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ba48ea20e96dc3f4ba23b16e3fbff419, type: 3}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: spawnSounds.<AudioSource>k__BackingField
+      value: 
+      objectReference: {fileID: 934376686446227406}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: attackSounds.<AudioSource>k__BackingField
+      value: 
+      objectReference: {fileID: 934376686446227406}
     - target: {fileID: 1673148623759901411, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_SizeDelta.x
       value: 7
@@ -953,12 +969,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_maxHP
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_animator
       value: 
       objectReference: {fileID: 4121290340453185836}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_hitSound.m_clips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_hitSound.m_clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5d3e75904fb2140489d74c9afb4570ae, type: 3}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_hitSound.m_clips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d98b440e90e30b4c9f712f6de894f55, type: 3}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_hitSound.m_clips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 612fd10cefb2de54d8df0aee1865ba56, type: 3}
+    - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_deathSound.m_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cc61bbb1dd007944686b8cd11b2c463f, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: <OnHitEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1143,6 +1179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c0434e980c6cd468d6205d32f27b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &934376686446227406 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+  m_PrefabInstance: {fileID: 4595031384454199720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3019830083577269652 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}

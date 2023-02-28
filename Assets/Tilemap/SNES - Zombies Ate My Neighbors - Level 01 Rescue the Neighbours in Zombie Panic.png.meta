@@ -623,6 +623,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Bench
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 544
+        width: 64
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6cbce683829e247b65560f73f92562
+      internalID: -240636628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathBaril
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 88
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aab222a2b533594dae4afee63d99aaf
+      internalID: 400951140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleDeathBaril
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 72
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96fcb87cf2fab6c4c956333db119709a
+      internalID: 769373773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garbage
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 464
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df9c0bd0c966f74789b191812bb7f9b
+      internalID: 819722924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BBQ
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 600
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91f3ce79179b924418947b07669cb03c
+      internalID: -90805113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -647,14 +752,19 @@ TextureImporter:
       House: 1245128492
       RightSideWall4: -815653949
       RightSideWall01: -1573517030
+      Bench: -240636628
+      DeathBaril: 400951140
+      Garbage: 819722924
       House02: -382884428
       Obstacle01: 1346776113
+      DoubleDeathBaril: 769373773
       BotRightSideCorner: 1831116145
       RightSideWall03: 723947328
       TopLeftWallCorner: -582965045
       RightSideWall02: -1785520731
       SideWalls01: -1815559288
       RIP03: 2019169332
+      BBQ: -90805113
       Tree01: 819619357
       BaseGround: -2017583127
   spritePackingTag: 
