@@ -81,7 +81,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         _possibleCommands.Add("FULL_HEAL", () => { DoCommandInput(CommandType.FULL_HEAL); });
         _possibleCommands.Add("INSTA_DEATH", () => { UnDoCommandInput(CommandType.FULL_HEAL); });
         
-        _possibleCommands.Add("TELEPORT_TO_BOSS", () => { DoCommandInput(CommandType.TELEPORT_TO_BOSS); });
+        _possibleCommands.Add("TELEPORT_TO_PORTAL", () => { DoCommandInput(CommandType.TELEPORT_TO_BOSS); });
         _possibleCommands.Add("TELEPORT_TO_SPAWN", () => { UnDoCommandInput(CommandType.TELEPORT_TO_BOSS); });
         
         _possibleCommands.Add("MAX_GOLD", () => { DoCommandInput(CommandType.MAX_GOLD); });
@@ -90,9 +90,8 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         _possibleCommands.Add("ATTACK_SPEED_UP", () => { DoCommandInput(CommandType.ATTACK_SPEED); });
         _possibleCommands.Add("ATTACK_SPEED_DOWN", () => { UnDoCommandInput(CommandType.ATTACK_SPEED); });
 
-        _possibleCommands.Add("SPECIAL_ATTACK_SPEED_UP", () => { DoCommandInput(CommandType.BOMMERANG_ATTACK_SPEED); });
-        _possibleCommands.Add("SPECIAL_ATTACK_SPEED_DOWN",
-            () => { UnDoCommandInput(CommandType.BOMMERANG_ATTACK_SPEED); });
+        _possibleCommands.Add("BOOM_SPEED_UP", () => { DoCommandInput(CommandType.BOMMERANG_ATTACK_SPEED); });
+        _possibleCommands.Add("BOOM_SPEED_DOWN", () => { UnDoCommandInput(CommandType.BOMMERANG_ATTACK_SPEED); });
 
         _possibleCommands.Add("BOOM_DISTANCE_UP", () => { DoCommandInput(CommandType.BOMMERANG_DISTANCE); });
         _possibleCommands.Add("BOOM_DISTANCE_DOWN", () => { UnDoCommandInput(CommandType.BOMMERANG_DISTANCE); });

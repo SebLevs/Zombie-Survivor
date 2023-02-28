@@ -8,7 +8,7 @@ public class PlayerCommand_SpecialAttackSpeedUp : ICommand
     {
         if (Entity_Player.Instance.specialAttackSpeed > 0.5f)
         {
-            Entity_Player.Instance.specialAttackSpeed -= 0.1f;
+            Entity_Player.Instance.specialAttackSpeed -= 0.5f;
         }
     }
 
@@ -16,7 +16,7 @@ public class PlayerCommand_SpecialAttackSpeedUp : ICommand
     {
         if (Entity_Player.Instance.specialAttackSpeed < 5f)
         {
-            Entity_Player.Instance.specialAttackSpeed += 0.1f;
+            Entity_Player.Instance.specialAttackSpeed += 0.5f;
         }
     }
 }
