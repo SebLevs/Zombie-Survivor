@@ -2037,6 +2037,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5791335187155675048, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
 --- !u!224 &3448591655792764233 stripped
@@ -2100,7 +2104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 125
+      value: 124.8817
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2136,7 +2140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -429.5
+      value: -429.56
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2156,6 +2160,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7542822381078967905, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706935545213530, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2623,6 +2631,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
+    - target: {fileID: 7219795193343609206, guid: 961c0c4944eefde4e9272dfe7e01d4b2, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 961c0c4944eefde4e9272dfe7e01d4b2, type: 3}
 --- !u!114 &3989194991523661568 stripped

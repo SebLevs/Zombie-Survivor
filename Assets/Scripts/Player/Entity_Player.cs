@@ -169,35 +169,35 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
         if (attackDelay.HasReachedTarget())
         {
             canAttack = true;
-            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.m_mainSkill);
+            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.MainSkill);
         }
         else
         {
             string remainingTime = attackDelay.CurrentTime.ToString("0.00");
             float fillingNormalized = attackDelay.CurrentTime / attackDelay.TargetTime;
-            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.m_mainSkill, remainingTime, fillingNormalized);
+            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.MainSkill, remainingTime, fillingNormalized);
         }
         if (specialAttackDelay.HasReachedTarget())
         {
             canSpecialAttack = true;
-            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.m_secondarySkill);
+            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.SecondarySkill);
         }
         else
         {
             string remainingTime = specialAttackDelay.CurrentTime.ToString("0.00");
             float fillingNormalized = specialAttackDelay.CurrentTime / specialAttackDelay.TargetTime;
-            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.m_secondarySkill, remainingTime, fillingNormalized);
+            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.SecondarySkill, remainingTime, fillingNormalized);
         }
         if (dodgeDelay.HasReachedTarget())
         {
             canDodge = true;
-            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.m_TertiarySkill);
+            uiManager.ResetCooldownView(uiManager.ViewPlayerCooldowns.SpaceBarSkill);
         }
         else
         {
             string remainingTime = dodgeDelay.CurrentTime.ToString("0.00");
             float fillingNormalized = dodgeDelay.CurrentTime / dodgeDelay.TargetTime;
-            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.m_TertiarySkill, remainingTime, fillingNormalized);
+            uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.SpaceBarSkill, remainingTime, fillingNormalized);
         }
 
         test = StateController.CurrentState.ToString();
