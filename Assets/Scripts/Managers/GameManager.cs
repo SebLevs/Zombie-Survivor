@@ -73,7 +73,6 @@ public class GameManager : Manager<GameManager>
 
         IsPaused = true;
         NotifyPauseListenersOnPause();
-        
     }
 
     public void ResumeGame()
