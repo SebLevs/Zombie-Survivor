@@ -49,6 +49,14 @@ public class UIManager : Manager<UIManager>
     /// </summary>
     public void OnSwitchViewSynchronous(ViewElement newView, Action hideCallback = null, Action showCallback = null)
     {
+        if (CurrentView == newView)
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("WARNING: Tried to switch view asynchronous from current view to itself"); 
+#endif
+            return; 
+        }
+
         // Hide currently selected view
         if (CurrentView)
         {
@@ -91,16 +99,18 @@ public class UIManager : Manager<UIManager>
 
     public void ShowHUD()
     {
+        Entity_Player player = Entity_Player.Instance;
+
         ViewPlayerHealthBar.OnShow();
         ViewPlayerCurrencyBar.OnShow();
         ViewPlayerCooldowns.OnShow();
         ViewPlayerStats.OnShow( () =>
         {
-            Entity_Player.Instance.RefreshPlayerStats();
+            player.RefreshPlayerStats();
         });
 
-        Entity_Player.Instance.RefreshHealthBar();
-        Entity_Player.Instance.RefreshGoldBar();
+        player.RefreshHealthBar();
+        player.RefreshGoldBar();
     }
 
     public void HideHUD()
@@ -131,8 +141,10 @@ public class UIManager : Manager<UIManager>
         }
     }
 
-    public void DeathTransition()
+    public void TransitionToDeathScreenView()
     {
+        if (ViewDeathScreen.gameObject.activeSelf) { return; }
+
         ViewBossHealthBars.OnHideQuick();
         HideHUD();
         OnSwitchViewSynchronous(ViewDeathScreen, showCallback: () =>

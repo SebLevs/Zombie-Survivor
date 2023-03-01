@@ -98,6 +98,8 @@ public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPaus
 
     public void Reinitialize()
     {
+        StateController.OnTransitionState(StateContainer.State_Idle);
+
         Health.FullHeal();
         transform.position = Vector3.zero;
 

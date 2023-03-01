@@ -9,7 +9,7 @@ public class Player_DeadState : State<Entity_Player>
     public override void OnEnter()
     {
         Entity_Player.Instance.Rb.velocity = Vector2.zero;
-        UIManager.Instance.DeathTransition();
+        UIManager.Instance.TransitionToDeathScreenView();
         Entity_Player.Instance.GetComponent<Animator>().enabled = false;
     }
 
@@ -24,9 +24,5 @@ public class Player_DeadState : State<Entity_Player>
 
     public override void HandleStateTransition()
     {
-        if (!m_controller.Health.IsDead)
-        {
-            m_controller.StateController.OnTransitionState(m_controller.StateContainer.State_Idle);
-        }
     }
 }
