@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListener
+public class Enemy : MonoBehaviour, IPoolable, IUpdateListener, IPauseListener
 {
-    [SerializeField] private bool _isSpriteFlippable = true;
-
     public EnemyType Type { get; private set; }
 
     [Header("Health bar")]
@@ -94,12 +92,6 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         float angle = MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform);
         int index = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
         Animator.SetFloat("angle", index);
-
-        if (_isSpriteFlippable)
-        {
-            MathAngleUtilities.FlipLocalScale2D(m_spriteRenderer.transform, angle);
-            MathAngleUtilities.FlipLocalScale2D(m_healthBar.transform, angle * -1);
-        }
 
         EvaluateReturnToPoolFromDistance();
     }

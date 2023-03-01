@@ -3,7 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using TMP_Text = TMPro.TMP_Text;
 
-public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
+public class ChestBehavior : MonoBehaviour, IUpdateListener
 {
     public int minValue;
     public int maxValue;

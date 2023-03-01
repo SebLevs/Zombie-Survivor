@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveController : MonoBehaviour, IFrameUpdateListener
+public class WaveController : MonoBehaviour, IUpdateListener
 {
     [field:Header("Maximum enemy count allowed")]
     [field:SerializeField] public int MaximumEnemyCount { get; private set; }

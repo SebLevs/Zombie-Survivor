@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class TimerManager : Manager<TimerManager>, IFrameUpdateListener
+public class TimerManager : Manager<TimerManager>, IUpdateListener
 {
     private List<SequentialStopwatch> m_stopwatches; // ->
     private List<SequentialTimer> m_timers; // <-

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // TODO: Refactor into a poolable item into a vertical layout
-public class TextMeshProElementChestStats : TextMeshProElement, IPauseListener, IFrameUpdateListener
+public class TextMeshProElementChestStats : TextMeshProElement, IPauseListener, IUpdateListener
 {
     [SerializeField] private float _disappearAftertime = 2.5f;
     [SerializeField] SequentialTimer _timer;

@@ -2,7 +2,7 @@
 /// Must subscribe to the UpdateManager.cs OnEnable()<br/>
 /// Must unsubscribe to the UpdateManager.cs OnDisable()
 /// </summary>
-public interface IFrameUpdateListener
+public interface IUpdateListener
 {
     public void OnUpdate();
 

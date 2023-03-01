@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseListener, IFrameUpdateListener
+public abstract class ProjectileEnemy : BaseCollisionHandler, IPoolable, IPauseListener, IUpdateListener
 {
     [Header("Damage")]
     [SerializeField] protected int m_damage;

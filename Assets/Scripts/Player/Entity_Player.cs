@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Entity_Player : Manager<Entity_Player>, IFrameUpdateListener, IPauseListener
+public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseListener
 {
     public readonly int Mask = 3;
 

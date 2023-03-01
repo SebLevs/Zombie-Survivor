@@ -8,14 +8,14 @@ using System.Linq;
 /// </summary>
 public class UpdateManager : Manager<UpdateManager>
 {
-    private HashSet<IFrameUpdateListener> m_frameUpdateListeners;
+    private HashSet<IUpdateListener> m_frameUpdateListeners;
     private HashSet<IFixedUpdateListener> m_fixedUpdateListeners;
     private HashSet<ILateUpdateListener> m_lateUpdateListeners;
 
     protected override void OnAwake()
     {
         base.OnAwake();
-        m_frameUpdateListeners = new HashSet<IFrameUpdateListener>();
+        m_frameUpdateListeners = new HashSet<IUpdateListener>();
         m_fixedUpdateListeners = new HashSet<IFixedUpdateListener>();
         m_lateUpdateListeners = new HashSet<ILateUpdateListener>();
     }
@@ -29,12 +29,12 @@ public class UpdateManager : Manager<UpdateManager>
         }
     }
 
-    public void SubscribeToUpdate(IFrameUpdateListener frameUpdateListener)
+    public void SubscribeToUpdate(IUpdateListener frameUpdateListener)
     {
         m_frameUpdateListeners.Add(frameUpdateListener);
     }
 
-    public void UnSubscribeFromUpdate(IFrameUpdateListener frameUpdateListener)
+    public void UnSubscribeFromUpdate(IUpdateListener frameUpdateListener)
     {
         m_frameUpdateListeners.Remove(frameUpdateListener);
     }
