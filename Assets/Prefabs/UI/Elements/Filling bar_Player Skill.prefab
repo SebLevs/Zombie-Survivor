@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: m_FillMethod
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8194366330433630183, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8930305238594402825, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_Name
       value: Filling bar_Player Skill

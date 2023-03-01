@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListener
 {
     [SerializeField] private bool _isSpriteFlippable = true;
@@ -95,7 +95,13 @@ public class Enemy : MonoBehaviour, IPoolable, IFrameUpdateListener, IPauseListe
         float angle = MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform);
         int index = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
         Animator.SetFloat("angle", index);
-        if (_isSpriteFlippable) { MathAngleUtilities.FlipLocalScale2D(m_spriteRenderer.transform, angle); }
+
+        if (_isSpriteFlippable)
+        {
+            MathAngleUtilities.FlipLocalScale2D(m_spriteRenderer.transform, angle);
+            MathAngleUtilities.FlipLocalScale2D(m_healthBar.transform, angle * -1);
+            //m_healthBar.GetComponent<RectTransform>().localScale = Vector2.one;
+        }
 
         EvaluateReturnToPoolFromDistance();
     }
