@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class EnemyStateController : MonoBehaviour, IFrameUpdateListener
+public abstract class EnemyStateController : MonoBehaviour, IUpdateListener
 {
     [field:Header("Reaction colliderActiveTime: Used for attack, state transitions, etc.")]
     [field:Tooltip(

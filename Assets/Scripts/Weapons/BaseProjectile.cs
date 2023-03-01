@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BaseProjectile : MonoBehaviour, IFrameUpdateListener, IFixedUpdateListener, IPauseListener
+public abstract class BaseProjectile : MonoBehaviour, IUpdateListener, IFixedUpdateListener, IPauseListener
 {
     [SerializeField] protected int m_damage = 1;
 
@@ -75,7 +75,7 @@ public abstract class BaseProjectile : MonoBehaviour, IFrameUpdateListener, IFix
         }
     }
 
-    void IFrameUpdateListener.OnUpdate()
+    void IUpdateListener.OnUpdate()
     {
         OnUpdate();
     }

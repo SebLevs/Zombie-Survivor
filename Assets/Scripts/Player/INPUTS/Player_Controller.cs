@@ -8,7 +8,7 @@ public enum LookDirectionEnum
     LEFT,
     RIGHT
 }
-public class Player_Controller : MonoBehaviour, IFrameUpdateListener
+public class Player_Controller : MonoBehaviour, IUpdateListener
 {
     private static Player_Controller instance;
     public static Player_Controller Instance => instance;

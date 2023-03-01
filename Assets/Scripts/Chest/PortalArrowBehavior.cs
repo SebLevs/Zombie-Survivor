@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IFrameUpdateListener
+public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IUpdateListener
 {
     private PortalManager _portalManager;
     private PortalBehavior _portal;

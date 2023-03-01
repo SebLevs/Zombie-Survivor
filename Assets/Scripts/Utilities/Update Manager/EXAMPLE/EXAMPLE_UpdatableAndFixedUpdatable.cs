@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EXAMPLE_UpdatableAndFixedUpdatable : MonoBehaviour, IFixedUpdateListener, IFrameUpdateListener
+public class EXAMPLE_UpdatableAndFixedUpdatable : MonoBehaviour, IFixedUpdateListener, IUpdateListener
 {
     public void OnDisable()
     {
@@ -21,6 +21,6 @@ public class EXAMPLE_UpdatableAndFixedUpdatable : MonoBehaviour, IFixedUpdateLis
 
     public void OnUpdate()
     {
-        Debug.Log($"OnUpdate() of IFrameUpdateListener was called from {this.name}");
+        Debug.Log($"OnUpdate() of IUpdateListener was called from {this.name}");
     }
 }
