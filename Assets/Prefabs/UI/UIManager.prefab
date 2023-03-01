@@ -760,6 +760,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 688697374}
     m_Modifications:
+    - target: {fileID: 1361834105764705719, guid: c85c89c3f349e0e47b358c01793c100d, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1406708018014100997, guid: c85c89c3f349e0e47b358c01793c100d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -847,6 +851,10 @@ PrefabInstance:
     - target: {fileID: 3785600369625863042, guid: c85c89c3f349e0e47b358c01793c100d, type: 3}
       propertyPath: m_Name
       value: Filling bar_Player_Currency
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785600369625863042, guid: c85c89c3f349e0e47b358c01793c100d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85c89c3f349e0e47b358c01793c100d, type: 3}
@@ -2080,7 +2088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 157.5208
+      value: 131.7381
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2116,7 +2124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -431.23956
+      value: -464.12592
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2136,6 +2144,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7542822381078967905, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706935545213530, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2279,6 +2291,14 @@ PrefabInstance:
     - target: {fileID: 889326962007232396, guid: b1de77345c07cb64a925c7196ea193ed, type: 3}
       propertyPath: m_Name
       value: Filling bar_Player_Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 889326962007232396, guid: b1de77345c07cb64a925c7196ea193ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042346153776556473, guid: b1de77345c07cb64a925c7196ea193ed, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3124090968690770443, guid: b1de77345c07cb64a925c7196ea193ed, type: 3}
       propertyPath: m_Pivot.x
