@@ -15,7 +15,7 @@ public class ViewInteract : ViewElement
         transform.position = position;
     }
 
-    public void Deactivate(Transform invoker)
+    public void DeactivateAndHide(Transform invoker)
     {
         if (currentInvoker == invoker)
         {

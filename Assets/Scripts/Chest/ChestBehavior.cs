@@ -42,17 +42,6 @@ public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
         uiManager = UIManager.Instance;
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (!isInteractable) { return; }
-
-        if (col.CompareTag("Player") && !_player.Health.IsDead)
-        {
-            uiManager.ViewInteract.OnShow();
-            uiManager.ViewInteract.Init(transform, (Vector2)_uiValue.transform.position + Vector2.right);
-        }
-    }
-
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag("Player") && !_player.Health.IsDead)
@@ -62,7 +51,7 @@ public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
                 _canOpenChest = true;
             }
 
-            if (!isInteractable) { return; }
+            if (!isInteractable || uiManager.ViewInteract.gameObject.activeSelf) { return; }
             uiManager.ViewInteract.OnShow();
             uiManager.ViewInteract.Init(transform, (Vector2)_uiValue.transform.position + Vector2.right);
         }
@@ -73,7 +62,7 @@ public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
         _canOpenChest = false;
         if (other.CompareTag("Player") && !_player.Health.IsDead)
         {
-            uiManager.ViewInteract.Deactivate(transform);
+            uiManager.ViewInteract.DeactivateAndHide(transform);
         }
     }
 
