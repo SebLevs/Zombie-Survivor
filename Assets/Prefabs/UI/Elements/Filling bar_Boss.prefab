@@ -7,6 +7,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302445311909970807, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 302445311909970807, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 302445311909970807, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 302445311909970807, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 302445311909970807, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 302445311909970807, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 577857300270629599, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_text
       value: Boss Name
@@ -54,6 +78,18 @@ PrefabInstance:
     - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162555093768768761, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_text
+      value: Boss Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162555093768768761, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162555093768768761, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6693007977260332942, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_Pivot.x

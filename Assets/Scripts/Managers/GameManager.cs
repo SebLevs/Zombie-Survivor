@@ -39,13 +39,13 @@ public class GameManager : Manager<GameManager>
 
     private void InitiatePlayTest()
     {
-        Debug.LogWarning($"PlayRandom test started on scene: {_playTestScene}");
+        Debug.LogWarning($"PLAY TEST: Started on scene: {_playTestScene}");
         SceneLoadManager.Instance.OnLoadScene(_playTestScene);
 
         UIManager uiManager = UIManager.Instance;
         uiManager.ViewBackgroundBlackScreen.OnHide();
         uiManager.ShowHUD();
-        uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
+        uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty);
     }
 
     public void StartGame()

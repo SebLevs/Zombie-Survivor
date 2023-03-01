@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4713951099644995348, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5162555093768768761, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_fontSize
       value: 0.2
@@ -47,9 +55,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6737880722339814460, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194366330433630183, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8930305238594402825, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
       propertyPath: m_Name
       value: Filling bar_Enemy health
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930305238594402825, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 929ddff1d76626a41bb84c2a26f1df79, type: 3}
