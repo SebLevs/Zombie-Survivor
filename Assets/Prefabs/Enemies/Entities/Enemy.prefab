@@ -364,7 +364,7 @@ MonoBehaviour:
   <OnDeathEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5161558789705369269}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5578785860979918044, guid: f0df8f12d0bad374590588882c74f557, type: 3}
   m_PrefabInstance: {fileID: 8884471237464845781}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5161558789705369269}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ac95e71c03f5547a80c4f90ab9b1a2, type: 3}
@@ -667,6 +667,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c027b02d671367b4d815b656dadb54ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5161558789705369269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4389445976497810272, guid: f0df8f12d0bad374590588882c74f557, type: 3}
+  m_PrefabInstance: {fileID: 8884471237464845781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6966237773575523122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2010566808278722279, guid: f0df8f12d0bad374590588882c74f557, type: 3}
