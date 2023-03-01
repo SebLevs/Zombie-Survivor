@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4665139898875250547}
   - component: {fileID: 4603738033266670538}
   m_Layer: 0
-  m_Name: UI Manager
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2021,8 +2021,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5791335187155675048, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
-      propertyPath: m_Alpha
+    - target: {fileID: 4393639659618102861, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
+    - target: {fileID: 4393639659618102861, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014794400792933809, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
+    - target: {fileID: 5014794400792933809, guid: b5ae71d7a64e3f14b880fe1b1f5a8423, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2084,11 +2096,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1920
+      value: 934
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1080
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2120,11 +2132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 253
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -429.5
       objectReference: {fileID: 0}
     - target: {fileID: 5916333261020400878, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2140,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7542822381078967905, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_Name
-      value: View Player cooldowns
+      value: View Player Skills
       objectReference: {fileID: 0}
     - target: {fileID: 7542822381078967905, guid: dc89a5b645fae784c942d2256e40e6cf, type: 3}
       propertyPath: m_IsActive
@@ -2603,10 +2615,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7219795193343609206, guid: 961c0c4944eefde4e9272dfe7e01d4b2, type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5014794400792933809, guid: 961c0c4944eefde4e9272dfe7e01d4b2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
+    - target: {fileID: 5864241325553775099, guid: 961c0c4944eefde4e9272dfe7e01d4b2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 961c0c4944eefde4e9272dfe7e01d4b2, type: 3}
 --- !u!114 &3989194991523661568 stripped

@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player skill UI
       objectReference: {fileID: 0}
+    - target: {fileID: 859421651074364526, guid: 333494b25497f27408f4779741bad858, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1855215818, guid: bb4b6fc683731a6488943120846e7105, type: 3}
+    - target: {fileID: 859421651074364526, guid: 333494b25497f27408f4779741bad858, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3286932597317244863, guid: 333494b25497f27408f4779741bad858, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -94,6 +102,22 @@ PrefabInstance:
     - target: {fileID: 3286932597317244863, guid: 333494b25497f27408f4779741bad858, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5190889712015146986, guid: 333494b25497f27408f4779741bad858, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5190889712015146986, guid: 333494b25497f27408f4779741bad858, type: 3}
+      propertyPath: m_Color.a
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628759561219757566, guid: 333494b25497f27408f4779741bad858, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 33.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628759561219757566, guid: 333494b25497f27408f4779741bad858, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 16.966
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 333494b25497f27408f4779741bad858, type: 3}
