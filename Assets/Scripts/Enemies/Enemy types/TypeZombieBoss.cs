@@ -12,5 +12,6 @@ public class TypeZombieBoss : EnemyType
     private void OnEnable()
     {
         spawnSounds.PlayRandom();
+        AstarPath.active.Scan();
     }
 }

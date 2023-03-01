@@ -1,5 +1,4 @@
 using Pathfinding;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PathfinderUtility : MonoBehaviour
@@ -37,6 +36,8 @@ public class PathfinderUtility : MonoBehaviour
             SetTargetAs(Entity_Player.Instance.transform);
         }
     }
+
+    public void Scan() => AstarPath.active.Scan();
 
     public void EnablePathfinding()
     {
