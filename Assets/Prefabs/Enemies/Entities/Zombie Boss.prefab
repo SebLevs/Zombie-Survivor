@@ -957,16 +957,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
-      propertyPath: MaxDistance
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886669009860123003, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_IsActive
@@ -994,16 +990,16 @@ PrefabInstance:
       objectReference: {fileID: 4121290340453185836}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.size
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: 5d3e75904fb2140489d74c9afb4570ae, type: 3}
+      objectReference: {fileID: 8300000, guid: 612fd10cefb2de54d8df0aee1865ba56, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[4]
       value: 
-      objectReference: {fileID: 8300000, guid: 1d98b440e90e30b4c9f712f6de894f55, type: 3}
+      objectReference: {fileID: 8300000, guid: 612fd10cefb2de54d8df0aee1865ba56, type: 3}
     - target: {fileID: 4594350461714733977, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: m_hitSound.m_clips.Array.data[5]
       value: 

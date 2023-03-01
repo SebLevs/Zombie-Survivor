@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class ZombieCombatState : EnemyState
@@ -25,12 +23,14 @@ public class ZombieCombatState : EnemyState
 
         m_delayedAttackTimer = TimerManager.Instance.AddSequentialTimer(m_controller.GetReactionTimeInRange(0.5f), () =>
         {
+            if (!m_controller) { return; } // Whenever the scene is unloaded and the timer lingers: do nothing
             m_controller.Context.Animator.SetTrigger(_attackAnimHash);
         });
     }
 
     public override void OnExit()
     {
+        TimerManager.Instance.RemoveSequentialTimer(m_delayedAttackTimer);
         m_delayedAttackTimer = null;
         m_controller.StopAllCoroutines();
     }

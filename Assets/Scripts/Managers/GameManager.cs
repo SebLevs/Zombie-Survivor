@@ -82,7 +82,6 @@ public class GameManager : Manager<GameManager>
         IsPaused = false;
         Entity_Player.Instance.DesiredActions.PurgeAllAction();
         NotifyPauseListenersOnResume();
-        //CommandPromptManager.Instance.DeActivate();
     }
 
     public void SubscribeToPauseGame(IPauseListener pauseListener)

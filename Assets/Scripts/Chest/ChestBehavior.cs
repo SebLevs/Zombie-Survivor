@@ -94,7 +94,7 @@ public class ChestBehavior : MonoBehaviour, IFrameUpdateListener
             }
             else
             {
-                UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("No More Upgrades");
+                UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("No more upgrades...");
             }
             
             _player.RefreshPlayerStats();

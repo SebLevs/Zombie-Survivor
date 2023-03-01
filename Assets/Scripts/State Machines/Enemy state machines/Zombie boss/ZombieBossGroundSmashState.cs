@@ -45,6 +45,7 @@ public class ZombieBossGroundSmashState : EnemyState
         {
             m_delayedAttackTimer = TimerManager.Instance.AddSequentialTimer(m_controller.GetReactionTimeInRange(0.5f), () =>
             {
+                if (!m_groundSmashSkill) { return; }
                 m_groundSmashSkill.SetAnimatorTrigger(m_controller.Context.Animator);
             });
         }
