@@ -13,6 +13,11 @@ public class ViewWaveStats : ViewElement
     [field: SerializeField] public TextMeshProElement Seconds { get; private set; }
     [field: SerializeField] public TextMeshProElement Milliseconds { get; private set; }
 
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+    }
+
     public void PrintTimer(float time)
     {
         Minutes.PrintTimeInSeconds(time, "mm");

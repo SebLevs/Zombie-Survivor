@@ -39,8 +39,6 @@ public class EnemyWave
 
     private bool _hasStarted = false;
 
-    /// <summary>
-    /// </summary>
     /// <returns>Has reached next wave colliderActiveTime</returns>
     public bool Tick()
     {

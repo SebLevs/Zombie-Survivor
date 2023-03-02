@@ -38,7 +38,6 @@ public class WaveController : MonoBehaviour, IUpdateListener
     private void Start()
     {
         EnemyManager = EnemyManager.Instance;
-        //m_waves[0].OnStartWave();
     }
 
     public void OnUpdate()
@@ -91,7 +90,6 @@ public class WaveController : MonoBehaviour, IUpdateListener
                 m_waves[i].Init(this, waveEndsCallback: () =>
                 {
                     _currentWaveIndex++;
-                    //m_waves[i + 1].OnStartWave();
                 });
             }
         }
