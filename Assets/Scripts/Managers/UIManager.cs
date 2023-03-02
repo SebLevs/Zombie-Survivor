@@ -26,6 +26,7 @@ public class UIManager : Manager<UIManager>
 
     [field: SerializeField] public ViewPlayerCooldowns ViewPlayerCooldowns { get; private set; }
     [field: SerializeField] public ViewPlayerStats ViewPlayerStats { get; private set; }
+    [field: SerializeField] public ViewElement ViewWaveStats { get; private set; }
     [field: Space(10)]
 
     [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerHealthBar { get; private set; }
