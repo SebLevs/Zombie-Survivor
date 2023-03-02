@@ -33,4 +33,9 @@ public class ImageFiller: MonoBehaviour
     {
         m_fillingBar.fillAmount = 1;
     }
+
+    public float GetValue()
+    {
+        return m_fillingBar.fillAmount;
+    }
 }

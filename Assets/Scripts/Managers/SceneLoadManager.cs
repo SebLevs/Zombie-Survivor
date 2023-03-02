@@ -45,19 +45,26 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
     private IEnumerator LoadAsync()
     {
-        UIManager _uiManager = UIManager.Instance;
+        UIManager uiManager = UIManager.Instance;
+
+        uiManager.ViewLoadingScreen.Init();
+        uiManager.ViewLoadingScreen.ViewSlider.OnShowQuick();
+
         while (async.progress < 0.95f)
         {
             yield return new WaitForFixedUpdate();
-            //_uiManager.View_loadingBarLevel.FillingBarElement.SetFilling(async.progress);
+            uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(async.progress);
+            yield return new WaitForSeconds(0.2f);
         }
-        yield return new WaitUntil(() => async.progress > 0.95f);
+        uiManager.ViewLoadingScreen.AnimateOnReachedEndValue();
+
+        uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(1.0f);
         yield return new WaitForSeconds(_minimalWaitTime);
 
-        //_uiManager.View_loadingBarLevel.FillingBarElement.SetFilling(1.0f);
-        //_uiManager.View_loadingBarLevel.OnHide();
-
-        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty); // TODO: Switch to HUD or something
+        uiManager.ViewLoadingScreen.ViewSlider.OnHideQuick( () =>
+        {
+            UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty);
+        });
 
         //async.allowSceneActivation = true;
         async = null;
@@ -85,7 +92,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         // TODO: Delete if SceneController.cs is implemented in the scope of the project
         AudioManager.Instance.StopPlayingLoopingClip();
 
-        uiManager.OnSwitchViewSynchronous(uiManager.ViewBlackScreen, 
+        uiManager.OnSwitchViewSynchronous(uiManager.ViewLoadingScreen, 
         showCallback: () =>
         {
             Entity_Player.Instance.Reinitialize();

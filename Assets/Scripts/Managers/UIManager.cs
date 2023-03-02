@@ -15,24 +15,29 @@ public class UIManager : Manager<UIManager>
 
     [field: Header("Views")]
     [field: SerializeField] public ViewElement CurrentView { get; private set; }
+    [field:Space(10)]
+
+    [field: Header("Empties")]
     [field: SerializeField] public ViewElement ViewBackgroundBlackScreen { get; private set; }
     [field: SerializeField] public ViewElement ViewEmpty { get; private set; }
-    [field:Space(10)]
+
+    [field: Header("Transitionnal")]
     [field: SerializeField] public ViewTitleScreen ViewTitleScreen { get; private set; }
     [field: SerializeField] public ViewElementOptions ViewOptionMenu { get; private set; }
-    [field: SerializeField] public ViewElement ViewBlackScreen { get; private set; }
+    [field: SerializeField] public ViewLoadingScreen ViewLoadingScreen { get; private set; }
     [field: SerializeField] public ViewElement ViewDeathScreen { get; private set; }
-    [field: Space(10)]
 
+    [field: Header("HUD")]
     [field: SerializeField] public ViewPlayerSkills ViewPlayerCooldowns { get; private set; }
     [field: SerializeField] public ViewPlayerStats ViewPlayerStats { get; private set; }
     [field: SerializeField] public ViewWaveStats ViewWaveStats { get; private set; }
-    [field: Space(10)]
-
     [field: SerializeField] public ViewFillingBarWithTextElement ViewPlayerHealthBar { get; private set; }
     [field: SerializeField] public ViewFillingBarWithTextElement ViewPlayerCurrencyBar { get; private set; }
+
+    [field: Header("AI")]
     [field: SerializeField] public ViewBossHealthBars ViewBossHealthBars { get; private set; }
 
+    [field: Header("World")]
     [field: SerializeField] public ViewInteract ViewInteract { get; private set; }
 
     protected override void OnAwake()
