@@ -185,15 +185,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
---- !u!114 &3630861602710346362 stripped
+--- !u!114 &1252899546351775906 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3576371464218420628, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1342506969209589580, guid: ab956141432a6fe458d5e3e92e74dcff, type: 3}
   m_PrefabInstance: {fileID: 270985112059052014}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ac95e71c03f5547a80c4f90ab9b1a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 47a5af32811903c45a3b9020945e3774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8591161176770111194
@@ -349,11 +349,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8435117896187756005, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_Name
       value: View Boss Health Bars
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435117896187756005, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
@@ -381,7 +385,7 @@ MonoBehaviour:
   m_defaultHideEvent:
     m_PersistentCalls:
       m_Calls: []
-  <ViewBossHealthBar>k__BackingField: {fileID: 3630861602710346362}
+  <ViewBossHealthBar>k__BackingField: {fileID: 1252899546351775906}
 --- !u!224 &5534221822725655590 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4320199986706213628, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}

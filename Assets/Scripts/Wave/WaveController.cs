@@ -21,8 +21,13 @@ public class WaveController : MonoBehaviour, IUpdateListener
         int trueWave = (wave >= m_waves.Length) ? m_waves.Length - 1 : wave;
         _currentWaveIndex = trueWave;
     }
-    
-    public void SetCurrentWaveAsLastWave() => SetCurrentWave(m_waves.Length - 1);
+
+    public void SetCurrentWaveAsLastWave()
+    {
+        int lastWaveIndex = m_waves.Length - 1;
+        SetCurrentWave(lastWaveIndex);
+        m_waves[lastWaveIndex].OnStartWave();
+    }
 
     private void Awake()
     {
@@ -82,7 +87,10 @@ public class WaveController : MonoBehaviour, IUpdateListener
             }
             else
             {
-                m_waves[i].Init(this, waveEndsCallback: () => _currentWaveIndex++);
+                m_waves[i].Init(this, waveEndsCallback: () =>
+                {
+                    _currentWaveIndex++;
+                });
             }
         }
     }

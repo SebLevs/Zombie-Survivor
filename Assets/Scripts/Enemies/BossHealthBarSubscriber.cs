@@ -8,7 +8,7 @@ public class BossHealthBarSubscriber : MonoBehaviour
     // ... Pool would be set inside of ViewBossHealthBars.cs
 
     [SerializeField] private EnemyType type;
-    private ViewFillingBarWithCounter m_viewBossHealthBar;
+    private ViewFillingBarWithTextElement m_viewBossHealthBar;
 
     private void OnEnable()
     {

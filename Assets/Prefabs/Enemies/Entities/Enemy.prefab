@@ -296,8 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dac06ebbe6abf44f8b0d95a05710407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isSpriteFlippable: 1
-  m_healthBar: {fileID: 3900169686371428617}
+  m_healthBar: {fileID: 1522348299133518801}
   isReturnToPoolAtDistance: 1
   returnAtDistance: 40
   attackSounds:
@@ -649,15 +648,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0df8f12d0bad374590588882c74f557, type: 3}
---- !u!114 &3900169686371428617 stripped
+--- !u!114 &1522348299133518801 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5578785860979918044, guid: f0df8f12d0bad374590588882c74f557, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7956607316881731076, guid: f0df8f12d0bad374590588882c74f557, type: 3}
   m_PrefabInstance: {fileID: 8884471237464845781}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5161558789705369269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ac95e71c03f5547a80c4f90ab9b1a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 47a5af32811903c45a3b9020945e3774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4192075898792805649 stripped

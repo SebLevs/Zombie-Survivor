@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7e0cb4b33acce43bb5be3e142fc1b7, type: 3}
   m_Name: Boss enemy factory
   m_EditorClassIdentifier: 
+  <FactoryName>k__BackingField: Come Get Some

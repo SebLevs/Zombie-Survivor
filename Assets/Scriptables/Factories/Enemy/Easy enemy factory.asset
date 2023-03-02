@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22562e1a29d5b3c40aee617dec2e04f6, type: 3}
   m_Name: Easy enemy factory
   m_EditorClassIdentifier: 
+  <FactoryName>k__BackingField: Fresh Meat

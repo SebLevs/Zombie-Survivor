@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour, IPoolable, IUpdateListener, IPauseListener
     public EnemyType Type { get; private set; }
 
     [Header("Health bar")]
-    [SerializeField] private ViewFillingBarWithCounter m_healthBar;
+    [SerializeField] private ViewFillingBarWithTextElement m_healthBar;
     public Health Health { get; private set; }
 
     protected Rigidbody2D m_rigidbody;

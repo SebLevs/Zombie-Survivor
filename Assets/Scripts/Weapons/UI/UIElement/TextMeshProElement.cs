@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -22,5 +23,25 @@ public class TextMeshProElement : MonoBehaviour
         string newText = Element.text.Remove(Element.text.Length);
         Element.text = newText;
         return newText;
+    }
+
+    /// <summary>
+    /// Format of type: "'hh' : 'mm' : 'ss' : 'ff'"<br/>
+    /// Can be any individual part of the format
+    /// </summary>
+    public void PrintTimeInSeconds(float seconds, string format = "mm' : 'ss' : 'ff'")
+    {
+        TimeSpan timeSpan = TimeSpan.FromSeconds(seconds);
+        Element.text = timeSpan.ToString(format);
+    }
+
+    /// <summary>
+    /// Format of type: "'hh' : 'mm' : 'ss' : 'ff'"<br/>
+    /// Can be any individual part of the format
+    /// </summary>
+    public static void PrintTimeInSeconds(float seconds, TextMeshProElement tmpElement, string format)
+    {
+        TimeSpan timeSpan = TimeSpan.FromSeconds(seconds);
+        tmpElement.Element.text = timeSpan.ToString(format);
     }
 }
