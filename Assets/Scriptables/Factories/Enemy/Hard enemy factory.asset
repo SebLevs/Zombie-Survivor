@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a64085da6f49d49b5a8586b38724d1, type: 3}
   m_Name: Hard enemy factory
   m_EditorClassIdentifier: 
+  <FactoryName>k__BackingField: Hurt Me Plenty

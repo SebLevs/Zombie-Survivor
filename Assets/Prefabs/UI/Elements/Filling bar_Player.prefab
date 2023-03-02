@@ -399,8 +399,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5042054087301100205}
   - component: {fileID: 7120813846085278310}
-  - component: {fileID: 1402267139849162902}
   - component: {fileID: 4943664726817249567}
+  - component: {fileID: 1883151754224549326}
   m_Layer: 0
   m_Name: Filling bar_Player
   m_TagString: Untagged
@@ -452,27 +452,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1402267139849162902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7130464287342788394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ac95e71c03f5547a80c4f90ab9b1a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quickShowHideSpeed: 10
-  m_defaultShowEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_defaultHideEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  <Filler>k__BackingField: {fileID: 2267786657220951182}
-  <Counter>k__BackingField: {fileID: 9204301770209452339}
 --- !u!225 &4943664726817249567
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -485,3 +464,24 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1883151754224549326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130464287342788394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a5af32811903c45a3b9020945e3774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quickShowHideSpeed: 10
+  m_defaultShowEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_defaultHideEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  <Filler>k__BackingField: {fileID: 2267786657220951182}
+  <TextElement>k__BackingField: {fileID: 9204301770209452339}

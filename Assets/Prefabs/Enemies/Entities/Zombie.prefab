@@ -148,6 +148,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 30c19aec3693ec14d96a67e76ddb4d6c, type: 2}
     - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_healthBar
+      value: 
+      objectReference: {fileID: 2464842521311685230}
+    - target: {fileID: 1597726480383652924, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: _isSpriteFlippable
       value: 0
       objectReference: {fileID: 0}
@@ -323,6 +327,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 3689369586628646502, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
   m_PrefabInstance: {fileID: 3968962651950262719}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2464842521311685230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1522348299133518801, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+  m_PrefabInstance: {fileID: 3968962651950262719}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a5af32811903c45a3b9020945e3774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5496854209455936488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8889025150732925527, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}

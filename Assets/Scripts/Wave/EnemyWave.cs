@@ -21,21 +21,36 @@ public class EnemyWave
     [field: SerializeField] public UnityEvent _waveEndEvent { get; private set; }
 
     private WaveController m_WaveController;
+    private UIManager uiManager;
 
     public void Init(WaveController waveController, Action waveEndsCallback = null)
     {
         m_WaveController = waveController;
         _spawnerStopWatch = new SequentialStopwatch(GetRandomTimeInRange());
         _nextWaveStopWatch = new SequentialStopwatch(endOfWaveTime, waveEndsCallback);
+        uiManager = UIManager.Instance;
     }
+
+    public void OnStartWave()
+    {
+        uiManager.ViewWaveStats.WaveElement.Element.text = _enemyFactory.FactoryName;
+        UpdateViewWaveStatsVisuals();
+    }
+
+    private bool _hasStarted = false;
 
     /// <summary>
     /// </summary>
     /// <returns>Has reached next wave colliderActiveTime</returns>
     public bool Tick()
     {
+        // TODO: ugly boolean logic: If time, refactor whole system into one that allows start and end events easily
+        if (!_hasStarted) { OnStartWave(); _hasStarted = true; } 
+
         _spawnerStopWatch.OnUpdateTime();
         _nextWaveStopWatch.OnUpdateTime();
+
+        UpdateViewWaveStatsVisuals();
 
         int trueEnemyCount = m_WaveController.EnemyManager.CurrentlyActiveEnemies.Count + lowQuantitySpawns + highQuantitySpawns;
         if (trueEnemyCount > m_WaveController.MaximumEnemyCount)
@@ -58,6 +73,12 @@ public class EnemyWave
             return true;
         }
         return false;
+    }
+
+    private void UpdateViewWaveStatsVisuals()
+    {
+        uiManager.ViewWaveStats.PrintTimer(_nextWaveStopWatch.CurrentTime);
+        uiManager.ViewWaveStats.TimerViewElement.Filler.SetFilling(_nextWaveStopWatch.GetNormal);
     }
 
     private float GetRandomTimeInRange()

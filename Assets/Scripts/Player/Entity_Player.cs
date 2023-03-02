@@ -118,14 +118,14 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
     public void RefreshHealthBar()
     {
         uiManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
-        uiManager.ViewPlayerHealthBar.Counter.Element.text = Health.CurrentHP.ToString();
+        uiManager.ViewPlayerHealthBar.TextElement.Element.text = Health.CurrentHP.ToString();
     }
 
     public void RefreshGoldBar()
     {
         float filling = (float)currentGold / (float)MaxGold;
         uiManager.ViewPlayerCurrencyBar.Filler.SetFilling(filling);
-        uiManager.ViewPlayerCurrencyBar.Counter.Element.text = currentGold + " / " + MaxGold;
+        uiManager.ViewPlayerCurrencyBar.TextElement.Element.text = currentGold + " / " + MaxGold;
     }
 
     public void Init()

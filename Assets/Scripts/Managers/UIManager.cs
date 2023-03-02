@@ -24,13 +24,13 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewElement ViewDeathScreen { get; private set; }
     [field: Space(10)]
 
-    [field: SerializeField] public ViewPlayerCooldowns ViewPlayerCooldowns { get; private set; }
+    [field: SerializeField] public ViewPlayerSkills ViewPlayerCooldowns { get; private set; }
     [field: SerializeField] public ViewPlayerStats ViewPlayerStats { get; private set; }
-    [field: SerializeField] public ViewElement ViewWaveStats { get; private set; }
+    [field: SerializeField] public ViewWaveStats ViewWaveStats { get; private set; }
     [field: Space(10)]
 
-    [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerHealthBar { get; private set; }
-    [field: SerializeField] public ViewFillingBarWithCounter ViewPlayerCurrencyBar { get; private set; }
+    [field: SerializeField] public ViewFillingBarWithTextElement ViewPlayerHealthBar { get; private set; }
+    [field: SerializeField] public ViewFillingBarWithTextElement ViewPlayerCurrencyBar { get; private set; }
     [field: SerializeField] public ViewBossHealthBars ViewBossHealthBars { get; private set; }
 
     [field: SerializeField] public ViewInteract ViewInteract { get; private set; }
@@ -112,26 +112,28 @@ public class UIManager : Manager<UIManager>
 
         player.RefreshHealthBar();
         player.RefreshGoldBar();
+
+        ViewWaveStats.OnShow();
     }
 
     public void HideHUD()
     {
-        if (ViewPlayerHealthBar.gameObject.activeSelf && ViewPlayerHealthBar != CurrentView)
+        if (ViewPlayerHealthBar.gameObject.activeSelf)
         {
             ViewPlayerHealthBar.OnHideQuick();
         }
 
-        if (ViewPlayerCurrencyBar.gameObject.activeSelf && ViewPlayerCurrencyBar != CurrentView)
+        if (ViewPlayerCurrencyBar.gameObject.activeSelf)
         {
             ViewPlayerCurrencyBar.OnHideQuick();
         }
 
-        if (ViewPlayerCooldowns.gameObject.activeSelf && ViewPlayerCooldowns != CurrentView)
+        if (ViewPlayerCooldowns.gameObject.activeSelf)
         {
             ViewPlayerCooldowns.OnHideQuick();
         }
 
-        if (ViewPlayerStats.gameObject.activeSelf && ViewPlayerStats != CurrentView)
+        if (ViewPlayerStats.gameObject.activeSelf)
         {
             ViewPlayerStats.OnHideQuick();
         }
@@ -139,6 +141,11 @@ public class UIManager : Manager<UIManager>
         if (ViewInteract.gameObject.activeSelf)
         {
             ViewPlayerStats.OnHideQuick();
+        }
+
+        if (ViewWaveStats.gameObject.activeSelf)
+        {
+            ViewWaveStats.OnHideQuick();
         }
     }
 
@@ -157,15 +164,15 @@ public class UIManager : Manager<UIManager>
         });
     }
 
-    public void ResetCooldownView(ViewFillingBarWithCounter view)
+    public void ResetCooldownView(ViewFillingBarWithTextElement view)
     {
-        view.Counter.Element.text = "";
+        view.TextElement.Element.text = "";
         view.Filler.UnfillCompletely();
     }
 
-    public void RefreshCooldownVisuals(ViewFillingBarWithCounter view, string remainingTime, float fillingNormalized)
+    public void RefreshCooldownVisuals(ViewFillingBarWithTextElement view, string remainingTime, float fillingNormalized)
     {
-        view.Counter.Element.text = remainingTime;
+        view.TextElement.Element.text = remainingTime;
         view.Filler.SetFilling(fillingNormalized);
     }
 }

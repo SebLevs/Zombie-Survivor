@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1027e5da1132774fa8de5b032b1c6f7, type: 3}
   m_Name: Medium enemy factory
   m_EditorClassIdentifier: 
+  <FactoryName>k__BackingField: Well Done
