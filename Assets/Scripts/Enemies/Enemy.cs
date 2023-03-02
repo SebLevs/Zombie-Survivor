@@ -4,6 +4,8 @@ public class Enemy : MonoBehaviour, IPoolable, IUpdateListener, IPauseListener
 {
     public EnemyType Type { get; private set; }
 
+    [SerializeField] private bool isSpriteFlippable = true;
+
     [Header("Health bar")]
     [SerializeField] private ViewFillingBarWithTextElement m_healthBar;
     public Health Health { get; private set; }
@@ -91,7 +93,7 @@ public class Enemy : MonoBehaviour, IPoolable, IUpdateListener, IPauseListener
         m_stateController.OnUpdate();
         float angle = MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, transform);
         int angleIndex = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
-        FlipSpriteHorizontally(angleIndex);
+        if (isSpriteFlippable) { FlipSpriteHorizontally(angleIndex); }
         Animator.SetFloat("angle", angleIndex);
 
         EvaluateReturnToPoolFromDistance();
