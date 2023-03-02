@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+
 public class Enemy : MonoBehaviour, IPoolable, IUpdateListener, IPauseListener
 {
     public EnemyType Type { get; private set; }
@@ -89,9 +89,10 @@ public class Enemy : MonoBehaviour, IPoolable, IUpdateListener, IPauseListener
     public virtual void OnUpdate()
     {
         m_stateController.OnUpdate();
-        float angle = MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, this.transform);
-        int index = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
-        Animator.SetFloat("angle", index);
+        float angle = MathAngleUtilities.GetSignedAngle2D(Entity_Player.Instance.transform, transform);
+        int angleIndex = MathAngleUtilities.GetAngleAsIndex2D_Quad(angle);
+        FlipSpriteHorizontally(angleIndex);
+        Animator.SetFloat("angle", angleIndex);
 
         EvaluateReturnToPoolFromDistance();
     }
@@ -163,5 +164,13 @@ public class Enemy : MonoBehaviour, IPoolable, IUpdateListener, IPauseListener
     {
         if (m_collider == null) { return; }
         m_collider.enabled = setAs;
+    }
+
+    /// <summary>
+    /// Currently using a counterclockwise quardinal setup where index at right = 0 and up = 1
+    /// </summary>
+    public void FlipSpriteHorizontally(int angleIndex)
+    {
+        m_spriteRenderer.flipX = (angleIndex == 2) ? true: false;
     }
 }
