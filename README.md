@@ -16,6 +16,7 @@
 <ul>
 <li>Three Cs</li>
 <li>Gameplay</li>
+<li>Level and Game design</li>
 <li>Misc.</li>
 </ul>
 <a href="https://www.instagram.com/starteapot/?hl=fr">Marie-Maxime Giguère</a><br/>
