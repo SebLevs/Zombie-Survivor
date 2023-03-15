@@ -5,6 +5,9 @@ public class ViewElementOptions : ViewElementButton
     [Header("Audio")]
     [SerializeField] private VolumeSlider[] m_volumeSliders;
 
+    [Header("Language")]
+    [SerializeField] private DropDownLanguageSelection m_dropDownLanguageSelection;
+
     public void SetVolumeSlidersAsPlayerPrefs()
     {
         for (int i = 0; i < m_volumeSliders.Length; i++)

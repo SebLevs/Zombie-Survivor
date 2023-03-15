@@ -7,5 +7,5 @@
 public enum Languages
 {
     ENGLISH = 2,
-    FRENCH
+    FRANÇAIS,
 }
