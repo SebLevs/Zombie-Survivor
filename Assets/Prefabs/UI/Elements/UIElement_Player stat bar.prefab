@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 101713858181184716}
   - component: {fileID: 8152834411406368922}
   - component: {fileID: 6016231234335948258}
+  - component: {fileID: 5010150356008400721}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_text: 'Invincibility: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
-  m_sharedMaterial: {fileID: -2668973508969171857, guid: 0b8653871ba38f44691c10eaa92ad5da, type: 2}
+  m_sharedMaterial: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -173,6 +174,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5010150356008400721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543962694796828521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 
 --- !u!1 &8787345210430063950
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +257,7 @@ MonoBehaviour:
   m_text: NULL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
-  m_sharedMaterial: {fileID: -2668973508969171857, guid: 0b8653871ba38f44691c10eaa92ad5da, type: 2}
+  m_sharedMaterial: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

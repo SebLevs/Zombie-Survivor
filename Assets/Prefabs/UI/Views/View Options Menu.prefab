@@ -343,6 +343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sd VFX
       objectReference: {fileID: 0}
+    - target: {fileID: 5446286082422747239, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: key
+      value: tmp vfx
+      objectReference: {fileID: 0}
     - target: {fileID: 8597911567011699593, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Value
       value: 1
@@ -541,6 +545,10 @@ PrefabInstance:
     - target: {fileID: 3140819246725274433, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Name
       value: sd Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446286082422747239, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: key
+      value: tmp music
       objectReference: {fileID: 0}
     - target: {fileID: 8597911567011699593, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Value
@@ -761,6 +769,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: key
+      value: btn main menu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
 --- !u!114 &7064922827846165392 stripped
@@ -908,6 +920,10 @@ PrefabInstance:
     - target: {fileID: 2883959678100397364, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: key
+      value: btn quit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
@@ -1262,6 +1278,10 @@ PrefabInstance:
     - target: {fileID: 3140819246725274433, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Name
       value: sd Master
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446286082422747239, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: key
+      value: tmp master
       objectReference: {fileID: 0}
     - target: {fileID: 8597911567011699593, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Value

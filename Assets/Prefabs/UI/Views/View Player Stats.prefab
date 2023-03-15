@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 698879806703688633}
   - component: {fileID: 4065312614742832736}
   - component: {fileID: 2332578724188186076}
+  - component: {fileID: 700980744787427829}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -249,6 +250,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &700980744787427829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576871472098977829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tmp psAttackSpeed
 --- !u!1 &1152724616662291638
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +464,7 @@ GameObject:
   - component: {fileID: 8283669600933150671}
   - component: {fileID: 8084846973021140057}
   - component: {fileID: 5545821096014054577}
+  - component: {fileID: 5863280874753709776}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -574,6 +589,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5863280874753709776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470887893593845548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tmp psMoveSpeed
 --- !u!1 &2748871013623459905
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +837,7 @@ GameObject:
   - component: {fileID: 8677994487637570878}
   - component: {fileID: 5207593805399100401}
   - component: {fileID: 1352197710480980292}
+  - component: {fileID: 3748328489246916026}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -933,6 +962,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3748328489246916026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3141729823382369990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tmp psBoomerangDistance
 --- !u!1 &3602772569217538155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1134,7 @@ GameObject:
   - component: {fileID: 6282957476871275827}
   - component: {fileID: 3340896121286021731}
   - component: {fileID: 1672324997564276977}
+  - component: {fileID: 6556433392860545847}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1216,6 +1259,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6556433392860545847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3643405994394176518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tmp psBoomerangSpeed
 --- !u!1 &3943133407052094339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1431,7 @@ GameObject:
   - component: {fileID: 6090105396212810428}
   - component: {fileID: 2127791427293484939}
   - component: {fileID: 7256543357342983220}
+  - component: {fileID: 8380146004581636129}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1499,6 +1556,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8380146004581636129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981023867986737453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tmp psDodgeDelay
 --- !u!1 &4027977724976567885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,6 +2969,10 @@ PrefabInstance:
     - target: {fileID: 4135759409253508233, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010150356008400721, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
+      propertyPath: key
+      value: tmp psInvincibility
       objectReference: {fileID: 0}
     - target: {fileID: 6016231234335948258, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
       propertyPath: m_sharedMaterial
