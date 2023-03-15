@@ -21,6 +21,6 @@ public class TMPLocalizable : MonoBehaviour, ILocalizationListener
 
     public void LocalizeText()
     {
-        _textElement.text = TSVLocalizer.GetLocalizationValue(_localizationManager.DefaultUILocalizations, key, _localizationManager.Language);
+        _textElement.text = TSVLocalizer.GetLocalizationValue(_localizationManager.ObjectsLocalizations, key, _localizationManager.Language);
     }
 }

@@ -7,9 +7,8 @@ public static class TSVLocalizer
     /// <summary>
     /// Automatically ignores the last line break of the Excel sheet (lines.Length - 1)
     /// </summary>
-    public static Dictionary<string, ObjectLocalizations> GetTranslationDatasFromFile(string fileAndExtension, int startAtLine, int startAtColumn)
+    public static void SetTranslationDatasFromFile(Dictionary<string, ObjectLocalizations> dictionary, string fileAndExtension, int startAtLine, int startAtColumn)
     {
-        Dictionary<string, ObjectLocalizations> translationDictionary = new();
         string text = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, fileAndExtension));
 
         string[] lines = text.Split('\n');
@@ -24,10 +23,8 @@ public static class TSVLocalizer
             {
                 objectLocalizations.Localizations!.Add((Languages)languageIndex, columns[languageIndex]);
             }
-            translationDictionary!.Add(columns[startAtColumn], objectLocalizations);
+            dictionary!.Add(columns[startAtColumn], objectLocalizations);
         }
-
-        return translationDictionary;
     }
 
     public static string GetLocalizationValue(Dictionary<string, ObjectLocalizations> localizations, string key, Languages language)

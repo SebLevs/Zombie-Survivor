@@ -8,15 +8,16 @@ public class LocalizationManager : Manager<LocalizationManager>
     [Header("Language")]
     public Languages Language = Languages.ENGLISH;
 
-    public Dictionary<string, ObjectLocalizations> DefaultUILocalizations;
+    public Dictionary<string, ObjectLocalizations> ObjectsLocalizations;
 
     private HashSet<ILocalizationListener> _localizationListeners;
 
     protected override void OnAwake()
     {
         base.OnAwake();
+        ObjectsLocalizations = new();
         _localizationListeners = new();
-        DefaultUILocalizations = TSVLocalizer.GetTranslationDatasFromFile(_pathTsvUIDefaults, 1, 1);
+        TSVLocalizer.SetTranslationDatasFromFile(ObjectsLocalizations, _pathTsvUIDefaults, 1, 1);
     }
 
     public void SubscribeToLocalization(ILocalizationListener frameUpdateListener)
@@ -34,6 +35,14 @@ public class LocalizationManager : Manager<LocalizationManager>
         foreach (ILocalizationListener listener in _localizationListeners)
         {
             listener.LocalizeText();
+        }
+    }
+
+    public void AddLocalizationsToDictionary(Dictionary<string, ObjectLocalizations> newlocalizations)
+    {
+        foreach (var item in newlocalizations)
+        {
+            ObjectsLocalizations!.Add(item.Key, item.Value);
         }
     }
 }
