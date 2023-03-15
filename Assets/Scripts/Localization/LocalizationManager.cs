@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalizationManager : Manager<LocalizationManager>
+public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHandler
 {
+    private const string _playerPrefKey = "Language";
     private const string _pathTsvUIDefaults = "tsv_UI_Defaults.txt";
 
     [Header("Language")]
@@ -18,6 +19,7 @@ public class LocalizationManager : Manager<LocalizationManager>
         ObjectsLocalizations = new();
         _localizationListeners = new();
         TSVLocalizer.SetTranslationDatasFromFile(ObjectsLocalizations, _pathTsvUIDefaults, 1, 1);
+        LoadFromPlayerPref();
     }
 
     public void SubscribeToLocalization(ILocalizationListener frameUpdateListener)
@@ -44,5 +46,19 @@ public class LocalizationManager : Manager<LocalizationManager>
         {
             ObjectsLocalizations!.Add(item.Key, item.Value);
         }
+    }
+
+    public void SaveToPlayerPref()
+    {
+        Languages lastSavedLanguage = (Languages)PlayerPrefs.GetInt(_playerPrefKey);
+        if (lastSavedLanguage != Language)
+        {
+            PlayerPrefs.SetInt(_playerPrefKey, (int)Language);
+        }
+    }
+
+    public void LoadFromPlayerPref()
+    {
+        Language = (PlayerPrefs.GetInt(_playerPrefKey) == 0) ? Languages.ENGLISH : (Languages)PlayerPrefs.GetInt(_playerPrefKey);
     }
 }

@@ -14,6 +14,12 @@ public class DropDownLanguageSelection : MonoBehaviour
         SetValueAsCurrentLanguage();
     }
 
+
+    private void OnDisable()
+    {
+        LocalizationManager.Instance.SaveToPlayerPref();
+    }
+
     private void InitDropdownLanguageItems()
     {
         DropDownLanguages.ClearOptions();
@@ -26,10 +32,13 @@ public class DropDownLanguageSelection : MonoBehaviour
 
     private void SetValueAsCurrentLanguage()
     {
+        LocalizationManager localizationManager = LocalizationManager.Instance;
         // -2 as Languages (key for localization) starts at column index 2 in TSV file
-        int value = ((int)LocalizationManager.Instance.Language) - 2;
+        localizationManager.LoadFromPlayerPref();
+        int value = ((int)localizationManager.Language) - 2;
         DropDownLanguages.value = value;
         Label.text = DropDownLanguages.options[value].text;
+        
     }
 
     public void Localize()

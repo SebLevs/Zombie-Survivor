@@ -8,11 +8,11 @@ public class ViewElementOptions : ViewElementButton
     [Header("Language")]
     [SerializeField] private DropDownLanguageSelection m_dropDownLanguageSelection;
 
-    public void SetVolumeSlidersAsPlayerPrefs()
+    public void LoadVolumesFromPlayerPref()
     {
         for (int i = 0; i < m_volumeSliders.Length; i++)
         {
-            m_volumeSliders[i].SetVolumeAsLastRegisteredVolume();
+            m_volumeSliders[i].LoadFromPlayerPref();
         }
     }
 }
