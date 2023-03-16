@@ -63,7 +63,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
         uiManager.ViewLoadingScreen.ViewSlider.OnHideQuick( () =>
         {
-            UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty);
+            UIManager.Instance.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewEmpty);
         });
 
         //async.allowSceneActivation = true;
@@ -92,14 +92,14 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         // TODO: Delete if SceneController.cs is implemented in the scope of the project
         AudioManager.Instance.StopPlayingLoopingClip();
 
-        uiManager.OnSwitchViewSynchronous(uiManager.ViewLoadingScreen, 
+        uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewLoadingScreen, 
         showCallback: () =>
         {
             Entity_Player.Instance.Reinitialize();
             UnloadCurrentScene();
             System.GC.Collect();
             uiManager.ViewBackgroundBlackScreen.OnShowQuick();
-            uiManager.OnSwitchViewSynchronous(uiManager.ViewTitleScreen);
+            uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewTitleScreen);
             IsInTitleScreen = true;
         });
     }

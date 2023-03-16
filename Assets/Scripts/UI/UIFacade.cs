@@ -21,7 +21,7 @@ public class UIFacade : MonoBehaviour
 
     public void OpenOptionMenu()
     {
-        UIManager.Instance.OnSwitchViewSequential(UIManager.Instance.ViewOptionMenu);
+        UIManager.Instance.ViewController.SwitchViewSequential(UIManager.Instance.ViewOptionMenu);
     }
 
     public void UnloadCurrentScene()

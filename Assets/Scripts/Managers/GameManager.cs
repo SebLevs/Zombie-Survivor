@@ -45,12 +45,12 @@ public class GameManager : Manager<GameManager>
         UIManager uiManager = UIManager.Instance;
         uiManager.ViewBackgroundBlackScreen.OnHide();
         uiManager.ShowHUD();
-        uiManager.OnSwitchViewSynchronous(UIManager.Instance.ViewEmpty);
+        uiManager.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewEmpty);
     }
 
     public void StartGame()
     {
-        UIManager.Instance.OnSwitchViewSynchronous(UIManager.Instance.ViewLoadingScreen, 
+        UIManager.Instance.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewLoadingScreen,
         showCallback: () =>
         {
             SceneLoadManager.Instance.OnLoadScene(1);

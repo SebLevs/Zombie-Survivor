@@ -29,7 +29,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
             if (isActive)
             {
                 if (!SceneLoadManager.Instance.IsInTitleScreen &&
-                    UIManager.Instance.CurrentView != UIManager.Instance.ViewOptionMenu)
+                    UIManager.Instance.ViewController.CurrentView != UIManager.Instance.ViewOptionMenu)
                 {
                     GameManager.Instance.ResumeGame();
                 }
