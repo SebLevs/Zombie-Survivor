@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ViewController : MonoBehaviour
@@ -60,6 +61,7 @@ public class ViewController : MonoBehaviour
         }
     }
 
+
     public void SwitchViewSynchronous(ViewElement newElement) => SwitchViewSynchronous(newElement, null, null);
     /// <summary>
     /// Syncronous switch view: <br/>
@@ -83,11 +85,11 @@ public class ViewController : MonoBehaviour
         {
             if (isTransitionInstantaneous)
             {
-                newElement.OnHideInstantaneous(callback: hideCallback);
+                CurrentView.OnHideInstantaneous(callback: hideCallback);
             }
             else
             {
-                newElement.OnHide(callback: hideCallback);
+                CurrentView.OnHide(callback: hideCallback);
             }
         }
 

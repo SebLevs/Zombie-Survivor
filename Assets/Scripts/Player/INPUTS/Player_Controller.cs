@@ -90,22 +90,22 @@ public class Player_Controller : MonoBehaviour, IUpdateListener
             GameManager gameManager = GameManager.Instance;
             UIManager uiManager = UIManager.Instance;
 
-            uiManager.CurrentView.StopAllCoroutines();
+            uiManager.ViewController.CurrentView.StopAllCoroutines();
 
-            if (uiManager.CurrentView != uiManager.ViewOptionMenu)
+            if (uiManager.ViewController.CurrentView != uiManager.ViewOptionMenu)
             {
                 gameManager.PauseGame();
-                uiManager.OnSwitchViewSequential(uiManager.ViewOptionMenu);
+                uiManager.ViewController.SwitchViewSequential(uiManager.ViewOptionMenu);
             }
             else
             {
                 if (SceneLoadManager.Instance.IsInTitleScreen)
                 {
-                    uiManager.OnSwitchViewSequential(uiManager.ViewTitleScreen);
+                    uiManager.ViewController.SwitchViewSequential(uiManager.ViewTitleScreen);
                 }
                 else
                 {
-                    uiManager.OnSwitchViewSequential(uiManager.ViewEmpty, showCallback: () =>
+                    uiManager.ViewController.SwitchViewSequential(uiManager.ViewEmpty, showCallback: () =>
                     {
                         if (!CommandPromptManager.Instance.isActive)
                         {

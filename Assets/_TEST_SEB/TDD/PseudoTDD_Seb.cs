@@ -48,11 +48,11 @@ public class PseudoTDD_Seb : MonoBehaviour
         {
             if (!UIManager.Instance.ViewOptionMenu.gameObject.activeSelf)
             {
-                UIManager.Instance.OnSwitchViewSequential(UIManager.Instance.ViewOptionMenu);
+                UIManager.Instance.ViewController.SwitchViewSequential(UIManager.Instance.ViewOptionMenu);
             }
             else
             {
-                UIManager.Instance.OnSwitchViewSequential(UIManager.Instance.ViewEmpty);
+                UIManager.Instance.ViewController.SwitchViewSequential(UIManager.Instance.ViewEmpty);
             }
         }
     }
