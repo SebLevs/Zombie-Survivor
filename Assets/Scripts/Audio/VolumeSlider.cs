@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VolumeSlider : MonoBehaviour
+public class VolumeSlider : MonoBehaviour, IPlayerPrefHandler
 {
     [SerializeField] private AudioMixerParameter _volumeParameter;
     private Slider m_slider;
@@ -20,18 +20,16 @@ public class VolumeSlider : MonoBehaviour
         _volumeParameter.SetParameter(volume);
     }
 
-    public void SetVolumeAsLastRegisteredVolume()
+    /// <summary>
+    /// log10(0.0001) * 20 = -80 = no sound <br/>
+    /// log10(1) * 20 = 20 = max audio
+    /// </summary>
+    private float GetLog(float sliderValue)
     {
-        float lastVolume = PlayerPrefs.GetFloat(_volumeParameter.name); // ViewFillingBar value
-
-        if (lastVolume == m_slider.value) { return; }
-
-        m_slider.value = lastVolume;
-        float volumePlayerPrefs = GetLog(lastVolume);
-        _volumeParameter.SetParameter(volumePlayerPrefs);
+        return Mathf.Log10(sliderValue) * _log10Modifier;
     }
 
-    public void SaveLastRegisteredVolumeLocally()
+    public void SaveToPlayerPref()
     {
         if (_lastRegisteredVolume != m_slider.value)
         {
@@ -40,12 +38,19 @@ public class VolumeSlider : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// log10(0.0001) * 20 = -80 = no sound <br/>
-    /// log10(1) * 20 = 20 = max audio
-    /// </summary>
-    private float GetLog(float sliderValue)
+    private void OnDisable()
     {
-        return Mathf.Log10(sliderValue) * _log10Modifier;
+        SaveToPlayerPref();
+    }
+
+    public void LoadFromPlayerPref()
+    {
+        float lastVolume = PlayerPrefs.GetFloat(_volumeParameter.name);
+        if (lastVolume != m_slider.value)
+        {
+            m_slider.value = lastVolume;
+            float volumePlayerPrefs = GetLog(lastVolume);
+            _volumeParameter.SetParameter(volumePlayerPrefs);
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class ViewElement : MonoBehaviour
 {
-    [SerializeField] private float quickShowHideSpeed = 10.0f;
+    [SerializeField] private float animationSpeedModifier = 10f;
 
     private int _onShowHash;
     public Action m_onShowAction;
@@ -31,8 +31,11 @@ public class ViewElement : MonoBehaviour
 
     public void OnShow() { StopAllCoroutines(); OnShow(null); }
     public void OnShowQuick() { StopAllCoroutines(); OnShowQuick(null); }
+    public void OnShowInstantaneous() { StopAllCoroutines(); OnShowInstantaneous(null); }
     public void OnHide() { StopAllCoroutines(); OnHide(null); } 
     public void OnHideQuick() { StopAllCoroutines(); OnHideQuick(null); }
+    public void OnHideInstantaneous() { StopAllCoroutines(); OnHideInstantaneous(null); }
+    
 
     public virtual void OnShow(Action callback = null)
     {
@@ -52,7 +55,17 @@ public class ViewElement : MonoBehaviour
         m_onShowAction = callback;
 
         m_animator.SetTrigger(_onShowHash);
-        m_animator.speed = quickShowHideSpeed;
+        m_animator.speed *= animationSpeedModifier;
+    }
+
+    public void OnShowInstantaneous(Action callback = null)
+    {
+        if (gameObject.activeSelf) { return; }
+
+        gameObject.SetActive(true);
+        m_onShowAction = callback;
+        m_animator.SetTrigger(_onShowHash);
+        m_animator.Play(_onShowHash, 0, 0.95f);
     }
 
     public virtual void OnHide(Action callback = null)
@@ -73,7 +86,17 @@ public class ViewElement : MonoBehaviour
         m_onHideAction = callback;
 
         m_animator.SetTrigger(_onHideHash);
-        m_animator.speed = quickShowHideSpeed;
+        m_animator.speed *= animationSpeedModifier;
+    }
+
+    public void OnHideInstantaneous(Action callback = null)
+    {
+        if (!gameObject.activeSelf) { return; }
+
+        callback += () => gameObject.SetActive(false);
+        m_onHideAction = callback;
+        m_animator.SetTrigger(_onHideHash);
+        m_animator.Play(_onHideHash, 0, 0.95f);
     }
 
     public void AnimationEvent_HideCallback()

@@ -85,7 +85,7 @@ public class Player_Controller : MonoBehaviour, IUpdateListener
 
     public void OnOptionsMenu(InputAction.CallbackContext context)
     {
-        if (context.performed && !Entity_Player.Instance.Health.IsDead)
+        if (context.performed && !Entity_Player.Instance.Health.IsDead && !UIManager.Instance.ViewLoadingScreen.gameObject.activeSelf)
         {
             GameManager gameManager = GameManager.Instance;
             UIManager uiManager = UIManager.Instance;

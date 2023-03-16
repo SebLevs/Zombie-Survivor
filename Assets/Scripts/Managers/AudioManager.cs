@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 public class AudioManager : Manager<AudioManager>
@@ -25,7 +26,7 @@ public class AudioManager : Manager<AudioManager>
     {
         UIManager uiManager = UIManager.Instance;
         uiManager.ViewOptionMenu.gameObject.SetActive(true);
-        uiManager.ViewOptionMenu.SetVolumeSlidersAsPlayerPrefs();
+        uiManager.ViewOptionMenu.LoadVolumesFromPlayerPref();
         uiManager.ViewOptionMenu.gameObject.SetActive(false);
     }
 

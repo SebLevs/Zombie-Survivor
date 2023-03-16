@@ -29,7 +29,7 @@ public class PoolPattern<T> where T : Component, IPoolable
         {
             T element = GameObject.Instantiate(_elementPrefab, _availableParent).GetComponent<T>();
             m_availablePool.Add(element);
-            //element.gameObject.hideFlags = HideFlags.HideInHierarchy;
+            //_textElement.gameObject.hideFlags = HideFlags.HideInHierarchy;
         }
 
         return m_availablePool;
@@ -47,7 +47,7 @@ public class PoolPattern<T> where T : Component, IPoolable
         if (m_availablePool.Count == 0)
         {
             element = GameObject.Instantiate(_elementPrefab, _availableParent).GetComponent<T>();
-            //element.gameObject.hideFlags = HideFlags.HideInHierarchy;
+            //_textElement.gameObject.hideFlags = HideFlags.HideInHierarchy;
         }
         else
         {

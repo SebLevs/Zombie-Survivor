@@ -7,7 +7,7 @@ public class LinePrinterSimple : TextMeshProElement
 {
     protected TextMeshProUGUI m_textMeshProUGUI;
 
-    [Header("Texts to print")]
+    [Header("ObjectsLocalizations to print")]
     [TextArea(3, 10)]
     [SerializeField] protected string[] m_texts;
     protected WaitForSeconds _waitForSecondsCache_charPrintSpeed;
