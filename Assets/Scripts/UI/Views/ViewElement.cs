@@ -64,7 +64,6 @@ public class ViewElement : MonoBehaviour
 
         gameObject.SetActive(true);
         m_onShowAction = callback;
-        m_animator.SetTrigger(_onShowHash);
         m_animator.Play(_onShowHash, 0, 0.95f);
     }
 
@@ -95,7 +94,6 @@ public class ViewElement : MonoBehaviour
 
         callback += () => gameObject.SetActive(false);
         m_onHideAction = callback;
-        m_animator.SetTrigger(_onHideHash);
         m_animator.Play(_onHideHash, 0, 0.95f);
     }
 
