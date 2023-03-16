@@ -866,11 +866,6 @@ PrefabInstance:
       objectReference: {fileID: 603172312}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
---- !u!1 &1182563489 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3783340338091297345, guid: ffaf696c885c969439be163551db0ff7, type: 3}
-  m_PrefabInstance: {fileID: 5761970932098265813}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1283855950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,17 +1285,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2859910557342145047, guid: ffaf696c885c969439be163551db0ff7, type: 3}
   m_PrefabInstance: {fileID: 5761970932098265813}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5761970932098265815 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7459667967331174989, guid: ffaf696c885c969439be163551db0ff7, type: 3}
-  m_PrefabInstance: {fileID: 5761970932098265813}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182563489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 857726c58eb219b4ab2115ef5dba3b0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7287275907250066815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1551,54 +1535,6 @@ PrefabInstance:
     - target: {fileID: 4234633918065826382, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_MinValue
       value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultHideEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultHideEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultHideEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 5761970932098265815}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 1182563489}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultHideEvent.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultHideEvent.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: SaveToPlayerPref
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultHideEvent.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: LocalizationManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: VolumeSlider, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524483441356469838, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
-      propertyPath: m_defaultHideEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4603738033266670538, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: OutputAudioMixerGroup

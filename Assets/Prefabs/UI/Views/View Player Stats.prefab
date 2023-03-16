@@ -2294,6 +2294,7 @@ GameObject:
   - component: {fileID: 9178838190241727302}
   - component: {fileID: 2593852507835768121}
   - component: {fileID: 43901248639744853}
+  - component: {fileID: 2399220665477822399}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -2382,7 +2383,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2418,6 +2419,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2399220665477822399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806393818243364247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tmp player stats
 --- !u!1 &8139716383293411830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,7 +2766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa27c9b58b391e47b3dd69462dfae0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quickShowHideSpeed: 10
+  animationSpeedModifier: 10
   m_defaultShowEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2973,6 +2987,10 @@ PrefabInstance:
     - target: {fileID: 5010150356008400721, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
       propertyPath: key
       value: tmp psInvincibility
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016231234335948258, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
+      propertyPath: m_fontStyle
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6016231234335948258, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
       propertyPath: m_sharedMaterial

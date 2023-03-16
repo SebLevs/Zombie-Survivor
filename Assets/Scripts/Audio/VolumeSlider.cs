@@ -19,26 +19,6 @@ public class VolumeSlider : MonoBehaviour, IPlayerPrefHandler
         volume = GetLog(volume);
         _volumeParameter.SetParameter(volume);
     }
-/*
-    public void SetVolumeAsLastRegisteredVolume()
-    {
-        float lastVolume = PlayerPrefs.GetFloat(_volumeParameter.name);
-
-        if (lastVolume == m_slider.value) { return; }
-
-        m_slider.value = lastVolume;
-        float volumePlayerPrefs = GetLog(lastVolume);
-        _volumeParameter.SetParameter(volumePlayerPrefs);
-    }
-
-    public void SaveLastRegisteredVolumeLocally()
-    {
-        if (_lastRegisteredVolume != m_slider.value)
-        {
-            _lastRegisteredVolume = m_slider.value;
-            PlayerPrefs.SetFloat(_volumeParameter.name, m_slider.value);
-        }
-    }*/
 
     /// <summary>
     /// log10(0.0001) * 20 = -80 = no sound <br/>

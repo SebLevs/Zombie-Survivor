@@ -10,9 +10,11 @@ public class ViewElementOptions : ViewElementButton
 
     public void LoadVolumesFromPlayerPref()
     {
+        m_volumeSliders[0].transform.parent.gameObject.SetActive(true);
         for (int i = 0; i < m_volumeSliders.Length; i++)
         {
             m_volumeSliders[i].LoadFromPlayerPref();
         }
+        m_volumeSliders[0].transform.parent.gameObject.SetActive(false);
     }
 }

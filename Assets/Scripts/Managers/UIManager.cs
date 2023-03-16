@@ -158,7 +158,8 @@ public class UIManager : Manager<UIManager>
     {
         if (ViewDeathScreen.gameObject.activeSelf) { return; }
 
-        ViewBossHealthBars.OnHideQuick();
+        //ViewBossHealthBars.OnHideQuick();
+        ViewBossHealthBars.OnHideInstantaneous();
         HideHUD();
         OnSwitchViewSynchronous(ViewDeathScreen, showCallback: () =>
         {
