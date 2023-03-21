@@ -6,8 +6,8 @@ public class PlayerCommand_DodgeDelayDown : ICommand
 
     public void Execute()
     {
-        Entity_Player.Instance.DodgeInterval -= 1f;
-        if (Entity_Player.Instance.DodgeInterval <= 2)
+        Entity_Player.Instance.dodgeInterval -= 1f;
+        if (Entity_Player.Instance.dodgeInterval <= 2)
         {
             CommandPromptManager.Instance.playerCommandInvoker.ChestPowerUpDic.Remove(CommandType.ATTACK_SPEED);
         }
@@ -15,7 +15,7 @@ public class PlayerCommand_DodgeDelayDown : ICommand
 
     public void UnExecute()
     {
-        if (Entity_Player.Instance.DodgeInterval <= 8)
-            Entity_Player.Instance.DodgeInterval += 1f;
+        if (Entity_Player.Instance.dodgeInterval <= 8)
+            Entity_Player.Instance.dodgeInterval += 1f;
     }
 }

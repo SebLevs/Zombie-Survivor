@@ -15,6 +15,9 @@ public class EnemyManager : Manager<EnemyManager>
 
     [field: Header("ZombieBoss")]
     [field: SerializeField] public PoolPattern<Enemy> ZombieBoss { get; private set; }
+    
+    [field: Header("PermaGold")]
+    [field: SerializeField] public PoolPattern<PermaGoldPickUp> PermaGold { get; private set; }
 
     public WaveController WaveController { get; private set; }
 
