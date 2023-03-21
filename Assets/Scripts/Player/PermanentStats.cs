@@ -8,9 +8,15 @@ using UnityEngine;
 public class PermanentStats : MonoBehaviour
 {
     public int permanentGold;
+    public const string FilePath = "Assets/DataFile.dat";
     public void GivePermaGold(int goldToGive)
     {
         permanentGold += goldToGive;
+        SerializePermaGold();
+    }
+
+    private void OnApplicationQuit()
+    {
         SerializePermaGold();
     }
 
@@ -21,7 +27,7 @@ public class PermanentStats : MonoBehaviour
 
     private void SerializePermaGold()
     {
-        FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
+        FileStream fs = new FileStream(FilePath, FileMode.Create);
         BinaryFormatter formatter = new BinaryFormatter();
         try
         {
@@ -40,7 +46,7 @@ public class PermanentStats : MonoBehaviour
 
     private void DeserializePermaGold()
     {
-        FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
+        FileStream fs = new FileStream(FilePath, FileMode.Open);
         try
         {
             BinaryFormatter formatter = new BinaryFormatter();
