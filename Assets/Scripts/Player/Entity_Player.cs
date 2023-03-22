@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseListener
 {
+    public UserDatas UserDatas;
+
     public readonly int Mask = 3;
 
     [SerializeField] private string test;
