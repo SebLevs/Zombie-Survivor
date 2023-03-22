@@ -118,6 +118,42 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 463352563946336264, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
   m_PrefabInstance: {fileID: 9206243998944457}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8444031660957790508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8435117896187756005, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
+  m_PrefabInstance: {fileID: 9206243998944457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3159228018109220256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444031660957790508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d479b4c03e61547a5da8bddac8b294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeedModifier: 10
+  m_defaultShowEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8571666178622053814}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_defaultHideEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2458327882263258619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269,6 +305,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 454474008906988737}
     m_Modifications:
+    - target: {fileID: 1959202497244783888, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
+      propertyPath: key
+      value: tmp valid login
+      objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -396,5 +436,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b6b9c80d8c0a4289ea4b34c90d97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8571666178622053814 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2509158461758456939, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
+  m_PrefabInstance: {fileID: 6063813954998114781}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

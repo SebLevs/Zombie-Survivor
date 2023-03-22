@@ -164,9 +164,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 212239166}
     m_Modifications:
-    - target: {fileID: 5698886278560185549, guid: eca692aeb8d9dc643a38fc3006e2c64f, type: 3}
-      propertyPath: key
-      value: tmp valid login
+    - target: {fileID: 1764839466977808779, guid: eca692aeb8d9dc643a38fc3006e2c64f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5735702678351809443, guid: eca692aeb8d9dc643a38fc3006e2c64f, type: 3}
       propertyPath: m_Pivot.x
@@ -250,6 +250,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735702678351809443, guid: eca692aeb8d9dc643a38fc3006e2c64f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946243789080243629, guid: eca692aeb8d9dc643a38fc3006e2c64f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444031660957790508, guid: eca692aeb8d9dc643a38fc3006e2c64f, type: 3}
