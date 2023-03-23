@@ -218,7 +218,7 @@ PrefabInstance:
     - target: {fileID: 9200204931957816702, guid: e987b4a1581e8b44fa60b32211dd1bf5, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8889546575742875762}
     - target: {fileID: 9200204931957816702, guid: e987b4a1581e8b44fa60b32211dd1bf5, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
@@ -455,3 +455,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6733984082762194064, guid: a7e68fa103bf605449de5332c8ded817, type: 3}
   m_PrefabInstance: {fileID: 4694419341894081711}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8889546575742875762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4214223594212844765, guid: a7e68fa103bf605449de5332c8ded817, type: 3}
+  m_PrefabInstance: {fileID: 4694419341894081711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
