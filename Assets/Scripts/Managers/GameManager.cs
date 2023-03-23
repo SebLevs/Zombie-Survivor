@@ -31,7 +31,6 @@ public class GameManager : Manager<GameManager>
         UIManager uiManager = UIManager.Instance;
         uiManager.ViewBackgroundBlackScreen.gameObject.SetActive(true);
         uiManager.ViewController.SwitchViewSequential(uiManager.ViewLogin);
-        //SceneLoadManager.Instance.GoToTitleScreen();
         PauseGame();
     }
 
