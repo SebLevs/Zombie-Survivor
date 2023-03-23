@@ -28,8 +28,11 @@ public class GameManager : Manager<GameManager>
             return; 
         }
 
-        UIManager.Instance.ViewBackgroundBlackScreen.gameObject.SetActive(true);
-        SceneLoadManager.Instance.GoToTitleScreen();
+        UIManager uiManager = UIManager.Instance;
+        uiManager.ViewBackgroundBlackScreen.gameObject.SetActive(true);
+        uiManager.ViewController.SwitchViewSequential(uiManager.ViewLogin);
+        //SceneLoadManager.Instance.GoToTitleScreen();
+        PauseGame();
     }
 
     public void SetCursorLockState(CursorLockMode lockMode)
@@ -50,11 +53,13 @@ public class GameManager : Manager<GameManager>
 
     public void StartGame()
     {
-        UIManager.Instance.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewLoadingScreen,
+        UIManager uiManager = UIManager.Instance;
+        uiManager.ViewPromoCode.OnHideQuick();
+        uiManager.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewLoadingScreen,
         showCallback: () =>
         {
             SceneLoadManager.Instance.OnLoadScene(1);
-            UIManager.Instance.ViewBackgroundBlackScreen.OnHideQuick();
+            uiManager.ViewBackgroundBlackScreen.OnHideQuick();
         });
     }
 
