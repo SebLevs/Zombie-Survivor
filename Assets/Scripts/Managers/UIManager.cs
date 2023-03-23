@@ -29,6 +29,7 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewWaveStats ViewWaveStats { get; private set; }
     [field: SerializeField] public ViewFillingBarWithTextElement ViewPlayerHealthBar { get; private set; }
     [field: SerializeField] public ViewFillingBarWithTextElement ViewPlayerCurrencyBar { get; private set; }
+    [field: SerializeField] public ViewElement ViewPersistentCurrency { get; private set; }
 
     [field: Header("AI")]
     [field: SerializeField] public ViewBossHealthBars ViewBossHealthBars { get; private set; }
@@ -53,6 +54,7 @@ public class UIManager : Manager<UIManager>
 
         ViewPlayerHealthBar.OnShow();
         ViewPlayerCurrencyBar.OnShow();
+        ViewPersistentCurrency.OnShow();
         ViewPlayerCooldowns.OnShow();
         ViewPlayerStats.OnShow( () =>
         {
@@ -61,8 +63,10 @@ public class UIManager : Manager<UIManager>
 
         player.RefreshHealthBar();
         player.RefreshGoldBar();
+        // TODO: Update persistent currency here
 
         ViewWaveStats.OnShow();
+
     }
 
     public void HideHUD()
@@ -95,6 +99,11 @@ public class UIManager : Manager<UIManager>
         if (ViewWaveStats.gameObject.activeSelf)
         {
             ViewWaveStats.OnHideQuick();
+        }
+
+        if (ViewPersistentCurrency.gameObject.activeSelf)
+        {
+            ViewPersistentCurrency.OnHideQuick();
         }
     }
 
