@@ -20,4 +20,12 @@ public class ViewTitleScreen : ViewElementButton
         }
 #endif
     }
+
+    public void Logout()
+    {
+        UIManager uiManager = UIManager.Instance;
+        uiManager.ViewPromoCode.OnHide();
+        uiManager.ViewController.SwitchViewSequential(uiManager.ViewLogin);
+        Entity_Player.Instance.UserDatas = null;
+    }
 }
