@@ -22,14 +22,14 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
         LoadFromPlayerPref();
     }
 
-    public void SubscribeToLocalization(ILocalizationListener frameUpdateListener)
+    public void SubscribeToLocalization(ILocalizationListener localizationListener)
     {
-        _localizationListeners.Add(frameUpdateListener);
+        _localizationListeners.Add(localizationListener);
     }
 
-    public void UnSubscribeFromLocalizatioon(ILocalizationListener frameUpdateListener)
+    public void UnSubscribeFromLocalizatioon(ILocalizationListener localizationListener)
     {
-        _localizationListeners.Remove(frameUpdateListener);
+        _localizationListeners.Remove(localizationListener);
     }
 
     public void NotifyILocalizationListeners()

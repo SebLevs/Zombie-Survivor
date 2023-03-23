@@ -3,7 +3,7 @@ using UnityEngine;
 public class UIManager : Manager<UIManager>
 {
     public AudioSource AudioSource { get; private set; }
-    
+
     [field: Header("Character print")]
     [field:SerializeField] public float CharacterPrintSpeed { get; private set; }
     [field:SerializeField] public float LinePrintPause { get; private set; }
