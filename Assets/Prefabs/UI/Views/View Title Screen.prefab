@@ -85,7 +85,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2883959677946705419, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_text
-      value: SIGN OUT
+      value: LOG OUT
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397358, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Name
@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: key
-      value: btn signout
+      value: btn logout
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2883959678100397361, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
