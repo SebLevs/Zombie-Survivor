@@ -639,10 +639,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 6224180705546212269}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1185,10 +1185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1906942080892057182}
+    m_SelectOnDown: {fileID: 4556601232984944058}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1590,6 +1590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tabulation_Language
       objectReference: {fileID: 0}
+    - target: {fileID: 6427775970463716727, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 4556601232984944058}
     - target: {fileID: 7857705041493558697, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -1674,8 +1678,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8889546575742875762, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
+--- !u!114 &7581530394239450334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6427775970463716727, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
+  m_PrefabInstance: {fileID: 3459623824657492393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6902236341929973068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1769,7 +1788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_Interactable
@@ -1785,7 +1804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8435117896187756005, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
@@ -1829,6 +1848,18 @@ PrefabInstance:
       propertyPath: key
       value: tmp signup
       objectReference: {fileID: 0}
+    - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 4556601232984944058}
+    - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 7581530394239450334}
     - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
       propertyPath: m_AnimationTriggers.m_PressedTrigger
       value: Pressed
@@ -1967,6 +1998,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+--- !u!114 &3242861889516293819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+  m_PrefabInstance: {fileID: 7161925610281019771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3242861889516293823 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5648834242727634884, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
@@ -1983,6 +2025,22 @@ PrefabInstance:
       propertyPath: key
       value: tmp login
       objectReference: {fileID: 0}
+    - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 6224180705546212269}
+    - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 3242861889516293819}
+    - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 7581530394239450334}
     - target: {fileID: 5648834242727634880, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
       propertyPath: m_AnimationTriggers.m_PressedTrigger
       value: Pressed
