@@ -48,6 +48,7 @@ public class GameManager : Manager<GameManager>
         uiManager.ViewBackgroundBlackScreen.OnHide();
         uiManager.ShowHUD();
         uiManager.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewEmpty);
+        Entity_Player.Instance.UserDatas = new(); // fake a login to prevent null reference checks
     }
 
     public void StartGame()

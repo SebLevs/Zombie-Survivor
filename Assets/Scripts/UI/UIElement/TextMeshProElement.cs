@@ -10,6 +10,8 @@ public class TextMeshProElement : MonoBehaviour
 
     protected virtual void OnAwake() { Element = GetComponent<TextMeshProUGUI>(); }
 
+    public void SetColor(Color color) => Element.color = color;
+
     public void AppendCharacterNoReturn(char c) => Element.text += c;
 
     public string AppendCharacter(char c)

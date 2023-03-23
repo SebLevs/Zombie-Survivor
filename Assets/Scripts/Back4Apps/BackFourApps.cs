@@ -33,7 +33,8 @@ public class BackFourApps : MonoBehaviour
         restApiKey = "o7oRBhPREvO3jXMzFgSlkk8VlkTdRygegBY09xiB"
     };
 
-
+// Keep for reference
+// Async method can cause issues with WebGL. Not recommended for the stability of this specific project.
 /*    public static async Task<UserDatas> GetUserDatas(UserDatas playerDatas)
     {
         string url = $"{urlUsers}{playerDatas.objectId}";

@@ -7,32 +7,44 @@ using UnityEngine.Networking;
 
 public class UserLoginController : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup canvasGroup;
+
     [Header("Logins")]
     [SerializeField] private TMP_InputField inputFieldEmail;
     [SerializeField] private TMP_InputField inputFieldPassword;
 
     [Header("Visual cue")]
     [SerializeField] private float cueVisibleTime = 3;
-    [SerializeField] private TMPLocalizable cueLocalization;
-    private SequentialTimer _timerVerifyEmailCue;
+    [SerializeField] private TMPLocalizable localizableCueEmail;
+    [SerializeField] private TMPLocalizablePair localizableCueLogin;
+    [SerializeField] private TMPLocalizablePair localizableCueSignup;
+    private GameObject _activeCue;
+    private SequentialTimer _timerDelayedGotoTitleScreen;
 
     private void Awake()
     {
-        _timerVerifyEmailCue = new(cueVisibleTime, () =>
+        _timerDelayedGotoTitleScreen = new(cueVisibleTime, () =>
         {
-            cueLocalization.gameObject.SetActive(false);
-            _timerVerifyEmailCue.Reset(isPaused: true);
+            SwitchActiveCue(null);
+            _timerDelayedGotoTitleScreen.Reset(isPaused: true);
             SceneLoadManager.Instance.GoToTitleScreen();
+            localizableCueEmail.gameObject.SetActive(false);
         });
-        _timerVerifyEmailCue.Reset(true);
+        _timerDelayedGotoTitleScreen.Reset(true);
     }
 
     private void Update()
     {
-        _timerVerifyEmailCue.OnUpdateTime();
+        _timerDelayedGotoTitleScreen.OnUpdateTime();
     }
 
-    public void SignUp() => StartCoroutine(SignUpIE());
+    public void SetInteractability(bool interactability)
+    {
+        canvasGroup.interactable = interactability;
+        canvasGroup.blocksRaycasts = interactability;
+    }
+
+    public void SignUp() { StopAllCoroutines(); StartCoroutine(SignUpIE()); }
     public IEnumerator SignUpIE()
     {
         using (var request = new UnityWebRequest(BackFourApps.urlUsers, "POST"))
@@ -50,19 +62,24 @@ public class UserLoginController : MonoBehaviour
 
             yield return request.SendWebRequest();
 
+            SwitchActiveCue(localizableCueSignup.gameObject);
+
             if (request.result != UnityWebRequest.Result.Success)
             {
 #if UNITY_EDITOR
                 Debug.LogWarning("ERROR: " + request.error + " | Email might already exist or is missing an @Foo");
 #endif
+                localizableCueSignup.SetPair(localizableCueSignup.SecondaryPair);
+                localizableCueSignup.LocalizeText();
                 yield break;
             }
 
-            LogIn();
+            localizableCueSignup.SetPair(localizableCueSignup.PrimaryPair);
+            localizableCueSignup.LocalizeText();
         }
     }
 
-    public void LogIn() => StartCoroutine(LogInIE());
+    public void LogIn() { StopAllCoroutines(); StartCoroutine(LogInIE()); }
     public IEnumerator LogInIE() // Get User from data base
     {
         string url = $"{BackFourApps.urlLogin}?username={inputFieldEmail.text}&password={inputFieldPassword.text}";
@@ -76,11 +93,20 @@ public class UserLoginController : MonoBehaviour
 
             yield return request.SendWebRequest();
 
+            SwitchActiveCue(localizableCueLogin.gameObject);
+
             if (request.result != UnityWebRequest.Result.Success)
             {
+#if UNITY_EDITOR
                 Debug.LogWarning("ERROR: " + request.error);
+#endif
+                localizableCueLogin.SetPair(localizableCueLogin.SecondaryPair);
+                localizableCueLogin.LocalizeText();
                 yield break;
             }
+
+            localizableCueLogin.SetPair(localizableCueLogin.PrimaryPair);
+            localizableCueLogin.LocalizeText();
 
             SetUserDatas(request);
             GoToTitleScreenHandler();
@@ -96,14 +122,18 @@ public class UserLoginController : MonoBehaviour
 
     private void GoToTitleScreenHandler()
     {
+        SetInteractability(false);
+        _timerDelayedGotoTitleScreen.StartTimer();
         if (!Entity_Player.Instance.UserDatas.emailVerified)
         {
-            cueLocalization.gameObject.SetActive(true);
-            _timerVerifyEmailCue.StartTimer();
+            localizableCueEmail.gameObject.SetActive(true);
         }
-        else
-        {
-            SceneLoadManager.Instance.GoToTitleScreen();
-        }
+    }
+
+    private void SwitchActiveCue(GameObject cue)
+    {
+        if (_activeCue != null) { _activeCue.SetActive(false); }
+        _activeCue = cue;
+        if (_activeCue != null) { _activeCue.SetActive(true); }
     }
 }
