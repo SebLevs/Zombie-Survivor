@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dac06ebbe6abf44f8b0d95a05710407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSpriteFlippable: 1
   m_healthBar: {fileID: 1522348299133518801}
   isReturnToPoolAtDistance: 1
   returnAtDistance: 40
@@ -378,6 +379,18 @@ MonoBehaviour:
       - m_Target: {fileID: 6657099178885778164}
         m_TargetAssemblyTypeName: Gold, Assembly-CSharp
         m_MethodName: GiveGoldToPLayerOnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4594350461714733977}
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: FullHeal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

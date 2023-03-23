@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -16,8 +15,8 @@ public class UserLoginController : MonoBehaviour
     {
         using (var request = new UnityWebRequest(BackFourApps.urlUsers, "POST"))
         {
-            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.ApplicationId);
-            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.RestApiKey);
+            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader(BackFourApps.revocSession, "1");
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
@@ -47,8 +46,8 @@ public class UserLoginController : MonoBehaviour
         string url = $"{BackFourApps.urlLogin}?username={inputFieldEmail.text}&password={inputFieldPassword.text}";
         using (var request = new UnityWebRequest(url, "GET"))
         {
-            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.ApplicationId);
-            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.RestApiKey);
+            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader(BackFourApps.revocSession, "1");
 
             request.downloadHandler = new DownloadHandlerBuffer();

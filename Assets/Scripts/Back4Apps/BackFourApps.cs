@@ -6,9 +6,9 @@ using UnityEngine.Networking;
 
 public class BfaApp
 {
-    public string AppName;
-    public string ApplicationId;
-    public string RestApiKey;
+    public string appName;
+    public string applicationId;
+    public string restApiKey;
 }
 
 public class BackFourApps : MonoBehaviour
@@ -28,9 +28,9 @@ public class BackFourApps : MonoBehaviour
     // classes
     public static BfaApp ZombieSurvivor = new BfaApp()
     {
-        AppName = "ZombieSurvivor",
-        ApplicationId = "MhFz3yEuNXtKsZBjcf5RsYgWD8QMigWUgDa6zikZ",
-        RestApiKey = "o7oRBhPREvO3jXMzFgSlkk8VlkTdRygegBY09xiB"
+        appName = "ZombieSurvivor",
+        applicationId = "MhFz3yEuNXtKsZBjcf5RsYgWD8QMigWUgDa6zikZ",
+        restApiKey = "o7oRBhPREvO3jXMzFgSlkk8VlkTdRygegBY09xiB"
     };
 
 
@@ -39,8 +39,8 @@ public class BackFourApps : MonoBehaviour
         string url = $"{urlUsers}{playerDatas.objectId}";
         using (var request = new UnityWebRequest(url, "GET"))
         {
-            request.SetRequestHeader(appIDS, ApplicationId);
-            request.SetRequestHeader(restAPIKey, RestApiKey);
+            request.SetRequestHeader(appIDS, applicationId);
+            request.SetRequestHeader(restAPIKey, restApiKey);
 
             request.downloadHandler = new DownloadHandlerBuffer();
 
