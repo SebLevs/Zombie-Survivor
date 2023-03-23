@@ -85,7 +85,10 @@ public class Player_Controller : MonoBehaviour, IUpdateListener
 
     public void OnOptionsMenu(InputAction.CallbackContext context)
     {
-        if (context.performed && !Entity_Player.Instance.Health.IsDead && !UIManager.Instance.ViewLoadingScreen.gameObject.activeSelf)
+        // TODO: Refactor into a player state if time: conditionnal check is becoming cancerous
+        if (context.performed && !Entity_Player.Instance.Health.IsDead 
+            && !UIManager.Instance.ViewLoadingScreen.gameObject.activeSelf 
+            && !UIManager.Instance.ViewLogin.gameObject.activeSelf)
         {
             GameManager gameManager = GameManager.Instance;
             UIManager uiManager = UIManager.Instance;

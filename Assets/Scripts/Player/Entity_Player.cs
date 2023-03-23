@@ -230,7 +230,6 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         Rb.velocity = Vector2.zero; 
         Controller.currentLookAngle = 0;
         _animator.speed = 0;
-        
     }
 
     public void OnResumeGame()

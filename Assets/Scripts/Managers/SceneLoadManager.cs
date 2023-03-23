@@ -99,7 +99,10 @@ public class SceneLoadManager : Manager<SceneLoadManager>
             UnloadCurrentScene();
             System.GC.Collect();
             uiManager.ViewBackgroundBlackScreen.OnShowQuick();
-            uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewTitleScreen);
+
+            uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewTitleScreen, 
+            showCallback: () => uiManager.ViewPromoCode.TryShowView());
+
             IsInTitleScreen = true;
         });
     }

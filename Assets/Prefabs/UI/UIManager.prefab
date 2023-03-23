@@ -282,7 +282,7 @@ MonoBehaviour:
   <ViewBossHealthBars>k__BackingField: {fileID: 4586886178289029045}
   <ViewInteract>k__BackingField: {fileID: 1925483048172899154}
   <ViewLogin>k__BackingField: {fileID: 7136887258408849206}
-  <ViewPromoCode>k__BackingField: {fileID: 7610177514840681120}
+  <ViewPromoCode>k__BackingField: {fileID: 5018128328706791554}
 --- !u!82 &4603738033266670538
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2418,15 +2418,15 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 140408364853101004, guid: 31df485fa992cff4fb7ea2360edfdbf4, type: 3}
   m_PrefabInstance: {fileID: 4788539827095564285}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7610177514840681120 stripped
+--- !u!114 &5018128328706791554 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3163927975513621853, guid: 31df485fa992cff4fb7ea2360edfdbf4, type: 3}
+  m_CorrespondingSourceObject: {fileID: 565121191177877375, guid: 31df485fa992cff4fb7ea2360edfdbf4, type: 3}
   m_PrefabInstance: {fileID: 4788539827095564285}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d479b4c03e61547a5da8bddac8b294, type: 3}
+  m_Script: {fileID: 11500000, guid: 000de0df6078b9644a667c1f83621afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5199769658115822086
@@ -2793,7 +2793,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_Pivot.y
@@ -2805,7 +2805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2813,7 +2813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_AnchorMin.y
@@ -2857,11 +2857,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 261.82996
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -11.002197
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450890, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2877,7 +2877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509158461506450891, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}
       propertyPath: m_Name
-      value: View Login pannel
+      value: View Login Screen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e64ab1e31e1b58848b63890f3c4c5ea2, type: 3}

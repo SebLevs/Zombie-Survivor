@@ -7,8 +7,30 @@ using UnityEngine.Networking;
 
 public class UserLoginController : MonoBehaviour
 {
-    [SerializeField] TMP_InputField inputFieldEmail;
-    [SerializeField] TMP_InputField inputFieldPassword;
+    [Header("Logins")]
+    [SerializeField] private TMP_InputField inputFieldEmail;
+    [SerializeField] private TMP_InputField inputFieldPassword;
+
+    [Header("Visual cue")]
+    [SerializeField] private float cueVisibleTime = 3;
+    [SerializeField] private TMPLocalizable cueLocalization;
+    private SequentialTimer _timerVerifyEmailCue;
+
+    private void Awake()
+    {
+        _timerVerifyEmailCue = new(cueVisibleTime, () =>
+        {
+            cueLocalization.gameObject.SetActive(false);
+            _timerVerifyEmailCue.Reset(isPaused: true);
+            SceneLoadManager.Instance.GoToTitleScreen();
+        });
+        _timerVerifyEmailCue.Reset(true);
+    }
+
+    private void Update()
+    {
+        _timerVerifyEmailCue.OnUpdateTime();
+    }
 
     public void SignUp() => StartCoroutine(SignUpIE());
     public IEnumerator SignUpIE()
@@ -60,9 +82,28 @@ public class UserLoginController : MonoBehaviour
                 yield break;
             }
 
-            // Using Newtonsoft Json
-            UserDatas userDatas = JsonConvert.DeserializeObject<UserDatas>(request.downloadHandler.text);
-            Entity_Player.Instance.UserDatas = userDatas;
+            SetUserDatas(request);
+            GoToTitleScreenHandler();
+        }
+    }
+
+    /// <summary>The logic uses Newtonsoft Json package</summary>
+    private void SetUserDatas(UnityWebRequest request)
+    {
+        UserDatas userDatas = JsonConvert.DeserializeObject<UserDatas>(request.downloadHandler.text);
+        Entity_Player.Instance.UserDatas = userDatas;
+    }
+
+    private void GoToTitleScreenHandler()
+    {
+        if (!Entity_Player.Instance.UserDatas.emailVerified)
+        {
+            cueLocalization.gameObject.SetActive(true);
+            _timerVerifyEmailCue.StartTimer();
+        }
+        else
+        {
+            SceneLoadManager.Instance.GoToTitleScreen();
         }
     }
 }
