@@ -9,6 +9,7 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
     [Header("Language")]
     public Languages Language = Languages.ENGLISH;
 
+    public string[] ObjectLocalizationHeaders;
     public Dictionary<string, ObjectLocalizations> ObjectsLocalizations;
 
     private HashSet<ILocalizationListener> _localizationListeners;
@@ -19,6 +20,7 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
         ObjectsLocalizations = new();
         _localizationListeners = new();
         TSVLocalizer.SetTranslationDatasFromFile(ObjectsLocalizations, _pathTsvUIDefaults, 1, 1);
+        ObjectLocalizationHeaders = TSVLocalizer.GetHeadersAsString(_pathTsvUIDefaults, 2);
         LoadFromPlayerPref();
     }
 
