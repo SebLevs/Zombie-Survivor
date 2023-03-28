@@ -9,7 +9,6 @@ public class UserDatas
     public string objectId;
     public string username;
     public string key;
-    public int currency;
     public string email;
     public DateTime createdAt;
     public DateTime updatedAt;
