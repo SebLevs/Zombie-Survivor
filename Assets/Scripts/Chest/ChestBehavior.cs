@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -5,6 +6,8 @@ using TMP_Text = TMPro.TMP_Text;
 
 public class ChestBehavior : MonoBehaviour, IUpdateListener
 {
+    public static List<ChestBehavior> AllChest;
+    
     public int minValue;
     public int maxValue;
 
@@ -40,6 +43,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         _commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
         _uiValue.text = "$ " + chestValue;
         uiManager = UIManager.Instance;
+        AllChest.Add(this);
     }
 
     private void OnTriggerStay2D(Collider2D col)
