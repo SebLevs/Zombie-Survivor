@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -13,6 +14,8 @@ public class BfaApp
 
 public class BackFourApps : MonoBehaviour
 {
+    public static Dictionary<string, string> Account = new();
+
     // Shorthands for recurring string calls used in request headers
     public static readonly string appIDS = "X-Parse-Application-Id";
     public static readonly string restAPIKey = "X-Parse-REST-API-Key";
