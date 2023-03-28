@@ -2,7 +2,7 @@ public class EmailFormatHandler : IHandleSignUpError
 {
     public string ErrorMessageKey()
     {
-        return "Some key";
+        return "error email format";
     }
 
     public bool HandleError(string message)
