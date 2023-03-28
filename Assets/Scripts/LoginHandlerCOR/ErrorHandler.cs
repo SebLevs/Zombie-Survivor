@@ -17,8 +17,9 @@ public class ErrorHandler : MonoBehaviour
                 return handler.Value.ErrorMessageKey();
             }
         }
-        return "SUCCESS!";
-    }   
+        return "tmp valid login";
+    }
+
     public string TrySignUpHandleError(string email, string password)
     {
         for (int i = signUpErrorHandler.Count; i >= 0; i--)
@@ -30,6 +31,6 @@ public class ErrorHandler : MonoBehaviour
             }
         }
 
-        return "SUCCESS!";
+        return "tmp valid signup";
     }
 }
