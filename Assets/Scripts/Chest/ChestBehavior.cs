@@ -35,6 +35,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         _uiValue = GetComponentInChildren<TMP_Text>();
         _anim = GetComponent<Animator>();
         _col = GetComponent<Collider2D>();
+        if (AllChest == null) { AllChest = new(); }
     }
 
     private void Start()
