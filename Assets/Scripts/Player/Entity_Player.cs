@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseListener
 {
@@ -7,7 +8,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
 
     public readonly int Mask = 3;
 
-    [SerializeField] private string test;
+    [HideInInspector] public PermanentStats permanentStats;
 
     [field: Header("Variables")]
     [SerializeField] private float baseMovSpeed;
@@ -31,7 +32,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
 
     [field: Header("DodgeControl")]
     [SerializeField] private float baseDodgeInterval;
-    public float DodgeInterval;
+    public float dodgeInterval;
     public bool canDodge = true;
     public float dodgeDistance;
     [HideInInspector]
@@ -75,11 +76,12 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         col = GetComponent<Collider2D>();
         Controller = GetComponent<Player_Controller>();
         StateContainer = new Player_StateContainer(this);
+        permanentStats = GetComponent<PermanentStats>();
         StateController = new StateController<Entity_Player>(StateContainer.State_Idle);
         DesiredActions = new PlayerActionsContainer();
         specialAttackDelay = new SequentialTimer(specialAttackSpeed);
         attackDelay = new SequentialTimer(attackSpeed);
-        dodgeDelay = new SequentialTimer(DodgeInterval);
+        dodgeDelay = new SequentialTimer(dodgeInterval);
         Health = GetComponent<Health>();
         audios = GetComponent<PlayerAudioContainer>();
         Input = GetComponent<PlayerInput>();
@@ -93,6 +95,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         MovSpeed = 5.0f;
         BulletSpeed = 12.0f;
         uiManager = UIManager.Instance;
+        
         RefreshPlayerStats();
     }
 
@@ -114,7 +117,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         MovSpeed = baseMovSpeed;
         attackSpeed = baseAttackSpeed;
         specialAttackSpeed = baseSpecialAttackSpeed;
-        DodgeInterval = baseDodgeInterval;
+        dodgeInterval = baseDodgeInterval;
     }
 
     public void RefreshHealthBar()
@@ -141,7 +144,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
     {
         specialAttackDelay = new SequentialTimer(specialAttackSpeed);
         attackDelay = new SequentialTimer(attackSpeed);
-        dodgeDelay = new SequentialTimer(DodgeInterval);
+        dodgeDelay = new SequentialTimer(dodgeInterval);
         attackDelay.JumpToTime(0f);
         specialAttackDelay.JumpToTime(0f);
         dodgeDelay.JumpToTime(0f);
@@ -158,7 +161,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         uiManager.ViewPlayerStats.AttackCooldown.Element.text = attackSpeed.ToString("0.00");
         uiManager.ViewPlayerStats.BoomerangCooldown.Element.text = specialAttackSpeed.ToString("0.00");
         uiManager.ViewPlayerStats.BoomerangDistance.Element.text = boomDistance.ToString("0.00");
-        uiManager.ViewPlayerStats.DodgeDelay.Element.text = DodgeInterval.ToString("0.00");
+        uiManager.ViewPlayerStats.DodgeDelay.Element.text = dodgeInterval.ToString("0.00");
     }
 
     public void OnUpdate()
@@ -201,8 +204,6 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
             float fillingNormalized = dodgeDelay.CurrentTime / dodgeDelay.TargetTime;
             uiManager.RefreshCooldownVisuals(uiManager.ViewPlayerCooldowns.SpaceBarSkill, remainingTime, fillingNormalized);
         }
-
-        test = StateController.CurrentState.ToString();
     }
 
     public void OnDisable()
