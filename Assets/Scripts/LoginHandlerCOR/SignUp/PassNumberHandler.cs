@@ -4,7 +4,7 @@ public class PassNumberHandler : IHandleSignUpError
 {
     public string ErrorMessageKey()
     {
-        return "SomeKey";
+        return "error password number";
     }
 
     public bool HandleError(string message)

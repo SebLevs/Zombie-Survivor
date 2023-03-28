@@ -105,10 +105,17 @@ public class UserLoginController : MonoBehaviour
                 yield break;
             }
 
+            SetUserDatas(request);
+            if (!Entity_Player.Instance.UserDatas.emailVerified)
+            {
+                localizableCueLogin.SetPair(localizableCueLogin.SecondaryPair); // Please verify email message
+                localizableCueLogin.LocalizeText();
+                yield break;
+            }
+
             localizableCueLogin.SetPair(localizableCueLogin.PrimaryPair);
             localizableCueLogin.LocalizeText();
 
-            SetUserDatas(request);
             GoToTitleScreenHandler();
         }
     }

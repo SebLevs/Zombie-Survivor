@@ -2,7 +2,7 @@ public class EmailUsedHandler : IHandleSignUpError
 {
     public string ErrorMessageKey()
     {
-        return "Some Key";
+        return "error email already in use";
     }
 
     public bool HandleError(string message)

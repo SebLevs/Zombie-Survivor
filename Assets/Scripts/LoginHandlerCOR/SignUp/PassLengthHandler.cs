@@ -2,7 +2,7 @@ public class PassLengthHandler : IHandleSignUpError
 {
     public string ErrorMessageKey()
     {
-        return "Some key";
+        return "error password length";
     }
 
     public bool HandleError(string message)
