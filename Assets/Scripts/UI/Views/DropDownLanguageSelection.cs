@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System;
 using Unity.VisualScripting;
 
 public class DropDownLanguageSelection : MonoBehaviour
@@ -13,7 +12,6 @@ public class DropDownLanguageSelection : MonoBehaviour
         InitDropdownLanguageItems();
         SetValueAsCurrentLanguage();
     }
-
 
     private void OnDisable()
     {
@@ -39,7 +37,6 @@ public class DropDownLanguageSelection : MonoBehaviour
         int value = ((int)localizationManager.Language) - 2;
         DropDownLanguages.value = value;
         Label.text = DropDownLanguages.options[value].text;
-        
     }
 
 /*    private void InitDropdownLanguageItems()

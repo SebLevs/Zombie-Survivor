@@ -22,8 +22,8 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
         base.OnAwake();
         ObjectsLocalizations = new();
         _localizationListeners = new();
-        TSVLocalizer.SetTranslationDatasFromFile(ObjectsLocalizations, _pathTsvUIDefaults, 1, 1);
         ObjectLocalizationHeaders = TSVLocalizer.GetHeadersAsString(_pathTsvUIDefaults, 2);
+        TSVLocalizer.SetTranslationDatasFromFile(ObjectsLocalizations, _pathTsvUIDefaults, 1, 1);
         LoadFromPlayerPref();
     }
 
