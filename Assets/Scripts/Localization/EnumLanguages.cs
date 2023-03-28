@@ -7,5 +7,8 @@
 public enum Languages
 {
     ENGLISH = 2,
-    FRANÇAIS,
+    FRENCH,
+    SPANISH,
+    JAPANESE,
+    CHINESESIMPLIFIED
 }
