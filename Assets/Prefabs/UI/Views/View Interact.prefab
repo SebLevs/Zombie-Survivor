@@ -111,7 +111,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: E
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: efc29d6de310b314bb622027fc276ff0, type: 2}
   m_sharedMaterial: {fileID: -2668973508969171857, guid: 0b8653871ba38f44691c10eaa92ad5da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ce3f54247171f419826bc2735b4be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quickShowHideSpeed: 10
+  animationSpeedModifier: 10
   m_defaultShowEvent:
     m_PersistentCalls:
       m_Calls: []

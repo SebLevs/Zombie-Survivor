@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: IF TIME: Refactor language selection to associate a specific FontAsset on a per language basis
+// ... Currently uses Noto Simplified chinese which allows for all currently used languages (roman-based, japanese, chinese)
+
 public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHandler
 {
     private const string _playerPrefKey = "Language";
