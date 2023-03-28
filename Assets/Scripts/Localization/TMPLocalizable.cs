@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -5,7 +7,6 @@ public class TMPLocalizable : MonoBehaviour, ILocalizationListener
 {
     [SerializeField] private string key;
     private TextMeshProUGUI _textElement;
-    private LocalizationManager _localizationManager;
 
     private void Awake()
     {
@@ -14,18 +15,23 @@ public class TMPLocalizable : MonoBehaviour, ILocalizationListener
 
     private void Start()
     {
-        _localizationManager = LocalizationManager.Instance;
-        _localizationManager.SubscribeToLocalization(this);
-        LocalizeText();
+        LocalizationManager.Instance.SubscribeToLocalization(this);
+        if (key != "") { LocalizeText(); }
     }
 
     public void LocalizeText()
     {
-        var objectLocalizations = _localizationManager.ObjectsLocalizations;
-        Languages language = _localizationManager.Language;
+        LocalizationManager localizationManager = LocalizationManager.Instance;
+        var objectLocalizations = localizationManager.ObjectsLocalizations;
+        Languages language = localizationManager.Language;
         _textElement.text = TSVLocalizer.GetObjectLocalizationValue(objectLocalizations, key, language);
     }
 
-    public void SetKey(string key) => this.key = key;
-    public void SetTextColor(Color color) => _textElement.color = color;
+    public void LocalizeExternalText(string externalKey)
+    {
+        LocalizationManager localizationManager = LocalizationManager.Instance;
+        var objectLocalizations = localizationManager.ObjectsLocalizations;
+        Languages language = localizationManager.Language;
+        _textElement.text = TSVLocalizer.GetObjectLocalizationValue(objectLocalizations, externalKey, language);
+    }
 }
