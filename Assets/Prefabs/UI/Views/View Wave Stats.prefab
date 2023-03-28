@@ -5540,7 +5540,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Wave name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: efc29d6de310b314bb622027fc276ff0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 999fe8cffb99e0f4c9bc7929c1933e6e, type: 2}
   m_sharedMaterial: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6526,7 +6526,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Wave
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: efc29d6de310b314bb622027fc276ff0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 999fe8cffb99e0f4c9bc7929c1933e6e, type: 2}
   m_sharedMaterial: {fileID: 1050256065660690875, guid: 15b6e2535eee8bd4abdea40ed25dcf89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6587,7 +6587,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 5, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 1
