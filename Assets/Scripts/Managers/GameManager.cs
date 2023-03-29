@@ -7,7 +7,8 @@ public class GameManager : Manager<GameManager>
 
     [Header("PlayRandom test setup")]
     [SerializeField] private bool _isPlayTest;
-    [Min(1)][SerializeField] private int _playTestScene = 1; // TODO: Refactor into a scene scriptable object for easier testing
+    [SerializeField] private SceneData testScene;
+
     private HashSet<IPauseListener> _pauseListeners;
 
     protected override void OnAwake()
@@ -41,26 +42,14 @@ public class GameManager : Manager<GameManager>
 
     private void InitiatePlayTest()
     {
-        Debug.LogWarning($"PLAY TEST: Started on scene: {_playTestScene}");
-        SceneLoadManager.Instance.OnLoadScene(_playTestScene);
+        Debug.LogWarning($"PLAY TEST: Started on scene: {testScene.name}");
+        SceneLoadManager.Instance.LoadScene(testScene);
 
         UIManager uiManager = UIManager.Instance;
         uiManager.ViewBackgroundBlackScreen.OnHide();
         uiManager.ShowHUD();
         uiManager.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewEmpty);
         Entity_Player.Instance.UserDatas = new(); // fake a login to prevent null reference checks
-    }
-
-    public void StartGame()
-    {
-        UIManager uiManager = UIManager.Instance;
-        uiManager.ViewPromoCode.OnHideQuick();
-        uiManager.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewLoadingScreen,
-        showCallback: () =>
-        {
-            SceneLoadManager.Instance.OnLoadScene(1);
-            uiManager.ViewBackgroundBlackScreen.OnHideQuick();
-        });
     }
 
     public void QuitGame()

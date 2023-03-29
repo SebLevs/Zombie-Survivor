@@ -4,43 +4,39 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : Manager<SceneLoadManager>
 {
+    [field: SerializeField] public SceneData baseGameplayScene { get; private set; }
+
     public bool IsInTitleScreen = true;
 
-    // using UnityEditor;
-    // [SerializeField] private SceneAsset _levelOne; // Will prevent build because it uses unity editor | use a Scriptable object
     [SerializeField] private float _minimalWaitTime;
     private AsyncOperation async;
-    private int currentScene = -1;
+    private SceneData currentScene = null;
 
-    // TODO: Make a scriptable object for current scene which can contain scripts specifying additive scenes when necesarry
-    // ... Refer to that current scene to unloadCurrentScene and UnloadAdditiveScene
-    public void UnloadCurrentScene()
+    private void UnloadCurrentScene()
     {
-        if (currentScene == -1) { return; }
-        SceneManager.UnloadSceneAsync(currentScene);
-        currentScene = -1;
+        if (currentScene == null) { return; }
+        SceneManager.UnloadSceneAsync(currentScene.name);
+        currentScene = null;
     }
 
-    public void UnloadAdditiveScene(int scene)
+    public void LoadScene(SceneData scene)
     {
-        SceneManager.UnloadSceneAsync(currentScene);
+        UIManager uiManager = UIManager.Instance;
+        uiManager.ViewPromoCode.OnHideQuick();
+        uiManager.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewLoadingScreen,
+        showCallback: () =>
+        {
+            PrepareSceneLoad(scene);
+            uiManager.ViewBackgroundBlackScreen.OnHideQuick();
+        });
     }
 
-    public void OnLoadScene(string scene)
+    private void PrepareSceneLoad(SceneData scene)
     {
-        currentScene = SceneManager.GetSceneByName(scene).buildIndex;
-        async = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-        //async.allowSceneActivation = false;
-        StartCoroutine(LoadAsync());
-    }
-
-    public void OnLoadScene(int scene)
-    {
+        UnloadCurrentScene();
         currentScene = scene;
-        async = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-        //async.allowSceneActivation = false;
+        async = SceneManager.LoadSceneAsync(currentScene.name, LoadSceneMode.Additive);
         StartCoroutine(LoadAsync());
-        //CurrentScene = scene;
     }
 
     private IEnumerator LoadAsync()
@@ -66,14 +62,12 @@ public class SceneLoadManager : Manager<SceneLoadManager>
             UIManager.Instance.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewEmpty);
         });
 
-        //async.allowSceneActivation = true;
         async = null;
         InitScene();
     }
 
-    public void InitScene()
+    private void InitScene()
     {
-        // TODO: Delete if SceneController.cs is implemented in the scope of the project
         AudioManager.Instance.PlayLoopingClip(AudioManager.Instance.AmbianceClip);
 
         IsInTitleScreen = false;
@@ -89,7 +83,6 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         uiManager.ViewBossHealthBars.OnHideQuick();
         uiManager.HideHUD();
 
-        // TODO: Delete if SceneController.cs is implemented in the scope of the project
         AudioManager.Instance.StopPlayingLoopingClip();
 
         uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewLoadingScreen, 

@@ -1421,4 +1421,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPlayTest: 0
-  _playTestScene: 1
+  testScene: {fileID: 0}
