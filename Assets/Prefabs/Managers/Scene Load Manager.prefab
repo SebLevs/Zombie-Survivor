@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b998d2a86a3f7bb43898bec131391071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <baseGameplayScene>k__BackingField: {fileID: 11400000, guid: 0f8f7da94b4eb074488b5f915861f14f, type: 2}
+  <baseGameplayScene>k__BackingField: {fileID: 11400000, guid: 71318270d24368f4e8c66feacb864277, type: 2}
   IsInTitleScreen: 1
   _minimalWaitTime: 2.5
