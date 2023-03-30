@@ -28,7 +28,7 @@ public class TextMeshProElement : MonoBehaviour
     }
 
     /// <summary>
-    /// Format of type: "'hh' : 'mm' : 'ss' : 'ff'"<br/>
+    /// Format of command: "'hh' : 'mm' : 'ss' : 'ff'"<br/>
     /// Can be any individual part of the format
     /// </summary>
     public void PrintTimeInSeconds(float seconds, string format = "mm' : 'ss' : 'ff'")
@@ -38,7 +38,7 @@ public class TextMeshProElement : MonoBehaviour
     }
 
     /// <summary>
-    /// Format of type: "'hh' : 'mm' : 'ss' : 'ff'"<br/>
+    /// Format of command: "'hh' : 'mm' : 'ss' : 'ff'"<br/>
     /// Can be any individual part of the format
     /// </summary>
     public static void PrintTimeInSeconds(float seconds, TextMeshProElement tmpElement, string format)

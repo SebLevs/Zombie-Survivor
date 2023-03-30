@@ -28,6 +28,9 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
 
     private bool isInteractable => _player.currentGold >= chestValue;
 
+    [Header("Chest Type")]
+    [SerializeField] private bool isRandomBonus = true;
+    [SerializeField] private CommandType specificBonusType;
 
     private void Awake()
     {
@@ -99,13 +102,40 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         }
     }
 
+    public void CallCommand(CommandType type)
+    {
+        ICommand icommand;
+        if (_commandInvoker.ChestPowerUpDic.TryGetValue(type, out icommand))
+        {
+            //ICommand icommand = _commandInvoker.ChestPowerUpDic[type];
+            string name = type.ToString().Replace("_", " ");
+            uiManager.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("Bonus gained!\n" + name);
+            _commandInvoker.DoCommand(icommand);
+
+            _player.RefreshPlayerStats();
+            _player.RefreshHealthBar();
+        }
+        else
+        {
+            uiManager.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("No more upgrades...");
+        }
+    }
+
     public void OnUpdate()
     {
         if (_player.DesiredActions.Contains(PlayerActionsType.INTERACT) && _canOpenChest)
         {
             _player.DesiredActions.ConsumeAllActions(PlayerActionsType.INTERACT);
             _canOpenChest = false;
-            TryOpenChest();
+
+            if (isRandomBonus)
+            {
+                TryOpenChest();
+            }
+            else
+            {
+                CallCommand(specificBonusType);
+            }
         }
     }
 

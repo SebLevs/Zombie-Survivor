@@ -6,13 +6,12 @@ public class CommandInvoker : ScriptableObject
 {
     public List<CommandWrapper> promptOnly;
     public List<CommandWrapper> promptAndChest;
-    
+
     public readonly Dictionary<CommandType, ICommand> CommandPromptDic = new();
     public readonly Dictionary<CommandType, ICommand> ChestPowerUpDic = new();
-    
+
     public AudioElement powerUpSound;
-    
-    
+
     public void Init()
     {
         CommandPromptDic.Clear();
