@@ -11,7 +11,7 @@ public class ZombieBossHealthProxy : Health
     {
         damage *= _damageModifier;
         base.Hit(damage);
-        proxy.Health.Hit(damage);
+        proxy?.Health.Hit(damage);
     }
 
     public void HealProxyClamped()

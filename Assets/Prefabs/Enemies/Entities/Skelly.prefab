@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.05007122
       objectReference: {fileID: 0}
+    - target: {fileID: 5161558789705369269, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6657099178885778164, guid: 5b074fa012b68344e9d5e8cc5d5bdd45, type: 3}
       propertyPath: manGoldValue
       value: 15
