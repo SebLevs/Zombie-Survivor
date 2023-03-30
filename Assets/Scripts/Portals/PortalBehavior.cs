@@ -4,7 +4,7 @@ using UnityEngine;
 public class PortalBehavior : MonoBehaviour
 {
     [SerializeField] Transform bossSpawnPoint;
-    private const int GoldNeeded = 300;
+    [SerializeField] private int GoldNeeded = 300;
     private Entity_Player _player;
     [SerializeField] private PortalManager _portalManager;
     private Collider2D _collider;
@@ -64,6 +64,4 @@ public class PortalBehavior : MonoBehaviour
         _text.gameObject.SetActive(true);
         _visuals.enabled = true;
     }
-    
-    
 }

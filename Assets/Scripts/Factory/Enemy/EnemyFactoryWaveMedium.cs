@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptables/Factories/Enemy Factory/Medium", fileName = "Medium enemy factory")]

@@ -19,20 +19,7 @@ public class PracticeRing : MonoBehaviour
     public void Cleanup()
     {
         waveController.enabled = false;
-        Collider2D[] collisions =  new Collider2D[100];
-        Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(100, 100), 0, collisions);
-
-        foreach (var collision in collisions)
-        {
-            if (!collision) { continue; }
-            Enemy enemy = collision.GetComponent<Enemy>();
-
-            if (enemy)
-            {
-                enemy.ReturnToPool();
-            }
-        }
-
+        EnemyManager.Instance.KillAllCurrentlyActiveEnemies();
         UIManager.Instance.ViewWaveStats.OnHide();
     }
 }

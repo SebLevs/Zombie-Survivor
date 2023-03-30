@@ -17,12 +17,12 @@ public class ZombieDeadState : EnemyState
         m_controller.Context.PathfinderUtility.DisablePathfinding();
         m_controller.Context.SetColliderEnable(false);
 
-        int temp = Random.Range(0, 20);
+/*        int temp = Random.Range(0, 20);
         if (temp == 1)
         {
             EnemyManager.Instance.PermaGold.GetFromAvailable(m_controller.transform.position, Quaternion.identity);
-        }
-        EnemyManager.Instance.PermaGold.GetFromAvailable(m_controller.transform.position, Quaternion.identity);
+        }*/
+        //EnemyManager.Instance.PermaGold.GetFromAvailable(m_controller.transform.position, Quaternion.identity);
     }
 
     public override void OnExit()
