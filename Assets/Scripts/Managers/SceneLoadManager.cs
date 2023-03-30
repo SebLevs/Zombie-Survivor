@@ -21,7 +21,9 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
     public void LoadScene(SceneData scene)
     {
+        GameManager.Instance.PauseGame();
         UIManager uiManager = UIManager.Instance;
+        uiManager.HideHUD();
         uiManager.ViewPromoCode.OnHideQuick();
         uiManager.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewLoadingScreen,
         showCallback: () =>

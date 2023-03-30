@@ -15,11 +15,14 @@ public class TutorialBossPortal : MonoBehaviour
 
     private void Awake()
     {
-        // TODO: Refactor outside of Awake to avoid concurent get set of singleton conflicts
-        _player = Entity_Player.Instance;
         _tmpCurrencyRequired = GetComponentInChildren<TMP_Text>();
         _tmpCurrencyRequired.text = "$0";
         bossArenaBoundaries = new List<GameObject>();
+    }
+
+    private void Start()
+    {
+        _player = Entity_Player.Instance;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
