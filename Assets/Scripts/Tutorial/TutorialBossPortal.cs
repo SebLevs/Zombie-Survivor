@@ -47,6 +47,7 @@ public class TutorialBossPortal : MonoBehaviour
     {
         foreach (GameObject boundary in bossArenaBoundaries)
         {
+            Debug.Log("AAA");
             boundary.SetActive(true);
         }
     }
