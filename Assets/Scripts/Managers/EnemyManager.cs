@@ -36,27 +36,39 @@ public class EnemyManager : Manager<EnemyManager>
 
     private void InitPools()
     {
-        // Melee
         Larvae.InitDefaultQuantity();
-
         Zombies.InitDefaultQuantity();
 
-        // Ranged
         Skeletons.InitDefaultQuantity();
 
-        // ZombieBoss
         ZombieBoss.InitDefaultQuantity();
+
+        //PermaGold.InitDefaultQuantity();
     }
 
     [ContextMenu("Kill all currently active enemies")]
     public void KillAllCurrentlyActiveEnemies()
     {
-        Debug.Log(CurrentlyActiveEnemies.Count);
-        
-        for (int i = 0; i < CurrentlyActiveEnemies.Count; i++)
+        // Keep for reference
+        // Huge lag when called: To be debugged (Permanent currency drops that instantiate at infinity one inside the other when enemy is killed?)
+/*        for (int i = 0; i < CurrentlyActiveEnemies.Count; i++)
         {
             //CurrentlyActiveEnemies.ElementAt(i).OnStopAllCoroutines();
             CurrentlyActiveEnemies.ElementAt(i).Kill();
+        }*/
+
+        Collider2D[] collisions = new Collider2D[100];
+        Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(500, 500), 0, collisions);
+
+        foreach (var collision in collisions)
+        {
+            if (!collision) { break; }
+            Enemy enemy = collision.GetComponent<Enemy>();
+
+            if (enemy)
+            {
+                enemy.ReturnToPool();
+            }
         }
     }
 }

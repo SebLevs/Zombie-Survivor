@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene Practice Room.unity
     guid: aad948cf9cd7f2c42a7d43a6a2fbb3b4
+  - enabled: 1
+    path: Assets/Scenes/Scene Tutorial.unity
+    guid: 94555535fde352f408b5e9e71e0c1a88
   m_configObjects: {}

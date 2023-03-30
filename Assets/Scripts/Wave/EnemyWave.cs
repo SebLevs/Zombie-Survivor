@@ -20,10 +20,10 @@ public class EnemyWave
     [field:Header("Wave end event")]
     [field: SerializeField] public UnityEvent _waveEndEvent { get; private set; }
 
-    private WaveController m_WaveController;
+    private IWaveController m_WaveController;
     private UIManager uiManager;
 
-    public void Init(WaveController waveController, Action waveEndsCallback = null)
+    public void Init(IWaveController waveController, Action waveEndsCallback = null)
     {
         m_WaveController = waveController;
         _spawnerStopWatch = new SequentialStopwatch(GetRandomTimeInRange());
@@ -50,8 +50,8 @@ public class EnemyWave
 
         UpdateViewWaveStatsVisuals();
 
-        int trueEnemyCount = m_WaveController.EnemyManager.CurrentlyActiveEnemies.Count + lowQuantitySpawns + highQuantitySpawns;
-        if (trueEnemyCount > m_WaveController.MaximumEnemyCount)
+        int trueEnemyCount = EnemyManager.Instance.CurrentlyActiveEnemies.Count + lowQuantitySpawns + highQuantitySpawns;
+        if (trueEnemyCount > m_WaveController.GetMaximumEnemyCount())
         { return false; }
 
         if (_spawnerStopWatch.HasReachedTarget())
@@ -95,5 +95,10 @@ public class EnemyWave
         {
             _enemyFactory.CreateHighQuantityEnemy(m_WaveController.GetRandomSpawnPoint());
         }
+    }
+
+    public void EndWave()
+    {
+        _spawnerStopWatch.SetNewTarget(0);
     }
 }

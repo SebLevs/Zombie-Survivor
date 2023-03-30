@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using UnityEngine;
 
 public class UserDatas
 {
@@ -12,6 +10,7 @@ public class UserDatas
     public string email;
     public DateTime createdAt;
     public DateTime updatedAt;
+    public bool hasCompletedTutorial = false;
 
     public override string ToString()
     {

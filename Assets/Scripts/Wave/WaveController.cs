@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveController : MonoBehaviour, IUpdateListener
+public class WaveController : MonoBehaviour, IWaveController, IUpdateListener
 {
     [field:Header("Maximum enemy count allowed")]
     [field:SerializeField] public int MaximumEnemyCount { get; private set; }
@@ -60,6 +60,8 @@ public class WaveController : MonoBehaviour, IUpdateListener
     {
         UpdateManager.Instance.SubscribeToUpdate(this);
     }
+
+    public int GetMaximumEnemyCount() { return MaximumEnemyCount; }
 
     public bool TrySetSpawnPointAsPlayer()
     {
