@@ -51,9 +51,11 @@ public class EnemyManager : Manager<EnemyManager>
     [ContextMenu("Kill all currently active enemies")]
     public void KillAllCurrentlyActiveEnemies()
     {
+        Debug.Log(CurrentlyActiveEnemies.Count);
+        
         for (int i = 0; i < CurrentlyActiveEnemies.Count; i++)
         {
-            CurrentlyActiveEnemies.ElementAt(i).OnStopAllCoroutines();
+            //CurrentlyActiveEnemies.ElementAt(i).OnStopAllCoroutines();
             CurrentlyActiveEnemies.ElementAt(i).Kill();
         }
     }

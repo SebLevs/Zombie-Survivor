@@ -10,28 +10,29 @@ public class PracticeRing : MonoBehaviour
         waveController.enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player")) { return; }
-        StartPractice();
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player")) { return; }
-        Cleanup();
-    }
-
-    private void StartPractice()
+    public void StartPractice()
     {
         UIManager.Instance.ViewWaveStats.OnShow();
         waveController.enabled = true;
     }
 
-    private void Cleanup()
+    public void Cleanup()
     {
         waveController.enabled = false;
-        EnemyManager.Instance.KillAllCurrentlyActiveEnemies();
+        Collider2D[] collisions =  new Collider2D[100];
+        Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(100, 100), 0, collisions);
+
+        foreach (var collision in collisions)
+        {
+            if (!collision) { continue; }
+            Enemy enemy = collision.GetComponent<Enemy>();
+
+            if (enemy)
+            {
+                enemy.ReturnToPool();
+            }
+        }
+
         UIManager.Instance.ViewWaveStats.OnHide();
     }
 }

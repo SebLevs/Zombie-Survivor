@@ -85,7 +85,8 @@ public class Enemy : MonoBehaviour, IPoolable, IUpdateListener, IPauseListener
 
     public void Kill() 
     {
-        Health.OnInstantDeath();
+        //Health.OnInstantDeath();
+        ReturnToPool();
     }
 
     public virtual void OnUpdate()

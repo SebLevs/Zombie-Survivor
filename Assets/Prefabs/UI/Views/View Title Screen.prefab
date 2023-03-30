@@ -796,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: key
-      value: TEST
+      value: tmp practice room
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2883959678100397361, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
