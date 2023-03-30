@@ -110,6 +110,8 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
 
         ResetGold();
         ResetSkillsValues();
+
+        arrow.gameObject.SetActive(true);
     }
 
     private void ResetSkillsValues()
