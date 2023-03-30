@@ -32,13 +32,28 @@ public class UserLoginController : MonoBehaviour
     {
         _timerDelayedGotoTitleScreen = new(cueVisibleTime, () =>
         {
-            SwitchActiveCue(null);
-            _timerDelayedGotoTitleScreen.Reset(isPaused: true);
-            SceneLoadManager.Instance.GoToTitleScreen();
-            localizableCueEmailVerification.gameObject.SetActive(false);
+            GotoTitleScreen();
         });
         _timerDelayedGotoTitleScreen.Reset(true);
         _errorHander = GetComponent<ErrorHandler>();
+    }
+
+    public void PlayInOfflineMode()
+    {
+        SetInteractability(false);
+        SwitchActiveCue(localizableCueValid);
+        _activeCue.LocalizeExternalText(keyValidSignup);
+
+        Entity_Player.Instance.UserDatas = new();
+        GotoTitleScreen();
+    }
+
+    private void GotoTitleScreen()
+    {
+        SwitchActiveCue(null);
+        _timerDelayedGotoTitleScreen.Reset(isPaused: true);
+        SceneLoadManager.Instance.GoToTitleScreen();
+        localizableCueEmailVerification.gameObject.SetActive(false);
     }
 
     private void Update()
