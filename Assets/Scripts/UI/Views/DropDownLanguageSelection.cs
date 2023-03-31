@@ -67,5 +67,6 @@ public class DropDownLanguageSelection : MonoBehaviour
         // +2 as Languages (key for localization) starts at column index 2 in TSV file
         localizationManager.Language = (Languages)DropDownLanguages.value + 2;
         localizationManager.NotifyILocalizationListeners();
+        localizationManager.NotifyILocalizerListeners();
     }
 }
