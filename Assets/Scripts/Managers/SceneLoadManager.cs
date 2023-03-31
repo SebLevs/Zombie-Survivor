@@ -81,9 +81,15 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         currentScene = scene;
         string label = "AlwaysLoad";
         //async = SceneManager.LoadSceneAsync(currentScene.name, LoadSceneMode.Additive);
-        Addressables.LoadAssetsAsync<Object>(new List<string>() { label },
-            x => { }, Addressables.MergeMode.Union).Completed += StartLoadingScene;
-        
+        /*        Addressables.LoadAssetsAsync<Object>(new List<string>() { label },
+                    x => { }, Addressables.MergeMode.Union).Completed += StartLoadingScene;*/
+
+        var handle = Addressables.LoadAssetsAsync<Object>(new List<string>() { label },
+      x => { }, Addressables.MergeMode.Union);
+        handle.Completed += StartLoadingScene;
+        //handle.PercentComplete += StartLoadingBar;
+
+
         //StartCoroutine(LoadAsync());
     }
 
@@ -91,6 +97,21 @@ public class SceneLoadManager : Manager<SceneLoadManager>
     {
         Addressables.LoadSceneAsync(currentScene.name, LoadSceneMode.Additive);
         StartCoroutine(LoadAsync());
+    }
+
+    private void StartLoadingBar(AsyncOperationHandle<IList<Object>> obj)
+    {
+        StartCoroutine(UpdateLoadingBar(obj));
+    }
+    private IEnumerator UpdateLoadingBar(AsyncOperationHandle<IList<Object>> obj)
+    {
+        UIManager uiManager = UIManager.Instance;
+        while (obj.PercentComplete < 0.95f)
+        {
+            yield return new WaitForFixedUpdate();
+            uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(obj.PercentComplete);
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     private IEnumerator LoadAsync()
