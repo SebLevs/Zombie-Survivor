@@ -44,6 +44,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb6baf32668443f4e88d430529144a8b, type: 2}
   - {fileID: 11400000, guid: 8bfbbb5670eb1824e85c5d1a9466e50c, type: 2}
   - {fileID: 11400000, guid: ecceb61a956bf044b81f3e9ec40ddbd2, type: 2}
+  - {fileID: 11400000, guid: 0afbf7f1c3037f04e944afa9d1e189df, type: 2}
+  - {fileID: 11400000, guid: 2014a2850b05f494a8d69d9ee57c1e82, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -85,6 +87,11 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Base_Scene
+    - Scene Tutorial
+    - Scene Practice Room
+    - Scene Gameplay
+    - ALWAYSLOAD
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: c0860f890a3a216498171ddfbde6c852, type: 2}

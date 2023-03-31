@@ -2,6 +2,9 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
+
 [CustomEditor(typeof(LocalizationManager))]
 public class EditorLocalizationManager : Editor
 {
