@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PotionBehavior : MonoBehaviour
 {
+    [SerializeField] private bool isDisableAfterUse = true;
     private Entity_Player _player;
     private CommandInvoker _commandInvoker;
     [SerializeField] private AudioElement pickupSound;
@@ -21,8 +22,7 @@ public class PotionBehavior : MonoBehaviour
                 _commandInvoker.DoCommand(_commandInvoker.CommandPromptDic[CommandType.FULL_HEAL]);
                 _player.RefreshHealthBar();
                 pickupSound.PlayRandom();
-                gameObject.SetActive(false);
-
+                gameObject.SetActive(!isDisableAfterUse);
             }
         }
     }
