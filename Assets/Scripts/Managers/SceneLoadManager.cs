@@ -99,13 +99,13 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         uiManager.ViewLoadingScreen.Init();
         uiManager.ViewLoadingScreen.ViewSlider.OnShowQuick();
 
-        // while (async.progress < 0.95f)
-        // {
-        //     yield return new WaitForFixedUpdate();
-        //     //uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(async.progress);
-        //     uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(0);
-        //     yield return new WaitForSeconds(0.2f);
-        // }
+        while (async.progress < 0.95f)
+        {
+            yield return new WaitForFixedUpdate();
+            //uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(async.progress);
+            uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(0);
+            yield return new WaitForSeconds(0.2f);
+        }
         uiManager.ViewLoadingScreen.AnimateOnReachedEndValue();
 
         uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(1.0f);
