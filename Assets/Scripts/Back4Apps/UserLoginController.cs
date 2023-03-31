@@ -3,7 +3,6 @@ using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Networking;
 
 public class UserLoginController : MonoBehaviour
@@ -16,15 +15,15 @@ public class UserLoginController : MonoBehaviour
 
     [Header("Visual cue")]
     [SerializeField] private float cueVisibleTime = 3;
-    [SerializeField] private TMPLocalizable localizableCueEmailVerification;
+    [SerializeField] private TMPSceneBasedLocalizable localizableCueEmailVerification;
     [Space]
-    [SerializeField] private TMPLocalizable localizableCueValid;
+    [SerializeField] private TMPSceneBasedLocalizable localizableCueValid;
     [SerializeField] private string keyValidLogin;
     [SerializeField] private string keyValidSignup;
     [Space]
-    [SerializeField] private TMPLocalizable localizableCueInvalid;
+    [SerializeField] private TMPSceneBasedLocalizable localizableCueInvalid;
     [SerializeField] private string keyInvalidEmailCombination;
-    private TMPLocalizable _activeCue;
+    private TMPSceneBasedLocalizable _activeCue;
     private SequentialTimer _timerDelayedGotoTitleScreen;
     private ErrorHandler _errorHander;
 
@@ -173,7 +172,7 @@ public class UserLoginController : MonoBehaviour
         _timerDelayedGotoTitleScreen.StartTimer();
     }
 
-    private void SwitchActiveCue(TMPLocalizable cue)
+    private void SwitchActiveCue(TMPSceneBasedLocalizable cue)
     {
         if (_activeCue == cue) { return; }
         if (_activeCue != null) { _activeCue.gameObject.SetActive(false); }

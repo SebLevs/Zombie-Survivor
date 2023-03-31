@@ -251,6 +251,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3317601361457930079, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
+      propertyPath: key
+      value: tmp tab audio
+      objectReference: {fileID: 0}
     - target: {fileID: 5103426791676151689, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
@@ -282,7 +286,7 @@ PrefabInstance:
     - target: {fileID: 7726839564875506003, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7732065850697177026}
     - target: {fileID: 7726839564875506003, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -450,6 +454,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7732065850697177026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7726839564875506001, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
+  m_PrefabInstance: {fileID: 33477146318829203}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8200682344440563131 stripped
@@ -860,6 +875,14 @@ PrefabInstance:
       propertyPath: key
       value: btn main menu
       objectReference: {fileID: 0}
+    - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869091973668447036, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: key
+      value: btn main menu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
 --- !u!114 &7064922827846165392 stripped
@@ -1034,6 +1057,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: key
+      value: btn quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869091973668447036, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: key
       value: btn quit
       objectReference: {fileID: 0}

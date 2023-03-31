@@ -115,6 +115,14 @@ PrefabInstance:
       propertyPath: key
       value: tmp music
       objectReference: {fileID: 0}
+    - target: {fileID: 5446286082422747239, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616760847244889805, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: key
+      value: tmp music
+      objectReference: {fileID: 0}
     - target: {fileID: 8597911567011699593, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Value
       value: 1
@@ -599,6 +607,14 @@ PrefabInstance:
       propertyPath: key
       value: tmp vfx
       objectReference: {fileID: 0}
+    - target: {fileID: 5446286082422747239, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616760847244889805, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: key
+      value: tmp vfx
+      objectReference: {fileID: 0}
     - target: {fileID: 8597911567011699593, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: m_Value
       value: 1
@@ -959,6 +975,14 @@ PrefabInstance:
       value: sd master
       objectReference: {fileID: 0}
     - target: {fileID: 5446286082422747239, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: key
+      value: tmp master
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446286082422747239, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616760847244889805, guid: 4513512a8bb03b945a99c6021b33b240, type: 3}
       propertyPath: key
       value: tmp master
       objectReference: {fileID: 0}

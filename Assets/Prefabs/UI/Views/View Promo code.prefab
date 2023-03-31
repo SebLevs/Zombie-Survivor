@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 6037570264377341320}
   - component: {fileID: 6037570264377341326}
   - component: {fileID: 6037570264377341321}
-  - component: {fileID: 6286307176299671010}
+  - component: {fileID: 5075654816092000725}
   m_Layer: 0
   m_Name: tmp_title
   m_TagString: Untagged
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6286307176299671010
+--- !u!114 &5075654816092000725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -888,10 +888,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6037570264377341323}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: btn validate
+  localizer: {fileID: 0}
 --- !u!1 &6037570264525790892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,7 +1106,7 @@ GameObject:
   - component: {fileID: 4149504988138448015}
   - component: {fileID: 4407772829012413909}
   - component: {fileID: 4593548915014600728}
-  - component: {fileID: 1654421520835776093}
+  - component: {fileID: 4289786728850193675}
   m_Layer: 5
   m_Name: tmp_title
   m_TagString: Untagged
@@ -1231,7 +1232,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1654421520835776093
+--- !u!114 &4289786728850193675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1240,10 +1241,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7908548257286643541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp promo code
+  localizer: {fileID: 0}
 --- !u!1 &9042508177389935696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,6 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlwaysUpdatable: 1
+  isOneTimeOnly: 0
   _setInativeInTime: 3
 --- !u!224 &5379629083839405340 stripped
 RectTransform:

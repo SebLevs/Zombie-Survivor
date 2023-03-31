@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 698879806703688633}
   - component: {fileID: 4065312614742832736}
   - component: {fileID: 2332578724188186076}
-  - component: {fileID: 700980744787427829}
+  - component: {fileID: 3123801537387120962}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &700980744787427829
+--- !u!114 &3123801537387120962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,10 +259,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 576871472098977829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp psAttackSpeed
+  localizer: {fileID: 0}
 --- !u!1 &1152724616662291638
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +465,7 @@ GameObject:
   - component: {fileID: 8283669600933150671}
   - component: {fileID: 8084846973021140057}
   - component: {fileID: 5545821096014054577}
-  - component: {fileID: 5863280874753709776}
+  - component: {fileID: 5198614234329716934}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -589,7 +590,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5863280874753709776
+--- !u!114 &5198614234329716934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -598,10 +599,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2470887893593845548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp psMoveSpeed
+  localizer: {fileID: 0}
 --- !u!1 &2748871013623459905
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +839,7 @@ GameObject:
   - component: {fileID: 8677994487637570878}
   - component: {fileID: 5207593805399100401}
   - component: {fileID: 1352197710480980292}
-  - component: {fileID: 3748328489246916026}
+  - component: {fileID: 5507215110554407776}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -962,7 +964,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3748328489246916026
+--- !u!114 &5507215110554407776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -971,10 +973,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3141729823382369990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp psBoomerangDistance
+  localizer: {fileID: 0}
 --- !u!1 &3602772569217538155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1137,7 @@ GameObject:
   - component: {fileID: 6282957476871275827}
   - component: {fileID: 3340896121286021731}
   - component: {fileID: 1672324997564276977}
-  - component: {fileID: 6556433392860545847}
+  - component: {fileID: 8719848078394748270}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1259,7 +1262,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6556433392860545847
+--- !u!114 &8719848078394748270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1268,10 +1271,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3643405994394176518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp psBoomerangSpeed
+  localizer: {fileID: 0}
 --- !u!1 &3943133407052094339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1435,7 @@ GameObject:
   - component: {fileID: 6090105396212810428}
   - component: {fileID: 2127791427293484939}
   - component: {fileID: 7256543357342983220}
-  - component: {fileID: 8380146004581636129}
+  - component: {fileID: 1107233597195210639}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1556,7 +1560,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8380146004581636129
+--- !u!114 &1107233597195210639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1565,10 +1569,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3981023867986737453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp psDodgeDelay
+  localizer: {fileID: 0}
 --- !u!1 &4027977724976567885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,7 +2299,7 @@ GameObject:
   - component: {fileID: 9178838190241727302}
   - component: {fileID: 2593852507835768121}
   - component: {fileID: 43901248639744853}
-  - component: {fileID: 2399220665477822399}
+  - component: {fileID: 8463100795656046914}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -2419,7 +2424,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2399220665477822399
+--- !u!114 &8463100795656046914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2428,10 +2433,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6806393818243364247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp player stats
+  localizer: {fileID: 0}
 --- !u!1 &8139716383293411830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2988,6 +2994,10 @@ PrefabInstance:
       propertyPath: key
       value: tmp psInvincibility
       objectReference: {fileID: 0}
+    - target: {fileID: 5010150356008400721, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6016231234335948258, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
       propertyPath: m_fontStyle
       value: 16
@@ -3012,7 +3022,8 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5010150356008400721, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
 --- !u!114 &1940174309854336153 stripped
 MonoBehaviour:
@@ -3025,6 +3036,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f89b7e4512a1e40a22ae88f97bec0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2590042533029852040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8543962694796828521, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
+  m_PrefabInstance: {fileID: 6153022356192783585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2998372599727392069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590042533029852040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tmp psInvincibility
+  localizer: {fileID: 0}
 --- !u!224 &7784127254096808040 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4135759409253508233, guid: a8f640fb4cb82234ca1e6d04d30c24ec, type: 3}
