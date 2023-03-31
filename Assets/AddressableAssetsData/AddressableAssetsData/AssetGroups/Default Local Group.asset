@@ -10,34 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Scenes
+  m_Name: Default Local Group
   m_EditorClassIdentifier: 
-  m_GroupName: Scenes
+  m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: 62720c241d0c64b4a9bd92994e6b29e8
+  m_GUID: 6e7dfc0b9db8bb3428bd8277b9e43cd3
   m_SerializeEntries:
   - m_GUID: 3b10f429201f28f4ba4c254fb2fb301b
-    m_Address: Base_Scene
+    m_Address: Assets/Scenes/Base_Scene.unity
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Base_Scene
+    m_SerializedLabels: []
   - m_GUID: 64f5b4e35130f0c48a000e0e84577ec2
-    m_Address: Scene Gameplay
+    m_Address: Assets/Scenes/Scene Gameplay.unity
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Scene Gameplay
+    m_SerializedLabels: []
   - m_GUID: aad948cf9cd7f2c42a7d43a6a2fbb3b4
-    m_Address: Scene Practice Room
+    m_Address: Assets/Scenes/Scene Practice Room.unity
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Scene Practice Room
+    m_SerializedLabels: []
   - m_GUID: 94555535fde352f408b5e9e71e0c1a88
-    m_Address: Scene Tutorial
+    m_Address: Assets/Scenes/Scene Tutorial.unity
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Scene Tutorial
+    m_SerializedLabels: []
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: b0e3787bc774f5143998e3bf8eecc2c7, type: 2}
+  m_Settings: {fileID: 11400000, guid: d2988cce72a84054b9493689a3da78f9, type: 2}
   m_SchemaSet:
-    m_Schemas: []
+    m_Schemas:
+    - {fileID: 11400000, guid: 028c4f58b93e69a4faa879e5c9f54639, type: 2}
+    - {fileID: 11400000, guid: cb9ab113494f82f4faae1be46a4b1263, type: 2}
