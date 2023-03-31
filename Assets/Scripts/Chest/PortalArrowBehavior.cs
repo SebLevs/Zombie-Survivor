@@ -5,7 +5,7 @@ public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IUpdateListene
     private PortalManager _portalManager;
     private PortalBehavior _portal;
     private Transform _target;
-    private bool _canLook;
+    private bool _canLook = false;
 
     public void OnEnable()
     {
@@ -16,11 +16,16 @@ public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IUpdateListene
     public void SetTargetAsPortal()
     {
         _portalManager = PortalManager.Instance;
-        _target = _portalManager.currentActivePortal.transform;
+        SetTargetAs(_portalManager.currentActivePortal.transform);
         _canLook = true;
     }
 
-    public void SetTargetAs(Transform target) => _target = target;
+    public void SetTargetAs(Transform target)
+    {
+        gameObject.SetActive(true);
+        _target = target;
+    }
+
 
     public void LookAtTarget()
     {
@@ -52,7 +57,7 @@ public class PortalArrowBehavior : MonoBehaviour, IPauseListener, IUpdateListene
 
     public void OnUpdate()
     {
-        if (_canLook)
+        if (_canLook && _target)
         {
             LookAtTarget();
         }
