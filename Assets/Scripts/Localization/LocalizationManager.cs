@@ -4,7 +4,7 @@ using UnityEngine;
 // TODO: IF TIME: Refactor language selection to associate a specific FontAsset on a per language basis
 // ... Currently uses Noto Simplified chinese which allows for all currently used languages (roman-based, japanese, chinese)
 
-public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHandler
+public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHandler, ILocalizationObserver
 {
     private const string _playerPrefKey = "Language";
     private const string _pathTsvUIDefaults = "tsv_UI_Defaults.txt";
@@ -17,7 +17,7 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
 
     private HashSet<ILocalizationListener> _localizationListeners;
 
-    private HashSet<ILocalizerListener> _sceneBasedLocalizerListeners;
+    private HashSet<ILocalizationObserver> _sceneBasedLocalizerListeners;
 
     protected override void OnAwake()
     {
@@ -40,7 +40,7 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
         _localizationListeners.Remove(localizationListener);
     }
 
-    public void NotifyILocalizationListeners()
+    public void NotifyLocalizationListeners()
     {
         foreach (ILocalizationListener listener in _localizationListeners)
         {
@@ -48,21 +48,21 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
         }
     }
 
-    public void SubscribeToLocalizer(ILocalizerListener localizationListener)
+    public void SubscribeToLocalizer(ILocalizationObserver localizationListener)
     {
         _sceneBasedLocalizerListeners.Add(localizationListener);
     }
 
-    public void UnSubscribeFromLocalizer(ILocalizerListener localizationListener)
+    public void UnSubscribeFromLocalizer(ILocalizationObserver localizationListener)
     {
         _sceneBasedLocalizerListeners.Remove(localizationListener);
     }
 
     public void NotifyILocalizerListeners()
     {
-        foreach (ILocalizerListener listener in _sceneBasedLocalizerListeners)
+        foreach (ILocalizationObserver listener in _sceneBasedLocalizerListeners)
         {
-            listener.LocalizeLocalizationListeners();
+            listener.NotifyLocalizationListeners();
         }
     }
 
@@ -86,5 +86,10 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
     public void LoadFromPlayerPref()
     {
         Language = (PlayerPrefs.GetInt(_playerPrefKey) == 0) ? Languages.ENGLISH : (Languages)PlayerPrefs.GetInt(_playerPrefKey);
+    }
+
+    public Dictionary<string, ObjectLocalizations> GetObjectLocalizationDictionary()
+    {
+        return ObjectsLocalizations;
     }
 }

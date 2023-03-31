@@ -40,7 +40,7 @@ public class EditorLocalizationManager : Editor
         if (_lastLanguage != _localizationManager.Language)
         {
             _lastLanguage = _localizationManager.Language;
-            _localizationManager.NotifyILocalizationListeners();
+            _localizationManager.NotifyLocalizationListeners();
         }
     }
 }
