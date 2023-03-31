@@ -25,7 +25,9 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         UIManager uiManager = UIManager.Instance;
         uiManager.HideHUD();
         uiManager.ViewPromoCode.OnHideQuick();
-        uiManager.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewLoadingScreen,
+
+        uiManager.ViewBackgroundBlackScreen.OnShow();
+        uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewLoadingScreen,
         showCallback: () =>
         {
             PrepareSceneLoad(scene);
@@ -58,6 +60,8 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
         uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(1.0f);
         yield return new WaitForSeconds(_minimalWaitTime);
+
+        Entity_Player.Instance.Reinitialize();
 
         uiManager.ViewLoadingScreen.ViewSlider.OnHideQuick( () =>
         {

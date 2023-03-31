@@ -17,7 +17,6 @@ public class TutorialBossPortal : MonoBehaviour
     {
         _tmpCurrencyRequired = GetComponentInChildren<TMP_Text>();
         _tmpCurrencyRequired.text = "$0";
-        bossArenaBoundaries = new List<GameObject>();
     }
 
     private void Start()
@@ -47,7 +46,6 @@ public class TutorialBossPortal : MonoBehaviour
     {
         foreach (GameObject boundary in bossArenaBoundaries)
         {
-            Debug.Log("AAA");
             boundary.SetActive(true);
         }
     }

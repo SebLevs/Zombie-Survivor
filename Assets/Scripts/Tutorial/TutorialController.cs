@@ -1,8 +1,9 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialController : MonoBehaviour, ILocalizerListener
+public class TutorialController : MonoBehaviour, ILocalizerListener, ILocalizationCaller
 {
     [Header("Boss")]
     [SerializeField] private GameObject bossObject;
@@ -10,9 +11,7 @@ public class TutorialController : MonoBehaviour, ILocalizerListener
     [Header("Tutorial Views")]
     [SerializeField] private float cueDuration = 5;
     [SerializeField] private ViewController viewController;
-    [SerializeField] private ViewElement waveView;
-    [SerializeField] private ViewElement chestView;
-    [SerializeField] private ViewElement potionView;
+    [SerializeField] private List<ViewElement> tutorialViewsInOrder;
 
     private Entity_Player _player;
 
@@ -46,27 +45,46 @@ public class TutorialController : MonoBehaviour, ILocalizerListener
 
     private void Start()
     {
+        TimerManager.Instance.AddSequentialTimer(0.0f, () => 
+        {
+            GameManager.Instance.PauseGame();
+        });
+
         _player = Entity_Player.Instance;
         _player.arrow.SetTargetAs(bossObject.transform);
-        //StartCoroutine(ShowTutorialTexts());
+        StartCoroutine(ShowTutorialTexts());
     }
 
     public void OnTutorialCompletion()
     {
-        _player.Reinitialize();
         _player.UserDatas.hasCompletedTutorial = true;
     }
 
     public IEnumerator ShowTutorialTexts()
     {
-        GameManager.Instance.PauseGame();
-        viewController.SwitchViewSequential(waveView);
+        _player.Input.enabled = false;
         yield return new WaitForSeconds(cueDuration);
-        viewController.SwitchViewSequential(chestView);
+
+        for (int i = 0; i < tutorialViewsInOrder.Count - 1; i++)
+        {
+            viewController.SwitchViewSequential(tutorialViewsInOrder[i]);
+            yield return new WaitForSeconds(cueDuration);
+        }
+
+        viewController.CurrentView.OnHideInstantaneous();
+
+        CinemachineVirtualCamera cam = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>();
+        cam.Follow = bossObject.transform;
+        cam.LookAt = bossObject.transform;
+        ViewElement viewPortal = tutorialViewsInOrder[tutorialViewsInOrder.Count - 1];
+        viewController.SwitchViewSequential(viewPortal);
         yield return new WaitForSeconds(cueDuration);
-        viewController.SwitchViewSequential(potionView);
-        yield return new WaitForSeconds(cueDuration);
+
+        cam.Follow = _player.transform;
+        cam.LookAt = _player.transform;
+        viewController.CurrentView.OnHide();
         GameManager.Instance.ResumeGame();
+        _player.Input.enabled = true;
     }
 
     public void LoadScene(SceneData scene)
@@ -79,7 +97,7 @@ public class TutorialController : MonoBehaviour, ILocalizerListener
         _localizationListeners.Add(localizationListener);
     }
 
-    public void UnSubscribeFromLocalizatioon(ILocalizationListener localizationListener)
+    public void UnSubscribeFromLocalization(ILocalizationListener localizationListener)
     {
         _localizationListeners.Remove(localizationListener);
     }
@@ -90,5 +108,10 @@ public class TutorialController : MonoBehaviour, ILocalizerListener
         {
             listener.LocalizeText();
         }
+    }
+
+    public Dictionary<string, ObjectLocalizations> GetObjectLocalizationDictionary()
+    {
+        return ObjectsLocalizations;
     }
 }

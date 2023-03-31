@@ -17,14 +17,14 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
 
     private HashSet<ILocalizationListener> _localizationListeners;
 
-    private HashSet<ILocalizerListener> _localLocalizerListeners;
+    private HashSet<ILocalizerListener> _sceneBasedLocalizerListeners;
 
     protected override void OnAwake()
     {
         base.OnAwake();
         ObjectsLocalizations = new();
         _localizationListeners = new();
-        _localLocalizerListeners = new();
+        _sceneBasedLocalizerListeners = new();
         ObjectLocalizationHeaders = TSVLocalizer.GetHeadersAsString(_pathTsvUIDefaults, 2);
         TSVLocalizer.SetTranslationDatasFromFile(ObjectsLocalizations, _pathTsvUIDefaults, 1, 1);
         LoadFromPlayerPref();
@@ -50,17 +50,17 @@ public class LocalizationManager : Manager<LocalizationManager>, IPlayerPrefHand
 
     public void SubscribeToLocalizer(ILocalizerListener localizationListener)
     {
-        _localLocalizerListeners.Add(localizationListener);
+        _sceneBasedLocalizerListeners.Add(localizationListener);
     }
 
     public void UnSubscribeFromLocalizer(ILocalizerListener localizationListener)
     {
-        _localLocalizerListeners.Remove(localizationListener);
+        _sceneBasedLocalizerListeners.Remove(localizationListener);
     }
 
     public void NotifyILocalizerListeners()
     {
-        foreach (ILocalizerListener listener in _localLocalizerListeners)
+        foreach (ILocalizerListener listener in _sceneBasedLocalizerListeners)
         {
             listener.LocalizeLocalizationListeners();
         }
