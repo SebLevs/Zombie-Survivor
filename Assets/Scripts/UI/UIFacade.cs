@@ -22,4 +22,9 @@ public class UIFacade : MonoBehaviour
     {
         UIManager.Instance.ViewController.SwitchViewSequential(UIManager.Instance.ViewOptionMenu);
     }
+
+    public void StartWithScene(SceneData scene)
+    {
+        SceneLoadManager.Instance.LoadScene(scene);
+    }
 }
