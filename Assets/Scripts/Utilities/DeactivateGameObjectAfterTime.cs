@@ -3,6 +3,7 @@ using UnityEngine;
 public class DeactivateGameObjectAfterTime : MonoBehaviour, IUpdateListener
 {
     [SerializeField] private bool isAlwaysUpdatable;
+    [SerializeField] private bool isOneTimeOnly = false;
     [SerializeField] private float _setInativeInTime;
     private SequentialTimer _timer;
 
@@ -11,6 +12,10 @@ public class DeactivateGameObjectAfterTime : MonoBehaviour, IUpdateListener
         _timer = new SequentialTimer(_setInativeInTime, () =>
         {
             gameObject.SetActive(false);
+            if (isOneTimeOnly)
+            {
+                enabled = false;
+            }
         });
     }
 

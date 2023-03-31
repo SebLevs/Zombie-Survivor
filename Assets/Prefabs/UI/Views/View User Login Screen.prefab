@@ -11,14 +11,15 @@ GameObject:
   - component: {fileID: 7817293171260521524}
   - component: {fileID: 2491103159188513199}
   - component: {fileID: 9144854282701684529}
-  - component: {fileID: 8137310319301708468}
+  - component: {fileID: 4854271957570791455}
+  - component: {fileID: 5539118685882432935}
   m_Layer: 5
   m_Name: tmp_cue error
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7817293171260521524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8137310319301708468
+--- !u!114 &4854271957570791455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,10 +146,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 392583090049644212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
+  localizer: {fileID: 0}
+--- !u!114 &5539118685882432935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392583090049644212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3942e800075928e4e89228528030bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlwaysUpdatable: 1
+  isOneTimeOnly: 1
+  _setInativeInTime: 0
 --- !u!1 &688988371314741117
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +254,7 @@ GameObject:
   - component: {fileID: 6310730751696575070}
   - component: {fileID: 7667128239557914773}
   - component: {fileID: 582145456126826883}
-  - component: {fileID: 1359416438341351258}
+  - component: {fileID: 310840351608112519}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -382,7 +399,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &1359416438341351258
+--- !u!114 &310840351608112519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,10 +408,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 770160468253784355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp email
+  localizer: {fileID: 0}
 --- !u!1 &1091838375642231278
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +424,7 @@ GameObject:
   - component: {fileID: 6097900288198548453}
   - component: {fileID: 3577002340042916726}
   - component: {fileID: 8848366798304839351}
-  - component: {fileID: 9142943348331829841}
+  - component: {fileID: 6649208118807735287}
   m_Layer: 5
   m_Name: tmp_title
   m_TagString: Untagged
@@ -532,7 +550,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &9142943348331829841
+--- !u!114 &6649208118807735287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -541,10 +559,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1091838375642231278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp login
+  localizer: {fileID: 0}
 --- !u!1 &1341811557557740083
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,11 +696,11 @@ MonoBehaviour:
   inputFieldEmail: {fileID: 1906942080892057182}
   inputFieldPassword: {fileID: 6224180705546212269}
   cueVisibleTime: 3
-  localizableCueEmailVerification: {fileID: 5085746332676102218}
-  localizableCueValid: {fileID: 8296781180321058106}
+  localizableCueEmailVerification: {fileID: 2326484508184569344}
+  localizableCueValid: {fileID: 8543769323327668661}
   keyValidLogin: tmp valid login
   keyValidSignup: tmp valid signup
-  localizableCueInvalid: {fileID: 8137310319301708468}
+  localizableCueInvalid: {fileID: 4854271957570791455}
   keyInvalidEmailCombination: error wrong combination
 --- !u!114 &3062488074531025620
 MonoBehaviour:
@@ -706,14 +725,15 @@ GameObject:
   - component: {fileID: 611451686837879148}
   - component: {fileID: 707684823784862732}
   - component: {fileID: 7833888481325788810}
-  - component: {fileID: 8296781180321058106}
+  - component: {fileID: 8543769323327668661}
+  - component: {fileID: 8295424786178734698}
   m_Layer: 5
   m_Name: tmp_cue valid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &611451686837879148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -831,7 +851,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8296781180321058106
+--- !u!114 &8543769323327668661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -840,10 +860,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1435142958946599621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
+  localizer: {fileID: 0}
+--- !u!114 &8295424786178734698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435142958946599621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3942e800075928e4e89228528030bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlwaysUpdatable: 1
+  isOneTimeOnly: 1
+  _setInativeInTime: 0
 --- !u!1 &2792730434047110115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,7 +1321,7 @@ GameObject:
   - component: {fileID: 509588127725208744}
   - component: {fileID: 540215708227081232}
   - component: {fileID: 1922379044751759991}
-  - component: {fileID: 2940382463591354840}
+  - component: {fileID: 5950797951451351941}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -1430,7 +1466,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &2940382463591354840
+--- !u!114 &5950797951451351941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1439,10 +1475,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7719201247809019204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: tmp password
+  localizer: {fileID: 0}
 --- !u!1 &8014181908809418928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,15 +1679,16 @@ GameObject:
   - component: {fileID: 4154482484953427165}
   - component: {fileID: 902538249839312462}
   - component: {fileID: 2666945088197978580}
-  - component: {fileID: 5085746332676102218}
   - component: {fileID: 3059130209868130276}
+  - component: {fileID: 2326484508184569344}
+  - component: {fileID: 7021529904137612881}
   m_Layer: 5
   m_Name: tmp_cue confirm email
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4154482484953427165
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1768,19 +1806,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5085746332676102218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8889645340945774177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d539793bc3160f40894c67092c28f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: tmp confirm email
 --- !u!114 &3059130209868130276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,6 +1818,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f89b7e4512a1e40a22ae88f97bec0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2326484508184569344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889645340945774177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ddd19eb65642140b491341b417ce3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tmp confirm email
+  localizer: {fileID: 0}
+--- !u!114 &7021529904137612881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889645340945774177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3942e800075928e4e89228528030bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlwaysUpdatable: 1
+  isOneTimeOnly: 1
+  _setInativeInTime: 0
 --- !u!1 &8972756298636815426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2127,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869091973668447036, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: key
+      value: btn play offline
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2883959678100397361, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
@@ -2345,6 +2403,14 @@ PrefabInstance:
       propertyPath: key
       value: btn quit
       objectReference: {fileID: 0}
+    - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869091973668447036, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: key
+      value: btn quit
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2883959678100397361, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
@@ -2491,6 +2557,14 @@ PrefabInstance:
       propertyPath: key
       value: btn quit
       objectReference: {fileID: 0}
+    - target: {fileID: 3238461093154696800, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869091973668447036, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: key
+      value: btn quit
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2883959678100397361, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
@@ -2597,10 +2671,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
@@ -2671,6 +2741,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6498715481243430912}
     m_Modifications:
+    - target: {fileID: 816826816962238924, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: key
+      value: tmp signup
+      objectReference: {fileID: 0}
     - target: {fileID: 5372796453461038224, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
       propertyPath: key
       value: tmp signup
@@ -2852,6 +2926,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6498715481243430912}
     m_Modifications:
+    - target: {fileID: 816826816962238924, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
+      propertyPath: key
+      value: tmp login
+      objectReference: {fileID: 0}
     - target: {fileID: 5372796453461038224, guid: 7502edd378a1d9a498bca0cd375b71ec, type: 3}
       propertyPath: key
       value: tmp login
