@@ -24,7 +24,7 @@ public class DropDownLanguageSelection : MonoBehaviour
         DropDownLanguages.ClearOptions();
         foreach (string language in localizationManager.ObjectLocalizationHeaders)
         {
-            TMP_Dropdown.OptionData option = new(language.ToLower().FirstCharacterToUpper());
+            TMP_Dropdown.OptionData option = new(language.ToLower()); //.FirstCharacterToUpper()
             DropDownLanguages.options.Add(option);
         }
     }

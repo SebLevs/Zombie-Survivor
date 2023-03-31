@@ -1,5 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : Manager<SceneLoadManager>
@@ -35,16 +38,65 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         });
     }
 
+    /*    private void PrepareSceneLoad(SceneData scene)
+        {
+            UnloadCurrentScene();
+            currentScene = scene;
+            async = SceneManager.LoadSceneAsync(currentScene.name, LoadSceneMode.Additive);
+            StartCoroutine(LoadAsync());
+        }
+
+        private IEnumerator LoadAsync()
+        {
+            UIManager uiManager = UIManager.Instance;
+
+            uiManager.ViewLoadingScreen.Init();
+            uiManager.ViewLoadingScreen.ViewSlider.OnShowQuick();
+
+            while (async.progress < 0.95f)
+            {
+                yield return new WaitForFixedUpdate();
+                uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(async.progress);
+                yield return new WaitForSeconds(0.2f);
+            }
+            uiManager.ViewLoadingScreen.AnimateOnReachedEndValue();
+
+            uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(1.0f);
+            yield return new WaitForSeconds(_minimalWaitTime);
+
+            Entity_Player.Instance.Reinitialize();
+
+            uiManager.ViewLoadingScreen.ViewSlider.OnHideQuick( () =>
+            {
+                UIManager.Instance.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewEmpty);
+            });
+
+            async = null;
+            InitScene();
+        }*/
+
     private void PrepareSceneLoad(SceneData scene)
     {
         UnloadCurrentScene();
         currentScene = scene;
-        async = SceneManager.LoadSceneAsync(currentScene.name, LoadSceneMode.Additive);
+        string label = "AlwaysLoad";
+        //async = SceneManager.LoadSceneAsync(currentScene.name, LoadSceneMode.Additive);
+        Addressables.LoadAssetsAsync<Object>(new List<string>() { label },
+            x => { }, Addressables.MergeMode.Union).Completed += StartLoadingScene;
+        
+        //StartCoroutine(LoadAsync());
+    }
+
+    private void StartLoadingScene(AsyncOperationHandle<IList<Object>> obj)
+    {
+        Addressables.LoadSceneAsync(currentScene.name, LoadSceneMode.Additive);
         StartCoroutine(LoadAsync());
     }
 
     private IEnumerator LoadAsync()
     {
+        Addressables.LoadSceneAsync(currentScene.name, LoadSceneMode.Additive);
+
         UIManager uiManager = UIManager.Instance;
 
         uiManager.ViewLoadingScreen.Init();
@@ -53,7 +105,9 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         while (async.progress < 0.95f)
         {
             yield return new WaitForFixedUpdate();
-            uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(async.progress);
+            // Update load bar
+            //uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(async.progress);
+            uiManager.ViewLoadingScreen.ViewSlider.SetsliderValue(1);
             yield return new WaitForSeconds(0.2f);
         }
         uiManager.ViewLoadingScreen.AnimateOnReachedEndValue();
@@ -63,12 +117,12 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
         Entity_Player.Instance.Reinitialize();
 
-        uiManager.ViewLoadingScreen.ViewSlider.OnHideQuick( () =>
+        uiManager.ViewLoadingScreen.ViewSlider.OnHideQuick(() =>
         {
             UIManager.Instance.ViewController.SwitchViewSynchronous(UIManager.Instance.ViewEmpty);
         });
 
-        async = null;
+        //async = null;
         InitScene();
     }
 
