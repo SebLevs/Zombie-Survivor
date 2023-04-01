@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -101,3 +102,4 @@ public class SceneDataHandler: MonoBehaviour
         AssetDatabase.SaveAssets();
     }
 }
+#endif

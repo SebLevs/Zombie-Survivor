@@ -40,6 +40,7 @@ public class UIManager : Manager<UIManager>
     [field: Header("User & Databse interaction")]
     [field: SerializeField] public ViewElement ViewLogin { get; private set; }
     [field: SerializeField] public ViewPromoCode ViewPromoCode { get; private set; }
+    [field: SerializeField] public ViewShop ViewShop { get; private set; }
 
     protected override void OnAwake()
     {
