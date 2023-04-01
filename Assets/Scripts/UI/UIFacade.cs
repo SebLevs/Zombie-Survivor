@@ -27,4 +27,9 @@ public class UIFacade : MonoBehaviour
     {
         SceneLoadManager.Instance.LoadScene(scene);
     }
+
+    public void GoToShop()
+    {
+        UIManager.Instance.ViewController.SwitchViewSequential(UIManager.Instance.ViewShop);
+    }
 }

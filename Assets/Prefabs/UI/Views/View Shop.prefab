@@ -181,6 +181,22 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2147855720431072584, guid: 399baed6467a35840b7178bad8561009, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147855720431072584, guid: 399baed6467a35840b7178bad8561009, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147855720431072584, guid: 399baed6467a35840b7178bad8561009, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147855720431072584, guid: 399baed6467a35840b7178bad8561009, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5550910120025986576, guid: 399baed6467a35840b7178bad8561009, type: 3}
       propertyPath: m_Alpha
       value: 1
@@ -203,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7545137265925138596, guid: 399baed6467a35840b7178bad8561009, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7545137265925138596, guid: 399baed6467a35840b7178bad8561009, type: 3}
       propertyPath: m_AnchorMax.x
@@ -282,6 +298,50 @@ PrefabInstance:
     - {fileID: 7915557454285628901, guid: 399baed6467a35840b7178bad8561009, type: 3}
     - {fileID: 5996739522191800529, guid: 399baed6467a35840b7178bad8561009, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 399baed6467a35840b7178bad8561009, type: 3}
+--- !u!114 &521949924039544718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 518464367476142076, guid: 399baed6467a35840b7178bad8561009, type: 3}
+  m_PrefabInstance: {fileID: 4400420033634418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5912207383334023769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5909781965387026987, guid: 399baed6467a35840b7178bad8561009, type: 3}
+  m_PrefabInstance: {fileID: 4400420033634418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &331595948907341607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912207383334023769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7a2bee36e66e748bce7ba881f18bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 521949924039544718}
+  refreshMethodChoice:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 331595948907341607}
+        m_TargetAssemblyTypeName: CurrencyPrinter, Assembly-CSharp
+        m_MethodName: RefreshSmallGold
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &580631412181639742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,16 +438,44 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7064922827846165392}
     - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 37237286966941675}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 5376536557401399331}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 664714768469307161}
     - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Name
-      value: btn item_Boomerang speed
+      value: btn item_Shotgun cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_text
+      value: Shotgun Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770290302095307680, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
+    - target: {fileID: 6665448548032696256, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: key
+      value: tmp psAttackSpeed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f4508fcce37240876de09d135afd5, type: 3}
@@ -510,9 +598,37 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 7576011517135217064}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Name
       value: btn Item_
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_text
+      value: Shotgun Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770290302095307680, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
+    - target: {fileID: 6665448548032696256, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: key
+      value: TEST
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f4508fcce37240876de09d135afd5, type: 3}
@@ -636,12 +752,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 166483760742004447}
     - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 664714768469307161}
     - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Name
-      value: btn item_
+      value: btn item_Boomerang Distance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_text
+      value: Shotgun Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770290302095307680, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
+    - target: {fileID: 6665448548032696256, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: key
+      value: tmp psBoomerangDistance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f4508fcce37240876de09d135afd5, type: 3}
@@ -764,9 +904,33 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 37237286966941675}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Name
-      value: btn Item_
+      value: btn Item_Movement Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_text
+      value: Shotgun Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770290302095307680, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
+    - target: {fileID: 6665448548032696256, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: key
+      value: tmp psMoveSpeed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f4508fcce37240876de09d135afd5, type: 3}
@@ -801,6 +965,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2490401493342855572, guid: 3a113095593c8374a99381d8c269f678, type: 2}
+    - target: {fileID: 518464367476142076, guid: 399baed6467a35840b7178bad8561009, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5550910120025986576, guid: 399baed6467a35840b7178bad8561009, type: 3}
       propertyPath: m_Alpha
       value: 1
@@ -823,7 +991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7545137265925138596, guid: 399baed6467a35840b7178bad8561009, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7545137265925138596, guid: 399baed6467a35840b7178bad8561009, type: 3}
       propertyPath: m_AnchorMax.x
@@ -902,6 +1070,50 @@ PrefabInstance:
     - {fileID: 5996739522191800529, guid: 399baed6467a35840b7178bad8561009, type: 3}
     - {fileID: 5550910120025986576, guid: 399baed6467a35840b7178bad8561009, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 399baed6467a35840b7178bad8561009, type: 3}
+--- !u!114 &4076932430105301768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 518464367476142076, guid: 399baed6467a35840b7178bad8561009, type: 3}
+  m_PrefabInstance: {fileID: 4586310293766716660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7901032881882525407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5909781965387026987, guid: 399baed6467a35840b7178bad8561009, type: 3}
+  m_PrefabInstance: {fileID: 4586310293766716660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5394417272226007116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7901032881882525407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7a2bee36e66e748bce7ba881f18bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 4076932430105301768}
+  refreshMethodChoice:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5394417272226007116}
+        m_TargetAssemblyTypeName: CurrencyPrinter, Assembly-CSharp
+        m_MethodName: RefreshBigGold
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &5336281692802449056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -909,6 +1121,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 949345383264164447}
     m_Modifications:
+    - target: {fileID: 425040801177722716, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
     - target: {fileID: 2061038730451530145, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_SizeDelta.x
       value: -256
@@ -922,8 +1138,16 @@ PrefabInstance:
       value: CONVERT CURRENCY
       objectReference: {fileID: 0}
     - target: {fileID: 2883959677946705419, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883959677946705419, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_fontStyle
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883959677946705419, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2883959677946705419, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -931,7 +1155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397358, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Name
-      value: btn main menu
+      value: btn Small gold Conversion
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -943,7 +1167,7 @@ PrefabInstance:
       objectReference: {fileID: 1279018359689516018}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -952,22 +1176,38 @@ PrefabInstance:
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 664714768469307161}
+      objectReference: {fileID: 3547362146290244267}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoToTitleScreen
+      value: ConvertSmallCurrencyIntoBigCurrency
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIFacade, Assembly-CSharp
+      value: CurrencyConverter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883959678100397362, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Color.b
+      value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883959678100397362, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Color.g
+      value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883959678100397362, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Color.r
+      value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883959678100397362, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397364, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Pivot.x
@@ -999,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397364, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -64
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397364, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1071,16 +1311,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869091973668447036, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: key
-      value: btn main menu
+      value: btn shop convert currency
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+--- !u!1 &7064922827846165390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2883959678100397358, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+  m_PrefabInstance: {fileID: 5336281692802449056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3547362146290244267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064922827846165390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000875a9fd80e3c46a2adefafe6a4a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7064922827846165392 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
   m_PrefabInstance: {fileID: 5336281692802449056}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7064922827846165390}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -1194,9 +1451,33 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 1279018359689516018}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Name
-      value: btn Item_Shotgun speed
+      value: btn Item_Boomerang  cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_text
+      value: Shotgun Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770290302095307680, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
+    - target: {fileID: 6665448548032696256, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: key
+      value: tmp psBoomerangSpeed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f4508fcce37240876de09d135afd5, type: 3}
@@ -1309,15 +1590,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639379524637817310, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_BlocksRaycasts
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8435117896187756005, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_Name
@@ -1325,7 +1610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8435117896187756005, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
@@ -1334,32 +1619,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8435117896187756005, guid: 3750bf4c95c4f4d46bc4937d0047b7ec, type: 3}
   m_PrefabInstance: {fileID: 7076649750757226125}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &226760470006224307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673861856528305000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd66ef88cd3c716438ae32fdb1fef456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationSpeedModifier: 1
-  m_defaultShowEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_defaultHideEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _trackLastSelected: 0
-  m_defaultSelectable: {fileID: 7064922827846165392}
-  m_volumeSliders:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_dropDownLanguageSelection: {fileID: 0}
 --- !u!114 &664714768469307161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,6 +1631,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f2cd4e1824f6b4da6e6de5a55bbbc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5122833826076928166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673861856528305000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb414f69504d27e4083b86f6a6081586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeedModifier: 10
+  m_defaultShowEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_defaultHideEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  <CurrencyConverter>k__BackingField: {fileID: 3547362146290244267}
+  <SmallGold>k__BackingField: {fileID: 331595948907341607}
+  <BigGold>k__BackingField: {fileID: 5394417272226007116}
 --- !u!114 &7783762018090599863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1499,9 +1780,37 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 7542373471463872859}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Name
       value: btn Item_
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_text
+      value: Shotgun Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770290302095307680, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
+    - target: {fileID: 6665448548032696256, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: key
+      value: TEST
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f4508fcce37240876de09d135afd5, type: 3}
@@ -1619,18 +1928,42 @@ PrefabInstance:
     - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 7542373471463872859}
+      objectReference: {fileID: 6829245081290857503}
     - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
-      objectReference: {fileID: 893487261757029262}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 664714768469307161}
     - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Name
-      value: btn item_
+      value: btn item_Dodge cooldoown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_text
+      value: Shotgun Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770290302095307680, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
+    - target: {fileID: 6665448548032696256, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: key
+      value: tmp psDodgeDelay
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f4508fcce37240876de09d135afd5, type: 3}
@@ -1754,12 +2087,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8074089447622932902}
     - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788593725900, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 664714768469307161}
     - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
       propertyPath: m_Name
       value: btn item_
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788593725906, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_text
+      value: Shotgun Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851310788742175479, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770290302095307680, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ec8dd4db30521644a2685ce21ab541c, type: 2}
+    - target: {fileID: 6665448548032696256, guid: 861f4508fcce37240876de09d135afd5, type: 3}
+      propertyPath: key
+      value: TEST
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861f4508fcce37240876de09d135afd5, type: 3}
@@ -1808,16 +2169,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397358, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Name
-      value: btn main menu (1)
+      value: btn main menu
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 7576011517135217064}
+    - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 8074089447622932902}
+      objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
