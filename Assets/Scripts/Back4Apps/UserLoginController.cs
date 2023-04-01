@@ -69,6 +69,35 @@ public class UserLoginController : MonoBehaviour
     public void SignUp() { StopAllCoroutines(); StartCoroutine(SignUpIE()); }
     public IEnumerator SignUpIE()
     {
+        // UserData Row Creation
+        // Required for giving a foreign key to the user to access his or her datas
+        string tempUserDataId = "";
+        using (var request = new UnityWebRequest(BackFourApps.urlUserData, "POST"))
+        {
+            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
+            request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
+
+            var data = new {};
+            var json = JsonConvert.SerializeObject(data);
+
+            request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
+            request.downloadHandler = new DownloadHandlerBuffer();
+
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+#if UNITY_EDITOR
+                Debug.LogWarning("ERROR: couldn't create a row at UserData class");
+#endif
+                yield break;
+            }
+
+            tempUserDataId = GetUserDatas(request).objectId;
+        }
+
+        // User Row Creation
         using (var request = new UnityWebRequest(BackFourApps.urlUsers, "POST"))
         {
             request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
@@ -76,7 +105,7 @@ public class UserLoginController : MonoBehaviour
             request.SetRequestHeader(BackFourApps.revocSession, "1");
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
-            var data = new { username = inputFieldEmail.text, email = inputFieldEmail.text, password = inputFieldPassword.text };
+            var data = new { username = inputFieldEmail.text, email = inputFieldEmail.text, password = inputFieldPassword.text, userDataId = tempUserDataId };
             var json = JsonConvert.SerializeObject(data);
 
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
@@ -113,7 +142,6 @@ public class UserLoginController : MonoBehaviour
             request.SetRequestHeader(BackFourApps.revocSession, "1");
 
             request.downloadHandler = new DownloadHandlerBuffer();
-
             yield return request.SendWebRequest();
 
             if (request.result != UnityWebRequest.Result.Success)
@@ -143,23 +171,41 @@ public class UserLoginController : MonoBehaviour
         }
     }
 
-    public void GetUsers() { StartCoroutine(GetUsersIE()); }
-    public IEnumerator GetUsersIE() // Get User from data base
-    {
-        yield break;
-    }
-
-
     public void UpdateUserDatas() { StopAllCoroutines(); StartCoroutine(UpdateUserDatasIE()); }
     public IEnumerator UpdateUserDatasIE() // Get User from data base
     {
-        yield break;
+        //string url = $"{BackFourApps.urlClasses}UserData/{Entity_Player.Instance.UserDatas.userDataId}";
+        string url = $"{BackFourApps.urlClasses}UserData/o25fGOcHv1";
+        using (var request = new UnityWebRequest(url, "PUT"))
+        {
+            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
+            request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
+
+            //var data = new { hasCompletedTutorial = Entity_Player.Instance.UserDatas.hasCompletedTutorial };
+            var data = new { hasCompletedTutorial = true };
+            var json = JsonConvert.SerializeObject(data);
+
+            request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
+            request.downloadHandler = new DownloadHandlerBuffer();
+
+            yield return request.SendWebRequest();
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+#if UNITY_EDITOR
+                Debug.LogWarning("ERROR: " + request.error);
+                Debug.LogWarning("TEST: " + request.result);
+#endif
+                yield break;
+            }
+            Debug.Log(request.downloadHandler.text);
+        }
+
     }
 
     /// <summary>The logic uses Newtonsoft Json package</summary>
     private void SetUserDatas(UnityWebRequest request)
     {
-        //UserDatas userDatas = JsonConvert.DeserializeObject<UserDatas>(request.downloadHandler.text);
         UserDatas userDatas = GetUserDatas(request);
         Entity_Player.Instance.UserDatas = userDatas;
     }

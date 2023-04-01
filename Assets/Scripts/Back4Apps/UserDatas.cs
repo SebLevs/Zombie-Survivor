@@ -5,6 +5,7 @@ public class UserDatas
     // Enter any new field required to manage the player datas
     public bool emailVerified;
     public string objectId;
+    public string userDataId;
     public string username;
     public string key;
     public string email;
