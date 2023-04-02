@@ -46,7 +46,7 @@ public class ViewTitleScreen : ViewElementButton
             request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
-            var data = new { hasCompletedTutorial = Entity_Player.Instance.UserDatas.hasCompletedTutorial };
+            var data = new { hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial };
             var json = JsonConvert.SerializeObject(data);
 
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
@@ -61,7 +61,6 @@ public class ViewTitleScreen : ViewElementButton
 #endif
                 yield break;
             }
-            Debug.Log(request.downloadHandler.text);
         }
 
     }

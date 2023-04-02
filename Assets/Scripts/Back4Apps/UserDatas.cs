@@ -11,7 +11,7 @@ public class UserDatas
     public string email;
     public DateTime createdAt;
     public DateTime updatedAt;
-    public bool hasCompletedTutorial = false;
+    public UserDatasGameplay userDatasGameplay;
 
     public override string ToString()
     {
@@ -20,6 +20,6 @@ public class UserDatas
                 $"userName : {username}\n" +
                 $"email : {email}\n" +
                 $"createdAt : {createdAt}\n" +
-                $"updatedAt : {updatedAt}";
+                $"updatedAt : {updatedAt}\n";
     }
 }

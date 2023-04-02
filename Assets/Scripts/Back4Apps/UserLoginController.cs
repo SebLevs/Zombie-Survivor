@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System.Collections;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -44,6 +46,7 @@ public class UserLoginController : MonoBehaviour
         _activeCue.LocalizeExternalText(keyValidSignup);
 
         Entity_Player.Instance.UserDatas = new();
+        Entity_Player.Instance.UserDatas.userDatasGameplay = new();
         GotoTitleScreen();
     }
 
@@ -69,6 +72,47 @@ public class UserLoginController : MonoBehaviour
     public void SignUp() { StopAllCoroutines(); StartCoroutine(SignUpIE()); }
     public IEnumerator SignUpIE()
     {
+/*        //string url = $"{BackFourApps.urlUsers}?email={inputFieldEmail.text}";
+        string url = "https://parseapi.back4app.com/classes/users?where={\"email\":\"" + inputFieldEmail.text + "\"}";
+        using (var request = new UnityWebRequest(url, "GET"))
+        {
+            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
+
+            request.downloadHandler = new DownloadHandlerBuffer();
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+#if UNITY_EDITOR
+                Debug.LogWarning("ERROR: " + request.error);
+#endif
+                SwitchActiveCue(localizableCueInvalid);
+                // TODO: Make COR checks here
+                //string key = _errorHander.TryLoginHandleError();
+                //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
+                _activeCue.LocalizeExternalText("error email already in use"); // TODO: Remove when above is implemented
+
+                Debug.Log(request.downloadHandler.text);
+                Debug.Log(request.downloadHandler.text.Contains(inputFieldEmail.text));
+
+                yield break;
+            }
+
+            Debug.Log("NO EMAIL FOUND");
+        }*/
+
+
+
+
+
+
+
+
+
+
+
+
         // UserData Row Creation
         // Required for giving a foreign key to the user to access his or her datas
         string tempUserDataId = "";
@@ -116,7 +160,7 @@ public class UserLoginController : MonoBehaviour
             if (request.result != UnityWebRequest.Result.Success)
             {
 #if UNITY_EDITOR
-                Debug.LogWarning("ERROR: " + request.error + " | Email might already exist or is missing an @Foo");
+                Debug.LogWarning("ERROR: " + request.error);
 #endif
                 SwitchActiveCue(localizableCueInvalid);
                 // TODO: Make COR checks here
@@ -153,11 +197,11 @@ public class UserLoginController : MonoBehaviour
                 // TODO: Make COR checks here
                 //string key = _errorHander.TryLoginHandleError();
                 //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
-                _activeCue.LocalizeExternalText("TEST"); // TODO: Remove when above is implemented
+                _activeCue.LocalizeExternalText("error email already in use"); // TODO: Remove when above is implemented
                 yield break;
             }
-
             SetUserDatas(request);
+
             if (!Entity_Player.Instance.UserDatas.emailVerified)
             {
                 SwitchActiveCue(localizableCueEmailVerification);
@@ -169,21 +213,57 @@ public class UserLoginController : MonoBehaviour
 
             GoToTitleScreenHandler();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+        // Set user datas
+        url = "https://parseapi.back4app.com/classes/UserData/?where={\"objectId\":\"eDI0FiMMw4\"}";
+        //url = $"{BackFourApps.urlUserData}?objectId={Entity_Player.Instance.UserDatas.userDataId}";
+        using (var request = UnityWebRequest.Get(url))
+        {
+            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
+
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("ERROR:  NO USERDATA ON GET+ " + request.error);
+                yield break;
+            }
+
+            // TODO: Debug bellow, it should work as GetUserDatas() also work (Read online that NewtonJson hates boolean https://github.com/dotnet/runtime/issues/29960)
+
+            //Debug.Log(request.downloadHandler.text);
+            //Debug.Log("Is it true: " + GetUserDatasGameplay(request).hasCompletedTutorial);
+            //SetUserDatasGameplay(request);
+
+            Entity_Player.Instance.UserDatas.userDatasGameplay = new();
+            var matches = Regex.Matches(request.downloadHandler.text, "\"hasCompletedTutorial\":(\\w+)", RegexOptions.Multiline);
+            Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial = matches.First().Groups[1].Value == "true";
+        }
     }
 
     public void UpdateUserDatas() { StopAllCoroutines(); StartCoroutine(UpdateUserDatasIE()); }
     public IEnumerator UpdateUserDatasIE() // Get User from data base
     {
-        //string url = $"{BackFourApps.urlClasses}UserData/{Entity_Player.Instance.UserDatas.userDataId}";
-        string url = $"{BackFourApps.urlClasses}UserData/o25fGOcHv1";
+        string url = $"{BackFourApps.urlClasses}UserData/{Entity_Player.Instance.UserDatas.userDataId}";
         using (var request = new UnityWebRequest(url, "PUT"))
         {
             request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
             request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
-            //var data = new { hasCompletedTutorial = Entity_Player.Instance.UserDatas.hasCompletedTutorial };
-            var data = new { hasCompletedTutorial = true };
+            var data = new { hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial };
             var json = JsonConvert.SerializeObject(data);
 
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
@@ -198,9 +278,7 @@ public class UserLoginController : MonoBehaviour
 #endif
                 yield break;
             }
-            Debug.Log(request.downloadHandler.text);
         }
-
     }
 
     /// <summary>The logic uses Newtonsoft Json package</summary>
@@ -211,6 +289,16 @@ public class UserLoginController : MonoBehaviour
     }
 
     private UserDatas GetUserDatas(UnityWebRequest request) => JsonConvert.DeserializeObject<UserDatas>(request.downloadHandler.text);
+
+    /// <summary>The logic uses Newtonsoft Json package</summary>
+    private void SetUserDatasGameplay(UnityWebRequest request)
+    {
+        Debug.Log(request.downloadHandler.text);
+        UserDatasGameplay userDatas = GetUserDatasGameplay(request);
+        Entity_Player.Instance.UserDatas.userDatasGameplay = userDatas;
+    }
+
+    private UserDatasGameplay GetUserDatasGameplay(UnityWebRequest request) => JsonConvert.DeserializeObject<UserDatasGameplay>(request.downloadHandler.text);
 
     private void GoToTitleScreenHandler()
     {

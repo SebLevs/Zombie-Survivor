@@ -9,7 +9,7 @@ public class SceneLoadController : MonoBehaviour
     {
         Entity_Player player = Entity_Player.Instance;
 
-        if (!player.UserDatas.hasCompletedTutorial)
+        if (!player.UserDatas.userDatasGameplay.hasCompletedTutorial)
         {
             SceneLoadManager.Instance.LoadScene(tutorialScene);
             return;
