@@ -29,7 +29,7 @@ public class TutorialController : MonoBehaviour
 
     public void OnTutorialCompletion()
     {
-        _player.UserDatas.hasCompletedTutorial = true;
+        _player.UserDatas.userDatasGameplay.hasCompletedTutorial = true;
     }
 
     public IEnumerator ShowTutorialTexts()

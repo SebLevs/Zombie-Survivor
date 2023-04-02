@@ -1307,6 +1307,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1375282425}
     m_Modifications:
+    - target: {fileID: 3749549922470885480, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3784368732950397834, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_sharedMaterial
       value: 

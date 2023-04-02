@@ -27,6 +27,7 @@ public class BackFourApps : MonoBehaviour
     public static readonly string urlUsers = "https://parseapi.back4app.com/users/";
     public static readonly string urlLogin = "https://parseapi.back4app.com/login/";
     public static readonly string urlClasses = "https://parseapi.back4app.com/classes/";
+    public static readonly string urlUserData = "https://parseapi.back4app.com/classes/UserData/";
 
     // classes
     public static BfaApp ZombieSurvivor = new BfaApp()
