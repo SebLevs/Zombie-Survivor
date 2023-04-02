@@ -72,6 +72,7 @@ public class UserLoginController : MonoBehaviour
     public void SignUp() { StopAllCoroutines(); StartCoroutine(SignUpIE()); }
     public IEnumerator SignUpIE()
     {
+        // TODO CHECK IF EMAIL EXISTS HERE
 /*        //string url = $"{BackFourApps.urlUsers}?email={inputFieldEmail.text}";
         string url = "https://parseapi.back4app.com/classes/users?where={\"email\":\"" + inputFieldEmail.text + "\"}";
         using (var request = new UnityWebRequest(url, "GET"))
@@ -157,18 +158,21 @@ public class UserLoginController : MonoBehaviour
 
             yield return request.SendWebRequest();
 
+            // TODO: Make COR checks here for email format validity
+
             if (request.result != UnityWebRequest.Result.Success)
             {
 #if UNITY_EDITOR
                 Debug.LogWarning("ERROR: " + request.error);
 #endif
                 SwitchActiveCue(localizableCueInvalid);
-                // TODO: Make COR checks here
+                // TODO: Make COR checks here for email already exists
                 //string key = _errorHander.TryLoginHandleError();
                 //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
                 _activeCue.LocalizeExternalText("TEST"); // TODO: Remove when above is implemented
                 yield break;
             }
+            
 
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidSignup);
@@ -214,20 +218,8 @@ public class UserLoginController : MonoBehaviour
             GoToTitleScreenHandler();
         }
 
-
-
-
-
-
-
-
-
-
-
-
         // Set user datas
-        url = "https://parseapi.back4app.com/classes/UserData/?where={\"objectId\":\"eDI0FiMMw4\"}";
-        //url = $"{BackFourApps.urlUserData}?objectId={Entity_Player.Instance.UserDatas.userDataId}";
+        url = $"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}";
         using (var request = UnityWebRequest.Get(url))
         {
             request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
@@ -237,7 +229,7 @@ public class UserLoginController : MonoBehaviour
 
             if (request.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError("ERROR:  NO USERDATA ON GET+ " + request.error);
+                Debug.LogError("ERROR: NO USERDATA ON GET+ " + request.error);
                 yield break;
             }
 
