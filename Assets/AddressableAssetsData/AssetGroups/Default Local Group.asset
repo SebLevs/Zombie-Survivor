@@ -16,23 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 6e7dfc0b9db8bb3428bd8277b9e43cd3
-  m_SerializeEntries:
-  - m_GUID: 3b10f429201f28f4ba4c254fb2fb301b
-    m_Address: Assets/Scenes/Base_Scene.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 64f5b4e35130f0c48a000e0e84577ec2
-    m_Address: Assets/Scenes/Scene Gameplay.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: aad948cf9cd7f2c42a7d43a6a2fbb3b4
-    m_Address: Assets/Scenes/Scene Practice Room.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 94555535fde352f408b5e9e71e0c1a88
-    m_Address: Assets/Scenes/Scene Tutorial.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d2988cce72a84054b9493689a3da78f9, type: 2}
   m_SchemaSet:
