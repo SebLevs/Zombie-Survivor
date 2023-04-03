@@ -91,6 +91,7 @@ MonoBehaviour:
     - Base Gameplay
     - Scene Practice Room
     - Scene Tutorial
+    - AlwaysLoad
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: c0860f890a3a216498171ddfbde6c852, type: 2}
