@@ -182,7 +182,7 @@ public class UserLoginController : MonoBehaviour
                 yield break;
             }
             
-
+            
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidSignup);
         }

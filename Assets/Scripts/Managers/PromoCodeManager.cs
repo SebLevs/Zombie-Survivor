@@ -34,7 +34,7 @@ public class PromoCodeManager : MonoBehaviour
                 Debug.LogError(request.error);
                 yield break;
             }
-
+            
             var jObject = JObject.Parse(request.downloadHandler.text);
             var results = jObject["results"].ToArray();
             foreach (var result in results)
