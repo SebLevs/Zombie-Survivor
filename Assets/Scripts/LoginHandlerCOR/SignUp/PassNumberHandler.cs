@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 public class PassNumberHandler : IHandleSignUpError
@@ -9,6 +10,12 @@ public class PassNumberHandler : IHandleSignUpError
 
     public bool HandleError(string message)
     {
-        return message.Count(x => x is >= '0' and <= '9') > 0;
+        int count = 0;
+        foreach (var c in message)
+        {
+            if (char.IsNumber(c)) count++;
+        }
+
+        return count == 0;
     }
 }

@@ -634,22 +634,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loginErrorHandler: []
-  signUpErrorHandler:
+  signUpUserErrorHandler:
   - mode: 1
     unityReference: {fileID: 0}
     rawReference:
-      rid: 3702178344084963332
+      rid: 893111410975834125
   - mode: 1
     unityReference: {fileID: 0}
     rawReference:
-      rid: 3702178344084963331
+      rid: 893111410975834126
+  signUpPassErrorHandler:
+  - mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: 893111410975834127
+  - mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: 893111410975834128
+  errorKey: 
   references:
     version: 2
     RefIds:
-    - rid: 3702178344084963331
-      type: {class: EmailFormatHandler, ns: , asm: Assembly-CSharp}
-    - rid: 3702178344084963332
-      type: {class: PassLengthHandler, ns: , asm: Assembly-CSharp}
+    - rid: 893111410975834125
+      type: {class: EmailFormatHandler, ns: , asm: ScriptAD}
+    - rid: 893111410975834126
+      type: {class: EmailFormatHandler, ns: , asm: ScriptAD}
+    - rid: 893111410975834127
+      type: {class: PassLengthHandler, ns: , asm: ScriptAD}
+    - rid: 893111410975834128
+      type: {class: PassNumberHandler, ns: , asm: ScriptAD}
 --- !u!114 &3570339688012745606
 MonoBehaviour:
   m_ObjectHideFlags: 0
