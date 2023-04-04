@@ -8,12 +8,13 @@ using UnityEngine.Networking;
 
 public class PromoCodeManager : MonoBehaviour
 {
-    private static Dictionary<string, string> _promoCodes = new();
+    private static Dictionary<string, string> _promoCodes;
     private TMP_InputField _inputField;
 
     private void OnEnable()
     {
         _inputField = GetComponentInChildren<TMP_InputField>();
+        _promoCodes = new Dictionary<string, string>();
         StartCoroutine(GetPromoCodes());
     }
 
@@ -84,5 +85,12 @@ public class PromoCodeManager : MonoBehaviour
 
             StartCoroutine(UpdatePromoCode(_promoCodes[input]));
         }
+        else
+        {
+            Debug.Log("Invalid Code");
+        }
+        _inputField.text = string.Empty;
+        _inputField.ActivateInputField();
+
     }
 }
