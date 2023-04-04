@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 484655409047476912}
   - component: {fileID: 294888241490702863}
   - component: {fileID: 6305848677187701822}
+  - component: {fileID: 5515586860360318447}
   m_Layer: 5
   m_Name: View Promo code
   m_TagString: Untagged
@@ -667,6 +668,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5515586860360318447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140408364853101005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5490796ef2e96e644a702ab43d30f358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4566574454231585078
 GameObject:
   m_ObjectHideFlags: 0
