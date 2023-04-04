@@ -736,7 +736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneLoadController, Assembly-CSharp
+      value: SceneLoadController, ScriptAD
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -744,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 71318270d24368f4e8c66feacb864277, type: 2}
     - target: {fileID: 2883959678100397360, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: SceneData, Assembly-CSharp
+      value: SceneData, ScriptAD
       objectReference: {fileID: 0}
     - target: {fileID: 2883959678100397362, guid: 581a1aaa3e3c4124293469875e604088, type: 3}
       propertyPath: m_Type
