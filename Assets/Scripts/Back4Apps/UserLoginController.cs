@@ -133,6 +133,7 @@ public class UserLoginController : MonoBehaviour
 
             if (request.result != UnityWebRequest.Result.Success)
             {
+                
 #if UNITY_EDITOR
                 Debug.LogWarning("ERROR: couldn't create a row at UserData class");
 #endif
@@ -166,10 +167,18 @@ public class UserLoginController : MonoBehaviour
                 Debug.LogWarning("ERROR: " + request.error);
 #endif
                 SwitchActiveCue(localizableCueInvalid);
+
+                
+                
                 // TODO: Make COR checks here for email already exists
                 //string key = _errorHander.TryLoginHandleError();
                 //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
-                _activeCue.LocalizeExternalText("TEST"); // TODO: Remove when above is implemented
+                //_activeCue.LocalizeExternalText("TEST"); // TODO: Remove when above is implemented
+                
+            }
+            if (_errorHander.TrySignUpHandleError(inputFieldEmail.text, inputFieldPassword.text))
+            {
+                _activeCue.LocalizeExternalText(_errorHander.errorKey);
                 yield break;
             }
             
@@ -198,11 +207,21 @@ public class UserLoginController : MonoBehaviour
                 Debug.LogWarning("ERROR: " + request.error);
 #endif
                 SwitchActiveCue(localizableCueInvalid);
+                
+                if (_errorHander.TryLoginHandleError(inputFieldEmail.text, inputFieldPassword.text))
+                {
+                    _activeCue.LocalizeExternalText(_errorHander.errorKey);
+                }
+                else
+                {
+                    _activeCue.LocalizeExternalText("error wrong combination");
+                }
+                yield break;
                 // TODO: Make COR checks here
                 //string key = _errorHander.TryLoginHandleError();
                 //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
-                _activeCue.LocalizeExternalText("error email already in use"); // TODO: Remove when above is implemented
-                yield break;
+                //_activeCue.LocalizeExternalText("error wrong combination"); // TODO: Remove when above is implemented
+                
             }
             SetUserDatas(request);
 

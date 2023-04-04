@@ -5,32 +5,42 @@ using UnityEngine;
 public class ErrorHandler : MonoBehaviour
 {
     [SerializeField] private List<SerializableInterface<IHandleLoginError>> loginErrorHandler;
-    [SerializeField] private List<SerializableInterface<IHandleSignUpError>> signUpErrorHandler;
+    [SerializeField] private List<SerializableInterface<IHandleSignUpError>> signUpUserErrorHandler;
+    [SerializeField] private List<SerializableInterface<IHandleSignUpError>> signUpPassErrorHandler;
+    public string errorKey = "";
 
-    public string TryLoginHandleError(string message)
+    public bool TryLoginHandleError(string email, string password)
     {
-        for (int i = loginErrorHandler.Count; i >= 0; i--)
+        foreach (var handler in loginErrorHandler)
         {
-            SerializableInterface<IHandleSignUpError> handler = signUpErrorHandler[i];
-            if (handler.Value.HandleError(message))
-            {
-                return handler.Value.ErrorMessageKey();
-            }
-        }
-        return "tmp valid login";
-    }
-
-    public string TrySignUpHandleError(string email, string password)
-    {
-        for (int i = signUpErrorHandler.Count; i >= 0; i--)
-        {
-            SerializableInterface<IHandleLoginError> handler = loginErrorHandler[i];
             if (handler.Value.HandleError(email, password))
             {
-                return handler.Value.ErrorMessageKey();
+                errorKey = handler.Value.ErrorMessageKey();
+                return true;
             }
         }
+        return false;
+    }
 
-        return "tmp valid signup";
+    public bool TrySignUpHandleError(string email, string password)
+    {
+        foreach (var handler in signUpUserErrorHandler)
+        {
+            if (handler.Value.HandleError(email))
+            {
+                errorKey = handler.Value.ErrorMessageKey();
+                return true;
+            }
+        }
+        foreach (var handler in signUpPassErrorHandler)
+        {
+            if (handler.Value.HandleError(password))
+            {
+                errorKey = handler.Value.ErrorMessageKey();
+                return true;
+            }
+        }
+        
+        return false;
     }
 }
