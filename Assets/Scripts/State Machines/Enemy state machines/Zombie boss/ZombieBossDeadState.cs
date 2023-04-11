@@ -17,6 +17,7 @@ public class ZombieBossDeadState : EnemyState
 
     public override void OnEnter()
     {
+        Entity_Player.Instance.baseStats.SmallGold += 10;
         SceneLoadManager.Instance.GoToTitleScreen();
     }
 
