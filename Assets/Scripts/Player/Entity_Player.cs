@@ -130,8 +130,6 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
     
     public void InitPlayer()
     {
-        WriteInPlayerBaseStats();
-        
         Health.SetMaxHP(baseStats.MaxHealth);
         MovSpeed = baseStats.MoveSpeed;
         specialAttackSpeed = baseStats.BoomAttackSpeed;

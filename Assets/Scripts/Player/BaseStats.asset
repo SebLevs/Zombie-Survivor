@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   MoveSpeed: 5
-  AttackSpeed: 0.5
+  AttackSpeed: 0.10000002
   BoomDistance: 5
   BoomAttackSpeed: 2
   DodgeDelay: 5
-  BigGold: 0
-  SmallGold: 0
+  BigGold: 1
+  SmallGold: 2

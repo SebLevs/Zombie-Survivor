@@ -2,7 +2,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using Player;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -46,7 +48,13 @@ public class ViewTitleScreen : ViewElementButton
             request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
-            var data = new { hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial };
+            UpdatePlayerStatsOnLogOut();
+            
+            var data = new
+            {
+                hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial,
+                PersistantStats = Convert.ToBase64String(File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv")))
+            };
             var json = JsonConvert.SerializeObject(data);
 
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
@@ -62,6 +70,24 @@ public class ViewTitleScreen : ViewElementButton
                 yield break;
             }
         }
+        
+    }
+    private void UpdatePlayerStatsOnLogOut()
+    {
+        PlayerStatsSO _playerStats = Entity_Player.Instance.baseStats;
+        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"), "");
+
+        StreamWriter writer = new StreamWriter(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"));
+        writer.WriteLine("MaxHealth\t" + _playerStats.MaxHealth);
+        writer.WriteLine("MoveSpeed\t" + _playerStats.MoveSpeed);
+        writer.WriteLine("AttackSpeed\t" + _playerStats.AttackSpeed);
+        writer.WriteLine("BoomDistance\t" + _playerStats.BoomDistance);
+        writer.WriteLine("BoomAttackSpeed\t" + _playerStats.BoomAttackSpeed);
+        writer.WriteLine("DodgeDelay\t" + _playerStats.DodgeDelay);
+        writer.WriteLine("BigGold\t" + _playerStats.BigGold);
+        writer.WriteLine("SmallGold\t" + _playerStats.SmallGold);
+        writer.Close();
 
     }
+    
 }

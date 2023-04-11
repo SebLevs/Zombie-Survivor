@@ -68,12 +68,12 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         isActive = false;
     }
 
-    private void DoCommandInput(CommandType type)
+    public void DoCommandInput(CommandType type)
     {
         playerCommandInvoker.DoCommand(playerCommandInvoker.CommandPromptDic[type]);
     }
 
-    private void UnDoCommandInput(CommandType type)
+    public void UnDoCommandInput(CommandType type)
     {
         playerCommandInvoker.UnDoCommand(playerCommandInvoker.CommandPromptDic[type]);
     }

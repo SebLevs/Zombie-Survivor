@@ -15,13 +15,13 @@ public class CurrencyPrinter : MonoBehaviour
 
     public void RefreshSmallGold()
     {
-        Debug.Log("Small gold refresh was called for SMALL GOLD | Please double click me and update with proper value");
-        textMeshPro.text = Entity_Player.Instance.currentGold.ToString();
+        Debug.Log("Small gold refresh was called for  SMALL GOLD | Please double click me and update with proper value");
+        textMeshPro.text = Entity_Player.Instance.baseStats.SmallGold.ToString();
     }
 
     public void RefreshBigGold()
     {
         Debug.Log("Small gold refresh was called for  BIG GOLD | Please double click me and update with proper value");
-        textMeshPro.text = Entity_Player.Instance.currentGold.ToString();
+        textMeshPro.text = Entity_Player.Instance.baseStats.BigGold.ToString();
     }
 }

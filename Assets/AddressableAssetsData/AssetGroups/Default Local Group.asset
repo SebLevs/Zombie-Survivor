@@ -16,7 +16,12 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 6e7dfc0b9db8bb3428bd8277b9e43cd3
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 7b5d38ba3508ba64fa90c6aaf900d0b4
+    m_Address: Assets/Scripts/CommandPattern/CommandInvoker.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d2988cce72a84054b9493689a3da78f9, type: 2}
   m_SchemaSet:
