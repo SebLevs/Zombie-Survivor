@@ -97,6 +97,23 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         
         RefreshPlayerStats();
     }
+
+    public void UpdateBaseStats()
+    {
+        baseStats.MaxHealth = Health.MaxHP;
+        baseStats.MoveSpeed = MovSpeed;
+        baseStats.BoomAttackSpeed = specialAttackSpeed;
+        baseStats.AttackSpeed = attackSpeed;
+        baseStats.BoomDistance = boomDistance;
+        baseStats.DodgeDelay = dodgeInterval;
+        baseStats.SmallGold = permanentStats.permanentSmallGold;
+        baseStats.BigGold = permanentStats.permanentBigGold;
+    }
+
+    public void OverrideBaseStats()
+    {
+        
+    }
     
     
     public void WriteInPlayerBaseStats()

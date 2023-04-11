@@ -3,7 +3,14 @@ guid: d13e45323d8cfa94eb86a96855983892
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - baseStats: {fileID: 11400000, guid: 0bc1e5b7184b1dc46b09f4b3b800c0f4, type: 2}
+  - permanentStats: {instanceID: 0}
+  - muzzle: {instanceID: 0}
+  - shootFrom: {instanceID: 0}
+  - col: {instanceID: 0}
+  - arrow: {instanceID: 0}
+  - audios: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

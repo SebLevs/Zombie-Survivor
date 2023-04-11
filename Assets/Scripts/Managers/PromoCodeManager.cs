@@ -84,11 +84,13 @@ public class PromoCodeManager : MonoBehaviour
                 {
                     Debug.Log("Gives Perma Stats");
                     GivePermaStats();
+                    Entity_Player.Instance.UpdateBaseStats();
                     break;
                 }
                 case 'T':
                 {
-                    Debug.Log("Gives nice message");
+                    Debug.Log("Gives nice message and Temp Stats");
+                    GivePermaStats();
                     Debug.Log(NiceMessage());
                     break;
                 }
