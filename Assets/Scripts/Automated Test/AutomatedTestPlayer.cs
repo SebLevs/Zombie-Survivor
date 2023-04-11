@@ -32,6 +32,7 @@ public class AutomatedTestPlayer : MonoBehaviour, IPauseListener, IUpdateListene
 
     public void OnEnable()
     {
+        target = transform;
         GameManager.Instance.SubscribeToPauseGame(this);
         UpdateManager.Instance.SubscribeToUpdate(this);
     }
@@ -92,9 +93,28 @@ public class AutomatedTestPlayer : MonoBehaviour, IPauseListener, IUpdateListene
         AddActionToPlayer(action);
     }
 
+    [SerializeField] private float dodgeRadius = 1.5f;
     private void Dodge()
     {
         // TODO: Dodge when enemy OR bone gets closer than X distance
+
+        List<ProjectileEnemy> projectiles = GetOverllapedComponentsInCircle<ProjectileEnemy>(transform, dodgeRadius, 100);
+        if (projectiles.Count > 0)
+        {
+            Transform closestProjectile = LinearAlgebraUtilities.GetClosestObject(projectiles, transform).transform;
+            if (closestProjectile)
+            {
+                _player.Controller.SetLookAt(closestProjectile.transform.position * 1.5f);
+            }
+        }
+
+
+        List<Enemy> enemies = GetOverllapedComponentsInCircle<Enemy>(transform, dodgeRadius, 100);
+        if (enemies.Count == 0) { return; }
+        Transform closestEnemy = LinearAlgebraUtilities.GetClosestObject(enemies, transform)?.transform;
+
+        _player.Controller.SetLookAt(closestEnemy.transform.position * 1.5f);
+
         var action = new PlayerAction(PlayerActionsType.DODGE);
         AddActionToPlayer(action);
     }
@@ -124,7 +144,7 @@ public class AutomatedTestPlayer : MonoBehaviour, IPauseListener, IUpdateListene
         _player.Controller.SetLookAt(LinearAlgebraUtilities.GetClosestObject(objects, _player.transform).transform.position);
     }
 
-    private void SetTarget(Transform target) => this.target = target;
+    private void SetTargetPosition(Vector3 position) => target.position = position;
 
     [SerializeField] private float reachedDistance = 0.5f;
     private void MoveToTarget()
@@ -132,22 +152,15 @@ public class AutomatedTestPlayer : MonoBehaviour, IPauseListener, IUpdateListene
         // TODO: Cast a circle overlap to get objects
         // TODO: Move where enemy OR bone isnt in path
 
-        if (!target)
-        {
-            // TODO: Set target here
-        }
-        else
-        {
-            Vector2 distance = target.transform.position - _player.transform.position;
+        Vector2 distance = target.transform.position - _player.transform.position;
 
-            if (distance.magnitude <= reachedDistance) 
-            {
-                _player.Controller.UpdateMoveDirection(Vector2.zero);
-                return;
-            }
-
-            _player.Controller.UpdateMoveDirection(distance.normalized);
+        if (distance.magnitude <= reachedDistance)
+        {
+            _player.Controller.UpdateMoveDirection(Vector2.zero);
+            return;
         }
+
+        _player.Controller.UpdateMoveDirection(distance.normalized);
     }
 
     [SerializeField] private float overlapSphereradius = 5f;
@@ -159,6 +172,7 @@ public class AutomatedTestPlayer : MonoBehaviour, IPauseListener, IUpdateListene
         if (target == _lastPotion?.transform) { return true; }
 
         List<PotionBehavior> potionBehaviours = GetOverllapedComponentsInCircle<PotionBehavior>(_player.transform, overlapSphereradius, 100);
+        if (potionBehaviours.Count == 0) { return false; }
         target = LinearAlgebraUtilities.GetClosestObject(potionBehaviours, _player.transform).transform;
 
         return true;
