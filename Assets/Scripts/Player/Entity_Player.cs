@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseListener
 {

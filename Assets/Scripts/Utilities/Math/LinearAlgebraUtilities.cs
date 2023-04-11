@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public static class LinearAlgebraUtilities
 {
@@ -76,5 +79,23 @@ public static class LinearAlgebraUtilities
         // Reminder pythagoeran theorem
         // C^2 = sqrt(a^2 + b^2)
         return Vector2.Distance(target, from);
+    }
+
+    public static T GetClosestObject<T>(ICollection<T> enumerable, Transform from) where T : Component
+    {
+        T closestComponent = enumerable.ElementAt(0);
+        float leastDistance = Vector2.Distance(from.position, enumerable.ElementAt(0).transform.position);
+        for (int i = 1; i < enumerable.Count; i++)
+        {
+            T currentEnumerable = enumerable.ElementAt(i);
+            float currentDistance = Vector2.Distance(from.position, currentEnumerable.transform.position);
+            if (currentDistance < leastDistance)
+            {
+                leastDistance = currentDistance;
+                closestComponent = currentEnumerable;
+            }
+        }
+
+        return closestComponent;
     }
 }
