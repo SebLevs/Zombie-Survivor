@@ -23,8 +23,6 @@ public class PoolPattern<T> where T : Component, IPoolable
     private HashSet<T> m_availablePool = new HashSet<T>();
     private HashSet<T> m_currentlyUsedPool = new HashSet<T>();
 
-    public HashSet<T> GetCurrentlyUsedPool() { return m_currentlyUsedPool; }
-
     public HashSet<T> InitDefaultQuantity()
     {
         for (int i = 0; i < _defaultQuantity; i++)
@@ -94,6 +92,4 @@ public class PoolPattern<T> where T : Component, IPoolable
         m_currentlyUsedPool.TryGetValue(key, out element);
         return element;
     }
-
-    public bool IsCurrentlyUsedEmpty() { return m_currentlyUsedPool.Count == 0; }
 }

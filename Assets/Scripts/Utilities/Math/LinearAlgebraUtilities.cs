@@ -83,6 +83,8 @@ public static class LinearAlgebraUtilities
 
     public static T GetClosestObject<T>(ICollection<T> enumerable, Transform from) where T : Component
     {
+        if (enumerable.Count == 1) { return enumerable.ElementAt(0); }
+
         T closestComponent = enumerable.ElementAt(0);
         float leastDistance = Vector2.Distance(from.position, enumerable.ElementAt(0).transform.position);
         for (int i = 1; i < enumerable.Count; i++)

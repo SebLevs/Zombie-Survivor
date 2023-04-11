@@ -1,5 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 public class AutomatedTestPlayer : MonoBehaviour, IPauseListener, IUpdateListener
@@ -7,6 +9,15 @@ public class AutomatedTestPlayer : MonoBehaviour, IPauseListener, IUpdateListene
     [SerializeField] private Transform target;
     [SerializeField] private bool isAutomatedTest = false;
     private Entity_Player _player;
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (!Application.isPlaying) { return; }
+
+        Handles.DrawWireDisc(transform.position, Vector3.forward, overlapSphereradius, 2f);
+    }
+#endif
 
     public void OnDisable()
     {

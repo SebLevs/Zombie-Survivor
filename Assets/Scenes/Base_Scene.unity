@@ -1032,8 +1032,8 @@ MonoBehaviour:
   target: {fileID: 1330359292}
   isAutomatedTest: 1
   reachedDistance: 0.5
-  overlapSphereradius: 100
-  hpTreshold: 1
+  overlapSphereradius: 10
+  hpTreshold: 0.5
 --- !u!114 &1845057284 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3807272636781923556, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
