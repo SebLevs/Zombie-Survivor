@@ -230,7 +230,7 @@ public class UserLoginController : MonoBehaviour
                 SwitchActiveCue(localizableCueEmailVerification);
                 yield break;
             }
-
+            
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidLogin);
 
@@ -261,6 +261,9 @@ public class UserLoginController : MonoBehaviour
             Entity_Player.Instance.UserDatas.userDatasGameplay = new();
             var matches = Regex.Matches(request.downloadHandler.text, "\"hasCompletedTutorial\":(\\w+)", RegexOptions.Multiline);
             Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial = matches.First().Groups[1].Value == "true";
+            //Entity_Player.Instance.UserDatas.userDatasGameplay.SetUserDataGameplay();
+            Entity_Player.Instance.InitPlayer();
+            Entity_Player.Instance.RefreshPlayerStats();
         }
     }
 

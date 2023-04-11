@@ -69,16 +69,27 @@ public class PromoCodeManager : MonoBehaviour
                 case 'C':
                 {
                     Debug.Log("Gives Currency");
+                    int temp = Random.Range(0, 2);
+                    if (temp == 1)
+                    {
+                        Entity_Player.Instance.permanentStats.permanentBigGold += 1;
+                    }
+                    else
+                    {
+                        Entity_Player.Instance.permanentStats.permanentSmallGold += 10;
+                    }
                     break;
                 }
                 case 'P':
                 {
                     Debug.Log("Gives Perma Stats");
+                    GivePermaStats();
                     break;
                 }
                 case 'T':
                 {
-                    Debug.Log("Gives Temp Stats");
+                    Debug.Log("Gives nice message");
+                    Debug.Log(NiceMessage());
                     break;
                 }
             }
@@ -92,5 +103,37 @@ public class PromoCodeManager : MonoBehaviour
         _inputField.text = string.Empty;
         _inputField.ActivateInputField();
 
+    }
+
+    private void GivePermaStats()
+    {
+        CommandInvoker commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
+        int temp = Random.Range(0, commandInvoker.ChestPowerUpDic.Count);
+        (CommandType type, ICommand command) = commandInvoker.ChestPowerUpDic.ElementAt(temp);
+        string name = type.ToString().Replace("_", " ");
+        commandInvoker.DoCommand(command);
+        Entity_Player.Instance.RefreshPlayerStats();
+    }
+
+    private string NiceMessage()
+    {
+        List<string> niceMessages = new();
+        niceMessages.Add("You are pretty");
+        niceMessages.Add("Dont give up");
+        niceMessages.Add("CROCODILE!!!");
+        niceMessages.Add("Do what makes you happy");
+        niceMessages.Add("You are enough, just be you");
+        niceMessages.Add("Believe in yourself, you can do it");
+        niceMessages.Add("Love wins, always choose kindness");
+        niceMessages.Add("Life is short, make it count");
+        niceMessages.Add("Dream big, take action now");
+        niceMessages.Add("Smile often, spread joy around");
+        niceMessages.Add("You are loved, never forget that");
+        niceMessages.Add("Be the change you wish for");
+        niceMessages.Add("Choose happiness, it's contagious");
+        niceMessages.Add("Chase your passions, live your purpose");
+
+        int temp = Random.Range(0, niceMessages.Count);
+        return niceMessages[temp];
     }
 }
