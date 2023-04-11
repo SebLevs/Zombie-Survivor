@@ -40,7 +40,7 @@ public class ViewTitleScreen : ViewElementButton
     public IEnumerator UpdateUserDatasIE() // Get User from data base
     {
         string url = $"{BackFourApps.urlClasses}UserData/{Entity_Player.Instance.UserDatas.userDataId}";
-        using (var request  = new UnityWebRequest(url, "PUT"))
+        using (var request = new UnityWebRequest(url, "PUT"))
         {
             request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
             request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
