@@ -8,7 +8,7 @@ public class LookAtTarget : MonoBehaviour, IFixedUpdateListener
 
     [Header("Target specifications")]
     [SerializeField] private bool _isLookAtPlayer = false;
-    [Tooltip("If not targeting player, a target must be specified")]
+    [Tooltip("If not targeting player, a Target must be specified")]
     [SerializeField] private Transform _target;
 
     private void Awake()

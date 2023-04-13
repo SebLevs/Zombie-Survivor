@@ -23,8 +23,8 @@ public static class LinearAlgebraUtilities
     }
 
     /// <summary>
-    /// If returned to the "forward" of the self, will rotate the self towards the target in 2 dimensions<br/>
-    /// Note that visual oddities can happen if the Z value of the target is no the same as self
+    /// If returned to the "forward" of the self, will rotate the self towards the Target in 2 dimensions<br/>
+    /// Note that visual oddities can happen if the Z value of the Target is no the same as self
     /// </summary>
     public static Vector3 GetDirection2D(Vector3 target, Vector3 self)
     {
@@ -36,7 +36,7 @@ public static class LinearAlgebraUtilities
         // Normalization process reminder
         // WHERE
         //  C^ = unit vector     = direction
-        //  C  = (target - from)
+        //  C  = (Target - from)
         // |C| = magnitude of C  = sqrt(C.x^2 + C.y^2 + C.z^2)
         // FORMULA
         //  C^ = C / sqrt(|C|)
@@ -51,7 +51,7 @@ public static class LinearAlgebraUtilities
         // Normalization process reminder
         // WHERE
         //  C^ = unit vector     = direction
-        //  C  = (target - from)
+        //  C  = (Target - from)
         // |C| = magnitude of C  = sqrt(C.x^2 + C.y^2 + C.z^2)
         // FORMULA
         //  C^ = C / sqrt(|C|)

@@ -556,7 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 689541330}
     - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1997386155763334281, guid: 184c8583d2790354a9ee812923d0234a, type: 3}
       propertyPath: m_LocalScale.x
@@ -709,7 +709,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &730027506
 MonoBehaviour:
@@ -832,7 +832,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3219454427825767209, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3219454427825767209, guid: 9cc9c4815d2dd6a46b18ca7d2b6256d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -933,7 +933,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1330359291
 GameObject:
@@ -945,7 +945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1330359292}
   m_Layer: 0
-  m_Name: Target
+  m_Name: MoveToTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -964,7 +964,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1375282424
 GameObject:
@@ -1002,7 +1002,7 @@ Transform:
   - {fileID: 1964592270}
   - {fileID: 5761970932098265814}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1730893318 stripped
 AudioSource:
@@ -1029,8 +1029,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a6bf433de31cf43bd5e6b1101ae5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1330359292}
+  moveTarget: {fileID: 1330359292}
   isAutomatedTest: 1
+  dodgeRadius: 5
   reachedDistance: 0.5
   overlapSphereradius: 10
   hpTreshold: 0.5
@@ -1137,7 +1138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238878824477662817, guid: c6ab837a237b5704980376d4e65b6711, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1238878824477662817, guid: c6ab837a237b5704980376d4e65b6711, type: 3}
       propertyPath: m_LocalPosition.x
