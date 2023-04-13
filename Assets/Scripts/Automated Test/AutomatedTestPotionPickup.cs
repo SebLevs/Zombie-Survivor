@@ -28,7 +28,7 @@ public class AutomatedTestPotionPickup : IAutomatedTestPlayer
             return true;
         }
 
-        List<PotionBehavior> potionBehaviours = testController.GetOverllapedComponentsInCircle<PotionBehavior>(testController.transform, pickupRadius, 100);
+        List<PotionBehavior> potionBehaviours = testController.GetOverllapedComponentsInCircle<PotionBehavior>(testController.transform, pickupRadius, 10);
         if (potionBehaviours.Count == 0) { return false; }
         testController.Target = LinearAlgebraUtilities.GetClosestObject(potionBehaviours, testController.transform).transform;
         testController.Player.Controller.SetLookAt(testController.Target.position);

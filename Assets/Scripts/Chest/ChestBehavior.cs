@@ -26,7 +26,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
 
     private UIManager uiManager;
 
-    private bool isInteractable => _player.currentGold >= chestValue;
+    public bool isInteractable => _player.currentGold >= chestValue;
 
     [Header("Chest Type")]
     [SerializeField] private bool isRandomBonus = true;

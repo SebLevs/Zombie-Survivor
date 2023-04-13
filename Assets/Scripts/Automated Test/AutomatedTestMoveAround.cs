@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class AutomatedTestMoveTowardFreeSpace : IAutomatedTestPlayer
+public class AutomatedTestMoveAround : IAutomatedTestPlayer
 {
     public void DrawHandleGizmo(Transform drawFrom)
     {
