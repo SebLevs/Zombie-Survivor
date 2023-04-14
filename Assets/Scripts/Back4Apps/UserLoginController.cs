@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json.Linq;
 using Player;
 using TMPro;
 using UnityEngine;
@@ -290,11 +291,14 @@ public class UserLoginController : MonoBehaviour
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
             UpdatePlayerStatsOnLogOut();
-            
+            StartCoroutine(PostPlayerStatsFile());
+
             var data = new
             {
                 hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial,
-                PersistantStats = Convert.ToBase64String(File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv")))
+                PersistantStats =
+                    Convert.ToBase64String(File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath,
+                        "BasePlayerStats.tsv")))
             };
             var json = JsonConvert.SerializeObject(data);
 
@@ -363,6 +367,11 @@ public class UserLoginController : MonoBehaviour
     {
         _playerStats = Entity_Player.Instance.baseStats;
 
+        StartCoroutine(GetPlayerStatsFile(SetPlayerSO));
+    }
+
+    private void SetPlayerSO()
+    {
         List<float> list = new();
         list.Clear();
         string text = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"));
@@ -383,12 +392,68 @@ public class UserLoginController : MonoBehaviour
         _playerStats.SmallGold = (int)list[7];
     }
 
-    private void GetPlayerStatsFile()
+    private IEnumerator GetPlayerStatsFile(Action SetSO)
     {
+        string fileUrl;
+        string url = $"{BackFourApps.urlUserData}{Entity_Player.Instance.UserDatas.userDataId}";
+        Debug.Log(url);
+        using (var request = new UnityWebRequest(url, "GET"))
+        {
+            request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            yield return request.SendWebRequest();
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(request.downloadHandler.text);
+                yield break;
+            }
+
+            Debug.Log(request.downloadHandler.text);
+
+            var jObject = JObject.Parse(request.downloadHandler.text);
+            var persistantStats = jObject["PersistantStats"];
+            var jObjects = JObject.Parse(persistantStats.ToString());
+            fileUrl = jObjects["url"].ToString();
+
+            using (var requests = UnityWebRequest.Get(fileUrl))
+            {
+                yield return requests.SendWebRequest();
+                if (request.result != UnityWebRequest.Result.Success)
+
+                {
+                    Debug.LogError(request.error);
+                    Debug.Log(request.downloadHandler.text);
+                    yield break;
+                }
+
+                File.WriteAllBytes(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"),
+                    requests.downloadHandler.data);
+                SetSO.Invoke();
+            }
+        }
     }
 
-    private void PostPlayerStatsFile()
+    private IEnumerator PostPlayerStatsFile()
     {
+        string url = $"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}/PersistantStats";
+        using (var request = new UnityWebRequest(url, "PUT"))
+        {
+            request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
+            request.SetRequestHeader("Content-Type", "text/tab-separated-values");
+            string filePath = Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv");
+            request.uploadHandler = new UploadHandlerFile(filePath);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            yield return request.SendWebRequest();
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(request.downloadHandler.text);
+                yield break;
+            }
+
+            Debug.Log(request.downloadHandler.text);
+        }
     }
 
     private void UpdatePlayerStatsOnLogOut()
@@ -406,6 +471,5 @@ public class UserLoginController : MonoBehaviour
         writer.WriteLine("BigGold\t" + _playerStats.BigGold);
         writer.WriteLine("SmallGold\t" + _playerStats.SmallGold);
         writer.Close();
-
     }
 }

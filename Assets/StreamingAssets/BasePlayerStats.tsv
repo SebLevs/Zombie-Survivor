@@ -4,5 +4,5 @@ AttackSpeed	0.5
 BoomDistance	5
 BoomAttackSpeed	2
 DodgeDelay	5
-BigGold	5
-SmallGold	2
+BigGold	0
+SmallGold	0
