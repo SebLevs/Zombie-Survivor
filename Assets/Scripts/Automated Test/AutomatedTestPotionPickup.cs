@@ -8,14 +8,15 @@ using UnityEditor;
 [Serializable]
 public class AutomatedTestPotionPickup : IAutomatedTestPlayer
 {
-    [SerializeField] private float pickupRadius = 5f;
+    [SerializeField] private float gotoRadius = 5f;
     [SerializeField][Range(0, 1)] private float hpTreshold = 0.5f;
     private PotionBehavior _lastPotion;
 
 #if UNITY_EDITOR
     public void DrawHandleGizmo(Transform drawFrom)
     {
-        Handles.DrawWireDisc(drawFrom.position, Vector3.forward, pickupRadius, 2f);
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(drawFrom.position, Vector3.forward, gotoRadius, 2f);
     }
 #endif
 
@@ -28,7 +29,7 @@ public class AutomatedTestPotionPickup : IAutomatedTestPlayer
             return true;
         }
 
-        List<PotionBehavior> potionBehaviours = testController.GetOverllapedComponentsInCircle<PotionBehavior>(testController.transform, pickupRadius, 10);
+        List<PotionBehavior> potionBehaviours = testController.GetOverllapedComponentsInCircle<PotionBehavior>(testController.transform, gotoRadius, 10);
         if (potionBehaviours.Count == 0) { return false; }
         testController.Target = LinearAlgebraUtilities.GetClosestObject(potionBehaviours, testController.transform).transform;
         testController.Player.Controller.SetLookAt(testController.Target.position);

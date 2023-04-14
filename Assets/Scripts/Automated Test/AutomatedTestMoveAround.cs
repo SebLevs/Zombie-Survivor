@@ -4,9 +4,11 @@ using UnityEngine;
 [Serializable]
 public class AutomatedTestMoveAround : IAutomatedTestPlayer
 {
+#if UNITY_EDITOR
     public void DrawHandleGizmo(Transform drawFrom)
     {
     }
+#endif
 
     public bool ExecuteTest(PlayerAutomatedTestController testController)
     {

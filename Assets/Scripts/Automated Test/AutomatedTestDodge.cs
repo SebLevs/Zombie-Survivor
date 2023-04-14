@@ -14,6 +14,7 @@ public class AutomatedTestDodge : IAutomatedTestPlayer
 #if UNITY_EDITOR
     public void DrawHandleGizmo(Transform drawFrom)
     {
+        Handles.color = Color.green;
         Handles.DrawWireDisc(drawFrom.position, Vector3.forward, dodgeRadius, 2f);
     }
 #endif

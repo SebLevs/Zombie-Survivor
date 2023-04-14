@@ -22,7 +22,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
 
     private Animator _anim;
 
-    private bool _canOpenChest;
+    public bool CanOpenChest { get; private set; }
 
     private UIManager uiManager;
 
@@ -48,15 +48,16 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         _uiValue.text = "$ " + chestValue;
         uiManager = UIManager.Instance;
         AllChest.Add(this);
+        CanOpenChest = true;
     }
 
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag("Player") && !_player.Health.IsDead)
         {
-            if (_canOpenChest == false)
+            if (CanOpenChest == false)
             {
-                _canOpenChest = true;
+                CanOpenChest = true;
             }
 
             if (!isInteractable || uiManager.ViewInteract.gameObject.activeSelf) { return; }
@@ -67,9 +68,9 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        _canOpenChest = false;
         if (other.CompareTag("Player") && !_player.Health.IsDead)
         {
+            CanOpenChest = false;
             uiManager.ViewInteract.DeactivateAndHide(transform);
         }
     }
@@ -123,10 +124,10 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
 
     public void OnUpdate()
     {
-        if (_player.DesiredActions.Contains(PlayerActionsType.INTERACT) && _canOpenChest)
+        if (_player.DesiredActions.Contains(PlayerActionsType.INTERACT) && CanOpenChest)
         {
             _player.DesiredActions.ConsumeAllActions(PlayerActionsType.INTERACT);
-            _canOpenChest = false;
+            CanOpenChest = false;
 
             if (isRandomBonus)
             {

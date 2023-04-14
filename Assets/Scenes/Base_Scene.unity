@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAutomatedTest: 1
-  moveToTarget: {fileID: 1330359292}
+  backupTarget: {fileID: 1330359292}
   Target: {fileID: 0}
   primaryAttackTest:
     attackFromRange: 5
@@ -1039,10 +1039,11 @@ MonoBehaviour:
   dodgeTest:
     dodgeRadius: 1.5
   potionPickupTest:
-    pickupRadius: 5
+    gotoRadius: 6
     hpTreshold: 0.5
   chestPickupTest:
-    pickupRadius: 5
+    gotoRadius: 7
+    goldThreshold: 0.5
   reachedDistance: 0.5
 --- !u!114 &1845057284 stripped
 MonoBehaviour:

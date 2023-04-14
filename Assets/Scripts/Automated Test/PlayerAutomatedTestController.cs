@@ -6,7 +6,7 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     [SerializeField] private bool isAutomatedTest = false;
     [Space]
 
-    [SerializeField] private Transform moveToTarget;
+    [SerializeField] private Transform backupTarget;
     public Transform Target;
     
     public Entity_Player Player { get; private set; }
@@ -21,6 +21,9 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     [Header("Movement")]
     [SerializeField] private float reachedDistance = 0.5f;
+    public float GetDistanceToTarget() => (Target.transform.position - Player.transform.position).magnitude;
+    public Vector2 GetDirectionToTarget() => (Target.transform.position - Player.transform.position).normalized;
+    public bool HasReachedTarget() => GetDistanceToTarget() <= reachedDistance;
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
@@ -28,6 +31,8 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
         if (!Application.isPlaying) { return; }
 
         potionPickupTest.DrawHandleGizmo(transform);
+        chestPickupTest.DrawHandleGizmo(transform);
+
         dodgeTest.DrawHandleGizmo(transform);
     }
 #endif
@@ -45,9 +50,18 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     public void OnEnable()
     {
-        Target = moveToTarget;
+        Target = backupTarget;
         GameManager.Instance.SubscribeToPauseGame(this);
         UpdateManager.Instance.SubscribeToUpdate(this);
+    }
+
+    private void Awake()
+    {
+#if !UNITY_EDITOR
+    this.enabled = false;
+#else
+        //UIManager.Instance.ViewOptionMenu.EnableAutomatedTestButton();
+#endif
     }
 
     private void Start()
@@ -66,13 +80,16 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     public void OnUpdate()
     {
         dodgeTest.ExecuteTest(this);
-        MoveToTarget();
+        MoveToTarget(); // TODO: Replace with move around with backuptarget
 
         if (!potionPickupTest.ExecuteTest(this))
         {
-            if (!startBossTest.ExecuteTest(this))
+            if (!chestPickupTest.ExecuteTest(this))
             {
-                chestPickupTest.ExecuteTest(this);
+                if (startBossTest.ExecuteTest(this))
+                {
+                    Target = backupTarget;
+                }
             }
         }
 
@@ -117,14 +134,20 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     private void MoveToTarget()
     {
         // TODO: raycast check for obstacles and use dodge if an obstacle exists
-        Vector2 distance = Target.transform.position - Player.transform.position;
+/*        Vector2 distance = Target.transform.position - Player.transform.position;
 
         if (distance.magnitude <= reachedDistance)
         {
             Player.Controller.UpdateMoveDirection(Vector2.zero);
             return;
+        }*/
+
+        if (HasReachedTarget())
+        {
+            Player.Controller.UpdateMoveDirection(Vector2.zero);
+            return;
         }
 
-        Player.Controller.UpdateMoveDirection(distance.normalized);
+        Player.Controller.UpdateMoveDirection(GetDirectionToTarget());
     }
 }
