@@ -74,6 +74,9 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     {
         Player = Entity_Player.Instance;
         moveAroundTest.Init(this);
+
+        ToggleActiveState();
+        UIManager.Instance.ViewOptionMenu.TextButtonText.SetButtonTextFromEnable(this);
     }
 
     public void OnPauseGame()

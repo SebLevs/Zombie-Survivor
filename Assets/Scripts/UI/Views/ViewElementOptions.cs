@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ViewElementOptions : ViewElementButton
 {
+    [field: SerializeField] public TestButtonTextUpdater TextButtonText { get; private set; }
+
     [Header("Audio")]
     [SerializeField] private VolumeSlider[] m_volumeSliders;
 
