@@ -19,4 +19,9 @@ public class ViewElementOptions : ViewElementButton
         }
         m_volumeSliders[0].transform.parent.gameObject.SetActive(false);
     }
+
+    public void SetEnableAutomatedTestButton(bool activeState)
+    {
+        TextButtonText.transform.parent.gameObject.SetActive(activeState);
+    }
 }

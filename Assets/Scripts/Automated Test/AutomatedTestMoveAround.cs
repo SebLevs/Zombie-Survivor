@@ -28,11 +28,10 @@ public class AutomatedTestMoveAround : IAutomatedTestPlayer
         Handles.color = Color.black;
         Handles.DrawWireDisc(testController.transform.position, Vector3.forward, moveAtRange, 2f);
 
-        Gizmos.color = Color.black;
         Vector2 origin = testController.transform.position;
         Vector2 direction = ((Vector2)testController.Target.position - origin).normalized;
         Vector2 endPoint = origin + direction * moveAtRange;
-        Gizmos.DrawLine(origin, endPoint);
+        Handles.DrawLine(origin, endPoint, 2f);
     }
 #endif
 
@@ -83,7 +82,6 @@ public class AutomatedTestMoveAround : IAutomatedTestPlayer
 
             }
             Debug.Log("obstacle or enemy in line");
-
         }
 
         testController.SetBackupTargetPosition(validPoint);

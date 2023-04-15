@@ -65,8 +65,6 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     {
 #if !UNITY_EDITOR
     this.enabled = false;
-#else
-        //UIManager.Instance.ViewOptionMenu.EnableAutomatedTestButton();
 #endif
     }
 

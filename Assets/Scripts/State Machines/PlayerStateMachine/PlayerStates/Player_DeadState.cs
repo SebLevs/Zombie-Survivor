@@ -12,7 +12,6 @@ public class Player_DeadState : State<Entity_Player>
         UIManager.Instance.TransitionToDeathScreenView();
         Entity_Player.Instance.GetComponent<Animator>().enabled = false;
         Entity_Player.Instance.AutomatedTestController.enabled = false;
-        Debug.Log("ENTER DEATH");
     }
 
     public override void OnUpdate()
