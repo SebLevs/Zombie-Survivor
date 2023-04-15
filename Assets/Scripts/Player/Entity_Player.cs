@@ -68,6 +68,8 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
     [field: Header("Audio")]
     public PlayerAudioContainer audios;
 
+    public PlayerAutomatedTestController AutomatedTestController { get; private set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -85,6 +87,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         audios = GetComponent<PlayerAudioContainer>();
         Input = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
+        AutomatedTestController = GetComponent<PlayerAutomatedTestController>();
 
         ResetSkillsValues();
     }

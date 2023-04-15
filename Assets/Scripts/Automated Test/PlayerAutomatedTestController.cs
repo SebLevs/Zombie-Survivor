@@ -81,6 +81,7 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     public void OnPauseGame()
     {
+        SetTargetAsBackup();
     }
 
     public void OnResumeGame()

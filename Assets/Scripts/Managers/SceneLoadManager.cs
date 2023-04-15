@@ -94,13 +94,17 @@ public class SceneLoadManager : Manager<SceneLoadManager>
         uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewLoadingScreen, 
         showCallback: () =>
         {
-            Entity_Player.Instance.Reinitialize();
+            //Entity_Player.Instance.Reinitialize();
             UnloadCurrentScene();
             System.GC.Collect();
             uiManager.ViewBackgroundBlackScreen.OnShowQuick();
 
             uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewTitleScreen, 
-            showCallback: () => uiManager.ViewPromoCode.TryShowView());
+            showCallback: () =>
+            {
+                uiManager.ViewPromoCode.TryShowView();
+                Entity_Player.Instance.Reinitialize();
+            });
 
             IsInTitleScreen = true;
         });

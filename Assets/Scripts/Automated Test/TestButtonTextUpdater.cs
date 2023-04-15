@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -12,7 +10,11 @@ public class TestButtonTextUpdater : MonoBehaviour
     private void Awake()
     {
         textMeshPro = GetComponent<TextMeshProUGUI>();
-        SetButtonTextFromEnable(Entity_Player.Instance.GetComponent<PlayerAutomatedTestController>());
+    }
+
+    private void OnEnable()
+    {
+        SetButtonTextFromEnable(Entity_Player.Instance.AutomatedTestController);
     }
 
     public void SetButtonTextFromEnable(PlayerAutomatedTestController controller)
