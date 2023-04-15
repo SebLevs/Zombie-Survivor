@@ -4,29 +4,48 @@ using UnityEngine;
 [Serializable]
 public class AutomatedTestStartBossEncounter : IAutomatedTestPlayer
 {
+    [SerializeField] private float maxDistanceToSpawn = 12;
+
 #if UNITY_EDITOR
-    public void DrawHandleGizmo(Transform drawFrom)
+    public void DrawHandleGizmo(PlayerAutomatedTestController testController)
     {
     }
 #endif
 
     public bool ExecuteTest(PlayerAutomatedTestController testController)
     {
-        // TODO: check if enough gold for boss portal. If not, return false
-        // TODO: set target as portal
         PortalBehavior portalBehaviour = PortalManager.Instance.currentActivePortal;
 
-        if (testController.Target == portalBehaviour?.transform)
+        if (portalBehaviour.IsInteractable)
+        {
+            testController.Target = portalBehaviour.transform;
+            testController.Player.Controller.SetLookAt(testController.Target.position);
+            return true;
+        }
+        else if (testController.Target == portalBehaviour.transform)
         {
             testController.Player.Controller.SetLookAt(testController.Target.position);
 
             if (testController.HasReachedTarget())
             {
-                Debug.Log("REACHED PORTAL, SET BOSS AS TARGET");
-                // TODO: Check if portal manager has a "boss encounter started" boolean, else set one here
+                testController.Target = portalBehaviour.GetBossSpawnPoint();
+                testController.Player.Controller.SetLookAt(testController.Target.position);
             }
 
             return true;
+        }
+        else if (portalBehaviour.HasBossStarted)// Set target to spawn point if far enough from it
+        {
+            Vector2 spawnPointPosition = portalBehaviour.GetBossSpawnPoint().position;
+            Vector2 playerPosition = testController.Player.transform.position;
+            float distanceToBossSpawnPoint = LinearAlgebraUtilities.GetDistance2D(spawnPointPosition, playerPosition);
+            
+            if (distanceToBossSpawnPoint > maxDistanceToSpawn)
+            {
+                testController.Target = portalBehaviour.GetBossSpawnPoint();
+                testController.Player.Controller.SetLookAt(testController.Target.position);
+                return true;
+            }
         }
 
         return false;

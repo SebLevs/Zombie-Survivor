@@ -26,7 +26,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
 
     private UIManager uiManager;
 
-    public bool isInteractable => _player.currentGold >= chestValue;
+    public bool isInteractable => _player.currentGold >= chestValue && _col.enabled == true;
 
     [Header("Chest Type")]
     [SerializeField] private bool isRandomBonus = true;
@@ -75,7 +75,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         }
     }
 
-    private void TryOpenChest()
+    public void TryOpenChest()
     {
         if (isInteractable)
         {
@@ -128,6 +128,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         {
             _player.DesiredActions.ConsumeAllActions(PlayerActionsType.INTERACT);
             CanOpenChest = false;
+            
 
             if (isRandomBonus)
             {

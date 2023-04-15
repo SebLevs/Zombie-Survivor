@@ -12,23 +12,24 @@ public class AutomatedTestChestPickup : IAutomatedTestPlayer
     private ChestBehavior _lastChest;
 
 #if UNITY_EDITOR
-    public void DrawHandleGizmo(Transform drawFrom)
+    public void DrawHandleGizmo(PlayerAutomatedTestController testController)
     {
         Handles.color = Color.blue;
-        Handles.DrawWireDisc(drawFrom.position, Vector3.forward, gotoRadius, 2f);
+        Handles.DrawWireDisc(testController.transform.position, Vector3.forward, gotoRadius, 2f);
     }
 #endif
 
     public bool ExecuteTest(PlayerAutomatedTestController testController)
     {
-        if (testController.Target == _lastChest?.transform)
+        if (_lastChest != null && testController.Target == _lastChest.transform)
         {
             testController.Player.Controller.SetLookAt(testController.Target.position);
 
             if (testController.HasReachedTarget())
             {
-                var action = new PlayerAction(PlayerActionsType.INTERACT);
-                testController.Player.DesiredActions.AddAction(action);
+                _lastChest.TryOpenChest();
+                testController.SetBackupTargetPosition(testController.Player.transform);
+                testController.SetTargetAsBackup();
             }
 
             return true;

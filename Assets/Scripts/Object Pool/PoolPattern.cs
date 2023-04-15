@@ -92,4 +92,6 @@ public class PoolPattern<T> where T : Component, IPoolable
         m_currentlyUsedPool.TryGetValue(key, out element);
         return element;
     }
+
+    public T FindFromCurrentlyUsed(int index) => m_currentlyUsedPool.ElementAt(index);
 }

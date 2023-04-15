@@ -13,10 +13,10 @@ public class AutomatedTestPotionPickup : IAutomatedTestPlayer
     private PotionBehavior _lastPotion;
 
 #if UNITY_EDITOR
-    public void DrawHandleGizmo(Transform drawFrom)
+    public void DrawHandleGizmo(PlayerAutomatedTestController testController)
     {
         Handles.color = Color.red;
-        Handles.DrawWireDisc(drawFrom.position, Vector3.forward, gotoRadius, 2f);
+        Handles.DrawWireDisc(testController.transform.position, Vector3.forward, gotoRadius, 2f);
     }
 #endif
 
@@ -26,6 +26,13 @@ public class AutomatedTestPotionPickup : IAutomatedTestPlayer
         if (testController.Target == _lastPotion?.transform)
         {
             testController.Player.Controller.SetLookAt(testController.Target.position);
+
+            if (testController.HasReachedTarget())
+            {
+                testController.SetBackupTargetPosition(testController.Player.transform);
+                testController.SetTargetAsBackup();
+            }
+
             return true;
         }
 

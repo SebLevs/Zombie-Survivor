@@ -1,22 +1,54 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 [Serializable]
 public class AutomatedTestMoveAround : IAutomatedTestPlayer
 {
-#if UNITY_EDITOR
-    public void DrawHandleGizmo(Transform drawFrom)
+    [SerializeField] private float moveEachTime = 1f;
+    [SerializeField] private float moveAtRange = 5f;
+    private SequentialTimer _movementTimer;
+
+    public void Init(PlayerAutomatedTestController testController)
     {
+        _movementTimer = new SequentialTimer(moveEachTime, () =>
+        {
+            MoveBackupTargetPosition(testController);
+            _movementTimer.Reset();
+        });
+        _movementTimer.StartTimer();
+    }
+
+#if UNITY_EDITOR
+    public void DrawHandleGizmo(PlayerAutomatedTestController testController)
+    {
+        Handles.color = Color.black;
+        Handles.DrawWireDisc(testController.transform.position, Vector3.forward, moveAtRange, 2f);
     }
 #endif
 
     public bool ExecuteTest(PlayerAutomatedTestController testController)
     {
-        // Set timer update here to move only once every N seconds?
-        // TODO: set default target position to current target if any
-        // TODO: set target as default target
-        // TODO: try N time to find an empty nearby spot from target
-        // TODO: if any empty space is found, set target as empty spot position and move towards it
+        if (testController.IsTargetBackup())
+        {
+            _movementTimer.OnUpdateTime();
+        }
+        else { _movementTimer.Reset(); }
+
+        if (testController.HasReachedTarget())
+        {
+            return false;
+        }
+
+        testController.Player.Controller.UpdateMoveDirection(testController.GetDirectionToTarget());
+
         return true;
+    }
+
+    private void MoveBackupTargetPosition(PlayerAutomatedTestController testController)
+    {
+        Vector2 newPoint = LinearAlgebraUtilities.GetPointAlongPerimeter2D(testController.Target.position, moveAtRange);
+        testController.SetBackupTargetPosition(newPoint);
+        testController.SetTargetAsBackup();
     }
 }

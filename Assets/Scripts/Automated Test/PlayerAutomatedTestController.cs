@@ -12,6 +12,7 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     public Entity_Player Player { get; private set; }
 
     [Header("Tests")]
+    [SerializeField] private AutomatedTestMoveAround moveAroundTest;
     [SerializeField] private AutomatedTestPrimaryAttack primaryAttackTest;
     [SerializeField] private AutomatedTestSecondaryAttack secondaryAttackTest;
     [SerializeField] private AutomatedTestDodge dodgeTest;
@@ -24,16 +25,21 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     public float GetDistanceToTarget() => (Target.transform.position - Player.transform.position).magnitude;
     public Vector2 GetDirectionToTarget() => (Target.transform.position - Player.transform.position).normalized;
     public bool HasReachedTarget() => GetDistanceToTarget() <= reachedDistance;
+    public bool IsTargetBackup() => Target == backupTarget;
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         if (!Application.isPlaying) { return; }
 
-        potionPickupTest.DrawHandleGizmo(transform);
-        chestPickupTest.DrawHandleGizmo(transform);
+        moveAroundTest.DrawHandleGizmo(this);
+        dodgeTest.DrawHandleGizmo(this);
 
-        dodgeTest.DrawHandleGizmo(transform);
+        potionPickupTest.DrawHandleGizmo(this);
+        chestPickupTest.DrawHandleGizmo(this);
+
+        primaryAttackTest.DrawHandleGizmo(this);
+        secondaryAttackTest.DrawHandleGizmo(this);
     }
 #endif
 
@@ -67,6 +73,7 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     private void Start()
     {
         Player = Entity_Player.Instance;
+        moveAroundTest.Init(this);
     }
 
     public void OnPauseGame()
@@ -79,15 +86,16 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     public void OnUpdate()
     {
+        moveAroundTest.ExecuteTest(this);
         dodgeTest.ExecuteTest(this);
-        MoveToTarget(); // TODO: Replace with move around with backuptarget
 
         if (!potionPickupTest.ExecuteTest(this))
         {
             if (!chestPickupTest.ExecuteTest(this))
             {
-                if (startBossTest.ExecuteTest(this))
+                if (!startBossTest.ExecuteTest(this))
                 {
+                    SetBackupTargetPosition(Player.transform);
                     Target = backupTarget;
                 }
             }
@@ -131,23 +139,13 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
         Player.Controller.SetLookAt(LinearAlgebraUtilities.GetClosestObject(objects, Player.transform).transform.position);
     }
 
-    private void MoveToTarget()
+    public void SetBackupTargetPosition(Transform transform) => backupTarget.transform.position = transform.position;
+    public void SetBackupTargetPosition(Vector2 position) => backupTarget.transform.position = position;
+    public void SetTargetAsBackup() => Target = backupTarget;
+
+    public void ToggleActiveState()
     {
-        // TODO: raycast check for obstacles and use dodge if an obstacle exists
-/*        Vector2 distance = Target.transform.position - Player.transform.position;
-
-        if (distance.magnitude <= reachedDistance)
-        {
-            Player.Controller.UpdateMoveDirection(Vector2.zero);
-            return;
-        }*/
-
-        if (HasReachedTarget())
-        {
-            Player.Controller.UpdateMoveDirection(Vector2.zero);
-            return;
-        }
-
-        Player.Controller.UpdateMoveDirection(GetDirectionToTarget());
+        Player.Controller.UpdateMoveDirection(Vector2.zero);
+        enabled = !enabled;
     }
 }

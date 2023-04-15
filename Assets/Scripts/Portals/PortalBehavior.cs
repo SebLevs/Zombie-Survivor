@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class PortalBehavior : MonoBehaviour
 {
-    [SerializeField] Transform bossSpawnPoint;
+    [SerializeField] private Transform bossSpawnPoint;
     [SerializeField] private int GoldNeeded = 300;
+    public bool HasBossStarted => _collider.enabled == false;
+    public bool IsInteractable => _player.currentGold >= GoldNeeded && _collider.enabled == true;
     private Entity_Player _player;
     [SerializeField] private PortalManager _portalManager;
     private Collider2D _collider;
@@ -21,14 +23,13 @@ public class PortalBehavior : MonoBehaviour
         _visuals = GetComponentInChildren<SpriteRenderer>();
         _portalManager.allPortals.Add(this);
         DeactivatePortalOnAwake();
-
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if (_player.currentGold >= GoldNeeded)
+            if (IsInteractable)
             {
                 _portalManager.ActivateBossLevelBoundaries();
                 EnemyManager enemyManager = EnemyManager.Instance;
@@ -41,10 +42,7 @@ public class PortalBehavior : MonoBehaviour
         }
     }
 
-    public Transform GetBossSpawnPoint()
-    {
-        return bossSpawnPoint;
-    }
+    public Transform GetBossSpawnPoint() => bossSpawnPoint;
 
     private void DeactivatePortalOnBossSpawn()
     {
