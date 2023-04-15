@@ -14,8 +14,8 @@ public class AutomatedTestStartBossEncounter : IAutomatedTestPlayer
 
     public bool ExecuteTest(PlayerAutomatedTestController testController)
     {
-        PortalBehavior portalBehaviour = PortalManager.Instance.currentActivePortal;
-
+        PortalBehavior portalBehaviour = PortalManager.Instance?.currentActivePortal;
+        if (!portalBehaviour) { return false; }
         if (portalBehaviour.IsInteractable)
         {
             testController.Target = portalBehaviour.transform;
