@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -53,17 +52,13 @@ public class AutomatedTestMoveAround : IAutomatedTestPlayer
         return true;
     }
 
-    private void MoveBackupTargetPosition(PlayerAutomatedTestController testController)
+    public void MoveBackupTargetPosition(PlayerAutomatedTestController testController)
     {
-        //Vector2 validPoint = LinearAlgebraUtilities.GetPointAlongPerimeter2D(testController.Target.position, moveAtRange);
-        //testController.SetBackupTargetPosition(validPoint);
-        //testController.SetTargetAsBackup();
-
         Vector2 validPoint = testController.transform.position;
 
         for (int i = 0; i < 5; i++)
         {
-            Vector2 newPoint = LinearAlgebraUtilities.GetPointAlongPerimeter2D(testController.Target.position, moveAtRange);
+            Vector2 newPoint = LinearAlgebraUtilities.GetPointAlongPerimeter2D(testController.transform.position, moveAtRange);
 
             Vector2 origin = testController.transform.position;
             Vector2 direction = (newPoint - origin).normalized;
@@ -75,13 +70,10 @@ public class AutomatedTestMoveAround : IAutomatedTestPlayer
                 Physics2D.RaycastNonAlloc(origin, direction, hits, moveAtRange, 8); // Enemy
                 if (!hits[0].collider)
                 {
-                    Debug.Log("A");
                     validPoint = newPoint;
                     break;
                 }
-
             }
-            Debug.Log("obstacle or enemy in line");
         }
 
         testController.SetBackupTargetPosition(validPoint);

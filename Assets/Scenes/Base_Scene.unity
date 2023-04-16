@@ -1029,25 +1029,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a327ede34b2875e468ef6908dd0887e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAutomatedTest: 1
   backupTarget: {fileID: 1330359292}
   Target: {fileID: 0}
   moveAroundTest:
     moveEachTime: 1
     moveAtRange: 5
+  dodgeTest:
+    dodgeRadius: 2
   primaryAttackTest:
     attackFromRange: 7.5
   secondaryAttackTest:
     attackFromRange: 7.5
-  dodgeTest:
-    dodgeRadius: 2
   potionPickupTest:
     gotoRadius: 7
     hpTreshold: 0.5
   chestPickupTest:
     gotoRadius: 7.5
   startBossTest:
-    maxDistanceToSpawn: 12
+    minDistanceToSpawn: 7.5
+    maxDistanceToSpawn: 10
   reachedDistance: 0.5
 --- !u!114 &1845057284 stripped
 MonoBehaviour:
@@ -1778,6 +1778,34 @@ PrefabInstance:
     - target: {fileID: 6956551163991790970, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411438763748879892, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411438763748879892, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411438763748879892, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1730893340}
+    - target: {fileID: 8411438763748879892, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411438763748879892, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActiveState
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411438763748879892, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerAutomatedTestController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411438763748879892, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}

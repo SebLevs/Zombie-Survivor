@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpdateListener
 {
-    [SerializeField] private bool isAutomatedTest = false;
-    [Space]
+    //[SerializeField] private bool isAutomatedTest = false;
+    //[Space]
 
     [SerializeField] private Transform backupTarget;
     public Transform Target;
@@ -13,9 +13,9 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     [Header("Tests")]
     [SerializeField] private AutomatedTestMoveAround moveAroundTest;
+    [SerializeField] private AutomatedTestDodge dodgeTest;
     [SerializeField] private AutomatedTestPrimaryAttack primaryAttackTest;
     [SerializeField] private AutomatedTestSecondaryAttack secondaryAttackTest;
-    [SerializeField] private AutomatedTestDodge dodgeTest;
     [SerializeField] private AutomatedTestPotionPickup potionPickupTest;
     [SerializeField] private AutomatedTestChestPickup chestPickupTest;
     [SerializeField] private AutomatedTestStartBossEncounter startBossTest;
@@ -45,13 +45,19 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     public void OnDisable()
     {
-        if (!isAutomatedTest) { return; }
+        if (transform)
+        {
+            SetBackupTargetPosition(transform);
+            SetTargetAsBackup();
+        }
 
         GameManager gameManager = GameManager.Instance;
         if (gameManager) { gameManager.UnSubscribeFromPauseGame(this); }
 
         UpdateManager updateManager = UpdateManager.Instance;
         if (updateManager) { updateManager.UnSubscribeFromUpdate(this); }
+
+        updateManager.SubscribeToUpdate(Player.Controller);
     }
 
     public void OnEnable()
@@ -59,6 +65,9 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
         Target = backupTarget;
         GameManager.Instance.SubscribeToPauseGame(this);
         UpdateManager.Instance.SubscribeToUpdate(this);
+
+        UpdateManager updateManager = UpdateManager.Instance;
+        if (updateManager) { updateManager.UnSubscribeFromUpdate(Entity_Player.Instance.Controller); }
     }
 
     private void Awake()
@@ -73,7 +82,7 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
         Player = Entity_Player.Instance;
         moveAroundTest.Init(this);
 
-        ToggleActiveState();
+        SetActiveState(false);
         UIManager.Instance.ViewOptionMenu.TextButtonText.SetButtonTextFromEnable(this);
     }
 
@@ -88,6 +97,8 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     public void OnUpdate()
     {
+        Player.Controller.SimulateOnUpdate();
+
         moveAroundTest.ExecuteTest(this);
         dodgeTest.ExecuteTest(this);
 
@@ -127,6 +138,21 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     {
         List<Enemy> enemies = GetOverllapedComponentsInCircle<Enemy>(Player.transform, attackFromRange, 100);
         if (enemies.Count == 0) { return false; }
+
+        PortalBehavior portalBehaviour = PortalManager.Instance.currentActivePortal;
+        if (portalBehaviour.HasBossStarted)
+        {
+            foreach (Enemy enemy in enemies)
+            {
+                if (enemy == null) { break; }
+                if (enemy.name.ToLower().Contains("boss")) // TODO: if time, find replacement for this monstruosity of a check
+                {
+                    Player.Controller.SetLookAt(enemy.transform.position);
+                    return true;
+                }
+            }
+        }
+
         SetCursorOnNearestObject(enemies);
         return true;
     }
@@ -147,7 +173,11 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     public void ToggleActiveState()
     {
-        Player.Controller.UpdateMoveDirection(Vector2.zero);
         enabled = !enabled;
+    }
+
+    public void SetActiveState(bool state)
+    {
+        enabled = state;
     }
 }

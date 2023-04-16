@@ -198,6 +198,13 @@ public class Player_Controller : MonoBehaviour, IUpdateListener
         playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
     }
 
+    public void SimulateOnUpdate()
+    {
+        anim.SetInteger("LookDirection", currentLookAngle);
+        anim.SetFloat(Velocity, Entity_Player.Instance.Rb.velocity.magnitude);
+        playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
+    }
+
     public void OnEnable()
     {
         UpdateManager.Instance.SubscribeToUpdate(this);
