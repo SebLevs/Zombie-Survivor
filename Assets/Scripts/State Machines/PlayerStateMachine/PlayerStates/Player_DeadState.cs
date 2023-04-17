@@ -8,7 +8,6 @@ public class Player_DeadState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        //Entity_Player.Instance.Freeze();
         UIManager.Instance.TransitionToDeathScreenView();
     }
 
@@ -19,7 +18,6 @@ public class Player_DeadState : State<Entity_Player>
     public override void OnExit()
     {
         m_controller.UnFreeze();
-        //Entity_Player.Instance.GetComponent<Animator>().enabled = true;
     }
 
     public override void HandleStateTransition()
