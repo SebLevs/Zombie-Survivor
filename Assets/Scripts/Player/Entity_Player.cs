@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseListener
 {
@@ -69,6 +68,8 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
     [field: Header("Audio")]
     public PlayerAudioContainer audios;
 
+    public PlayerAutomatedTestController AutomatedTestController { get; private set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -86,6 +87,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         audios = GetComponent<PlayerAudioContainer>();
         Input = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
+        AutomatedTestController = GetComponent<PlayerAutomatedTestController>();
 
         ResetSkillsValues();
     }
@@ -231,6 +233,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         Rb.velocity = Vector2.zero; 
         Controller.currentLookAngle = 0;
         _animator.speed = 0;
+        Controller.UpdateMoveDirection(Vector2.zero);
     }
 
     public void OnResumeGame()

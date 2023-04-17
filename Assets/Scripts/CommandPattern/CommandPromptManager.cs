@@ -46,8 +46,12 @@ public class CommandPromptManager : Manager<CommandPromptManager>
 
     private void Activate()
     {
-        Entity_Player.Instance.Controller.enabled = false;
-        Entity_Player.Instance.enabled = false;
+        Entity_Player player = Entity_Player.Instance;
+        player.DesiredActions.PurgeAllAction();
+        player.Controller.UpdateMoveDirection(Vector2.zero);
+        player.Rb.velocity = Vector2.zero;
+        player.Controller.enabled = false;
+        player.enabled = false;
         inputField.gameObject.SetActive(true);
         doneCommands.gameObject.SetActive(true);
         isActive = true;
@@ -56,8 +60,9 @@ public class CommandPromptManager : Manager<CommandPromptManager>
 
     private void DeActivate()
     {
-        Entity_Player.Instance.Controller.enabled = true;
-        Entity_Player.Instance.enabled = true;
+        Entity_Player player = Entity_Player.Instance;
+        player.Controller.enabled = true;
+        player.enabled = true;
         inputField.gameObject.SetActive(false);
         doneCommands.gameObject.SetActive(false);
         isActive = false;

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ViewElementOptions : ViewElementButton
 {
+    [field: SerializeField] public TestButtonTextUpdater TextButtonText { get; private set; }
+
     [Header("Audio")]
     [SerializeField] private VolumeSlider[] m_volumeSliders;
 
@@ -16,5 +18,10 @@ public class ViewElementOptions : ViewElementButton
             m_volumeSliders[i].LoadFromPlayerPref();
         }
         m_volumeSliders[0].transform.parent.gameObject.SetActive(false);
+    }
+
+    public void SetEnableAutomatedTestButton(bool activeState)
+    {
+        TextButtonText.transform.parent.gameObject.SetActive(activeState);
     }
 }

@@ -11,6 +11,7 @@ public class Player_DeadState : State<Entity_Player>
         Entity_Player.Instance.Rb.velocity = Vector2.zero;
         UIManager.Instance.TransitionToDeathScreenView();
         Entity_Player.Instance.GetComponent<Animator>().enabled = false;
+        Entity_Player.Instance.AutomatedTestController.enabled = false;
     }
 
     public override void OnUpdate()

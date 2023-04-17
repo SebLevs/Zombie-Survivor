@@ -17,6 +17,7 @@ public class Player_Controller : MonoBehaviour, IUpdateListener
     private PlayerAction action;
 
     public Vector2 moveDirection { private set; get; }
+    public void UpdateMoveDirection(Vector2 moveDirection) => this.moveDirection = moveDirection;
     public Vector2 normalizedLookDirection;
     public Vector3 mousePosition;
     public int currentLookAngle = 0;
@@ -137,6 +138,36 @@ public class Player_Controller : MonoBehaviour, IUpdateListener
         }
     }
 
+    public void SetLookAt(Vector3 targetTransform)
+    {
+        if (Entity_Player.Instance.Health.IsDead) { return; }
+
+        //mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //normalizedLookDirection = new Vector2(mousePosition.x - playerRef.transform.position.x, mousePosition.y - playerRef.transform.position.y).normalized;
+        Vector2 direction = targetTransform - playerRef.transform.position;
+        normalizedLookDirection = direction.normalized;
+
+        if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y >= 0.7f)
+        {
+            currentLookAngle = 0;
+        }
+        else if (normalizedLookDirection.x <= -0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
+        {
+            currentLookAngle = 90;
+        }
+        else if (normalizedLookDirection.x >= -0.7f && normalizedLookDirection.x <= 0.7f && normalizedLookDirection.y <= -0.7f)
+        {
+            currentLookAngle = 180;
+        }
+        else if (normalizedLookDirection.x >= 0.7f && normalizedLookDirection.y <= 0.7f && normalizedLookDirection.y >= -0.7f)
+        {
+            currentLookAngle = 270;
+        }
+        anim.SetInteger("LookDirection", currentLookAngle);
+        anim.SetFloat(Velocity, Entity_Player.Instance.Rb.velocity.magnitude);
+        playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
+    }
+
     public void OnUpdate()
     {
         // Prevent mouse movement visuals when dead (game is not paused currently on death)
@@ -162,6 +193,13 @@ public class Player_Controller : MonoBehaviour, IUpdateListener
         {
             currentLookAngle = 270;
         }
+        anim.SetInteger("LookDirection", currentLookAngle);
+        anim.SetFloat(Velocity, Entity_Player.Instance.Rb.velocity.magnitude);
+        playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));
+    }
+
+    public void SimulateOnUpdate()
+    {
         anim.SetInteger("LookDirection", currentLookAngle);
         anim.SetFloat(Velocity, Entity_Player.Instance.Rb.velocity.magnitude);
         playerRef.muzzle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentLookAngle));

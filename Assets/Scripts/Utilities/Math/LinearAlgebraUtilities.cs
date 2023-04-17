@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public static class LinearAlgebraUtilities
 {
@@ -20,8 +23,8 @@ public static class LinearAlgebraUtilities
     }
 
     /// <summary>
-    /// If returned to the "forward" of the self, will rotate the self towards the target in 2 dimensions<br/>
-    /// Note that visual oddities can happen if the Z value of the target is no the same as self
+    /// If returned to the "forward" of the self, will rotate the self towards the Target in 2 dimensions<br/>
+    /// Note that visual oddities can happen if the Z value of the Target is no the same as self
     /// </summary>
     public static Vector3 GetDirection2D(Vector3 target, Vector3 self)
     {
@@ -33,7 +36,7 @@ public static class LinearAlgebraUtilities
         // Normalization process reminder
         // WHERE
         //  C^ = unit vector     = direction
-        //  C  = (target - from)
+        //  C  = (Target - from)
         // |C| = magnitude of C  = sqrt(C.x^2 + C.y^2 + C.z^2)
         // FORMULA
         //  C^ = C / sqrt(|C|)
@@ -48,7 +51,7 @@ public static class LinearAlgebraUtilities
         // Normalization process reminder
         // WHERE
         //  C^ = unit vector     = direction
-        //  C  = (target - from)
+        //  C  = (Target - from)
         // |C| = magnitude of C  = sqrt(C.x^2 + C.y^2 + C.z^2)
         // FORMULA
         //  C^ = C / sqrt(|C|)
@@ -76,5 +79,25 @@ public static class LinearAlgebraUtilities
         // Reminder pythagoeran theorem
         // C^2 = sqrt(a^2 + b^2)
         return Vector2.Distance(target, from);
+    }
+
+    public static T GetClosestObject<T>(ICollection<T> enumerable, Transform from) where T : Component
+    {
+        if (enumerable.Count == 1) { return enumerable.ElementAt(0); }
+
+        T closestComponent = enumerable.ElementAt(0);
+        float leastDistance = Vector2.Distance(from.position, enumerable.ElementAt(0).transform.position);
+        for (int i = 1; i < enumerable.Count; i++)
+        {
+            T currentEnumerable = enumerable.ElementAt(i);
+            float currentDistance = Vector2.Distance(from.position, currentEnumerable.transform.position);
+            if (currentDistance < leastDistance)
+            {
+                leastDistance = currentDistance;
+                closestComponent = currentEnumerable;
+            }
+        }
+
+        return closestComponent;
     }
 }

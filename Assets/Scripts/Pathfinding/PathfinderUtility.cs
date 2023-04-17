@@ -69,7 +69,7 @@ public class PathfinderUtility : MonoBehaviour
     }
 
     /// <returns>
-    /// Returns true if target was succesfully set
+    /// Returns true if Target was succesfully set
     /// </returns>
     public bool TrySetTargetAs(Transform desiredTarget)
     {
