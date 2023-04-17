@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpdateListener
 {
-    //[SerializeField] private bool isAutomatedTest = false;
-    //[Space]
+/*    [Header("Test time scale")]
+    [ContextMenuItem("Update scale at playtime", nameof(ApplyTimeScale))]
+    [SerializeField] [Range(1,10)] private int baseDesiredTimeScale = 1;*/
 
+    [Header("Target")]
     [SerializeField] private Transform backupTarget;
     public Transform Target;
     
@@ -45,7 +47,7 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
 
     public void OnDisable()
     {
-        if (transform)
+        if (transform != null)
         {
             SetBackupTargetPosition(transform);
             SetTargetAsBackup();
@@ -171,13 +173,7 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
     public void SetBackupTargetPosition(Vector2 position) => backupTarget.transform.position = position;
     public void SetTargetAsBackup() => Target = backupTarget;
 
-    public void ToggleActiveState()
-    {
-        enabled = !enabled;
-    }
+    public void ToggleActiveState() => enabled = !enabled;
 
-    public void SetActiveState(bool state)
-    {
-        enabled = state;
-    }
+    public void SetActiveState(bool state) => enabled = state;
 }

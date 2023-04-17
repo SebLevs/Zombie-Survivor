@@ -1038,8 +1038,6 @@ MonoBehaviour:
     dodgeRadius: 2
   primaryAttackTest:
     attackFromRange: 7.5
-  secondaryAttackTest:
-    attackFromRange: 7.5
   potionPickupTest:
     gotoRadius: 7
     hpTreshold: 0.5

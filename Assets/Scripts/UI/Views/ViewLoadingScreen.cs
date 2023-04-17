@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ViewLoadingScreen : ViewElement
 {
-    [field:Header("slider")]
+    [field:Header("_slider")]
     [field: SerializeField] public ViewElementSlider ViewSlider { get; private set; }
 
 
