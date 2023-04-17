@@ -114,6 +114,29 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         ResetSkillsValues();
     }
 
+    private bool _wasInAutomatedTestMode = false;
+    public void Freeze()
+    {
+        DesiredActions.PurgeAllAction();
+        Rb.velocity = Vector2.zero;
+        _animator.enabled = false;
+        _wasInAutomatedTestMode = AutomatedTestController.enabled;
+        AutomatedTestController.enabled = false;
+        Controller.UpdateMoveDirection(Vector2.zero);
+        Controller.enabled = false;
+        col.enabled = false;
+        enabled = false;
+    }
+
+    public void UnFreeze()
+    {
+        _animator.enabled = true;
+        AutomatedTestController.enabled = _wasInAutomatedTestMode;
+        Controller.enabled = true;
+        col.enabled = true;
+        enabled = true;
+    }
+
     private void ResetSkillsValues()
     {
         MovSpeed = baseMovSpeed;

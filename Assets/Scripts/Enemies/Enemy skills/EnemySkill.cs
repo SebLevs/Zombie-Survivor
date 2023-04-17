@@ -39,12 +39,12 @@ public class EnemySkill : ScriptableObject
 
     public void SetAnimatorTrigger(Animator animator)
     {
-        animator.SetTrigger(Animation.name);
+        animator?.SetTrigger(Animation.name);
     }
 
     public void SetAnimatorBool(Animator animator, bool value)
     {
-        animator.SetBool(Animation.name, value);
+        animator?.SetBool(Animation.name, value);
     }
 
     public bool CanExecute(Transform target, Transform self)
