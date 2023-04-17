@@ -1,0 +1,255 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sounds
+  m_EditorClassIdentifier: 
+  m_GroupName: Sounds
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 41d381951c668104eb5fd1eba7da48f9
+  m_SerializeEntries:
+  - m_GUID: ff568010da9791e42bbc229516aa5f5a
+    m_Address: Assets/Audios/Sounds/ZombieGrunt/ZombieGrunt01.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 8426e37d46a5a0746b5bfa0bd59c3e70
+    m_Address: Assets/Audios/Sounds/ZombieGrunt/ZombieGrunt02.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: aef28d499610650428f3e85dac033ae2
+    m_Address: Assets/Audios/Sounds/ZombieGrunt/ZombieGrunt03.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: aaf84d3ea23029b4eada1a1b3e3ef090
+    m_Address: Assets/Audios/Sounds/ZombieGrunt/ZombieDeath.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: c5f942ac46d92c84287fa29ad79ad265
+    m_Address: Assets/Audios/Sounds/Boss/BossSpawn/BossSpawn01.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: ba48ea20e96dc3f4ba23b16e3fbff419
+    m_Address: Assets/Audios/Sounds/Boss/BossSpawn/BossSpawn02.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 612fd10cefb2de54d8df0aee1865ba56
+    m_Address: Assets/Audios/Sounds/Skelly/SkellyHit/SkellyHit03.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: cc61bbb1dd007944686b8cd11b2c463f
+    m_Address: Assets/Audios/Sounds/Boss/BossDeath.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 92a35fb6ca4def7468df4b935ee70b7b
+    m_Address: Assets/Audios/Sounds/ZombieGrunt/ZombieSwing01.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: d977f1210b3bcfe44b71af20ae34baf8
+    m_Address: Assets/Audios/Sounds/ZombieGrunt/ZombieSwing02.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 16621948283a15943bdfe2f7deb15b67
+    m_Address: Assets/Audios/Enemy Impacts/Skelly/Combat Foley Bone Snap Fast Quick-007.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: a63e5ca9aeb20a34dab98b44ad4cf187
+    m_Address: Assets/Audios/Enemy Impacts/Skelly/Combat Foley Bone Snap Fast Quick-008.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 3d9c8d11c0b11254cadaaad1f6ffbea2
+    m_Address: Assets/Audios/Enemy Impacts/Skelly/Combat Foley Bone Snap Fast Quick-009.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: add049518904b674097712b69bd75352
+    m_Address: Assets/Audios/Sounds/Skelly/Skelly Death/SkellyDeath.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: e40a73e010232b04bbaefd69165682e7
+    m_Address: Assets/Audios/Enemy Impacts/Hit Stab Wound Impact Thud-006.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: d0d19b727fb95474ab2cdcda02bb3227
+    m_Address: Assets/Audios/Enemy Impacts/Hit Stab Wound Impact Thud-003.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 6c68f2e33ee7a8e43b73b199a6dacb65
+    m_Address: Assets/Audios/Enemy Impacts/Hit Stab Wound Impact Thud-005.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 586243357f93bd4468718fcc64a6da77
+    m_Address: Assets/Audios/Player Death/Stab Slide Rip Tear Gore Guts-001.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 062024add5b2f7144b8a3a52df87f1b4
+    m_Address: Assets/Audios/Player Death/Stab Slide Rip Tear Gore Guts-002.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 1e0e1fcca8e8efa40b3a4c8fe0aaee3d
+    m_Address: Assets/Audios/Player Death/Stab Slide Rip Tear Gore Guts-003.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: b3925d6401b815d4089aa667ada47a85
+    m_Address: Assets/Audios/Player Death/Stab Slide Rip Tear Gore Guts-004.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 2240e5c61dfa6b742b7947cdf3bb7b86
+    m_Address: Assets/Audios/Player Death/Stab Slide Rip Tear Gore Guts-005.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: bd3b4ba09b07dc44b8248768f5535b50
+    m_Address: Assets/Audios/Player Movements/Grass_Boots_FullStep_04.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: d025aee5460b7834fb56ea520d3a47ae
+    m_Address: Assets/Audios/Player Movements/Grass_Boots_FullStep_05.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: d3d51d131bf5ee84b860ca5eaea13d13
+    m_Address: Assets/Audios/Player Movements/Grass_Boots_FullStep_07.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 16ccca7f8983b2241a5e9a89adb2ffdc
+    m_Address: Assets/Audios/Player Movements/Grass_Boots_FullStep_08.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 235f7983229a3794e899a5b11bd03202
+    m_Address: Assets/Audios/Player Movements/Grass_Boots_FullStep_09.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 6b3c8bf42f787d943ad7ff78ed149a90
+    m_Address: Assets/Audios/Soft Uneasy Ambiance.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 7630d3dbbfed73b4a84f5b979bc1a23d
+    m_Address: Assets/Audios/Sounds/PotionDrink.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: e440ed436fbee2148bf43c2a3edfe365
+    m_Address: Assets/Audios/Sounds/Skelly/Skelly Attack/SkellyAttack.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 5d3e75904fb2140489d74c9afb4570ae
+    m_Address: Assets/Audios/Sounds/Skelly/SkellyHit/Skellyhit01.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 1d98b440e90e30b4c9f712f6de894f55
+    m_Address: Assets/Audios/Sounds/Skelly/SkellyHit/SkellyHit02.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: a6428d6b12da6ce468b4e14d67d61f1c
+    m_Address: Assets/Audios/TheBossFightIntense-VRack mix.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 1c84810139496324fa5b6f9326125aec
+    m_Address: Assets/Audios/UI/Pickup_Whoosh Ethereal Nice UI-008.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 2689b3e8fb853954f8d0cb9a58e0fd8a
+    m_Address: Assets/Audios/Weapons/Boomerang_Whoosh_Basic_Airy_Whistle_01.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 1441cf5377cfe1040b0cb8bb19ad3d88
+    m_Address: Assets/Audios/Weapons/Boomerang_Whoosh_Basic_Airy_Whistle_00.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 4f4c2b61e9a658c4dbde78918a9bf5a8
+    m_Address: Assets/Audios/Sounds/PowerUp.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 50436caebc8898a43872153c997b190d
+    m_Address: Assets/Audios/UI/Moving Around UI.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: ce3829bf7b136d94b8e780a543c4c1e2
+    m_Address: Assets/Audios/UI/Validation Cue.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 57f71437ea02e394693a9b983dcf6f42
+    m_Address: Assets/Audios/Sounds/Player/PlayerHit/PlayerHit03.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: faae7a81176880442a83af557c757197
+    m_Address: Assets/Audios/Sounds/Player/PlayerHit/PlayerHit02.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: b9df8e05e6c9bb94ebdc751571f220f4
+    m_Address: Assets/Audios/Sounds/Player/PlayerHit/PlayerHit01.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: c1ecea39f9fc7dd4b9d6d1ec38192c6b
+    m_Address: Assets/Audios/TheBossIsFighting.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 5372a6c5e5901e14c8998f7124c58a2d
+    m_Address: Assets/Audios/Weapons/Heavy Shotgun_02.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: 3723a7908ae8b2b4584e26f2d0bceb51
+    m_Address: Assets/Audios/Weapons/Heavy Shotgun_01.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  - m_GUID: b2c34b57bb76f5e48820a762358d92ef
+    m_Address: Assets/Audios/Weapons/Heavy Shotgun_00.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysLoad
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d2988cce72a84054b9493689a3da78f9, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 407584b6a30ef5e41afec7bc7d9a53df, type: 2}
+    - {fileID: 11400000, guid: 4b6a36bf0ae03ad45b77282a89e3b3ba, type: 2}
