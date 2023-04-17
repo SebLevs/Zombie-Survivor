@@ -1683,7 +1683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6791136531942651574, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: TestButtonTextUpdater, Assembly-CSharp
+      value: TestButtonTextUpdater, ScriptAD
       objectReference: {fileID: 0}
     - target: {fileID: 6791136531942651574, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
@@ -1695,7 +1695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6791136531942651574, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: PlayerAutomatedTestController, Assembly-CSharp
+      value: PlayerAutomatedTestController, ScriptAD
       objectReference: {fileID: 0}
     - target: {fileID: 6956551163991790970, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
