@@ -425,7 +425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7726839564875505996, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ViewController, Assembly-CSharp
+      value: ViewController, ScriptAD
       objectReference: {fileID: 0}
     - target: {fileID: 7726839564875505996, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -433,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 8200682344440563131}
     - target: {fileID: 7726839564875505996, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: ViewElement, Assembly-CSharp
+      value: ViewElement, ScriptAD
       objectReference: {fileID: 0}
     - target: {fileID: 7726839564875506003, guid: ed998bfceff81fa4f9ce5b193f0d4d64, type: 3}
       propertyPath: m_TargetGraphic
@@ -1004,7 +1004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8889546575742875757, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ViewController, Assembly-CSharp
+      value: ViewController, ScriptAD
       objectReference: {fileID: 0}
     - target: {fileID: 8889546575742875757, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -1012,7 +1012,7 @@ PrefabInstance:
       objectReference: {fileID: 6339851674520582348}
     - target: {fileID: 8889546575742875757, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: ViewElement, Assembly-CSharp
+      value: ViewElement, ScriptAD
       objectReference: {fileID: 0}
     - target: {fileID: 8889546575742875762, guid: 9fa4690122dd2a64a9d7b3ddb0925f16, type: 3}
       propertyPath: m_TargetGraphic

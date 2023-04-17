@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ZombieBossDeadState : EnemyState
 {
     public ZombieBossDeadState(EnemyStateController controller) : base(controller)
@@ -17,7 +12,8 @@ public class ZombieBossDeadState : EnemyState
 
     public override void OnEnter()
     {
-        SceneLoadManager.Instance.GoToTitleScreen();
+        UIManager.Instance.TransitionToGameWonScreenView();
+        //SceneLoadManager.Instance.GoToTitleScreen();
     }
 
     public override void OnExit()

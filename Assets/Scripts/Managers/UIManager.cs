@@ -22,6 +22,7 @@ public class UIManager : Manager<UIManager>
     [field: SerializeField] public ViewElementOptions ViewOptionMenu { get; private set; }
     [field: SerializeField] public ViewLoadingScreen ViewLoadingScreen { get; private set; }
     [field: SerializeField] public ViewElement ViewDeathScreen { get; private set; }
+    [field: SerializeField] public ViewElement ViewWinScreen { get; private set; }
 
     [field: Header("HUD")]
     [field: SerializeField] public ViewPlayerSkills ViewPlayerCooldowns { get; private set; }
@@ -112,10 +113,29 @@ public class UIManager : Manager<UIManager>
     {
         if (ViewDeathScreen.gameObject.activeSelf) { return; }
 
+        Entity_Player.Instance.Freeze();
+
         //ViewBossHealthBars.OnHideQuick();
         ViewBossHealthBars.OnHideInstantaneous();
         HideHUD();
         ViewController.SwitchViewSynchronous(ViewDeathScreen, showCallback: () =>
+        {
+            TimerManager.Instance.AddSequentialStopwatch(_returnToTitleScreenOnDeathWaitTime, () =>
+            {
+                SceneLoadManager.Instance.GoToTitleScreen();
+            });
+        });
+    }
+
+    public void TransitionToGameWonScreenView()
+    {
+        if (ViewWinScreen.gameObject.activeSelf) { return; }
+
+        Entity_Player.Instance.Freeze();
+
+        ViewBossHealthBars.OnHideInstantaneous();
+        HideHUD();
+        ViewController.SwitchViewSynchronous(ViewWinScreen, showCallback: () =>
         {
             TimerManager.Instance.AddSequentialStopwatch(_returnToTitleScreenOnDeathWaitTime, () =>
             {

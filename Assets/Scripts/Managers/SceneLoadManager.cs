@@ -152,6 +152,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
             showCallback: () =>
             {
                 uiManager.ViewPromoCode.TryShowView();
+                Entity_Player.Instance.UnFreeze();
                 Entity_Player.Instance.Reinitialize();
             });
 
