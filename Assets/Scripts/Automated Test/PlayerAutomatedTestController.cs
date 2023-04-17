@@ -141,8 +141,8 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
         List<Enemy> enemies = GetOverllapedComponentsInCircle<Enemy>(Player.transform, attackFromRange, 100);
         if (enemies.Count == 0) { return false; }
 
-        PortalBehavior portalBehaviour = PortalManager.Instance.currentActivePortal;
-        if (portalBehaviour.HasBossStarted)
+        PortalBehavior portalBehaviour = PortalManager.Instance?.currentActivePortal;
+        if (portalBehaviour && portalBehaviour.HasBossStarted)
         {
             foreach (Enemy enemy in enemies)
             {
