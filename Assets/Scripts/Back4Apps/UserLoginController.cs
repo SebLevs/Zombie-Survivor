@@ -339,7 +339,6 @@ public class UserLoginController : MonoBehaviour
         for (int line = 0; line < lines.Length - 1; line++)
         {
             list.Add(float.Parse(lines[line].Split("\t")[1]));
-            Debug.Log(list[list.Count]);
         }
 
         _playerStats.MaxHealth = (int)list[0];

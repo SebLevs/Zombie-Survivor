@@ -94,6 +94,7 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
     {
         base.OnStart();
         uiManager = UIManager.Instance;
+        BulletSpeed = 10f;
         
         RefreshPlayerStats();
     }
