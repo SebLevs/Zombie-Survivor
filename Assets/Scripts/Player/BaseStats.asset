@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BaseStats
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  MoveSpeed: 5
-  AttackSpeed: 0.5
-  BoomDistance: 5
+  MoveSpeed: 15
+  AttackSpeed: 0.1
+  BoomDistance: 20
   BoomAttackSpeed: 2
-  DodgeDelay: 5
-  BigGold: 4
-  SmallGold: 500
+  DodgeDelay: 2
+  BigGold: 67
+  SmallGold: 1000
