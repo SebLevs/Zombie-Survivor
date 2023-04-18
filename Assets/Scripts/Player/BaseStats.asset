@@ -19,4 +19,4 @@ MonoBehaviour:
   BoomAttackSpeed: 2
   DodgeDelay: 5
   BigGold: 4
-  SmallGold: 0
+  SmallGold: 500

@@ -36,16 +36,16 @@ public class ViewTitleScreen : ViewElementButton
         uiManager.ViewPromoCode.OnHide();
         uiManager.ViewController.SwitchViewSequential(uiManager.ViewLogin);
 
-        if (Entity_Player.Instance.UserDatas.email != default)
-        {
-            UpdateUserDatas();
-        }
+        UpdateUserDatas();
     }
 
     public void UpdateUserDatas()
     {
-        StopAllCoroutines();
-        StartCoroutine(UpdateUserDatasIE());
+        if (Entity_Player.Instance.UserDatas.email != default)
+        {
+            StopAllCoroutines();
+            StartCoroutine(UpdateUserDatasIE());
+        }
     }
 
     public IEnumerator UpdateUserDatasIE() // Get User from data base
@@ -123,10 +123,8 @@ public class ViewTitleScreen : ViewElementButton
                 yield break;
             }
 
-            Debug.Log(request.downloadHandler.text);
             var jObject = JObject.Parse(request.downloadHandler.text);
             var fileurl = jObject["url"].ToString();
-            Debug.Log(fileurl);
 
             string json = JsonConvert.SerializeObject(new { PersistantStats = fileurl });
 

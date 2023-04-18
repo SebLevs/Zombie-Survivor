@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopController : MonoBehaviour
 {
+    private void Start()
+    {
+        UIManager.Instance.ViewShop.CurrenciesRefresherShorthand();
+    }
+
     public void TryConvertGold()
     {
         if (Entity_Player.Instance.baseStats.SmallGold >= 100)

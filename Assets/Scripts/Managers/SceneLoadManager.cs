@@ -134,6 +134,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
     public void GoToTitleScreen()
     {
         Time.timeScale = 1.0f;
+
         GameManager.Instance.PauseGame();
         UIManager uiManager = UIManager.Instance;
 
@@ -152,6 +153,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
             uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewTitleScreen,
             showCallback: () =>
             {
+                uiManager.ViewTitleScreen.UpdateUserDatas();
                 uiManager.ViewPromoCode.TryShowView();
                 Entity_Player.Instance.UnFreeze();
                 Entity_Player.Instance.Reinitialize();

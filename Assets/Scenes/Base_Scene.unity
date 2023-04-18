@@ -1793,6 +1793,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7923534072387328713, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: refreshMethodChoice.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RefreshBigGold
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923534072387328713, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
+      propertyPath: refreshMethodChoice.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CurrencyPrinter, ScriptAD
+      objectReference: {fileID: 0}
     - target: {fileID: 8411438763748879892, guid: 8b73fc2cdbab5f44aa2f886108fc5f53, type: 3}
       propertyPath: m_defaultShowEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1

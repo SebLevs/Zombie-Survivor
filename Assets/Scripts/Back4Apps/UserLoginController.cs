@@ -50,7 +50,7 @@ public class UserLoginController : MonoBehaviour
 
         Entity_Player.Instance.UserDatas = new();
         Entity_Player.Instance.UserDatas.userDatasGameplay = new();
-        Entity_Player.Instance.baseStats = new();
+        Entity_Player.Instance.baseStats = ScriptableObject.CreateInstance<PlayerStatsSO>();
         GotoTitleScreen();
     }
 

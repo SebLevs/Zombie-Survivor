@@ -8,11 +8,6 @@ public class CurrencyPrinter : MonoBehaviour
     [SerializeField] public UnityEvent refreshMethodChoice;
     public void Refresh() => refreshMethodChoice?.Invoke();
 
-    private void Start()
-    {
-        refreshMethodChoice?.Invoke();
-    }
-
     private void OnEnable()
     {
         refreshMethodChoice?.Invoke();
