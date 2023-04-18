@@ -101,12 +101,10 @@ public class ViewTitleScreen : ViewElementButton
 
     private IEnumerator PostPlayerStatsFile()
     {
-        //string url = $"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}/PersistantStats";
         using (var request = new UnityWebRequest("https://parseapi.back4app.com/files/PlayerStats.tsv", "POST"))
         {
             request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
             request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
-            //request.SetRequestHeader("X-Parse-Session-Token", UserLoginController.sessionToken);
             request.SetRequestHeader("Content-Type", "text/tab-separated-values");
 
             string filePath = Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv");
@@ -143,7 +141,6 @@ public class ViewTitleScreen : ViewElementButton
                 if (requests.result != UnityWebRequest.Result.Success)
                 {
                     Debug.LogError(request.downloadHandler.text);
-                    yield break;
                 }
                 
             }
