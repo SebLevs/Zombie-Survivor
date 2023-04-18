@@ -365,11 +365,8 @@ public class UserLoginController : MonoBehaviour
                 yield break;
             }
 
-            Debug.Log(request.downloadHandler.text);
-
             var jObject = JObject.Parse(request.downloadHandler.text);
             var persistantStats = jObject["PersistantStats"].ToString();
-            Debug.Log(persistantStats);
 
             using (var requests = UnityWebRequest.Get(persistantStats))
             {

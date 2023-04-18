@@ -179,20 +179,29 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
 
     private void ResetSkillsValues()
     {
-        MovSpeed = baseMovSpeed;
-        attackSpeed = baseAttackSpeed;
-        specialAttackSpeed = baseSpecialAttackSpeed;
-        dodgeInterval = baseDodgeInterval;
+        if (UserDatas !=  null && UserDatas.email == default)
+        {
+            MovSpeed = baseMovSpeed;
+            attackSpeed = baseAttackSpeed;
+            specialAttackSpeed = baseSpecialAttackSpeed;
+            dodgeInterval = baseDodgeInterval;
+        }
+        else
+        {
+            InitPlayer();
+        }
     }
 
     public void RefreshHealthBar()
     {
+        if (!uiManager.ViewPlayerHealthBar.gameObject.activeSelf) { return; }
         uiManager.ViewPlayerHealthBar.Filler.SetFilling(Health.Normalized);
         uiManager.ViewPlayerHealthBar.TextElement.Element.text = Health.CurrentHP.ToString();
     }
 
     public void RefreshGoldBar()
     {
+        if (!uiManager.ViewPlayerCurrencyBar.gameObject.activeSelf) { return; }
         float filling = (float)currentGold / (float)MaxGold;
         uiManager.ViewPlayerCurrencyBar.Filler.SetFilling(filling);
         uiManager.ViewPlayerCurrencyBar.TextElement.Element.text = currentGold + " / " + MaxGold;
