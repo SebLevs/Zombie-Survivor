@@ -47,6 +47,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
     private void Activate()
     {
         Entity_Player player = Entity_Player.Instance;
+        player.GetComponent<Animator>().enabled = false;
         player.DesiredActions.PurgeAllAction();
         player.Controller.UpdateMoveDirection(Vector2.zero);
         player.Rb.velocity = Vector2.zero;
@@ -61,6 +62,7 @@ public class CommandPromptManager : Manager<CommandPromptManager>
     private void DeActivate()
     {
         Entity_Player player = Entity_Player.Instance;
+        player.GetComponent<Animator>().enabled = true;
         player.Controller.enabled = true;
         player.enabled = true;
         inputField.gameObject.SetActive(false);

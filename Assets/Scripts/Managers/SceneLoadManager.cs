@@ -133,6 +133,7 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
     public void GoToTitleScreen()
     {
+        Time.timeScale = 1.0f;
         GameManager.Instance.PauseGame();
         UIManager uiManager = UIManager.Instance;
 
@@ -141,21 +142,23 @@ public class SceneLoadManager : Manager<SceneLoadManager>
 
         AudioManager.Instance.StopPlayingLoopingClip();
 
-        uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewLoadingScreen, 
+        uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewLoadingScreen,
         showCallback: () =>
         {
             UnloadCurrentScene();
             System.GC.Collect();
             uiManager.ViewBackgroundBlackScreen.OnShowQuick();
 
-            uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewTitleScreen, 
+            uiManager.ViewController.SwitchViewSynchronous(uiManager.ViewTitleScreen,
             showCallback: () =>
             {
                 uiManager.ViewPromoCode.TryShowView();
+                Entity_Player.Instance.UnFreeze();
                 Entity_Player.Instance.Reinitialize();
             });
 
             IsInTitleScreen = true;
         });
     }
+
 }

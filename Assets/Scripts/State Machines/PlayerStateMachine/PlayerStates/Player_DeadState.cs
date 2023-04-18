@@ -8,10 +8,7 @@ public class Player_DeadState : State<Entity_Player>
 
     public override void OnEnter()
     {
-        Entity_Player.Instance.Rb.velocity = Vector2.zero;
         UIManager.Instance.TransitionToDeathScreenView();
-        Entity_Player.Instance.GetComponent<Animator>().enabled = false;
-        Entity_Player.Instance.AutomatedTestController.enabled = false;
     }
 
     public override void OnUpdate()
@@ -20,8 +17,9 @@ public class Player_DeadState : State<Entity_Player>
 
     public override void OnExit()
     {
-        Entity_Player.Instance.GetComponent<Animator>().enabled = true;
+        m_controller.UnFreeze();
     }
+
 
     public override void HandleStateTransition()
     {
