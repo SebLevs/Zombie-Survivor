@@ -18,5 +18,5 @@ MonoBehaviour:
   BoomDistance: 5
   BoomAttackSpeed: 2
   DodgeDelay: 5
-  BigGold: 0
+  BigGold: 4
   SmallGold: 0

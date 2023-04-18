@@ -50,6 +50,7 @@ public class UserLoginController : MonoBehaviour
 
         Entity_Player.Instance.UserDatas = new();
         Entity_Player.Instance.UserDatas.userDatasGameplay = new();
+        Entity_Player.Instance.baseStats = new();
         GotoTitleScreen();
     }
 
@@ -334,12 +335,10 @@ public class UserLoginController : MonoBehaviour
         list.Clear();
         string text = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"));
         string[] lines = text.Split('\n');
-        
-        
+
         for (int line = 0; line < lines.Length - 1; line++)
         {
             list.Add(float.Parse(lines[line].Split("\t")[1]));
-            Debug.Log(list[list.Count]);
         }
 
         _playerStats.MaxHealth = (int)list[0];
@@ -377,7 +376,6 @@ public class UserLoginController : MonoBehaviour
             {
                 yield return requests.SendWebRequest();
                 if (requests.result != UnityWebRequest.Result.Success)
-
                 {
                     Debug.LogError(requests.error);
                     Debug.Log(requests.downloadHandler.text);

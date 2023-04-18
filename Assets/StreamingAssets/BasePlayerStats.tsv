@@ -1,8 +1,8 @@
-MaxHealth	105
-MoveSpeed	5
-AttackSpeed	0.5
-BoomDistance	5
-BoomAttackSpeed	2
-DodgeDelay	5
+MaxHealth	0
+MoveSpeed	0
+AttackSpeed	0
+BoomDistance	0
+BoomAttackSpeed	0
+DodgeDelay	0
 BigGold	0
 SmallGold	0

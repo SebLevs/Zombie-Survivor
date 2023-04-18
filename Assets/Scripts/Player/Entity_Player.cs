@@ -112,10 +112,8 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
 
     public void OverrideBaseStats()
     {
-        
     }
-    
-    
+
     public void WriteInPlayerBaseStats()
     {
         baseStats.MaxHealth = UserDatas.userDatasGameplay.MaxHealth;

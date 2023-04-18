@@ -35,8 +35,11 @@ public class ViewTitleScreen : ViewElementButton
         UIManager uiManager = UIManager.Instance;
         uiManager.ViewPromoCode.OnHide();
         uiManager.ViewController.SwitchViewSequential(uiManager.ViewLogin);
-        UpdateUserDatas();
-        //Entity_Player.Instance.UserDatas = null;
+
+        if (Entity_Player.Instance.UserDatas.email != default)
+        {
+            UpdateUserDatas();
+        }
     }
 
     public void UpdateUserDatas()
@@ -145,35 +148,5 @@ public class ViewTitleScreen : ViewElementButton
                 
             }
         }
-
-
-        // string url = $"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}";
-        // using (var request = new UnityWebRequest(url, "PUT"))
-        // {
-        //     request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
-        //     request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
-        //     request.SetRequestHeader("Content-Type", "application/json");
-        //
-        //     var data = new
-        //     {
-        //         PersistantStats =
-        //             File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"))
-        //     };
-        //
-        //     var json = JsonConvert.SerializeObject(data);
-        //
-        //     request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
-        //     request.downloadHandler = new DownloadHandlerBuffer();
-        //
-        //     yield return request.SendWebRequest();
-        //
-        //     if (request.result != UnityWebRequest.Result.Success)
-        //     {
-        //         Debug.LogError(request.downloadHandler.text);
-        //         yield break;
-        //     }
-        //
-        //     Debug.Log(request.downloadHandler.text);
-        // }
     }
 }
