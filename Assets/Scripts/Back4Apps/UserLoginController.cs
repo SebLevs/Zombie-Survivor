@@ -81,6 +81,13 @@ public class UserLoginController : MonoBehaviour
 
     public IEnumerator SignUpIE()
     {
+        if (_errorHander.TrySignUpHandleError(inputFieldEmail.text, inputFieldPassword.text))
+        {
+            SwitchActiveCue(localizableCueInvalid);
+            _activeCue.LocalizeExternalText(_errorHander.errorKey);
+            yield break;
+        }
+
         // UserData Row Creation
         // Required for giving a foreign key to the user to access his or her datas
         string tempUserDataId = "";
@@ -138,14 +145,6 @@ public class UserLoginController : MonoBehaviour
 #endif
                 SwitchActiveCue(localizableCueInvalid);
             }
-
-            if (_errorHander.TrySignUpHandleError(inputFieldEmail.text, inputFieldPassword.text))
-            {
-                _activeCue.LocalizeExternalText(_errorHander.errorKey);
-                yield break;
-            }
-
-            //StartCoroutine(PostPlayerStatsFile());
 
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidSignup);
