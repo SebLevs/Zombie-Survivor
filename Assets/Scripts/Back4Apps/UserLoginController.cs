@@ -1,8 +1,13 @@
+using System;
 using Newtonsoft.Json;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json.Linq;
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -10,20 +15,21 @@ using UnityEngine.Networking;
 public class UserLoginController : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
+    private PlayerStatsSO _playerStats;
 
-    [Header("Logins")]
-    [SerializeField] private TMP_InputField inputFieldEmail;
+    public static string sessionToken;
+
+    [Header("Logins")] [SerializeField] private TMP_InputField inputFieldEmail;
     [SerializeField] private TMP_InputField inputFieldPassword;
 
-    [Header("Visual cue")]
-    [SerializeField] private float cueVisibleTime = 3;
+    [Header("Visual cue")] [SerializeField]
+    private float cueVisibleTime = 3;
+
     [SerializeField] private TMPSceneBasedLocalizable localizableCueEmailVerification;
-    [Space]
-    [SerializeField] private TMPSceneBasedLocalizable localizableCueValid;
+    [Space] [SerializeField] private TMPSceneBasedLocalizable localizableCueValid;
     [SerializeField] private string keyValidLogin;
     [SerializeField] private string keyValidSignup;
-    [Space]
-    [SerializeField] private TMPSceneBasedLocalizable localizableCueInvalid;
+    [Space] [SerializeField] private TMPSceneBasedLocalizable localizableCueInvalid;
     [SerializeField] private string keyInvalidEmailCombination;
     private TMPSceneBasedLocalizable _activeCue;
     private SequentialTimer _timerDelayedGotoTitleScreen;
@@ -31,10 +37,7 @@ public class UserLoginController : MonoBehaviour
 
     private void Awake()
     {
-        _timerDelayedGotoTitleScreen = new(cueVisibleTime, () =>
-        {
-            GotoTitleScreen();
-        });
+        _timerDelayedGotoTitleScreen = new(cueVisibleTime, () => { GotoTitleScreen(); });
         _timerDelayedGotoTitleScreen.Reset(true);
         _errorHander = GetComponent<ErrorHandler>();
     }
@@ -69,7 +72,12 @@ public class UserLoginController : MonoBehaviour
         canvasGroup.blocksRaycasts = interactability;
     }
 
-    public void SignUp() { StopAllCoroutines(); StartCoroutine(SignUpIE()); }
+    public void SignUp()
+    {
+        StopAllCoroutines();
+        StartCoroutine(SignUpIE());
+    }
+
     public IEnumerator SignUpIE()
     {
         // TODO CHECK IF EMAIL EXISTS HERE
@@ -104,16 +112,6 @@ public class UserLoginController : MonoBehaviour
         }*/
 
 
-
-
-
-
-
-
-
-
-
-
         // UserData Row Creation
         // Required for giving a foreign key to the user to access his or her datas
         string tempUserDataId = "";
@@ -123,7 +121,7 @@ public class UserLoginController : MonoBehaviour
             request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
-            var data = new {};
+            var data = new { };
             var json = JsonConvert.SerializeObject(data);
 
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
@@ -150,7 +148,11 @@ public class UserLoginController : MonoBehaviour
             request.SetRequestHeader(BackFourApps.revocSession, "1");
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
-            var data = new { username = inputFieldEmail.text, email = inputFieldEmail.text, password = inputFieldPassword.text, userDataId = tempUserDataId };
+            var data = new
+            {
+                username = inputFieldEmail.text, email = inputFieldEmail.text, password = inputFieldPassword.text,
+                userDataId = tempUserDataId
+            };
             var json = JsonConvert.SerializeObject(data);
 
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
@@ -166,20 +168,32 @@ public class UserLoginController : MonoBehaviour
                 Debug.LogWarning("ERROR: " + request.error);
 #endif
                 SwitchActiveCue(localizableCueInvalid);
+
+
                 // TODO: Make COR checks here for email already exists
                 //string key = _errorHander.TryLoginHandleError();
                 //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
-                _activeCue.LocalizeExternalText("TEST"); // TODO: Remove when above is implemented
+                //_activeCue.LocalizeExternalText("TEST"); // TODO: Remove when above is implemented
+            }
+
+            if (_errorHander.TrySignUpHandleError(inputFieldEmail.text, inputFieldPassword.text))
+            {
+                _activeCue.LocalizeExternalText(_errorHander.errorKey);
                 yield break;
             }
-            
+
 
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidSignup);
         }
     }
 
-    public void LogIn() { StopAllCoroutines(); StartCoroutine(LogInIE()); }
+    public void LogIn()
+    {
+        StopAllCoroutines();
+        StartCoroutine(LogInIE());
+    }
+
     public IEnumerator LogInIE() // Get User from data base
     {
         string url = $"{BackFourApps.urlLogin}?username={inputFieldEmail.text}&password={inputFieldPassword.text}";
@@ -198,12 +212,23 @@ public class UserLoginController : MonoBehaviour
                 Debug.LogWarning("ERROR: " + request.error);
 #endif
                 SwitchActiveCue(localizableCueInvalid);
+
+                if (_errorHander.TryLoginHandleError(inputFieldEmail.text, inputFieldPassword.text))
+                {
+                    _activeCue.LocalizeExternalText(_errorHander.errorKey);
+                }
+                else
+                {
+                    _activeCue.LocalizeExternalText("error wrong combination");
+                }
+
+                yield break;
                 // TODO: Make COR checks here
                 //string key = _errorHander.TryLoginHandleError();
                 //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
-                _activeCue.LocalizeExternalText("error email already in use"); // TODO: Remove when above is implemented
-                yield break;
+                //_activeCue.LocalizeExternalText("error wrong combination"); // TODO: Remove when above is implemented
             }
+
             SetUserDatas(request);
 
             if (!Entity_Player.Instance.UserDatas.emailVerified)
@@ -211,6 +236,9 @@ public class UserLoginController : MonoBehaviour
                 SwitchActiveCue(localizableCueEmailVerification);
                 yield break;
             }
+
+            var jObject = JObject.Parse(request.downloadHandler.text);
+            sessionToken = jObject["sessionToken"].ToString();
 
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidLogin);
@@ -240,12 +268,24 @@ public class UserLoginController : MonoBehaviour
             //SetUserDatasGameplay(request);
 
             Entity_Player.Instance.UserDatas.userDatasGameplay = new();
-            var matches = Regex.Matches(request.downloadHandler.text, "\"hasCompletedTutorial\":(\\w+)", RegexOptions.Multiline);
-            Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial = matches.First().Groups[1].Value == "true";
+            var matches = Regex.Matches(request.downloadHandler.text, "\"hasCompletedTutorial\":(\\w+)",
+                RegexOptions.Multiline);
+            Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial =
+                matches.First().Groups[1].Value == "true";
+
+
+            GetPlayerStatsOnLogin();
+            Entity_Player.Instance.InitPlayer();
+            Entity_Player.Instance.RefreshPlayerStats();
         }
     }
 
-    public void UpdateUserDatas() { StopAllCoroutines(); StartCoroutine(UpdateUserDatasIE()); }
+    public void UpdateUserDatas()
+    {
+        StopAllCoroutines();
+        StartCoroutine(UpdateUserDatasIE());
+    }
+
     public IEnumerator UpdateUserDatasIE() // Get User from data base
     {
         string url = $"{BackFourApps.urlClasses}UserData/{Entity_Player.Instance.UserDatas.userDataId}";
@@ -255,7 +295,16 @@ public class UserLoginController : MonoBehaviour
             request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
-            var data = new { hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial };
+            UpdatePlayerStatsOnLogOut();
+            StartCoroutine(PostPlayerStatsFile());
+
+            var data = new
+            {
+                hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial,
+                PersistantStats =
+                    Convert.ToBase64String(File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath,
+                        "BasePlayerStats.tsv")))
+            };
             var json = JsonConvert.SerializeObject(data);
 
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
@@ -280,7 +329,8 @@ public class UserLoginController : MonoBehaviour
         Entity_Player.Instance.UserDatas = userDatas;
     }
 
-    private UserDatas GetUserDatas(UnityWebRequest request) => JsonConvert.DeserializeObject<UserDatas>(request.downloadHandler.text);
+    private UserDatas GetUserDatas(UnityWebRequest request) =>
+        JsonConvert.DeserializeObject<UserDatas>(request.downloadHandler.text);
 
     /// <summary>The logic uses Newtonsoft Json package</summary>
     private void SetUserDatasGameplay(UnityWebRequest request)
@@ -290,7 +340,8 @@ public class UserLoginController : MonoBehaviour
         Entity_Player.Instance.UserDatas.userDatasGameplay = userDatas;
     }
 
-    private UserDatasGameplay GetUserDatasGameplay(UnityWebRequest request) => JsonConvert.DeserializeObject<UserDatasGameplay>(request.downloadHandler.text);
+    private UserDatasGameplay GetUserDatasGameplay(UnityWebRequest request) =>
+        JsonConvert.DeserializeObject<UserDatasGameplay>(request.downloadHandler.text);
 
     private void GoToTitleScreenHandler()
     {
@@ -300,9 +351,128 @@ public class UserLoginController : MonoBehaviour
 
     private void SwitchActiveCue(TMPSceneBasedLocalizable cue)
     {
-        if (_activeCue == cue) { return; }
-        if (_activeCue != null) { _activeCue.gameObject.SetActive(false); }
+        if (_activeCue == cue)
+        {
+            return;
+        }
+
+        if (_activeCue != null)
+        {
+            _activeCue.gameObject.SetActive(false);
+        }
+
         _activeCue = cue;
-        if (_activeCue != null) { _activeCue.gameObject.SetActive(true); }
+        if (_activeCue != null)
+        {
+            _activeCue.gameObject.SetActive(true);
+        }
+    }
+
+    private void GetPlayerStatsOnLogin()
+    {
+        _playerStats = Entity_Player.Instance.baseStats;
+
+        StartCoroutine(GetPlayerStatsFile(SetPlayerSO));
+    }
+
+    private void SetPlayerSO()
+    {
+        List<float> list = new();
+        list.Clear();
+        string text = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"));
+        string[] lines = text.Split('\n');
+
+        for (int line = 0; line < lines.Length - 1; line++)
+        {
+            list.Add(float.Parse(lines[line].Split("\t")[1]));
+        }
+
+        _playerStats.MaxHealth = (int)list[0];
+        _playerStats.MoveSpeed = list[1];
+        _playerStats.AttackSpeed = list[2];
+        _playerStats.BoomDistance = list[3];
+        _playerStats.BoomAttackSpeed = list[4];
+        _playerStats.DodgeDelay = list[5];
+        _playerStats.BigGold = (int)list[6];
+        _playerStats.SmallGold = (int)list[7];
+    }
+
+    private IEnumerator GetPlayerStatsFile(Action SetSO)
+    {
+        string PersistantStats;
+        string url = $"{BackFourApps.urlUserData}{Entity_Player.Instance.UserDatas.userDataId}";
+        using (var request = new UnityWebRequest(url, "GET"))
+        {
+            request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            yield return request.SendWebRequest();
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(request.downloadHandler.text);
+                yield break;
+            }
+
+            Debug.Log(request.downloadHandler.text);
+
+            var jObject = JObject.Parse(request.downloadHandler.text);
+            var persistantStats = jObject["PersistantStats"].ToString();
+            Debug.Log(persistantStats);
+
+            using (var requests = UnityWebRequest.Get(persistantStats))
+            {
+                yield return requests.SendWebRequest();
+                if (requests.result != UnityWebRequest.Result.Success)
+
+                {
+                    Debug.LogError(requests.error);
+                    Debug.Log(requests.downloadHandler.text);
+                    yield break;
+                }
+
+                File.WriteAllBytes(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"),
+                    requests.downloadHandler.data);
+                SetSO.Invoke();
+            }
+        }
+    }
+
+    private IEnumerator PostPlayerStatsFile()
+    {
+        string url = $"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}/PersistantStats";
+        using (var request = new UnityWebRequest(url, "PUT"))
+        {
+            request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
+            request.SetRequestHeader("Content-Type", "text/tab-separated-values");
+            string filePath = Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv");
+            request.uploadHandler = new UploadHandlerFile(filePath);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            yield return request.SendWebRequest();
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(request.downloadHandler.text);
+                yield break;
+            }
+
+            //Debug.Log(request.downloadHandler.text);
+        }
+    }
+
+    private void UpdatePlayerStatsOnLogOut()
+    {
+        _playerStats = Entity_Player.Instance.baseStats;
+        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"), "");
+
+        StreamWriter writer = new StreamWriter(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"));
+        writer.WriteLine("MaxHealth\t" + _playerStats.MaxHealth);
+        writer.WriteLine("MoveSpeed\t" + _playerStats.MoveSpeed);
+        writer.WriteLine("AttackSpeed\t" + _playerStats.AttackSpeed);
+        writer.WriteLine("BoomDistance\t" + _playerStats.BoomDistance);
+        writer.WriteLine("BoomAttackSpeed\t" + _playerStats.BoomAttackSpeed);
+        writer.WriteLine("DodgeDelay\t" + _playerStats.DodgeDelay);
+        writer.WriteLine("BigGold\t" + _playerStats.BigGold);
+        writer.WriteLine("SmallGold\t" + _playerStats.SmallGold);
+        writer.Close();
     }
 }

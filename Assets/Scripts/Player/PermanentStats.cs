@@ -7,11 +7,12 @@ using UnityEngine;
 [Serializable]
 public class PermanentStats : MonoBehaviour
 {
-    public int permanentGold;
+    public int permanentSmallGold;
+    public int permanentBigGold;
     public const string FilePath = "Assets/DataFile.dat";
     public void GivePermaGold(int goldToGive)
     {
-        permanentGold += goldToGive;
+        permanentSmallGold += goldToGive;
         SerializePermaGold();
     }
 
@@ -31,7 +32,7 @@ public class PermanentStats : MonoBehaviour
         BinaryFormatter formatter = new BinaryFormatter();
         try
         {
-            formatter.Serialize(fs, permanentGold);
+            formatter.Serialize(fs, permanentSmallGold);
         }
         catch (SerializationException e)
         {
@@ -50,7 +51,7 @@ public class PermanentStats : MonoBehaviour
         try
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            permanentGold = (int) formatter.Deserialize(fs);
+            permanentSmallGold = (int) formatter.Deserialize(fs);
         }
         catch (SerializationException e)
         {

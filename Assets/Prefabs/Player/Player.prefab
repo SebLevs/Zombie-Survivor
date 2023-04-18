@@ -420,7 +420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68fed69ae9d7d44ab37e22bc5d19295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  permanentGold: 0
+  permanentSmallGold: 0
+  permanentBigGold: 0
 --- !u!114 &1997386155763334280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,6 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13e45323d8cfa94eb86a96855983892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseStats: {fileID: 11400000, guid: 0bc1e5b7184b1dc46b09f4b3b800c0f4, type: 2}
   permanentStats: {fileID: 0}
   baseMovSpeed: 5
   baseAttackSpeed: 0.5

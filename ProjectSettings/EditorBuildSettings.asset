@@ -8,14 +8,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Base_Scene.unity
     guid: 3b10f429201f28f4ba4c254fb2fb301b
-  - enabled: 0
-    path: Assets/Scenes/Scene Gameplay.unity
-    guid: 64f5b4e35130f0c48a000e0e84577ec2
-  - enabled: 0
-    path: Assets/Scenes/Scene Practice Room.unity
-    guid: aad948cf9cd7f2c42a7d43a6a2fbb3b4
-  - enabled: 0
-    path: Assets/Scenes/Scene Tutorial.unity
-    guid: 94555535fde352f408b5e9e71e0c1a88
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: d6e88d0f0cf399c4da64ae2b0c43fd13, type: 2}

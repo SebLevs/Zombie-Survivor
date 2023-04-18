@@ -2,7 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using Newtonsoft.Json.Linq;
+using Player;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -36,7 +39,12 @@ public class ViewTitleScreen : ViewElementButton
         //Entity_Player.Instance.UserDatas = null;
     }
 
-    public void UpdateUserDatas() { StopAllCoroutines(); StartCoroutine(UpdateUserDatasIE()); }
+    public void UpdateUserDatas()
+    {
+        StopAllCoroutines();
+        StartCoroutine(UpdateUserDatasIE());
+    }
+
     public IEnumerator UpdateUserDatasIE() // Get User from data base
     {
         string url = $"{BackFourApps.urlClasses}UserData/{Entity_Player.Instance.UserDatas.userDataId}";
@@ -46,7 +54,17 @@ public class ViewTitleScreen : ViewElementButton
             request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader(BackFourApps.contentType, BackFourApps.appJson);
 
-            var data = new { hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial };
+            UpdatePlayerStatsOnLogOut();
+
+            StartCoroutine(PostPlayerStatsFile());
+
+            var data = new
+            {
+                hasCompletedTutorial = Entity_Player.Instance.UserDatas.userDatasGameplay.hasCompletedTutorial,
+                PersistantStats =
+                    Convert.ToBase64String(File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath,
+                        "BasePlayerStats.tsv")))
+            };
             var json = JsonConvert.SerializeObject(data);
 
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
@@ -62,6 +80,103 @@ public class ViewTitleScreen : ViewElementButton
                 yield break;
             }
         }
+    }
 
+    private void UpdatePlayerStatsOnLogOut()
+    {
+        PlayerStatsSO _playerStats = Entity_Player.Instance.baseStats;
+        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"), "");
+
+        StreamWriter writer = new StreamWriter(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"));
+        writer.WriteLine("MaxHealth\t" + _playerStats.MaxHealth);
+        writer.WriteLine("MoveSpeed\t" + _playerStats.MoveSpeed);
+        writer.WriteLine("AttackSpeed\t" + _playerStats.AttackSpeed);
+        writer.WriteLine("BoomDistance\t" + _playerStats.BoomDistance);
+        writer.WriteLine("BoomAttackSpeed\t" + _playerStats.BoomAttackSpeed);
+        writer.WriteLine("DodgeDelay\t" + _playerStats.DodgeDelay);
+        writer.WriteLine("BigGold\t" + _playerStats.BigGold);
+        writer.WriteLine("SmallGold\t" + _playerStats.SmallGold);
+        writer.Close();
+    }
+
+    private IEnumerator PostPlayerStatsFile()
+    {
+        //string url = $"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}/PersistantStats";
+        using (var request = new UnityWebRequest("https://parseapi.back4app.com/files/PlayerStats.tsv", "POST"))
+        {
+            request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
+            request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
+            //request.SetRequestHeader("X-Parse-Session-Token", UserLoginController.sessionToken);
+            request.SetRequestHeader("Content-Type", "text/tab-separated-values");
+
+            string filePath = Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv");
+
+            request.uploadHandler = new UploadHandlerFile(filePath);
+            request.downloadHandler = new DownloadHandlerBuffer();
+
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(request.downloadHandler.text);
+                yield break;
+            }
+
+            Debug.Log(request.downloadHandler.text);
+            var jObject = JObject.Parse(request.downloadHandler.text);
+            var fileurl = jObject["url"].ToString();
+            Debug.Log(fileurl);
+
+            string json = JsonConvert.SerializeObject(new { PersistantStats = fileurl });
+
+            using (var requests =
+                   UnityWebRequest.Put($"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}",
+                       json))
+            {
+                requests.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
+                requests.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
+                requests.SetRequestHeader("X-Parse-Session-Token", UserLoginController.sessionToken);
+                requests.SetRequestHeader("Content-Type", "application/json");
+                
+                yield return requests.SendWebRequest();
+
+                if (requests.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError(request.downloadHandler.text);
+                    yield break;
+                }
+                
+            }
+        }
+
+
+        // string url = $"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}";
+        // using (var request = new UnityWebRequest(url, "PUT"))
+        // {
+        //     request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
+        //     request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
+        //     request.SetRequestHeader("Content-Type", "application/json");
+        //
+        //     var data = new
+        //     {
+        //         PersistantStats =
+        //             File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"))
+        //     };
+        //
+        //     var json = JsonConvert.SerializeObject(data);
+        //
+        //     request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
+        //     request.downloadHandler = new DownloadHandlerBuffer();
+        //
+        //     yield return request.SendWebRequest();
+        //
+        //     if (request.result != UnityWebRequest.Result.Success)
+        //     {
+        //         Debug.LogError(request.downloadHandler.text);
+        //         yield break;
+        //     }
+        //
+        //     Debug.Log(request.downloadHandler.text);
+        // }
     }
 }

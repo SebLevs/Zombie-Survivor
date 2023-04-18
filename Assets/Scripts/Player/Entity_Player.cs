@@ -1,9 +1,11 @@
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseListener
 {
     public UserDatas UserDatas;
+    public PlayerStatsSO baseStats;
 
     public readonly int Mask = 3;
 
@@ -80,9 +82,6 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
         permanentStats = GetComponent<PermanentStats>();
         StateController = new StateController<Entity_Player>(StateContainer.State_Idle);
         DesiredActions = new PlayerActionsContainer();
-        specialAttackDelay = new SequentialTimer(specialAttackSpeed);
-        attackDelay = new SequentialTimer(attackSpeed);
-        dodgeDelay = new SequentialTimer(dodgeInterval);
         Health = GetComponent<Health>();
         audios = GetComponent<PlayerAudioContainer>();
         Input = GetComponent<PlayerInput>();
@@ -94,11 +93,54 @@ public class Entity_Player : Manager<Entity_Player>, IUpdateListener, IPauseList
     protected override void OnStart()
     {
         base.OnStart();
-        MovSpeed = 5.0f;
-        BulletSpeed = 12.0f;
         uiManager = UIManager.Instance;
         
         RefreshPlayerStats();
+    }
+
+    public void UpdateBaseStats()
+    {
+        baseStats.MaxHealth = Health.MaxHP;
+        baseStats.MoveSpeed = MovSpeed;
+        baseStats.BoomAttackSpeed = specialAttackSpeed;
+        baseStats.AttackSpeed = attackSpeed;
+        baseStats.BoomDistance = boomDistance;
+        baseStats.DodgeDelay = dodgeInterval;
+        baseStats.SmallGold = permanentStats.permanentSmallGold;
+        baseStats.BigGold = permanentStats.permanentBigGold;
+    }
+
+    public void OverrideBaseStats()
+    {
+        
+    }
+    
+    
+    public void WriteInPlayerBaseStats()
+    {
+        baseStats.MaxHealth = UserDatas.userDatasGameplay.MaxHealth;
+        baseStats.MoveSpeed = UserDatas.userDatasGameplay.MoveSpeed;
+        baseStats.BoomAttackSpeed = UserDatas.userDatasGameplay.BoomAttackSpeed;
+        baseStats.AttackSpeed= UserDatas.userDatasGameplay.AttackSpeed;
+        baseStats.BoomDistance = UserDatas.userDatasGameplay.BoomDistance;
+        baseStats.DodgeDelay = UserDatas.userDatasGameplay.DodgeDelay;
+        baseStats.SmallGold = UserDatas.userDatasGameplay.SmallGold;
+        baseStats.BigGold = UserDatas.userDatasGameplay.BigGold;
+    }
+    
+    public void InitPlayer()
+    {
+        Health.SetMaxHP(baseStats.MaxHealth);
+        MovSpeed = baseStats.MoveSpeed;
+        specialAttackSpeed = baseStats.BoomAttackSpeed;
+        specialAttackDelay = new SequentialTimer(specialAttackSpeed);
+        attackSpeed = baseStats.AttackSpeed;
+        attackDelay = new SequentialTimer(attackSpeed);
+        boomDistance = baseStats.BoomDistance;
+        dodgeInterval = baseStats.DodgeDelay;
+        dodgeDelay = new SequentialTimer(dodgeInterval);
+        permanentStats.permanentSmallGold = baseStats.SmallGold;
+        permanentStats.permanentBigGold = baseStats.BigGold;
     }
 
     public void ResetGold() => currentGold = 0;
