@@ -80,38 +80,6 @@ public class UserLoginController : MonoBehaviour
 
     public IEnumerator SignUpIE()
     {
-        // TODO CHECK IF EMAIL EXISTS HERE
-/*        //string url = $"{BackFourApps.urlUsers}?email={inputFieldEmail.text}";
-        string url = "https://parseapi.back4app.com/classes/users?where={\"email\":\"" + inputFieldEmail.text + "\"}";
-        using (var request = new UnityWebRequest(url, "GET"))
-        {
-            request.SetRequestHeader(BackFourApps.appIDS, BackFourApps.ZombieSurvivor.applicationId);
-            request.SetRequestHeader(BackFourApps.restAPIKey, BackFourApps.ZombieSurvivor.restApiKey);
-
-            request.downloadHandler = new DownloadHandlerBuffer();
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-#if UNITY_EDITOR
-                Debug.LogWarning("ERROR: " + request.error);
-#endif
-                SwitchActiveCue(localizableCueInvalid);
-                // TODO: Make COR checks here
-                //string key = _errorHander.TryLoginHandleError();
-                //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
-                _activeCue.LocalizeExternalText("error email already in use"); // TODO: Remove when above is implemented
-
-                Debug.Log(request.downloadHandler.text);
-                Debug.Log(request.downloadHandler.text.Contains(inputFieldEmail.text));
-
-                yield break;
-            }
-
-            Debug.Log("NO EMAIL FOUND");
-        }*/
-
-
         // UserData Row Creation
         // Required for giving a foreign key to the user to access his or her datas
         string tempUserDataId = "";
@@ -168,12 +136,6 @@ public class UserLoginController : MonoBehaviour
                 Debug.LogWarning("ERROR: " + request.error);
 #endif
                 SwitchActiveCue(localizableCueInvalid);
-
-
-                // TODO: Make COR checks here for email already exists
-                //string key = _errorHander.TryLoginHandleError();
-                //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
-                //_activeCue.LocalizeExternalText("TEST"); // TODO: Remove when above is implemented
             }
 
             if (_errorHander.TrySignUpHandleError(inputFieldEmail.text, inputFieldPassword.text))
@@ -182,7 +144,7 @@ public class UserLoginController : MonoBehaviour
                 yield break;
             }
 
-            StartCoroutine(PostPlayerStatsFile());
+            //StartCoroutine(PostPlayerStatsFile());
 
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidSignup);
@@ -224,10 +186,6 @@ public class UserLoginController : MonoBehaviour
                 }
 
                 yield break;
-                // TODO: Make COR checks here
-                //string key = _errorHander.TryLoginHandleError();
-                //_activeCue.LocalizeExternalText(key); // TODO: Pass check key value here
-                //_activeCue.LocalizeExternalText("error wrong combination"); // TODO: Remove when above is implemented
             }
 
             SetUserDatas(request);
@@ -261,12 +219,6 @@ public class UserLoginController : MonoBehaviour
                 Debug.LogError("ERROR: NO USERDATA ON GET+ " + request.error);
                 yield break;
             }
-
-            // TODO: Debug bellow, it should work as GetUserDatas() also work (Read online that NewtonJson hates boolean https://github.com/dotnet/runtime/issues/29960)
-
-            //Debug.Log(request.downloadHandler.text);
-            //Debug.Log("Is it true: " + GetUserDatasGameplay(request).hasCompletedTutorial);
-            //SetUserDatasGameplay(request);
 
             Entity_Player.Instance.UserDatas.userDatasGameplay = new();
             var matches = Regex.Matches(request.downloadHandler.text, "\"hasCompletedTutorial\":(\\w+)",
@@ -382,10 +334,12 @@ public class UserLoginController : MonoBehaviour
         list.Clear();
         string text = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv"));
         string[] lines = text.Split('\n');
-
+        
+        
         for (int line = 0; line < lines.Length - 1; line++)
         {
             list.Add(float.Parse(lines[line].Split("\t")[1]));
+            Debug.Log(list[list.Count]);
         }
 
         _playerStats.MaxHealth = (int)list[0];
