@@ -182,6 +182,7 @@ public class UserLoginController : MonoBehaviour
                 yield break;
             }
 
+            StartCoroutine(PostPlayerStatsFile());
 
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidSignup);
@@ -399,7 +400,6 @@ public class UserLoginController : MonoBehaviour
 
     private IEnumerator GetPlayerStatsFile(Action SetSO)
     {
-        string PersistantStats;
         string url = $"{BackFourApps.urlUserData}{Entity_Player.Instance.UserDatas.userDataId}";
         using (var request = new UnityWebRequest(url, "GET"))
         {
@@ -439,23 +439,47 @@ public class UserLoginController : MonoBehaviour
 
     private IEnumerator PostPlayerStatsFile()
     {
-        string url = $"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}/PersistantStats";
-        using (var request = new UnityWebRequest(url, "PUT"))
+        using (var request = new UnityWebRequest("https://parseapi.back4app.com/files/PlayerStats.tsv", "POST"))
         {
             request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
             request.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
             request.SetRequestHeader("Content-Type", "text/tab-separated-values");
+
             string filePath = Path.Combine(Application.streamingAssetsPath, "BasePlayerStats.tsv");
+
             request.uploadHandler = new UploadHandlerFile(filePath);
             request.downloadHandler = new DownloadHandlerBuffer();
+
             yield return request.SendWebRequest();
+
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError(request.downloadHandler.text);
                 yield break;
             }
+            
+            var jObject = JObject.Parse(request.downloadHandler.text);
+            var fileurl = jObject["url"].ToString();
 
-            //Debug.Log(request.downloadHandler.text);
+            string json = JsonConvert.SerializeObject(new { PersistantStats = fileurl });
+
+            using (var requests =
+                   UnityWebRequest.Put($"{BackFourApps.urlUserData}/{Entity_Player.Instance.UserDatas.userDataId}",
+                       json))
+            {
+                requests.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
+                requests.SetRequestHeader("X-Parse-REST-API-Key", BackFourApps.ZombieSurvivor.restApiKey);
+                requests.SetRequestHeader("X-Parse-Session-Token", sessionToken);
+                requests.SetRequestHeader("Content-Type", "application/json");
+
+                yield return requests.SendWebRequest();
+
+                if (requests.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError(request.downloadHandler.text);
+                }
+
+            }
         }
     }
 
