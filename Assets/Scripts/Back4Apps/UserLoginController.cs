@@ -17,6 +17,8 @@ public class UserLoginController : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     private PlayerStatsSO _playerStats;
 
+    public static string sessionToken;
+
     [Header("Logins")] [SerializeField] private TMP_InputField inputFieldEmail;
     [SerializeField] private TMP_InputField inputFieldPassword;
 
@@ -235,6 +237,9 @@ public class UserLoginController : MonoBehaviour
                 yield break;
             }
 
+            var jObject = JObject.Parse(request.downloadHandler.text);
+            sessionToken = jObject["sessionToken"].ToString();
+
             SwitchActiveCue(localizableCueValid);
             _activeCue.LocalizeExternalText(keyValidLogin);
 
@@ -394,9 +399,8 @@ public class UserLoginController : MonoBehaviour
 
     private IEnumerator GetPlayerStatsFile(Action SetSO)
     {
-        string fileUrl;
+        string PersistantStats;
         string url = $"{BackFourApps.urlUserData}{Entity_Player.Instance.UserDatas.userDataId}";
-        Debug.Log(url);
         using (var request = new UnityWebRequest(url, "GET"))
         {
             request.SetRequestHeader("X-Parse-Application-Id", BackFourApps.ZombieSurvivor.applicationId);
@@ -412,18 +416,17 @@ public class UserLoginController : MonoBehaviour
             Debug.Log(request.downloadHandler.text);
 
             var jObject = JObject.Parse(request.downloadHandler.text);
-            var persistantStats = jObject["PersistantStats"];
-            var jObjects = JObject.Parse(persistantStats.ToString());
-            fileUrl = jObjects["url"].ToString();
+            var persistantStats = jObject["PersistantStats"].ToString();
+            Debug.Log(persistantStats);
 
-            using (var requests = UnityWebRequest.Get(fileUrl))
+            using (var requests = UnityWebRequest.Get(persistantStats))
             {
                 yield return requests.SendWebRequest();
-                if (request.result != UnityWebRequest.Result.Success)
+                if (requests.result != UnityWebRequest.Result.Success)
 
                 {
-                    Debug.LogError(request.error);
-                    Debug.Log(request.downloadHandler.text);
+                    Debug.LogError(requests.error);
+                    Debug.Log(requests.downloadHandler.text);
                     yield break;
                 }
 
@@ -452,7 +455,7 @@ public class UserLoginController : MonoBehaviour
                 yield break;
             }
 
-            Debug.Log(request.downloadHandler.text);
+            //Debug.Log(request.downloadHandler.text);
         }
     }
 
