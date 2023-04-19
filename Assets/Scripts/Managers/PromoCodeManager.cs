@@ -11,6 +11,17 @@ public class PromoCodeManager : MonoBehaviour
     private static Dictionary<string, string> _promoCodes;
     private TMP_InputField _inputField;
 
+    [Header("Localization Visual Cue")]
+    [SerializeField] private TMPLocalizablePair promoLocalizablePair;
+    [SerializeField] private TMPSceneBasedLocalizable promoLocalizablePromoCode;
+    [SerializeField] private TMPSceneBasedLocalizable promoLocalizableStat;
+    [Header("Visual cue keys")]
+    [SerializeField] private string keySmallGold;
+    [SerializeField] private string keyBigGold;
+    [SerializeField] private string keyPermaStat;
+    [SerializeField] private string keyTempStat;
+
+
     private void OnEnable()
     {
         _inputField = GetComponentInChildren<TMP_InputField>();
@@ -61,53 +72,61 @@ public class PromoCodeManager : MonoBehaviour
 
     public void CheckCode()
     {
+        promoLocalizablePair.gameObject.SetActive(true);
         var input = _inputField.text.ToUpper();
         if (_promoCodes.ContainsKey(input))
         {
+            StartCoroutine(UpdatePromoCode(_promoCodes[input]));
+
+            promoLocalizablePair.SetPair(promoLocalizablePair.PrimaryPair);
+            promoLocalizablePromoCode.gameObject.SetActive(true);
+            promoLocalizableStat.gameObject.SetActive(true);
             switch (input.ToCharArray().First())
             {
                 case 'C':
                 {
-                    Debug.Log("Gives Currency");
                     int temp = Random.Range(0, 2);
                     if (temp == 1)
                     {
                         Entity_Player.Instance.permanentStats.permanentBigGold += 1;
+                        promoLocalizablePromoCode.LocalizeExternalText(keySmallGold);
                     }
                     else
                     {
                         Entity_Player.Instance.permanentStats.permanentSmallGold += 10;
+                        promoLocalizablePromoCode.LocalizeExternalText(keyBigGold);
                     }
                     break;
                 }
                 case 'P':
                 {
-                    Debug.Log("Gives Perma Stats");
-                    GivePermaStats();
+                    string keyStat = CommandPromptManager.Instance.GetLocalizationKeyForCommand(GivePermaStats());
                     Entity_Player.Instance.UpdateBaseStats();
+                    promoLocalizablePromoCode.LocalizeExternalText(keyPermaStat);
+                    promoLocalizableStat.LocalizeExternalText(keyStat);
                     break;
                 }
                 case 'T':
                 {
-                    Debug.Log("Gives nice message and Temp Stats");
-                    GivePermaStats();
-                    Debug.Log(NiceMessage());
+                    string keyStat = CommandPromptManager.Instance.GetLocalizationKeyForCommand(GivePermaStats());
+                    promoLocalizablePromoCode.LocalizeExternalText(keyTempStat);
+                    promoLocalizableStat.LocalizeExternalText(keyStat);
                     break;
                 }
             }
-
-            StartCoroutine(UpdatePromoCode(_promoCodes[input]));
         }
         else
         {
-            Debug.Log("Invalid Code");
+            promoLocalizablePair.SetPair(promoLocalizablePair.SecondaryPair);
+            promoLocalizablePromoCode.gameObject.SetActive(false);
+            promoLocalizableStat.gameObject.SetActive(false);
         }
+        promoLocalizablePair.LocalizeText();
         _inputField.text = string.Empty;
         _inputField.ActivateInputField();
-
     }
 
-    private void GivePermaStats()
+    private CommandType GivePermaStats()
     {
         CommandInvoker commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
         int temp = Random.Range(0, commandInvoker.ChestPowerUpDic.Count);
@@ -115,27 +134,6 @@ public class PromoCodeManager : MonoBehaviour
         string name = type.ToString().Replace("_", " ");
         commandInvoker.DoCommand(command);
         Entity_Player.Instance.RefreshPlayerStats();
-    }
-
-    private string NiceMessage()
-    {
-        List<string> niceMessages = new();
-        niceMessages.Add("You are pretty");
-        niceMessages.Add("Dont give up");
-        niceMessages.Add("CROCODILE!!!");
-        niceMessages.Add("Do what makes you happy");
-        niceMessages.Add("You are enough, just be you");
-        niceMessages.Add("Believe in yourself, you can do it");
-        niceMessages.Add("Love wins, always choose kindness");
-        niceMessages.Add("Life is short, make it count");
-        niceMessages.Add("Dream big, take action now");
-        niceMessages.Add("Smile often, spread joy around");
-        niceMessages.Add("You are loved, never forget that");
-        niceMessages.Add("Be the change you wish for");
-        niceMessages.Add("Choose happiness, it's contagious");
-        niceMessages.Add("Chase your passions, live your purpose");
-
-        int temp = Random.Range(0, niceMessages.Count);
-        return niceMessages[temp];
+        return type;
     }
 }
