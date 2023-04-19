@@ -6,6 +6,7 @@ public class PotionBehavior : MonoBehaviour
     private Entity_Player _player;
     private CommandInvoker _commandInvoker;
     [SerializeField] private AudioElement pickupSound;
+    private const string localizationKeyFullHeal = "tmp psFullHeal";
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class PotionBehavior : MonoBehaviour
                 _commandInvoker.DoCommand(_commandInvoker.CommandPromptDic[CommandType.FULL_HEAL]);
                 _player.RefreshHealthBar();
                 pickupSound.PlayRandom();
+                UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus(localizationKeyFullHeal);
                 gameObject.SetActive(!isDisableAfterUse);
             }
         }

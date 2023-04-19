@@ -137,4 +137,54 @@ public class CommandPromptManager : Manager<CommandPromptManager>
         inputField.text = "";
         inputField.Select();
     }
+
+    public string GetLocalizationKeyForCommand(CommandType type)
+    {
+        string key;
+        switch(type)
+        {
+            case CommandType.INVINCIBLE:
+                {
+                    key = "tmp psInvincibility";
+                    break;
+                }
+            case CommandType.HEALTH_UP:
+                {
+                    key = "tmp psHealthUp";
+                    break;
+                }
+            case CommandType.MOVE_SPEED:
+                {
+                    key = "tmp psMoveSpeed";
+                    break;
+                }
+            case CommandType.ATTACK_SPEED:
+                {
+                    key = "tmp psAttackSpeed";
+                    break;
+                }
+            case CommandType.BOMMERANG_ATTACK_SPEED:
+                {
+                    key = "tmp psBoomerangSpeed";
+                    break;
+                }
+            case CommandType.BOMMERANG_DISTANCE:
+                {
+                    key = "tmp psBoomerangDistance";
+                    break;
+                }
+            case CommandType.DODGE_DELAY_DOWN:
+                {
+                    key = "tmp psDodgeDelay";
+                    break;
+                }
+            default:
+                {
+                    key = "";
+                    break;
+                }
+        }
+
+        return key;
+    }
 }
