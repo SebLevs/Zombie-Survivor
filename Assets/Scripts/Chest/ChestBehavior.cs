@@ -6,6 +6,7 @@ using TMP_Text = TMPro.TMP_Text;
 
 public class ChestBehavior : MonoBehaviour, IUpdateListener
 {
+    private const string _noMoreUpgradesKey = "tmp noMoreUpgrades";
     public static List<ChestBehavior> AllChest;
     
     public int minValue;
@@ -14,7 +15,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
     private int _nextPowerUpID;
     public int chestValue;
     private Entity_Player _player;
-    private Collider2D _col;
+    private CircleCollider2D _col;
 
     private CommandInvoker _commandInvoker;
 
@@ -37,7 +38,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         chestValue = Random.Range(minValue, maxValue + 1);
         _uiValue = GetComponentInChildren<TMP_Text>();
         _anim = GetComponent<Animator>();
-        _col = GetComponent<Collider2D>();
+        _col = GetComponent<CircleCollider2D>();
         if (AllChest == null) { AllChest = new(); }
     }
 
@@ -79,6 +80,9 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
     {
         if (isInteractable)
         {
+            _col.enabled = false;
+            _uiValue.enabled = false;
+
             _anim.Play("OpenChest");
             _player.currentGold -= chestValue;
 
@@ -86,18 +90,16 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
             {
                 _nextPowerUpID = Random.Range(0 , _commandInvoker.ChestPowerUpDic.Count);
                 (CommandType type, ICommand command) = _commandInvoker.ChestPowerUpDic.ElementAt(_nextPowerUpID);
-                string name = type.ToString().Replace("_", " ");
-                UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("Bonus gained!\n" + name);
+                string key = CommandPromptManager.Instance.GetLocalizationKeyForCommand(type);
+                uiManager.ViewPlayerStats.ChestBonusPopup.PrintChestBonus(key);
                 _commandInvoker.DoCommand(command);
             }
             else
             {
-                UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("No more upgrades...");
+                UIManager.Instance.ViewPlayerStats.ChestBonusPopup.PrintChestBonus(_noMoreUpgradesKey);
             }
-            
+
             _player.RefreshPlayerStats();
-            _col.enabled = false;
-            _uiValue.enabled = false;
             _player.RefreshGoldBar();
             _player.RefreshHealthBar();
         }
@@ -109,8 +111,8 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         if (_commandInvoker.ChestPowerUpDic.TryGetValue(type, out icommand))
         {
             //ICommand icommand = _commandInvoker.ChestPowerUpDic[type];
-            string name = type.ToString().Replace("_", " ");
-            uiManager.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("Bonus gained!\n" + name);
+            string key = CommandPromptManager.Instance.GetLocalizationKeyForCommand(type);
+            uiManager.ViewPlayerStats.ChestBonusPopup.PrintChestBonus(key);
             _commandInvoker.DoCommand(icommand);
 
             _player.RefreshPlayerStats();
@@ -118,7 +120,7 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         }
         else
         {
-            uiManager.ViewPlayerStats.ChestBonusPopup.PrintChestBonus("No more upgrades...");
+            uiManager.ViewPlayerStats.ChestBonusPopup.PrintChestBonus(_noMoreUpgradesKey);
         }
     }
 
@@ -128,7 +130,6 @@ public class ChestBehavior : MonoBehaviour, IUpdateListener
         {
             _player.DesiredActions.ConsumeAllActions(PlayerActionsType.INTERACT);
             CanOpenChest = false;
-            
 
             if (isRandomBonus)
             {

@@ -3,11 +3,13 @@ using UnityEngine;
 // TODO: Refactor into a poolable item into a vertical layout
 public class TextMeshProElementChestStats : TextMeshProElement, IPauseListener, IUpdateListener
 {
+    private TMPSceneBasedLocalizable localizable;
     [SerializeField] private float _disappearAftertime = 2.5f;
     [SerializeField] SequentialTimer _timer;
     protected override void OnAwake()
     {
         base.OnAwake();
+        localizable = GetComponent<TMPSceneBasedLocalizable>();
         _timer = new SequentialTimer(_disappearAftertime, HideChestBonus);
     }
 
@@ -42,7 +44,7 @@ public class TextMeshProElementChestStats : TextMeshProElement, IPauseListener, 
     {
         _timer.Reset();
         _timer.StartTimer();
-        Element.text = message;
+        localizable.LocalizeExternalText(message);
     }
 
     public void HideChestBonus()

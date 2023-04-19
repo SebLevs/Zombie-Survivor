@@ -64,7 +64,7 @@ public static class TSVLocalizer
 
     public static string GetObjectLocalizationValue(Dictionary<string, ObjectLocalizations> localizations, string key, Languages language)
     {
-        if (!localizations.ContainsKey(key)) { return "ERROR: Key was not found in _localizations"; }
+        if (!localizations.ContainsKey(key)) { return ""; }
         return localizations[key].Localizations[language];
     }
 }

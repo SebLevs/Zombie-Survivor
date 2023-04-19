@@ -131,7 +131,6 @@ public class PromoCodeManager : MonoBehaviour
         CommandInvoker commandInvoker = CommandPromptManager.Instance.playerCommandInvoker;
         int temp = Random.Range(0, commandInvoker.ChestPowerUpDic.Count);
         (CommandType type, ICommand command) = commandInvoker.ChestPowerUpDic.ElementAt(temp);
-        string name = type.ToString().Replace("_", " ");
         commandInvoker.DoCommand(command);
         Entity_Player.Instance.RefreshPlayerStats();
         return type;
