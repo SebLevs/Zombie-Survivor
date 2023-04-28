@@ -10,6 +10,8 @@
 <li>UI</li>
 <li>Scene management</li>
 <li>Audio</li>
+<li>Level and Game design</li>
+<li>User login & backend</li>
 <li>Misc</li>
 </ul>
 <a href="https://www.marcantoinegiguere.ca/">Marc-Antoine Giguère (Power Key)</a><br/>
@@ -17,6 +19,7 @@
 <li>Three Cs</li>
 <li>Gameplay</li>
 <li>Level and Game design</li>
+<li>Persistent data & backend</li>
 <li>Misc.</li>
 </ul>
 <a href="https://www.instagram.com/starteapot/?hl=fr">Marie-Maxime Giguère</a><br/>
@@ -41,14 +44,6 @@ broumbroum, sf3-sfx-menu-back.wav, https://freesound.org/people/broumbroum/sound
 broumbroum, sf3-sfx-menu-validate.wav, https://freesound.org/people/broumbroum/sounds/50565/?fbclid=IwAR1x1-Tc-LZjz-FNw6tZitrUqwaJHDqYiiU1dN9a5FvV925iMtP2uCqLlAQ</li>
 </ul>
 <ul>
-<li>Every other UI sounds<br/>
-made by Sébastien (Ludwell) using the Chiptone app: https://sfbgames.itch.io/chiptone</li>
-</ul>
-<h3>Ambiance</h3>
-<ul>
-<li>Micha, Puka A., Andrew Dodds, Krotos Starter Library</li>
-</ul>
-<h3>Others</h3>
-<ul>
-<li>Krotos Starter Library sound pack</li>
+<li>Music<br/>
+Made by Benoit Laroche</li>
 </ul>
