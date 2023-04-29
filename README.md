@@ -24,7 +24,7 @@
 </ul>
 <a href="https://www.instagram.com/starteapot/?hl=fr">Marie-Maxime Giguère</a><br/>
 <ul>
-<li>All visual assets</li>
+<li>Characters assets</li>
 </ul>
 Benoit Laroche<br/>
 <ul>
