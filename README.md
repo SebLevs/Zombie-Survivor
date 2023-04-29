@@ -43,7 +43,19 @@ broumbroum, sf3-sfx-menu-back.wav, https://freesound.org/people/broumbroum/sound
 <li>UI Validation<br/>
 broumbroum, sf3-sfx-menu-validate.wav, https://freesound.org/people/broumbroum/sounds/50565/?fbclid=IwAR1x1-Tc-LZjz-FNw6tZitrUqwaJHDqYiiU1dN9a5FvV925iMtP2uCqLlAQ</li>
 </ul>
+<h3>Weapons</h3>
 <ul>
+<li>Krotos Starter Library<br/></li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li>Unknown<br/></li>
+</ul>
 <li>Music<br/>
 Made by Benoit Laroche</li>
+</ul>
+<h2>Visuals</h2><br/>
+<h3>Non-character</h3>
+<ul>
+<li>Unknown<br/></li>
 </ul>
