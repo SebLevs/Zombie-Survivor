@@ -11,16 +11,16 @@
 <li>Scene management</li>
 <li>Implementation of Unity optimization guidelines</li>
 <li>Audio</li>
-<li>Level and Game design</li>
 <li>User login & backend</li>
+<li>Level and Game design</li>
 <li>Misc</li>
 </ul>
 <a href="https://www.marcantoinegiguere.ca/">Marc-Antoine Giguère (Power Key)</a><br/>
 <ul>
 <li>Three Cs</li>
 <li>Gameplay</li>
-<li>Level and Game design</li>
 <li>Persistent data & backend</li>
+<li>Level and Game design</li>
 <li>Misc.</li>
 </ul>
 <a href="https://www.instagram.com/starteapot/?hl=fr">Marie-Maxime Giguère</a><br/>
