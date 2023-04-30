@@ -9,6 +9,7 @@
 <li>AI</li>
 <li>UI</li>
 <li>Scene management</li>
+<li>Implementation of Unity optimization guidelines</li>
 <li>Audio</li>
 <li>Level and Game design</li>
 <li>User login & backend</li>
