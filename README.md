@@ -13,7 +13,7 @@
 <li>Audio</li>
 <li>User login & backend</li>
 <li>Level and Game design</li>
-<li>Misc</li>
+<li>Misc.</li>
 </ul>
 <a href="https://www.marcantoinegiguere.ca/">Marc-Antoine Giguère (Power Key)</a><br/>
 <ul>
