@@ -69,7 +69,8 @@ public class PlayerAutomatedTestController : MonoBehaviour, IPauseListener, IUpd
         UpdateManager.Instance.SubscribeToUpdate(this);
 
         UpdateManager updateManager = UpdateManager.Instance;
-        if (updateManager) { updateManager.UnSubscribeFromUpdate(Entity_Player.Instance.Controller); }
+        Entity_Player player = Entity_Player.Instance;
+        if (updateManager && player) { updateManager.UnSubscribeFromUpdate(player.Controller); }
     }
 
     private void Awake()
