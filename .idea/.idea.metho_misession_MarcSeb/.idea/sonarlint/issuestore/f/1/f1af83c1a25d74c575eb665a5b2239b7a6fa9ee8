@@ -1,0 +1,16 @@
+
+Fcsharpsquid:S3903"*Move 'ViewElement' into a named namespace.(æ÷Ñ
+acsharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(Š¿‹¶
+‡csharpsquid:S3427("eThis method signature overlaps the one defined on line 32, the default parameter value can't be used.(‡Â“ìþÿÿÿÿ
+‚csharpsquid:S34271"eThis method signature overlaps the one defined on line 33, the default parameter value can't be used.(¼ª¢ƒ
+‡csharpsquid:S3427="eThis method signature overlaps the one defined on line 34, the default parameter value can't be used.(ÿï„÷þÿÿÿÿ
+‚csharpsquid:S3427F"eThis method signature overlaps the one defined on line 35, the default parameter value can't be used.(¶š
+‡csharpsquid:S3427O"eThis method signature overlaps the one defined on line 36, the default parameter value can't be used.(Û–Ö©ýÿÿÿÿ
+‡csharpsquid:S3427["eThis method signature overlaps the one defined on line 37, the default parameter value can't be used.(œôÖ½þÿÿÿÿ
+Ncsharpsquid:S4136 "1All 'OnShow' method overloads should be adjacent.(ØèÆù
+Scsharpsquid:S4136!"6All 'OnShowQuick' method overloads should be adjacent.(°‘è°
+`csharpsquid:S4136"">All 'OnShowInstantaneous' method overloads should be adjacent.(Óö›éýÿÿÿÿ
+Ncsharpsquid:S4136#"1All 'OnHide' method overloads should be adjacent.(Ä‰á
+Scsharpsquid:S4136$"6All 'OnHideQuick' method overloads should be adjacent.(ü©˜
+`csharpsquid:S4136%">All 'OnHideInstantaneous' method overloads should be adjacent.(‡—˜‚ûÿÿÿÿ

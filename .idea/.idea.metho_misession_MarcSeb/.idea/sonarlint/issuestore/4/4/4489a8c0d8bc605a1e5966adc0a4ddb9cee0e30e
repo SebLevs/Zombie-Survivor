@@ -1,0 +1,9 @@
+
+Tcsharpsquid:S3903"2Move 'UserLoginController' into a named namespace.(±Èô’ûÿÿÿÿ
+acsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(ÿ¦Áà
+9csharpsquid:S3626‘"Remove this redundant jump.(˜Ù¶Ú
+fcsharpsquid:S2223"IChange the visibility of 'sessionToken' or make it 'const' or 'readonly'.(ÿ¦Áà
+xcsharpsquid:S2696È"UMake the enclosing instance method 'static' or remove this set on the 'static' field.(¯ï–ûÿÿÿÿ
+]csharpsquid:S1075†"?Refactor your code not to use hardcoded absolute paths or URIs.(¢»ÛÍ
+tcsharpsquid:S6608ã"QIndexing at 0 should be used instead of the "Enumerable" extension method "First"(Æäµáûÿÿÿÿ
+Wcsharpsquid:S1135‹"4Complete the task associated to this 'TODO' comment.(Ñõ‘¥ûÿÿÿÿ
