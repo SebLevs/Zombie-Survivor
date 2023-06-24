@@ -9,19 +9,23 @@
 <li>AI</li>
 <li>UI</li>
 <li>Scene management</li>
+<li>Implementation of Unity optimization guidelines</li>
 <li>Audio</li>
-<li>Misc</li>
+<li>User login & backend</li>
+<li>Level and Game design</li>
+<li>Misc.</li>
 </ul>
 <a href="https://www.marcantoinegiguere.ca/">Marc-Antoine Giguère (Power Key)</a><br/>
 <ul>
 <li>Three Cs</li>
 <li>Gameplay</li>
+<li>Persistent data & backend</li>
 <li>Level and Game design</li>
 <li>Misc.</li>
 </ul>
 <a href="https://www.instagram.com/starteapot/?hl=fr">Marie-Maxime Giguère</a><br/>
 <ul>
-<li>All visual assets</li>
+<li>Characters assets</li>
 </ul>
 Benoit Laroche<br/>
 <ul>
@@ -40,15 +44,19 @@ broumbroum, sf3-sfx-menu-back.wav, https://freesound.org/people/broumbroum/sound
 <li>UI Validation<br/>
 broumbroum, sf3-sfx-menu-validate.wav, https://freesound.org/people/broumbroum/sounds/50565/?fbclid=IwAR1x1-Tc-LZjz-FNw6tZitrUqwaJHDqYiiU1dN9a5FvV925iMtP2uCqLlAQ</li>
 </ul>
+<h3>Weapons</h3>
 <ul>
-<li>Every other UI sounds<br/>
-made by Sébastien (Ludwell) using the Chiptone app: https://sfbgames.itch.io/chiptone</li>
+<li>Krotos Starter Library<br/></li>
 </ul>
-<h3>Ambiance</h3>
+<h3>Other</h3>
 <ul>
-<li>Micha, Puka A., Andrew Dodds, Krotos Starter Library</li>
+<li>Unknown<br/></li>
 </ul>
-<h3>Others</h3>
+<li>Music<br/>
+Made by Benoit Laroche</li>
+</ul>
+<h2>Visuals</h2><br/>
+<h3>Non-character</h3>
 <ul>
-<li>Krotos Starter Library sound pack</li>
+<li>Unknown<br/></li>
 </ul>
